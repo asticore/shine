@@ -50,7 +50,7 @@
 
 .avatar-group { display: flex; }
 .avatar-group > .avatar { box-shadow: 0 0 0 2px var(--sh-avatar-ring, var(--sh-bg)); }
-.avatar-group > .avatar + .avatar { margin-inline-start: calc(var(--sh-space) * -3); }
+.avatar-group > .avatar + .avatar { margin-inline-start: calc(var(--sh-space) * -2); }
 
 .divider {
   display: flex;

@@ -303,3 +303,7 @@ html:has(:modal) {
   inset-inline: 0;
   margin-inline: auto;
 }
+/* No anchor positioning (older browsers): show the popover menu centered instead of off-screen */
+@supports not (position-area: block-end) {
+  .dropdown-menu[popover] { inset: 0; margin: auto; height: fit-content; }
+}

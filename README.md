@@ -22,7 +22,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/gzip-15.5%20KB-4f46e5" alt="Size: 15.5 KB gzip">
+  <img src="https://img.shields.io/badge/gzip-15.6%20KB-4f46e5" alt="Size: 15.6 KB gzip">
   <img src="https://img.shields.io/badge/JavaScript-none-16a34a" alt="No JavaScript required">
   <img src="https://img.shields.io/badge/dependencies-0-16a34a" alt="Zero dependencies">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT license"></a>
@@ -77,17 +77,17 @@ Then build with classes:
 
 ## How Shine compares
 
-| | **Shine** | Bootstrap 5 | Tailwind CSS 4 | UnoCSS | Bulma 1 | Pico CSS 2 |
-|---|---|---|---|---|---|---|
-| Size (min + gzip, approx.) | **~15 KB** CSS | ~30 KB CSS + ~23 KB JS | Depends on build (purged) | Depends on build | ~25 KB CSS | ~11 KB CSS |
-| Works without a build step | **Yes** | Yes | No (CLI / PostCSS / Vite) | No (or runtime script) | Yes | Yes |
-| Modals, dropdowns, off-canvas without JS | **Yes** (native `dialog`, `popover`, `details`) | No (needs bootstrap.js) | No components | No components | No (you write the JS) | Modal and dropdown only |
-| Utility classes | **Yes** | Partial | Yes | Yes | Partial | No (classless) |
-| Ready-made components | **Yes** | Yes | No | No | Yes | Basic |
-| Global corner / shadow / density levels | **One attribute each** (`data-radius="0–5"`) | Sass / CSS variables | Theme config | Theme config | CSS variables | CSS variables |
-| Per-component overrides (e.g. only buttons pill-shaped) | **Yes** (`data-btn-radius`) | Sass variables | Per-class | Per-class | CSS variables | CSS variables |
-| Dark mode | `data-theme`, per section | `data-bs-theme`, per section | `dark:` variant | `dark:` variant | Theme attribute / class | `data-theme`, per section |
-| Your CSS always wins (cascade layers) | **Yes** | No | Yes | Varies | No | No |
+| | **Shine** | Bootstrap 5 | Tailwind CSS 4 | UnoCSS | Angular Material | Foundation 6 | daisyUI 5 |
+|---|---|---|---|---|---|---|---|
+| Size (min + gzip, approx.) | **~15.6 KB** CSS, everything included | ~30 KB CSS + ~23 KB JS | Usually under 10 KB **after** a build strips unused classes; the full unbuilt set is several MB | Depends on build | Theme CSS + Angular runtime JS | ~20 KB CSS + JS plugins | Depends on Tailwind build |
+| Works without a build step | **Yes**, one `<link>` | Yes | No (CLI / PostCSS / Vite) | No (or runtime script) | No (Angular app) | Yes | No (Tailwind plugin) |
+| Modals, dropdowns, off-canvas without JS | **Yes** (native `dialog`, `popover`, `details`) | No (needs bootstrap.js) | No components | No components | No (Angular components) | No (JS plugins) | Mostly |
+| Utility classes | **Yes** | Partial | Yes | Yes | No | Partial | Yes (via Tailwind) |
+| Ready-made components | **Yes** | Yes | No | No | Yes | Yes | Yes |
+| Framework-agnostic (plain HTML, React, Vue, Angular…) | **Yes** | Yes | Yes | Yes | Angular only | Yes | Yes |
+| Global corner / shadow / density levels | **One attribute each** (`data-radius="0–5"`) | Sass / CSS variables | Theme config | Theme config | Sass theming API | Sass settings | Theme variables |
+| Per-component overrides (e.g. only buttons pill-shaped) | **Yes** (`data-btn-radius`) | Sass variables | Per class | Per class | Sass mixins | Sass | Theme variables |
+| Dark mode | `data-theme`, per section | `data-bs-theme`, per section | `dark:` variant | `dark:` variant | Theme classes | Custom | `data-theme`, per section |
 
 Sizes are rough figures for each project's default distribution and change between versions; check each project for exact numbers.
 

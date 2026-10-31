@@ -324,6 +324,39 @@ const COMPONENTS = [
 
 <a class="skip-link" href="#main">Skip to content</a>`, wrap: 'grid gap-5' }],
   },
+  {
+    id: 'extras', file: 'extras', title: 'Extras: list group, button group, floating label, carousel',
+    intro: 'Small add-ons. The carousel is plain scroll-snap (link to item ids, no JS); the floating label needs <code>placeholder=" "</code> on the input.',
+    desc: {
+      'list-group': 'Bordered stacked list; a/button items get hover, [aria-current] or .active is solid.',
+      'btn-group': 'Joins adjacent .btn elements into one segmented control.', 'btn-group-vertical': 'Button group stacked vertically.',
+      floating: 'Wrapper whose label floats above the input when focused or filled.',
+      carousel: 'Scroll-snap slider; each child fills the width.', 'carousel-peek': 'Items are 85% wide so the next one peeks in.',
+      'carousel-hide-bar': 'Hides the carousel scrollbar.', 'stretched-link': 'Makes a link cover its whole positioned parent, such as a card.',
+      indicator: 'Wrapper that pins an .indicator-item to its top-right corner.', 'indicator-item': 'Badge or dot placed on the corner of an .indicator.',
+      dot: 'Small status dot colored by tone.', vr: 'Vertical rule for flex rows.', lead: 'Larger intro paragraph.', mark: 'Highlighted text (also styles the mark element).',
+      active: 'With .list-group items: marks the current item.', btn: 'Used inside .btn-group.', input: 'Used inside .floating.', textarea: 'Used inside .floating.', card: 'Cards containing a .stretched-link become positioned.',
+    },
+    examples: [{ html: `<ul class="list-group">
+  <li>Plain item</li>
+  <li><a href="#extras" aria-current="true">Current link</a></li>
+  <li><a href="#extras">Link item</a></li>
+</ul>
+
+<div class="btn-group"><button class="btn btn-outline">Left</button><button class="btn btn-outline">Middle</button><button class="btn btn-outline">Right</button></div>
+
+<div class="floating"><input class="input" placeholder=" " id="fl-email"><label for="fl-email">Email</label></div>
+
+<div class="carousel carousel-peek carousel-hide-bar">
+  <div id="s1" class="card card-body">Slide 1 <a href="#s2">Next</a></div>
+  <div id="s2" class="card card-body">Slide 2 <a href="#s1">Prev</a></div>
+</div>
+
+<div class="card card-body"><a class="stretched-link" href="#extras">Whole card is a link</a></div>
+
+<div class="cluster"><span class="indicator"><span class="indicator-item badge badge-solid tone-danger">3</span><button class="btn">Inbox</button></span><span class="dot tone-success"></span> Online <span class="vr"></span> <mark>marked</mark></div>
+<p class="lead">A lead paragraph.</p>`, wrap: 'grid gap-5' }],
+  },
 ];
 
 /* ------------------------------------------------------------------ helpers */

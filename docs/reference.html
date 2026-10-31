@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shine CSS reference: classes, data attributes and tokens</title>
-<meta name="description" content="Reference for every Shine CSS class and data attribute: master knobs, tones, components with live examples, and 837 utility classes with their CSS.">
+<meta name="description" content="Reference for every Shine CSS class and data attribute: master knobs, tones, components with live examples, and 765 utility classes with their CSS.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Shine CSS reference: classes, data attributes and tokens">
-<meta property="og:description" content="Reference for every Shine CSS class and data attribute: master knobs, tones, components with live examples, and 837 utility classes with their CSS.">
+<meta property="og:description" content="Reference for every Shine CSS class and data attribute: master knobs, tones, components with live examples, and 765 utility classes with their CSS.">
 <link rel="stylesheet" href="../dist/shine.min.css">
 </head>
 <body>
@@ -31,12 +31,12 @@
 <button class="btn lg:hidden fixed bottom-0 right-0 m-4 z-40 shadow-lg" type="button" popovertarget="toc">Contents</button>
 <nav id="toc" popover class="offcanvas" aria-label="Table of contents">
 <div class="offcanvas-header"><strong>Contents</strong><button class="btn-close" type="button" popovertarget="toc" popovertargetaction="hide" aria-label="Close contents"></button></div>
-<div class="offcanvas-body"><ul class="list-none p-0 m-0 space-y-2"><li><a href="#getting-started" class="link font-medium">Getting started</a></li><li><a href="#knobs" class="link font-medium">Master knobs</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#knob-attrs" class="link text-muted">Data attributes</a></li><li><a href="#knob-tokens" class="link text-muted">CSS variables</a></li></ul></li><li><a href="#tones" class="link font-medium">Tones</a></li><li><a href="#components" class="link font-medium">Components</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#c-layout" class="link text-muted">Layout primitives</a></li><li><a href="#c-button" class="link text-muted">Button</a></li><li><a href="#c-card" class="link text-muted">Card</a></li><li><a href="#c-form" class="link text-muted">Form</a></li><li><a href="#c-badge" class="link text-muted">Badge, avatar, divider</a></li><li><a href="#c-alert" class="link text-muted">Alert and kbd</a></li><li><a href="#c-overlay" class="link text-muted">Overlays</a></li><li><a href="#c-nav" class="link text-muted">Navigation</a></li><li><a href="#c-content" class="link text-muted">Content</a></li></ul></li><li><a href="#utilities" class="link font-medium">Utilities</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#u-layout" class="link text-muted">layout</a></li><li><a href="#u-flex-grid" class="link text-muted">flex-grid</a></li><li><a href="#u-spacing" class="link text-muted">spacing</a></li><li><a href="#u-sizing" class="link text-muted">sizing</a></li><li><a href="#u-typography" class="link text-muted">typography</a></li><li><a href="#u-color" class="link text-muted">color</a></li><li><a href="#u-borders" class="link text-muted">borders</a></li><li><a href="#u-effects" class="link text-muted">effects</a></li><li><a href="#u-interactivity" class="link text-muted">interactivity</a></li></ul></li><li><a href="#variants" class="link font-medium">Variants and cascade</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#v-responsive" class="link text-muted">Responsive</a></li><li><a href="#v-state" class="link text-muted">Hover and focus</a></li><li><a href="#v-layers" class="link text-muted">Cascade layers</a></li><li><a href="#v-opacity" class="link text-muted">Opacity modifiers</a></li><li><a href="#v-tailwind" class="link text-muted">Differences from Tailwind</a></li></ul></li></ul></div>
+<div class="offcanvas-body"><ul class="list-none p-0 m-0 space-y-2"><li><a href="#getting-started" class="link font-medium">Getting started</a></li><li><a href="#knobs" class="link font-medium">Master knobs</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#knob-attrs" class="link text-muted">Data attributes</a></li><li><a href="#knob-tokens" class="link text-muted">CSS variables</a></li></ul></li><li><a href="#tones" class="link font-medium">Tones</a></li><li><a href="#components" class="link font-medium">Components</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#c-layout" class="link text-muted">Layout primitives</a></li><li><a href="#c-button" class="link text-muted">Button</a></li><li><a href="#c-card" class="link text-muted">Card</a></li><li><a href="#c-form" class="link text-muted">Form</a></li><li><a href="#c-badge" class="link text-muted">Badge, avatar, divider</a></li><li><a href="#c-alert" class="link text-muted">Alert and kbd</a></li><li><a href="#c-overlay" class="link text-muted">Overlays</a></li><li><a href="#c-nav" class="link text-muted">Navigation</a></li><li><a href="#c-content" class="link text-muted">Content</a></li><li><a href="#c-extras" class="link text-muted">Extras</a></li></ul></li><li><a href="#utilities" class="link font-medium">Utilities</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#u-layout" class="link text-muted">layout</a></li><li><a href="#u-flex-grid" class="link text-muted">flex-grid</a></li><li><a href="#u-spacing" class="link text-muted">spacing</a></li><li><a href="#u-sizing" class="link text-muted">sizing</a></li><li><a href="#u-typography" class="link text-muted">typography</a></li><li><a href="#u-color" class="link text-muted">color</a></li><li><a href="#u-borders" class="link text-muted">borders</a></li><li><a href="#u-effects" class="link text-muted">effects</a></li><li><a href="#u-interactivity" class="link text-muted">interactivity</a></li><li><a href="#u-extras" class="link text-muted">extras</a></li></ul></li><li><a href="#variants" class="link font-medium">Variants and cascade</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#v-responsive" class="link text-muted">Responsive</a></li><li><a href="#v-state" class="link text-muted">Hover and focus</a></li><li><a href="#v-layers" class="link text-muted">Cascade layers</a></li><li><a href="#v-opacity" class="link text-muted">Opacity modifiers</a></li><li><a href="#v-tailwind" class="link text-muted">Differences from Tailwind</a></li></ul></li></ul></div>
 </nav>
 <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-4 gap-8">
 <aside class="hidden lg:block lg:col-span-1 border-r pr-4">
 <nav class="sticky top-0 max-h-screen overflow-y-auto py-8" aria-label="Table of contents">
-<ul class="list-none p-0 m-0 space-y-2"><li><a href="#getting-started" class="link font-medium">Getting started</a></li><li><a href="#knobs" class="link font-medium">Master knobs</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#knob-attrs" class="link text-muted">Data attributes</a></li><li><a href="#knob-tokens" class="link text-muted">CSS variables</a></li></ul></li><li><a href="#tones" class="link font-medium">Tones</a></li><li><a href="#components" class="link font-medium">Components</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#c-layout" class="link text-muted">Layout primitives</a></li><li><a href="#c-button" class="link text-muted">Button</a></li><li><a href="#c-card" class="link text-muted">Card</a></li><li><a href="#c-form" class="link text-muted">Form</a></li><li><a href="#c-badge" class="link text-muted">Badge, avatar, divider</a></li><li><a href="#c-alert" class="link text-muted">Alert and kbd</a></li><li><a href="#c-overlay" class="link text-muted">Overlays</a></li><li><a href="#c-nav" class="link text-muted">Navigation</a></li><li><a href="#c-content" class="link text-muted">Content</a></li></ul></li><li><a href="#utilities" class="link font-medium">Utilities</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#u-layout" class="link text-muted">layout</a></li><li><a href="#u-flex-grid" class="link text-muted">flex-grid</a></li><li><a href="#u-spacing" class="link text-muted">spacing</a></li><li><a href="#u-sizing" class="link text-muted">sizing</a></li><li><a href="#u-typography" class="link text-muted">typography</a></li><li><a href="#u-color" class="link text-muted">color</a></li><li><a href="#u-borders" class="link text-muted">borders</a></li><li><a href="#u-effects" class="link text-muted">effects</a></li><li><a href="#u-interactivity" class="link text-muted">interactivity</a></li></ul></li><li><a href="#variants" class="link font-medium">Variants and cascade</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#v-responsive" class="link text-muted">Responsive</a></li><li><a href="#v-state" class="link text-muted">Hover and focus</a></li><li><a href="#v-layers" class="link text-muted">Cascade layers</a></li><li><a href="#v-opacity" class="link text-muted">Opacity modifiers</a></li><li><a href="#v-tailwind" class="link text-muted">Differences from Tailwind</a></li></ul></li></ul>
+<ul class="list-none p-0 m-0 space-y-2"><li><a href="#getting-started" class="link font-medium">Getting started</a></li><li><a href="#knobs" class="link font-medium">Master knobs</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#knob-attrs" class="link text-muted">Data attributes</a></li><li><a href="#knob-tokens" class="link text-muted">CSS variables</a></li></ul></li><li><a href="#tones" class="link font-medium">Tones</a></li><li><a href="#components" class="link font-medium">Components</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#c-layout" class="link text-muted">Layout primitives</a></li><li><a href="#c-button" class="link text-muted">Button</a></li><li><a href="#c-card" class="link text-muted">Card</a></li><li><a href="#c-form" class="link text-muted">Form</a></li><li><a href="#c-badge" class="link text-muted">Badge, avatar, divider</a></li><li><a href="#c-alert" class="link text-muted">Alert and kbd</a></li><li><a href="#c-overlay" class="link text-muted">Overlays</a></li><li><a href="#c-nav" class="link text-muted">Navigation</a></li><li><a href="#c-content" class="link text-muted">Content</a></li><li><a href="#c-extras" class="link text-muted">Extras</a></li></ul></li><li><a href="#utilities" class="link font-medium">Utilities</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#u-layout" class="link text-muted">layout</a></li><li><a href="#u-flex-grid" class="link text-muted">flex-grid</a></li><li><a href="#u-spacing" class="link text-muted">spacing</a></li><li><a href="#u-sizing" class="link text-muted">sizing</a></li><li><a href="#u-typography" class="link text-muted">typography</a></li><li><a href="#u-color" class="link text-muted">color</a></li><li><a href="#u-borders" class="link text-muted">borders</a></li><li><a href="#u-effects" class="link text-muted">effects</a></li><li><a href="#u-interactivity" class="link text-muted">interactivity</a></li><li><a href="#u-extras" class="link text-muted">extras</a></li></ul></li><li><a href="#variants" class="link font-medium">Variants and cascade</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#v-responsive" class="link text-muted">Responsive</a></li><li><a href="#v-state" class="link text-muted">Hover and focus</a></li><li><a href="#v-layers" class="link text-muted">Cascade layers</a></li><li><a href="#v-opacity" class="link text-muted">Opacity modifiers</a></li><li><a href="#v-tailwind" class="link text-muted">Differences from Tailwind</a></li></ul></li></ul>
 </nav>
 </aside>
 <main id="main" class="lg:col-span-3 min-w-0 py-8 space-y-8">
@@ -68,7 +68,7 @@
 <section id="knob-attrs" aria-labelledby="h-knob-attrs" class="space-y-4">
 <h3 id="h-knob-attrs" class="text-xl font-semibold">Data attributes</h3>
 <div class="table-wrap"><table class="table table-compact table-striped"><thead><tr><th scope="col">Attribute</th><th scope="col">Values</th><th scope="col">What it changes</th></tr></thead><tbody>
-<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">data-theme</code></td><td><code class="font-mono text-sm" title="#ffffff">light</code> · <code class="font-mono text-sm" title="#0b0f19">dark</code> · <code class="font-mono text-sm" title="#0b0f19">auto</code></td><td>Page background, surfaces, text, borders and shadows. A themed element paints its own background, so a dark section can sit inside a light page. <span class="text-muted">Set on: html or any section.</span></td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">data-theme</code></td><td><code class="font-mono text-sm" title="#fff">light</code> · <code class="font-mono text-sm" title="#0b0f19">dark</code> · <code class="font-mono text-sm" title="#0b0f19">auto</code></td><td>Page background, surfaces, text, borders and shadows. A themed element paints its own background, so a dark section can sit inside a light page. <span class="text-muted">Set on: html or any section.</span></td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">data-radius</code></td><td><code class="font-mono text-sm" title="0">0</code> · <code class="font-mono text-sm" title=".25rem">1</code> · <code class="font-mono text-sm" title=".5rem">2</code> · <code class="font-mono text-sm" title=".75rem">3</code> · <code class="font-mono text-sm" title="1.25rem">4</code> · <code class="font-mono text-sm" title="2rem">5</code></td><td>Corner level for every rounded thing: buttons, cards, inputs, modals and the rounded-* utilities. <span class="text-muted">Set on: html or any element.</span></td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">data-btn-radius</code></td><td><code class="font-mono text-sm" title="0">0</code> · <code class="font-mono text-sm" title=".25rem">1</code> · <code class="font-mono text-sm" title=".5rem">2</code> · <code class="font-mono text-sm" title=".75rem">3</code> · <code class="font-mono text-sm" title="1.25rem">4</code> · <code class="font-mono text-sm" title="9999px">5</code></td><td>Corner level for buttons only (and pagination, tabs pills, close buttons). 5 makes pills. <span class="text-muted">Set on: any element.</span></td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">data-card-radius</code></td><td><code class="font-mono text-sm" title="0">0</code> · <code class="font-mono text-sm" title=".25rem">1</code> · <code class="font-mono text-sm" title=".5rem">2</code> · <code class="font-mono text-sm" title=".75rem">3</code> · <code class="font-mono text-sm" title="1.25rem">4</code> · <code class="font-mono text-sm" title="2rem">5</code></td><td>Corner level for cards, modals, menus and accordions. <span class="text-muted">Set on: any element.</span></td></tr>
@@ -104,11 +104,11 @@
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">--sh-on-warning</code></td><td class="font-mono text-sm break-all">#fff</td><td><span class="inline-block size-5 rounded border" style="background:var(--sh-on-warning)" role="img" aria-label="#fff"></span></td><td class="text-sm text-muted">Brand</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">--sh-on-danger</code></td><td class="font-mono text-sm break-all">#fff</td><td><span class="inline-block size-5 rounded border" style="background:var(--sh-on-danger)" role="img" aria-label="#fff"></span></td><td class="text-sm text-muted">Brand</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">--sh-on-info</code></td><td class="font-mono text-sm break-all">#fff</td><td><span class="inline-block size-5 rounded border" style="background:var(--sh-on-info)" role="img" aria-label="#fff"></span></td><td class="text-sm text-muted">Brand</td></tr>
-<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">--sh-bg</code></td><td class="font-mono text-sm break-all">#ffffff</td><td><span class="inline-block size-5 rounded border" style="background:var(--sh-bg)" role="img" aria-label="#ffffff"></span></td><td class="text-sm text-muted">page</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">--sh-bg</code></td><td class="font-mono text-sm break-all">#fff</td><td><span class="inline-block size-5 rounded border" style="background:var(--sh-bg)" role="img" aria-label="#fff"></span></td><td class="text-sm text-muted">page</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">--sh-surface</code></td><td class="font-mono text-sm break-all">#f8fafc</td><td><span class="inline-block size-5 rounded border" style="background:var(--sh-surface)" role="img" aria-label="#f8fafc"></span></td><td class="text-sm text-muted">cards, panels</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">--sh-surface-2</code></td><td class="font-mono text-sm break-all">#f1f5f9</td><td><span class="inline-block size-5 rounded border" style="background:var(--sh-surface-2)" role="img" aria-label="#f1f5f9"></span></td><td class="text-sm text-muted">inputs, wells, hover</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">--sh-text</code></td><td class="font-mono text-sm break-all">#0f172a</td><td><span class="inline-block size-5 rounded border" style="background:var(--sh-text)" role="img" aria-label="#0f172a"></span></td><td class="text-sm text-muted">Surfaces (light)</td></tr>
-<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">--sh-text-muted</code></td><td class="font-mono text-sm break-all">#64748b</td><td><span class="inline-block size-5 rounded border" style="background:var(--sh-text-muted)" role="img" aria-label="#64748b"></span></td><td class="text-sm text-muted">Surfaces (light)</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">--sh-text-muted</code></td><td class="font-mono text-sm break-all">#5f6e84</td><td><span class="inline-block size-5 rounded border" style="background:var(--sh-text-muted)" role="img" aria-label="#5f6e84"></span></td><td class="text-sm text-muted">Surfaces (light)</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">--sh-border</code></td><td class="font-mono text-sm break-all">#e2e8f0</td><td><span class="inline-block size-5 rounded border" style="background:var(--sh-border)" role="img" aria-label="#e2e8f0"></span></td><td class="text-sm text-muted">Surfaces (light)</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">--sh-radius</code></td><td class="font-mono text-sm break-all">.5rem</td><td></td><td class="text-sm text-muted">global corner level (see data-radius)</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">--sh-border-width</code></td><td class="font-mono text-sm break-all">1px</td><td></td><td class="text-sm text-muted">Shape</td></tr>
@@ -672,10 +672,77 @@
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.skip-link</code></td><td>Hidden link that appears on keyboard focus; place first in body.</td></tr>
 </tbody></table></div>
 </section>
+<section id="c-extras" aria-labelledby="h-c-extras" class="space-y-4">
+<h3 id="h-c-extras" class="text-2xl font-semibold">Extras: list group, button group, floating label, carousel</h3>
+<p class="max-w-prose">Small add-ons. The carousel is plain scroll-snap (link to item ids, no JS); the floating label needs <code>placeholder=" "</code> on the input.</p>
+<div class="card card-flat overflow-hidden">
+<div class="card-body grid gap-5">
+<ul class="list-group">
+  <li>Plain item</li>
+  <li><a href="#extras" aria-current="true">Current link</a></li>
+  <li><a href="#extras">Link item</a></li>
+</ul>
+
+<div class="btn-group"><button class="btn btn-outline">Left</button><button class="btn btn-outline">Middle</button><button class="btn btn-outline">Right</button></div>
+
+<div class="floating"><input class="input" placeholder=" " id="fl-email"><label for="fl-email">Email</label></div>
+
+<div class="carousel carousel-peek carousel-hide-bar">
+  <div id="s1" class="card card-body">Slide 1 <a href="#s2">Next</a></div>
+  <div id="s2" class="card card-body">Slide 2 <a href="#s1">Prev</a></div>
+</div>
+
+<div class="card card-body"><a class="stretched-link" href="#extras">Whole card is a link</a></div>
+
+<div class="cluster"><span class="indicator"><span class="indicator-item badge badge-solid tone-danger">3</span><button class="btn">Inbox</button></span><span class="dot tone-success"></span> Online <span class="vr"></span> <mark>marked</mark></div>
+<p class="lead">A lead paragraph.</p>
+</div>
+<pre class="bg-surface-2 p-4 text-sm overflow-x-auto m-0"><code>&lt;ul class=&quot;list-group&quot;&gt;
+  &lt;li&gt;Plain item&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#extras&quot; aria-current=&quot;true&quot;&gt;Current link&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#extras&quot;&gt;Link item&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;btn-group&quot;&gt;&lt;button class=&quot;btn btn-outline&quot;&gt;Left&lt;/button&gt;&lt;button class=&quot;btn btn-outline&quot;&gt;Middle&lt;/button&gt;&lt;button class=&quot;btn btn-outline&quot;&gt;Right&lt;/button&gt;&lt;/div&gt;
+
+&lt;div class=&quot;floating&quot;&gt;&lt;input class=&quot;input&quot; placeholder=&quot; &quot; id=&quot;fl-email&quot;&gt;&lt;label for=&quot;fl-email&quot;&gt;Email&lt;/label&gt;&lt;/div&gt;
+
+&lt;div class=&quot;carousel carousel-peek carousel-hide-bar&quot;&gt;
+  &lt;div id=&quot;s1&quot; class=&quot;card card-body&quot;&gt;Slide 1 &lt;a href=&quot;#s2&quot;&gt;Next&lt;/a&gt;&lt;/div&gt;
+  &lt;div id=&quot;s2&quot; class=&quot;card card-body&quot;&gt;Slide 2 &lt;a href=&quot;#s1&quot;&gt;Prev&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;card card-body&quot;&gt;&lt;a class=&quot;stretched-link&quot; href=&quot;#extras&quot;&gt;Whole card is a link&lt;/a&gt;&lt;/div&gt;
+
+&lt;div class=&quot;cluster&quot;&gt;&lt;span class=&quot;indicator&quot;&gt;&lt;span class=&quot;indicator-item badge badge-solid tone-danger&quot;&gt;3&lt;/span&gt;&lt;button class=&quot;btn&quot;&gt;Inbox&lt;/button&gt;&lt;/span&gt;&lt;span class=&quot;dot tone-success&quot;&gt;&lt;/span&gt; Online &lt;span class=&quot;vr&quot;&gt;&lt;/span&gt; &lt;mark&gt;marked&lt;/mark&gt;&lt;/div&gt;
+&lt;p class=&quot;lead&quot;&gt;A lead paragraph.&lt;/p&gt;</code></pre>
+</div>
+<div class="table-wrap"><table class="table table-compact table-striped"><thead><tr><th scope="col">Class</th><th scope="col">What it does</th></tr></thead><tbody>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.list-group</code></td><td>Bordered stacked list; a/button items get hover, [aria-current] or .active is solid.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.active</code></td><td>With .list-group items: marks the current item.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.btn-group</code></td><td>Joins adjacent .btn elements into one segmented control.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.btn-group-vertical</code></td><td>Button group stacked vertically.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.btn</code></td><td>Used inside .btn-group.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.floating</code></td><td>Wrapper whose label floats above the input when focused or filled.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.input</code></td><td>Used inside .floating.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.textarea</code></td><td>Used inside .floating.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.carousel</code></td><td>Scroll-snap slider; each child fills the width.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.carousel-peek</code></td><td>Items are 85% wide so the next one peeks in.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.carousel-hide-bar</code></td><td>Hides the carousel scrollbar.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.stretched-link</code></td><td>Makes a link cover its whole positioned parent, such as a card.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.card</code></td><td>Cards containing a .stretched-link become positioned.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.indicator</code></td><td>Wrapper that pins an .indicator-item to its top-right corner.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.indicator-item</code></td><td>Badge or dot placed on the corner of an .indicator.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.dot</code></td><td>Small status dot colored by tone.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.vr</code></td><td>Vertical rule for flex rows.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.lead</code></td><td>Larger intro paragraph.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.mark</code></td><td>Highlighted text (also styles the mark element).</td></tr>
+</tbody></table></div>
+</section>
 </section>
 <section id="utilities" aria-labelledby="h-utilities" class="space-y-8">
 <h2 id="h-utilities" class="text-3xl font-bold tracking-tight">Utilities</h2>
-<p class="max-w-prose">837 utility rules, generated from <code>src/utilities/*.css</code> when this page is built. Class names follow familiar utility conventions (inspired by Tailwind CSS). The last column lists the prefixed versions that the build creates, such as <code>md:p-4</code> or <code>hover:bg-primary</code>.</p>
+<p class="max-w-prose">765 utility rules, generated from <code>src/utilities/*.css</code> when this page is built. Class names follow familiar utility conventions (inspired by Tailwind CSS). The last column lists the prefixed versions that the build creates, such as <code>md:p-4</code> or <code>hover:bg-primary</code>.</p>
 <div class="field max-w-md" id="util-search-box" hidden>
 <label class="label" for="util-search">Filter utilities by class name</label>
 <input class="input" id="util-search" type="search" placeholder="e.g. flex, p-4, bg-primary" autocomplete="off">
@@ -683,7 +750,7 @@
 </div>
 <section id="u-layout" aria-labelledby="h-u-layout" class="space-y-3">
 <h3 id="h-u-layout" class="text-2xl font-semibold">layout</h3>
-<p class="text-muted text-sm m-0">Layout: display, position, overflow, container, misc (75 rules)</p>
+<p class="text-muted text-sm m-0">Layout: display, position, overflow, container, misc (66 rules)</p>
 <div class="table-wrap"><table class="table table-compact table-hover util-table"><thead><tr><th scope="col">Class</th><th scope="col">CSS</th><th scope="col">Variants</th></tr></thead><tbody>
 <tr data-c=".block"><td class="font-mono text-sm"><code>.block</code></td><td class="text-sm font-mono break-all">display:block</td><td class="text-sm">sm md lg xl print</td></tr>
 <tr data-c=".inline-block"><td class="font-mono text-sm"><code>.inline-block</code></td><td class="text-sm font-mono break-all">display:inline-block</td><td class="text-sm">sm md lg xl print</td></tr>
@@ -740,31 +807,22 @@
 <tr data-c=".columns-1"><td class="font-mono text-sm"><code>.columns-1</code></td><td class="text-sm font-mono break-all">columns:1</td><td class="text-sm">-</td></tr>
 <tr data-c=".columns-2"><td class="font-mono text-sm"><code>.columns-2</code></td><td class="text-sm font-mono break-all">columns:2</td><td class="text-sm">-</td></tr>
 <tr data-c=".columns-3"><td class="font-mono text-sm"><code>.columns-3</code></td><td class="text-sm font-mono break-all">columns:3</td><td class="text-sm">-</td></tr>
-<tr data-c=".columns-4"><td class="font-mono text-sm"><code>.columns-4</code></td><td class="text-sm font-mono break-all">columns:4</td><td class="text-sm">-</td></tr>
 <tr data-c=".align-baseline"><td class="font-mono text-sm"><code>.align-baseline</code></td><td class="text-sm font-mono break-all">vertical-align:baseline</td><td class="text-sm">-</td></tr>
 <tr data-c=".align-top"><td class="font-mono text-sm"><code>.align-top</code></td><td class="text-sm font-mono break-all">vertical-align:top</td><td class="text-sm">-</td></tr>
 <tr data-c=".align-middle"><td class="font-mono text-sm"><code>.align-middle</code></td><td class="text-sm font-mono break-all">vertical-align:middle</td><td class="text-sm">-</td></tr>
 <tr data-c=".align-bottom"><td class="font-mono text-sm"><code>.align-bottom</code></td><td class="text-sm font-mono break-all">vertical-align:bottom</td><td class="text-sm">-</td></tr>
 <tr data-c=".align-text-top"><td class="font-mono text-sm"><code>.align-text-top</code></td><td class="text-sm font-mono break-all">vertical-align:text-top</td><td class="text-sm">-</td></tr>
-<tr data-c=".scroll-mt-0"><td class="font-mono text-sm"><code>.scroll-mt-0</code></td><td class="text-sm font-mono break-all">scroll-margin-top:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".scroll-mt-4"><td class="font-mono text-sm"><code>.scroll-mt-4</code></td><td class="text-sm font-mono break-all">scroll-margin-top:calc(var(--sh-space)*4)</td><td class="text-sm">-</td></tr>
-<tr data-c=".scroll-mt-8"><td class="font-mono text-sm"><code>.scroll-mt-8</code></td><td class="text-sm font-mono break-all">scroll-margin-top:calc(var(--sh-space)*8)</td><td class="text-sm">-</td></tr>
 <tr data-c=".scroll-mt-16"><td class="font-mono text-sm"><code>.scroll-mt-16</code></td><td class="text-sm font-mono break-all">scroll-margin-top:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
 <tr data-c=".scroll-mt-20"><td class="font-mono text-sm"><code>.scroll-mt-20</code></td><td class="text-sm font-mono break-all">scroll-margin-top:calc(var(--sh-space)*20)</td><td class="text-sm">-</td></tr>
 <tr data-c=".scroll-mt-24"><td class="font-mono text-sm"><code>.scroll-mt-24</code></td><td class="text-sm font-mono break-all">scroll-margin-top:calc(var(--sh-space)*24)</td><td class="text-sm">-</td></tr>
-<tr data-c=".scroll-pt-0"><td class="font-mono text-sm"><code>.scroll-pt-0</code></td><td class="text-sm font-mono break-all">scroll-padding-top:0</td><td class="text-sm">-</td></tr>
-<tr data-c=".scroll-pt-4"><td class="font-mono text-sm"><code>.scroll-pt-4</code></td><td class="text-sm font-mono break-all">scroll-padding-top:calc(var(--sh-space)*4)</td><td class="text-sm">-</td></tr>
-<tr data-c=".scroll-pt-8"><td class="font-mono text-sm"><code>.scroll-pt-8</code></td><td class="text-sm font-mono break-all">scroll-padding-top:calc(var(--sh-space)*8)</td><td class="text-sm">-</td></tr>
-<tr data-c=".scroll-pt-16"><td class="font-mono text-sm"><code>.scroll-pt-16</code></td><td class="text-sm font-mono break-all">scroll-padding-top:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
-<tr data-c=".scroll-pt-20"><td class="font-mono text-sm"><code>.scroll-pt-20</code></td><td class="text-sm font-mono break-all">scroll-padding-top:calc(var(--sh-space)*20)</td><td class="text-sm">-</td></tr>
-<tr data-c=".scroll-pt-24"><td class="font-mono text-sm"><code>.scroll-pt-24</code></td><td class="text-sm font-mono break-all">scroll-padding-top:calc(var(--sh-space)*24)</td><td class="text-sm">-</td></tr>
 <tr data-c=".sr-only"><td class="font-mono text-sm"><code>.sr-only</code></td><td class="text-sm font-mono break-all">position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border-width:0</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".not-sr-only"><td class="font-mono text-sm"><code>.not-sr-only</code></td><td class="text-sm font-mono break-all">position:static; width:auto; height:auto; padding:0; margin:0; overflow:visible; clip:auto; white-space:normal</td><td class="text-sm">sm md lg xl</td></tr>
 </tbody></table></div>
 </section>
 <section id="u-flex-grid" aria-labelledby="h-u-flex-grid" class="space-y-3">
 <h3 id="h-u-flex-grid" class="text-2xl font-semibold">flex-grid</h3>
-<p class="text-muted text-sm m-0">Flex &amp; grid (144 rules)</p>
+<p class="text-muted text-sm m-0">Flex &amp; grid (123 rules)</p>
 <div class="table-wrap"><table class="table table-compact table-hover util-table"><thead><tr><th scope="col">Class</th><th scope="col">CSS</th><th scope="col">Variants</th></tr></thead><tbody>
 <tr data-c=".flex-row"><td class="font-mono text-sm"><code>.flex-row</code></td><td class="text-sm font-mono break-all">flex-direction:row</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".flex-col"><td class="font-mono text-sm"><code>.flex-col</code></td><td class="text-sm font-mono break-all">flex-direction:column</td><td class="text-sm">sm md lg xl</td></tr>
@@ -810,15 +868,9 @@
 <tr data-c=".content-center"><td class="font-mono text-sm"><code>.content-center</code></td><td class="text-sm font-mono break-all">align-content:center</td><td class="text-sm">-</td></tr>
 <tr data-c=".content-end"><td class="font-mono text-sm"><code>.content-end</code></td><td class="text-sm font-mono break-all">align-content:flex-end</td><td class="text-sm">-</td></tr>
 <tr data-c=".content-between"><td class="font-mono text-sm"><code>.content-between</code></td><td class="text-sm font-mono break-all">align-content:space-between</td><td class="text-sm">-</td></tr>
-<tr data-c=".content-around"><td class="font-mono text-sm"><code>.content-around</code></td><td class="text-sm font-mono break-all">align-content:space-around</td><td class="text-sm">-</td></tr>
-<tr data-c=".content-evenly"><td class="font-mono text-sm"><code>.content-evenly</code></td><td class="text-sm font-mono break-all">align-content:space-evenly</td><td class="text-sm">-</td></tr>
-<tr data-c=".content-stretch"><td class="font-mono text-sm"><code>.content-stretch</code></td><td class="text-sm font-mono break-all">align-content:stretch</td><td class="text-sm">-</td></tr>
 <tr data-c=".place-items-center"><td class="font-mono text-sm"><code>.place-items-center</code></td><td class="text-sm font-mono break-all">place-items:center</td><td class="text-sm">-</td></tr>
 <tr data-c=".place-content-center"><td class="font-mono text-sm"><code>.place-content-center</code></td><td class="text-sm font-mono break-all">place-content:center</td><td class="text-sm">-</td></tr>
-<tr data-c=".justify-items-start"><td class="font-mono text-sm"><code>.justify-items-start</code></td><td class="text-sm font-mono break-all">justify-items:start</td><td class="text-sm">-</td></tr>
 <tr data-c=".justify-items-center"><td class="font-mono text-sm"><code>.justify-items-center</code></td><td class="text-sm font-mono break-all">justify-items:center</td><td class="text-sm">-</td></tr>
-<tr data-c=".justify-items-end"><td class="font-mono text-sm"><code>.justify-items-end</code></td><td class="text-sm font-mono break-all">justify-items:end</td><td class="text-sm">-</td></tr>
-<tr data-c=".justify-items-stretch"><td class="font-mono text-sm"><code>.justify-items-stretch</code></td><td class="text-sm font-mono break-all">justify-items:stretch</td><td class="text-sm">-</td></tr>
 <tr data-c=".justify-self-start"><td class="font-mono text-sm"><code>.justify-self-start</code></td><td class="text-sm font-mono break-all">justify-self:start</td><td class="text-sm">-</td></tr>
 <tr data-c=".justify-self-center"><td class="font-mono text-sm"><code>.justify-self-center</code></td><td class="text-sm font-mono break-all">justify-self:center</td><td class="text-sm">-</td></tr>
 <tr data-c=".justify-self-end"><td class="font-mono text-sm"><code>.justify-self-end</code></td><td class="text-sm font-mono break-all">justify-self:end</td><td class="text-sm">-</td></tr>
@@ -830,11 +882,6 @@
 <tr data-c=".grid-cols-5"><td class="font-mono text-sm"><code>.grid-cols-5</code></td><td class="text-sm font-mono break-all">grid-template-columns:repeat(5,minmax(0,1fr))</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".grid-cols-6"><td class="font-mono text-sm"><code>.grid-cols-6</code></td><td class="text-sm font-mono break-all">grid-template-columns:repeat(6,minmax(0,1fr))</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".grid-cols-12"><td class="font-mono text-sm"><code>.grid-cols-12</code></td><td class="text-sm font-mono break-all">grid-template-columns:repeat(12,minmax(0,1fr))</td><td class="text-sm">sm md lg xl</td></tr>
-<tr data-c=".grid-cols-7"><td class="font-mono text-sm"><code>.grid-cols-7</code></td><td class="text-sm font-mono break-all">grid-template-columns:repeat(7,minmax(0,1fr))</td><td class="text-sm">-</td></tr>
-<tr data-c=".grid-cols-8"><td class="font-mono text-sm"><code>.grid-cols-8</code></td><td class="text-sm font-mono break-all">grid-template-columns:repeat(8,minmax(0,1fr))</td><td class="text-sm">-</td></tr>
-<tr data-c=".grid-cols-9"><td class="font-mono text-sm"><code>.grid-cols-9</code></td><td class="text-sm font-mono break-all">grid-template-columns:repeat(9,minmax(0,1fr))</td><td class="text-sm">-</td></tr>
-<tr data-c=".grid-cols-10"><td class="font-mono text-sm"><code>.grid-cols-10</code></td><td class="text-sm font-mono break-all">grid-template-columns:repeat(10,minmax(0,1fr))</td><td class="text-sm">-</td></tr>
-<tr data-c=".grid-cols-11"><td class="font-mono text-sm"><code>.grid-cols-11</code></td><td class="text-sm font-mono break-all">grid-template-columns:repeat(11,minmax(0,1fr))</td><td class="text-sm">-</td></tr>
 <tr data-c=".grid-cols-none"><td class="font-mono text-sm"><code>.grid-cols-none</code></td><td class="text-sm font-mono break-all">grid-template-columns:none</td><td class="text-sm">-</td></tr>
 <tr data-c=".col-span-1"><td class="font-mono text-sm"><code>.col-span-1</code></td><td class="text-sm font-mono break-all">grid-column:span 1/span 1</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".col-span-2"><td class="font-mono text-sm"><code>.col-span-2</code></td><td class="text-sm font-mono break-all">grid-column:span 2/span 2</td><td class="text-sm">sm md lg xl</td></tr>
@@ -853,23 +900,15 @@
 <tr data-c=".col-start-2"><td class="font-mono text-sm"><code>.col-start-2</code></td><td class="text-sm font-mono break-all">grid-column-start:2</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".col-start-3"><td class="font-mono text-sm"><code>.col-start-3</code></td><td class="text-sm font-mono break-all">grid-column-start:3</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".col-start-4"><td class="font-mono text-sm"><code>.col-start-4</code></td><td class="text-sm font-mono break-all">grid-column-start:4</td><td class="text-sm">sm md lg xl</td></tr>
-<tr data-c=".col-start-5"><td class="font-mono text-sm"><code>.col-start-5</code></td><td class="text-sm font-mono break-all">grid-column-start:5</td><td class="text-sm">-</td></tr>
-<tr data-c=".col-start-6"><td class="font-mono text-sm"><code>.col-start-6</code></td><td class="text-sm font-mono break-all">grid-column-start:6</td><td class="text-sm">-</td></tr>
-<tr data-c=".col-start-7"><td class="font-mono text-sm"><code>.col-start-7</code></td><td class="text-sm font-mono break-all">grid-column-start:7</td><td class="text-sm">-</td></tr>
 <tr data-c=".col-start-auto"><td class="font-mono text-sm"><code>.col-start-auto</code></td><td class="text-sm font-mono break-all">grid-column-start:auto</td><td class="text-sm">-</td></tr>
 <tr data-c=".grid-rows-1"><td class="font-mono text-sm"><code>.grid-rows-1</code></td><td class="text-sm font-mono break-all">grid-template-rows:repeat(1,minmax(0,1fr))</td><td class="text-sm">-</td></tr>
 <tr data-c=".grid-rows-2"><td class="font-mono text-sm"><code>.grid-rows-2</code></td><td class="text-sm font-mono break-all">grid-template-rows:repeat(2,minmax(0,1fr))</td><td class="text-sm">-</td></tr>
 <tr data-c=".grid-rows-3"><td class="font-mono text-sm"><code>.grid-rows-3</code></td><td class="text-sm font-mono break-all">grid-template-rows:repeat(3,minmax(0,1fr))</td><td class="text-sm">-</td></tr>
-<tr data-c=".grid-rows-4"><td class="font-mono text-sm"><code>.grid-rows-4</code></td><td class="text-sm font-mono break-all">grid-template-rows:repeat(4,minmax(0,1fr))</td><td class="text-sm">-</td></tr>
-<tr data-c=".grid-rows-5"><td class="font-mono text-sm"><code>.grid-rows-5</code></td><td class="text-sm font-mono break-all">grid-template-rows:repeat(5,minmax(0,1fr))</td><td class="text-sm">-</td></tr>
-<tr data-c=".grid-rows-6"><td class="font-mono text-sm"><code>.grid-rows-6</code></td><td class="text-sm font-mono break-all">grid-template-rows:repeat(6,minmax(0,1fr))</td><td class="text-sm">-</td></tr>
 <tr data-c=".row-span-1"><td class="font-mono text-sm"><code>.row-span-1</code></td><td class="text-sm font-mono break-all">grid-row:span 1/span 1</td><td class="text-sm">-</td></tr>
 <tr data-c=".row-span-2"><td class="font-mono text-sm"><code>.row-span-2</code></td><td class="text-sm font-mono break-all">grid-row:span 2/span 2</td><td class="text-sm">-</td></tr>
 <tr data-c=".row-span-3"><td class="font-mono text-sm"><code>.row-span-3</code></td><td class="text-sm font-mono break-all">grid-row:span 3/span 3</td><td class="text-sm">-</td></tr>
 <tr data-c=".row-span-full"><td class="font-mono text-sm"><code>.row-span-full</code></td><td class="text-sm font-mono break-all">grid-row:1/-1</td><td class="text-sm">-</td></tr>
 <tr data-c=".row-start-1"><td class="font-mono text-sm"><code>.row-start-1</code></td><td class="text-sm font-mono break-all">grid-row-start:1</td><td class="text-sm">-</td></tr>
-<tr data-c=".row-start-2"><td class="font-mono text-sm"><code>.row-start-2</code></td><td class="text-sm font-mono break-all">grid-row-start:2</td><td class="text-sm">-</td></tr>
-<tr data-c=".row-start-3"><td class="font-mono text-sm"><code>.row-start-3</code></td><td class="text-sm font-mono break-all">grid-row-start:3</td><td class="text-sm">-</td></tr>
 <tr data-c=".grid-flow-row"><td class="font-mono text-sm"><code>.grid-flow-row</code></td><td class="text-sm font-mono break-all">grid-auto-flow:row</td><td class="text-sm">-</td></tr>
 <tr data-c=".grid-flow-col"><td class="font-mono text-sm"><code>.grid-flow-col</code></td><td class="text-sm font-mono break-all">grid-auto-flow:column</td><td class="text-sm">-</td></tr>
 <tr data-c=".grid-flow-dense"><td class="font-mono text-sm"><code>.grid-flow-dense</code></td><td class="text-sm font-mono break-all">grid-auto-flow:dense</td><td class="text-sm">-</td></tr>
@@ -888,8 +927,6 @@
 <tr data-c=".gap-10"><td class="font-mono text-sm"><code>.gap-10</code></td><td class="text-sm font-mono break-all">gap:calc(var(--sh-space)*10)</td><td class="text-sm">-</td></tr>
 <tr data-c=".gap-12"><td class="font-mono text-sm"><code>.gap-12</code></td><td class="text-sm font-mono break-all">gap:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
 <tr data-c=".gap-16"><td class="font-mono text-sm"><code>.gap-16</code></td><td class="text-sm font-mono break-all">gap:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
-<tr data-c=".gap-20"><td class="font-mono text-sm"><code>.gap-20</code></td><td class="text-sm font-mono break-all">gap:calc(var(--sh-space)*20)</td><td class="text-sm">-</td></tr>
-<tr data-c=".gap-24"><td class="font-mono text-sm"><code>.gap-24</code></td><td class="text-sm font-mono break-all">gap:calc(var(--sh-space)*24)</td><td class="text-sm">-</td></tr>
 <tr data-c=".gap-x-0"><td class="font-mono text-sm"><code>.gap-x-0</code></td><td class="text-sm font-mono break-all">column-gap:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".gap-y-0"><td class="font-mono text-sm"><code>.gap-y-0</code></td><td class="text-sm font-mono break-all">row-gap:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".gap-x-1"><td class="font-mono text-sm"><code>.gap-x-1</code></td><td class="text-sm font-mono break-all">column-gap:calc(var(--sh-space)*1)</td><td class="text-sm">-</td></tr>
@@ -914,7 +951,7 @@
 </section>
 <section id="u-spacing" aria-labelledby="h-u-spacing" class="space-y-3">
 <h3 id="h-u-spacing" class="text-2xl font-semibold">spacing</h3>
-<p class="text-muted text-sm m-0">Spacing: padding, margin, space-x/y (scale via --sh-space) (224 rules)</p>
+<p class="text-muted text-sm m-0">Spacing: padding, margin, space-x/y (scale via --sh-space) (181 rules)</p>
 <div class="table-wrap"><table class="table table-compact table-hover util-table"><thead><tr><th scope="col">Class</th><th scope="col">CSS</th><th scope="col">Variants</th></tr></thead><tbody>
 <tr data-c=".p-0"><td class="font-mono text-sm"><code>.p-0</code></td><td class="text-sm font-mono break-all">padding:0</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".p-2"><td class="font-mono text-sm"><code>.p-2</code></td><td class="text-sm font-mono break-all">padding:calc(var(--sh-space)*2)</td><td class="text-sm">sm md lg xl</td></tr>
@@ -922,6 +959,7 @@
 <tr data-c=".p-6"><td class="font-mono text-sm"><code>.p-6</code></td><td class="text-sm font-mono break-all">padding:calc(var(--sh-space)*6)</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".p-8"><td class="font-mono text-sm"><code>.p-8</code></td><td class="text-sm font-mono break-all">padding:calc(var(--sh-space)*8)</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".p-12"><td class="font-mono text-sm"><code>.p-12</code></td><td class="text-sm font-mono break-all">padding:calc(var(--sh-space)*12)</td><td class="text-sm">sm md lg xl</td></tr>
+<tr data-c=".p-16"><td class="font-mono text-sm"><code>.p-16</code></td><td class="text-sm font-mono break-all">padding:calc(var(--sh-space)*16)</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".p-px"><td class="font-mono text-sm"><code>.p-px</code></td><td class="text-sm font-mono break-all">padding:1px</td><td class="text-sm">-</td></tr>
 <tr data-c=".p-0.5"><td class="font-mono text-sm"><code>.p-0.5</code></td><td class="text-sm font-mono break-all">padding:calc(var(--sh-space)*0.5)</td><td class="text-sm">-</td></tr>
 <tr data-c=".p-1"><td class="font-mono text-sm"><code>.p-1</code></td><td class="text-sm font-mono break-all">padding:calc(var(--sh-space)*1)</td><td class="text-sm">-</td></tr>
@@ -930,10 +968,6 @@
 <tr data-c=".p-3"><td class="font-mono text-sm"><code>.p-3</code></td><td class="text-sm font-mono break-all">padding:calc(var(--sh-space)*3)</td><td class="text-sm">-</td></tr>
 <tr data-c=".p-5"><td class="font-mono text-sm"><code>.p-5</code></td><td class="text-sm font-mono break-all">padding:calc(var(--sh-space)*5)</td><td class="text-sm">-</td></tr>
 <tr data-c=".p-10"><td class="font-mono text-sm"><code>.p-10</code></td><td class="text-sm font-mono break-all">padding:calc(var(--sh-space)*10)</td><td class="text-sm">-</td></tr>
-<tr data-c=".p-16"><td class="font-mono text-sm"><code>.p-16</code></td><td class="text-sm font-mono break-all">padding:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
-<tr data-c=".p-20"><td class="font-mono text-sm"><code>.p-20</code></td><td class="text-sm font-mono break-all">padding:calc(var(--sh-space)*20)</td><td class="text-sm">-</td></tr>
-<tr data-c=".p-24"><td class="font-mono text-sm"><code>.p-24</code></td><td class="text-sm font-mono break-all">padding:calc(var(--sh-space)*24)</td><td class="text-sm">-</td></tr>
-<tr data-c=".p-32"><td class="font-mono text-sm"><code>.p-32</code></td><td class="text-sm font-mono break-all">padding:calc(var(--sh-space)*32)</td><td class="text-sm">-</td></tr>
 <tr data-c=".px-0"><td class="font-mono text-sm"><code>.px-0</code></td><td class="text-sm font-mono break-all">padding-inline:0</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".px-2"><td class="font-mono text-sm"><code>.px-2</code></td><td class="text-sm font-mono break-all">padding-inline:calc(var(--sh-space)*2)</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".px-4"><td class="font-mono text-sm"><code>.px-4</code></td><td class="text-sm font-mono break-all">padding-inline:calc(var(--sh-space)*4)</td><td class="text-sm">sm md lg xl</td></tr>
@@ -948,15 +982,14 @@
 <tr data-c=".px-5"><td class="font-mono text-sm"><code>.px-5</code></td><td class="text-sm font-mono break-all">padding-inline:calc(var(--sh-space)*5)</td><td class="text-sm">-</td></tr>
 <tr data-c=".px-10"><td class="font-mono text-sm"><code>.px-10</code></td><td class="text-sm font-mono break-all">padding-inline:calc(var(--sh-space)*10)</td><td class="text-sm">-</td></tr>
 <tr data-c=".px-12"><td class="font-mono text-sm"><code>.px-12</code></td><td class="text-sm font-mono break-all">padding-inline:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
-<tr data-c=".px-16"><td class="font-mono text-sm"><code>.px-16</code></td><td class="text-sm font-mono break-all">padding-inline:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
-<tr data-c=".px-20"><td class="font-mono text-sm"><code>.px-20</code></td><td class="text-sm font-mono break-all">padding-inline:calc(var(--sh-space)*20)</td><td class="text-sm">-</td></tr>
-<tr data-c=".px-24"><td class="font-mono text-sm"><code>.px-24</code></td><td class="text-sm font-mono break-all">padding-inline:calc(var(--sh-space)*24)</td><td class="text-sm">-</td></tr>
 <tr data-c=".py-0"><td class="font-mono text-sm"><code>.py-0</code></td><td class="text-sm font-mono break-all">padding-block:0</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".py-2"><td class="font-mono text-sm"><code>.py-2</code></td><td class="text-sm font-mono break-all">padding-block:calc(var(--sh-space)*2)</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".py-4"><td class="font-mono text-sm"><code>.py-4</code></td><td class="text-sm font-mono break-all">padding-block:calc(var(--sh-space)*4)</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".py-8"><td class="font-mono text-sm"><code>.py-8</code></td><td class="text-sm font-mono break-all">padding-block:calc(var(--sh-space)*8)</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".py-12"><td class="font-mono text-sm"><code>.py-12</code></td><td class="text-sm font-mono break-all">padding-block:calc(var(--sh-space)*12)</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".py-16"><td class="font-mono text-sm"><code>.py-16</code></td><td class="text-sm font-mono break-all">padding-block:calc(var(--sh-space)*16)</td><td class="text-sm">sm md lg xl</td></tr>
+<tr data-c=".py-20"><td class="font-mono text-sm"><code>.py-20</code></td><td class="text-sm font-mono break-all">padding-block:calc(var(--sh-space)*20)</td><td class="text-sm">sm md lg xl</td></tr>
+<tr data-c=".py-24"><td class="font-mono text-sm"><code>.py-24</code></td><td class="text-sm font-mono break-all">padding-block:calc(var(--sh-space)*24)</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".py-px"><td class="font-mono text-sm"><code>.py-px</code></td><td class="text-sm font-mono break-all">padding-block:1px</td><td class="text-sm">-</td></tr>
 <tr data-c=".py-0.5"><td class="font-mono text-sm"><code>.py-0.5</code></td><td class="text-sm font-mono break-all">padding-block:calc(var(--sh-space)*0.5)</td><td class="text-sm">-</td></tr>
 <tr data-c=".py-1"><td class="font-mono text-sm"><code>.py-1</code></td><td class="text-sm font-mono break-all">padding-block:calc(var(--sh-space)*1)</td><td class="text-sm">-</td></tr>
@@ -966,9 +999,6 @@
 <tr data-c=".py-5"><td class="font-mono text-sm"><code>.py-5</code></td><td class="text-sm font-mono break-all">padding-block:calc(var(--sh-space)*5)</td><td class="text-sm">-</td></tr>
 <tr data-c=".py-6"><td class="font-mono text-sm"><code>.py-6</code></td><td class="text-sm font-mono break-all">padding-block:calc(var(--sh-space)*6)</td><td class="text-sm">-</td></tr>
 <tr data-c=".py-10"><td class="font-mono text-sm"><code>.py-10</code></td><td class="text-sm font-mono break-all">padding-block:calc(var(--sh-space)*10)</td><td class="text-sm">-</td></tr>
-<tr data-c=".py-20"><td class="font-mono text-sm"><code>.py-20</code></td><td class="text-sm font-mono break-all">padding-block:calc(var(--sh-space)*20)</td><td class="text-sm">-</td></tr>
-<tr data-c=".py-24"><td class="font-mono text-sm"><code>.py-24</code></td><td class="text-sm font-mono break-all">padding-block:calc(var(--sh-space)*24)</td><td class="text-sm">-</td></tr>
-<tr data-c=".py-32"><td class="font-mono text-sm"><code>.py-32</code></td><td class="text-sm font-mono break-all">padding-block:calc(var(--sh-space)*32)</td><td class="text-sm">-</td></tr>
 <tr data-c=".pt-0"><td class="font-mono text-sm"><code>.pt-0</code></td><td class="text-sm font-mono break-all">padding-top:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".pt-1"><td class="font-mono text-sm"><code>.pt-1</code></td><td class="text-sm font-mono break-all">padding-top:calc(var(--sh-space)*1)</td><td class="text-sm">-</td></tr>
 <tr data-c=".pt-2"><td class="font-mono text-sm"><code>.pt-2</code></td><td class="text-sm font-mono break-all">padding-top:calc(var(--sh-space)*2)</td><td class="text-sm">-</td></tr>
@@ -979,7 +1009,6 @@
 <tr data-c=".pt-12"><td class="font-mono text-sm"><code>.pt-12</code></td><td class="text-sm font-mono break-all">padding-top:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
 <tr data-c=".pt-16"><td class="font-mono text-sm"><code>.pt-16</code></td><td class="text-sm font-mono break-all">padding-top:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
 <tr data-c=".pt-24"><td class="font-mono text-sm"><code>.pt-24</code></td><td class="text-sm font-mono break-all">padding-top:calc(var(--sh-space)*24)</td><td class="text-sm">-</td></tr>
-<tr data-c=".pt-32"><td class="font-mono text-sm"><code>.pt-32</code></td><td class="text-sm font-mono break-all">padding-top:calc(var(--sh-space)*32)</td><td class="text-sm">-</td></tr>
 <tr data-c=".pr-0"><td class="font-mono text-sm"><code>.pr-0</code></td><td class="text-sm font-mono break-all">padding-right:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".pr-1"><td class="font-mono text-sm"><code>.pr-1</code></td><td class="text-sm font-mono break-all">padding-right:calc(var(--sh-space)*1)</td><td class="text-sm">-</td></tr>
 <tr data-c=".pr-2"><td class="font-mono text-sm"><code>.pr-2</code></td><td class="text-sm font-mono break-all">padding-right:calc(var(--sh-space)*2)</td><td class="text-sm">-</td></tr>
@@ -987,8 +1016,6 @@
 <tr data-c=".pr-4"><td class="font-mono text-sm"><code>.pr-4</code></td><td class="text-sm font-mono break-all">padding-right:calc(var(--sh-space)*4)</td><td class="text-sm">-</td></tr>
 <tr data-c=".pr-6"><td class="font-mono text-sm"><code>.pr-6</code></td><td class="text-sm font-mono break-all">padding-right:calc(var(--sh-space)*6)</td><td class="text-sm">-</td></tr>
 <tr data-c=".pr-8"><td class="font-mono text-sm"><code>.pr-8</code></td><td class="text-sm font-mono break-all">padding-right:calc(var(--sh-space)*8)</td><td class="text-sm">-</td></tr>
-<tr data-c=".pr-12"><td class="font-mono text-sm"><code>.pr-12</code></td><td class="text-sm font-mono break-all">padding-right:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
-<tr data-c=".pr-16"><td class="font-mono text-sm"><code>.pr-16</code></td><td class="text-sm font-mono break-all">padding-right:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
 <tr data-c=".pb-0"><td class="font-mono text-sm"><code>.pb-0</code></td><td class="text-sm font-mono break-all">padding-bottom:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".pb-1"><td class="font-mono text-sm"><code>.pb-1</code></td><td class="text-sm font-mono break-all">padding-bottom:calc(var(--sh-space)*1)</td><td class="text-sm">-</td></tr>
 <tr data-c=".pb-2"><td class="font-mono text-sm"><code>.pb-2</code></td><td class="text-sm font-mono break-all">padding-bottom:calc(var(--sh-space)*2)</td><td class="text-sm">-</td></tr>
@@ -999,7 +1026,6 @@
 <tr data-c=".pb-12"><td class="font-mono text-sm"><code>.pb-12</code></td><td class="text-sm font-mono break-all">padding-bottom:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
 <tr data-c=".pb-16"><td class="font-mono text-sm"><code>.pb-16</code></td><td class="text-sm font-mono break-all">padding-bottom:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
 <tr data-c=".pb-24"><td class="font-mono text-sm"><code>.pb-24</code></td><td class="text-sm font-mono break-all">padding-bottom:calc(var(--sh-space)*24)</td><td class="text-sm">-</td></tr>
-<tr data-c=".pb-32"><td class="font-mono text-sm"><code>.pb-32</code></td><td class="text-sm font-mono break-all">padding-bottom:calc(var(--sh-space)*32)</td><td class="text-sm">-</td></tr>
 <tr data-c=".pl-0"><td class="font-mono text-sm"><code>.pl-0</code></td><td class="text-sm font-mono break-all">padding-left:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".pl-1"><td class="font-mono text-sm"><code>.pl-1</code></td><td class="text-sm font-mono break-all">padding-left:calc(var(--sh-space)*1)</td><td class="text-sm">-</td></tr>
 <tr data-c=".pl-2"><td class="font-mono text-sm"><code>.pl-2</code></td><td class="text-sm font-mono break-all">padding-left:calc(var(--sh-space)*2)</td><td class="text-sm">-</td></tr>
@@ -1007,53 +1033,31 @@
 <tr data-c=".pl-4"><td class="font-mono text-sm"><code>.pl-4</code></td><td class="text-sm font-mono break-all">padding-left:calc(var(--sh-space)*4)</td><td class="text-sm">-</td></tr>
 <tr data-c=".pl-6"><td class="font-mono text-sm"><code>.pl-6</code></td><td class="text-sm font-mono break-all">padding-left:calc(var(--sh-space)*6)</td><td class="text-sm">-</td></tr>
 <tr data-c=".pl-8"><td class="font-mono text-sm"><code>.pl-8</code></td><td class="text-sm font-mono break-all">padding-left:calc(var(--sh-space)*8)</td><td class="text-sm">-</td></tr>
-<tr data-c=".pl-12"><td class="font-mono text-sm"><code>.pl-12</code></td><td class="text-sm font-mono break-all">padding-left:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
-<tr data-c=".pl-16"><td class="font-mono text-sm"><code>.pl-16</code></td><td class="text-sm font-mono break-all">padding-left:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
 <tr data-c=".m-auto"><td class="font-mono text-sm"><code>.m-auto</code></td><td class="text-sm font-mono break-all">margin:auto</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".m-0"><td class="font-mono text-sm"><code>.m-0</code></td><td class="text-sm font-mono break-all">margin:0</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".m-px"><td class="font-mono text-sm"><code>.m-px</code></td><td class="text-sm font-mono break-all">margin:1px</td><td class="text-sm">-</td></tr>
-<tr data-c=".m-0.5"><td class="font-mono text-sm"><code>.m-0.5</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*0.5)</td><td class="text-sm">-</td></tr>
 <tr data-c=".m-1"><td class="font-mono text-sm"><code>.m-1</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*1)</td><td class="text-sm">-</td></tr>
-<tr data-c=".m-1.5"><td class="font-mono text-sm"><code>.m-1.5</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*1.5)</td><td class="text-sm">-</td></tr>
 <tr data-c=".m-2"><td class="font-mono text-sm"><code>.m-2</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*2)</td><td class="text-sm">-</td></tr>
-<tr data-c=".m-2.5"><td class="font-mono text-sm"><code>.m-2.5</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*2.5)</td><td class="text-sm">-</td></tr>
 <tr data-c=".m-3"><td class="font-mono text-sm"><code>.m-3</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*3)</td><td class="text-sm">-</td></tr>
 <tr data-c=".m-4"><td class="font-mono text-sm"><code>.m-4</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*4)</td><td class="text-sm">-</td></tr>
 <tr data-c=".m-5"><td class="font-mono text-sm"><code>.m-5</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*5)</td><td class="text-sm">-</td></tr>
 <tr data-c=".m-6"><td class="font-mono text-sm"><code>.m-6</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*6)</td><td class="text-sm">-</td></tr>
 <tr data-c=".m-8"><td class="font-mono text-sm"><code>.m-8</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*8)</td><td class="text-sm">-</td></tr>
-<tr data-c=".m-10"><td class="font-mono text-sm"><code>.m-10</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*10)</td><td class="text-sm">-</td></tr>
-<tr data-c=".m-12"><td class="font-mono text-sm"><code>.m-12</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
-<tr data-c=".m-16"><td class="font-mono text-sm"><code>.m-16</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
-<tr data-c=".m-20"><td class="font-mono text-sm"><code>.m-20</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*20)</td><td class="text-sm">-</td></tr>
-<tr data-c=".m-24"><td class="font-mono text-sm"><code>.m-24</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*24)</td><td class="text-sm">-</td></tr>
-<tr data-c=".m-32"><td class="font-mono text-sm"><code>.m-32</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*32)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mx-auto"><td class="font-mono text-sm"><code>.mx-auto</code></td><td class="text-sm font-mono break-all">margin-inline:auto</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".mx-0"><td class="font-mono text-sm"><code>.mx-0</code></td><td class="text-sm font-mono break-all">margin-inline:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".mx-px"><td class="font-mono text-sm"><code>.mx-px</code></td><td class="text-sm font-mono break-all">margin-inline:1px</td><td class="text-sm">-</td></tr>
-<tr data-c=".mx-0.5"><td class="font-mono text-sm"><code>.mx-0.5</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*0.5)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mx-1"><td class="font-mono text-sm"><code>.mx-1</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*1)</td><td class="text-sm">-</td></tr>
-<tr data-c=".mx-1.5"><td class="font-mono text-sm"><code>.mx-1.5</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*1.5)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mx-2"><td class="font-mono text-sm"><code>.mx-2</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*2)</td><td class="text-sm">-</td></tr>
-<tr data-c=".mx-2.5"><td class="font-mono text-sm"><code>.mx-2.5</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*2.5)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mx-3"><td class="font-mono text-sm"><code>.mx-3</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*3)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mx-4"><td class="font-mono text-sm"><code>.mx-4</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*4)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mx-5"><td class="font-mono text-sm"><code>.mx-5</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*5)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mx-6"><td class="font-mono text-sm"><code>.mx-6</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*6)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mx-8"><td class="font-mono text-sm"><code>.mx-8</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*8)</td><td class="text-sm">-</td></tr>
-<tr data-c=".mx-10"><td class="font-mono text-sm"><code>.mx-10</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*10)</td><td class="text-sm">-</td></tr>
-<tr data-c=".mx-12"><td class="font-mono text-sm"><code>.mx-12</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
-<tr data-c=".mx-16"><td class="font-mono text-sm"><code>.mx-16</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
-<tr data-c=".mx-20"><td class="font-mono text-sm"><code>.mx-20</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*20)</td><td class="text-sm">-</td></tr>
-<tr data-c=".mx-24"><td class="font-mono text-sm"><code>.mx-24</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*24)</td><td class="text-sm">-</td></tr>
 <tr data-c=".my-auto"><td class="font-mono text-sm"><code>.my-auto</code></td><td class="text-sm font-mono break-all">margin-block:auto</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".my-0"><td class="font-mono text-sm"><code>.my-0</code></td><td class="text-sm font-mono break-all">margin-block:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".my-px"><td class="font-mono text-sm"><code>.my-px</code></td><td class="text-sm font-mono break-all">margin-block:1px</td><td class="text-sm">-</td></tr>
-<tr data-c=".my-0.5"><td class="font-mono text-sm"><code>.my-0.5</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*0.5)</td><td class="text-sm">-</td></tr>
 <tr data-c=".my-1"><td class="font-mono text-sm"><code>.my-1</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*1)</td><td class="text-sm">-</td></tr>
-<tr data-c=".my-1.5"><td class="font-mono text-sm"><code>.my-1.5</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*1.5)</td><td class="text-sm">-</td></tr>
 <tr data-c=".my-2"><td class="font-mono text-sm"><code>.my-2</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*2)</td><td class="text-sm">-</td></tr>
-<tr data-c=".my-2.5"><td class="font-mono text-sm"><code>.my-2.5</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*2.5)</td><td class="text-sm">-</td></tr>
 <tr data-c=".my-3"><td class="font-mono text-sm"><code>.my-3</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*3)</td><td class="text-sm">-</td></tr>
 <tr data-c=".my-4"><td class="font-mono text-sm"><code>.my-4</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*4)</td><td class="text-sm">-</td></tr>
 <tr data-c=".my-5"><td class="font-mono text-sm"><code>.my-5</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*5)</td><td class="text-sm">-</td></tr>
@@ -1062,9 +1066,7 @@
 <tr data-c=".my-10"><td class="font-mono text-sm"><code>.my-10</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*10)</td><td class="text-sm">-</td></tr>
 <tr data-c=".my-12"><td class="font-mono text-sm"><code>.my-12</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
 <tr data-c=".my-16"><td class="font-mono text-sm"><code>.my-16</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
-<tr data-c=".my-20"><td class="font-mono text-sm"><code>.my-20</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*20)</td><td class="text-sm">-</td></tr>
 <tr data-c=".my-24"><td class="font-mono text-sm"><code>.my-24</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*24)</td><td class="text-sm">-</td></tr>
-<tr data-c=".my-32"><td class="font-mono text-sm"><code>.my-32</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*32)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mt-0"><td class="font-mono text-sm"><code>.mt-0</code></td><td class="text-sm font-mono break-all">margin-top:0</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".mt-4"><td class="font-mono text-sm"><code>.mt-4</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*4)</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".mt-8"><td class="font-mono text-sm"><code>.mt-8</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*8)</td><td class="text-sm">sm md lg xl</td></tr>
@@ -1076,7 +1078,6 @@
 <tr data-c=".mt-12"><td class="font-mono text-sm"><code>.mt-12</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mt-16"><td class="font-mono text-sm"><code>.mt-16</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mt-24"><td class="font-mono text-sm"><code>.mt-24</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*24)</td><td class="text-sm">-</td></tr>
-<tr data-c=".mt-32"><td class="font-mono text-sm"><code>.mt-32</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*32)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mr-auto"><td class="font-mono text-sm"><code>.mr-auto</code></td><td class="text-sm font-mono break-all">margin-right:auto</td><td class="text-sm">-</td></tr>
 <tr data-c=".mr-0"><td class="font-mono text-sm"><code>.mr-0</code></td><td class="text-sm font-mono break-all">margin-right:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".mr-1"><td class="font-mono text-sm"><code>.mr-1</code></td><td class="text-sm font-mono break-all">margin-right:calc(var(--sh-space)*1)</td><td class="text-sm">-</td></tr>
@@ -1085,8 +1086,6 @@
 <tr data-c=".mr-4"><td class="font-mono text-sm"><code>.mr-4</code></td><td class="text-sm font-mono break-all">margin-right:calc(var(--sh-space)*4)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mr-6"><td class="font-mono text-sm"><code>.mr-6</code></td><td class="text-sm font-mono break-all">margin-right:calc(var(--sh-space)*6)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mr-8"><td class="font-mono text-sm"><code>.mr-8</code></td><td class="text-sm font-mono break-all">margin-right:calc(var(--sh-space)*8)</td><td class="text-sm">-</td></tr>
-<tr data-c=".mr-12"><td class="font-mono text-sm"><code>.mr-12</code></td><td class="text-sm font-mono break-all">margin-right:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
-<tr data-c=".mr-16"><td class="font-mono text-sm"><code>.mr-16</code></td><td class="text-sm font-mono break-all">margin-right:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mb-0"><td class="font-mono text-sm"><code>.mb-0</code></td><td class="text-sm font-mono break-all">margin-bottom:0</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".mb-4"><td class="font-mono text-sm"><code>.mb-4</code></td><td class="text-sm font-mono break-all">margin-bottom:calc(var(--sh-space)*4)</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".mb-8"><td class="font-mono text-sm"><code>.mb-8</code></td><td class="text-sm font-mono break-all">margin-bottom:calc(var(--sh-space)*8)</td><td class="text-sm">sm md lg xl</td></tr>
@@ -1098,7 +1097,6 @@
 <tr data-c=".mb-12"><td class="font-mono text-sm"><code>.mb-12</code></td><td class="text-sm font-mono break-all">margin-bottom:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mb-16"><td class="font-mono text-sm"><code>.mb-16</code></td><td class="text-sm font-mono break-all">margin-bottom:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mb-24"><td class="font-mono text-sm"><code>.mb-24</code></td><td class="text-sm font-mono break-all">margin-bottom:calc(var(--sh-space)*24)</td><td class="text-sm">-</td></tr>
-<tr data-c=".mb-32"><td class="font-mono text-sm"><code>.mb-32</code></td><td class="text-sm font-mono break-all">margin-bottom:calc(var(--sh-space)*32)</td><td class="text-sm">-</td></tr>
 <tr data-c=".ml-auto"><td class="font-mono text-sm"><code>.ml-auto</code></td><td class="text-sm font-mono break-all">margin-left:auto</td><td class="text-sm">-</td></tr>
 <tr data-c=".ml-0"><td class="font-mono text-sm"><code>.ml-0</code></td><td class="text-sm font-mono break-all">margin-left:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".ml-1"><td class="font-mono text-sm"><code>.ml-1</code></td><td class="text-sm font-mono break-all">margin-left:calc(var(--sh-space)*1)</td><td class="text-sm">-</td></tr>
@@ -1107,8 +1105,6 @@
 <tr data-c=".ml-4"><td class="font-mono text-sm"><code>.ml-4</code></td><td class="text-sm font-mono break-all">margin-left:calc(var(--sh-space)*4)</td><td class="text-sm">-</td></tr>
 <tr data-c=".ml-6"><td class="font-mono text-sm"><code>.ml-6</code></td><td class="text-sm font-mono break-all">margin-left:calc(var(--sh-space)*6)</td><td class="text-sm">-</td></tr>
 <tr data-c=".ml-8"><td class="font-mono text-sm"><code>.ml-8</code></td><td class="text-sm font-mono break-all">margin-left:calc(var(--sh-space)*8)</td><td class="text-sm">-</td></tr>
-<tr data-c=".ml-12"><td class="font-mono text-sm"><code>.ml-12</code></td><td class="text-sm font-mono break-all">margin-left:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
-<tr data-c=".ml-16"><td class="font-mono text-sm"><code>.ml-16</code></td><td class="text-sm font-mono break-all">margin-left:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
 <tr data-c=".-mx-1"><td class="font-mono text-sm"><code>.-mx-1</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*-1)</td><td class="text-sm">-</td></tr>
 <tr data-c=".-mx-2"><td class="font-mono text-sm"><code>.-mx-2</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*-2)</td><td class="text-sm">-</td></tr>
 <tr data-c=".-mx-4"><td class="font-mono text-sm"><code>.-mx-4</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*-4)</td><td class="text-sm">-</td></tr>
@@ -1138,13 +1134,11 @@
 <tr data-c=".space-y-10&gt;:not(:last-child)"><td class="font-mono text-sm"><code>.space-y-10&gt;:not(:last-child)</code></td><td class="text-sm font-mono break-all">margin-block-end:calc(var(--sh-space)*10)</td><td class="text-sm">-</td></tr>
 <tr data-c=".space-y-12&gt;:not(:last-child)"><td class="font-mono text-sm"><code>.space-y-12&gt;:not(:last-child)</code></td><td class="text-sm font-mono break-all">margin-block-end:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
 <tr data-c=".space-y-16&gt;:not(:last-child)"><td class="font-mono text-sm"><code>.space-y-16&gt;:not(:last-child)</code></td><td class="text-sm font-mono break-all">margin-block-end:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
-<tr data-c=".space-x-10&gt;:not(:last-child)"><td class="font-mono text-sm"><code>.space-x-10&gt;:not(:last-child)</code></td><td class="text-sm font-mono break-all">margin-inline-end:calc(var(--sh-space)*10)</td><td class="text-sm">-</td></tr>
-<tr data-c=".space-x-12&gt;:not(:last-child)"><td class="font-mono text-sm"><code>.space-x-12&gt;:not(:last-child)</code></td><td class="text-sm font-mono break-all">margin-inline-end:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
 </tbody></table></div>
 </section>
 <section id="u-sizing" aria-labelledby="h-u-sizing" class="space-y-3">
 <h3 id="h-u-sizing" class="text-2xl font-semibold">sizing</h3>
-<p class="text-muted text-sm m-0">Sizing: width, height, min/max, size (91 rules)</p>
+<p class="text-muted text-sm m-0">Sizing: width, height, min/max, size (84 rules)</p>
 <div class="table-wrap"><table class="table table-compact table-hover util-table"><thead><tr><th scope="col">Class</th><th scope="col">CSS</th><th scope="col">Variants</th></tr></thead><tbody>
 <tr data-c=".w-full"><td class="font-mono text-sm"><code>.w-full</code></td><td class="text-sm font-mono break-all">width:100%</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".w-auto"><td class="font-mono text-sm"><code>.w-auto</code></td><td class="text-sm font-mono break-all">width:auto</td><td class="text-sm">sm md lg xl</td></tr>
@@ -1172,7 +1166,6 @@
 <tr data-c=".w-48"><td class="font-mono text-sm"><code>.w-48</code></td><td class="text-sm font-mono break-all">width:calc(var(--sh-space)*48)</td><td class="text-sm">-</td></tr>
 <tr data-c=".w-64"><td class="font-mono text-sm"><code>.w-64</code></td><td class="text-sm font-mono break-all">width:calc(var(--sh-space)*64)</td><td class="text-sm">-</td></tr>
 <tr data-c=".w-80"><td class="font-mono text-sm"><code>.w-80</code></td><td class="text-sm font-mono break-all">width:calc(var(--sh-space)*80)</td><td class="text-sm">-</td></tr>
-<tr data-c=".w-96"><td class="font-mono text-sm"><code>.w-96</code></td><td class="text-sm font-mono break-all">width:calc(var(--sh-space)*96)</td><td class="text-sm">-</td></tr>
 <tr data-c=".w-screen"><td class="font-mono text-sm"><code>.w-screen</code></td><td class="text-sm font-mono break-all">width:100vw</td><td class="text-sm">-</td></tr>
 <tr data-c=".w-min"><td class="font-mono text-sm"><code>.w-min</code></td><td class="text-sm font-mono break-all">width:min-content</td><td class="text-sm">-</td></tr>
 <tr data-c=".w-max"><td class="font-mono text-sm"><code>.w-max</code></td><td class="text-sm font-mono break-all">width:max-content</td><td class="text-sm">-</td></tr>
@@ -1198,7 +1191,6 @@
 <tr data-c=".h-48"><td class="font-mono text-sm"><code>.h-48</code></td><td class="text-sm font-mono break-all">height:calc(var(--sh-space)*48)</td><td class="text-sm">-</td></tr>
 <tr data-c=".h-64"><td class="font-mono text-sm"><code>.h-64</code></td><td class="text-sm font-mono break-all">height:calc(var(--sh-space)*64)</td><td class="text-sm">-</td></tr>
 <tr data-c=".h-80"><td class="font-mono text-sm"><code>.h-80</code></td><td class="text-sm font-mono break-all">height:calc(var(--sh-space)*80)</td><td class="text-sm">-</td></tr>
-<tr data-c=".h-96"><td class="font-mono text-sm"><code>.h-96</code></td><td class="text-sm font-mono break-all">height:calc(var(--sh-space)*96)</td><td class="text-sm">-</td></tr>
 <tr data-c=".h-screen"><td class="font-mono text-sm"><code>.h-screen</code></td><td class="text-sm font-mono break-all">height:100vh; height:100dvh</td><td class="text-sm">-</td></tr>
 <tr data-c=".h-min"><td class="font-mono text-sm"><code>.h-min</code></td><td class="text-sm font-mono break-all">height:min-content</td><td class="text-sm">-</td></tr>
 <tr data-c=".h-max"><td class="font-mono text-sm"><code>.h-max</code></td><td class="text-sm font-mono break-all">height:max-content</td><td class="text-sm">-</td></tr>
@@ -1223,10 +1215,6 @@
 <tr data-c=".max-w-6xl"><td class="font-mono text-sm"><code>.max-w-6xl</code></td><td class="text-sm font-mono break-all">max-width:72rem</td><td class="text-sm">-</td></tr>
 <tr data-c=".max-w-7xl"><td class="font-mono text-sm"><code>.max-w-7xl</code></td><td class="text-sm font-mono break-all">max-width:80rem</td><td class="text-sm">-</td></tr>
 <tr data-c=".max-w-prose"><td class="font-mono text-sm"><code>.max-w-prose</code></td><td class="text-sm font-mono break-all">max-width:65ch</td><td class="text-sm">-</td></tr>
-<tr data-c=".max-w-screen-sm"><td class="font-mono text-sm"><code>.max-w-screen-sm</code></td><td class="text-sm font-mono break-all">max-width:640px</td><td class="text-sm">-</td></tr>
-<tr data-c=".max-w-screen-md"><td class="font-mono text-sm"><code>.max-w-screen-md</code></td><td class="text-sm font-mono break-all">max-width:768px</td><td class="text-sm">-</td></tr>
-<tr data-c=".max-w-screen-lg"><td class="font-mono text-sm"><code>.max-w-screen-lg</code></td><td class="text-sm font-mono break-all">max-width:1024px</td><td class="text-sm">-</td></tr>
-<tr data-c=".max-w-screen-xl"><td class="font-mono text-sm"><code>.max-w-screen-xl</code></td><td class="text-sm font-mono break-all">max-width:1280px</td><td class="text-sm">-</td></tr>
 <tr data-c=".max-h-full"><td class="font-mono text-sm"><code>.max-h-full</code></td><td class="text-sm font-mono break-all">max-height:100%</td><td class="text-sm">-</td></tr>
 <tr data-c=".max-h-screen"><td class="font-mono text-sm"><code>.max-h-screen</code></td><td class="text-sm font-mono break-all">max-height:100vh; max-height:100dvh</td><td class="text-sm">-</td></tr>
 <tr data-c=".size-4"><td class="font-mono text-sm"><code>.size-4</code></td><td class="text-sm font-mono break-all">width:calc(var(--sh-space)*4); height:calc(var(--sh-space)*4)</td><td class="text-sm">-</td></tr>
@@ -1235,7 +1223,6 @@
 <tr data-c=".size-8"><td class="font-mono text-sm"><code>.size-8</code></td><td class="text-sm font-mono break-all">width:calc(var(--sh-space)*8); height:calc(var(--sh-space)*8)</td><td class="text-sm">-</td></tr>
 <tr data-c=".size-10"><td class="font-mono text-sm"><code>.size-10</code></td><td class="text-sm font-mono break-all">width:calc(var(--sh-space)*10); height:calc(var(--sh-space)*10)</td><td class="text-sm">-</td></tr>
 <tr data-c=".size-12"><td class="font-mono text-sm"><code>.size-12</code></td><td class="text-sm font-mono break-all">width:calc(var(--sh-space)*12); height:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
-<tr data-c=".size-16"><td class="font-mono text-sm"><code>.size-16</code></td><td class="text-sm font-mono break-all">width:calc(var(--sh-space)*16); height:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
 <tr data-c=".size-full"><td class="font-mono text-sm"><code>.size-full</code></td><td class="text-sm font-mono break-all">width:100%; height:100%</td><td class="text-sm">-</td></tr>
 </tbody></table></div>
 </section>
@@ -1432,31 +1419,24 @@
 </section>
 <section id="u-borders" aria-labelledby="h-u-borders" class="space-y-3">
 <h3 id="h-u-borders" class="text-2xl font-semibold">borders</h3>
-<p class="text-muted text-sm m-0">Shine — borders, radius, rings. Loads after color.css: default border-color uses :where() (0 specificity) so .border-{color} always wins. (66 rules)</p>
+<p class="text-muted text-sm m-0">Shine — borders, radius, rings. Loads after color.css: default border-color uses :where() (0 specificity) so .border-{color} always wins. (57 rules)</p>
 <div class="table-wrap"><table class="table table-compact table-hover util-table"><thead><tr><th scope="col">Class</th><th scope="col">CSS</th><th scope="col">Variants</th></tr></thead><tbody>
 <tr data-c=".border"><td class="font-mono text-sm"><code>.border</code></td><td class="text-sm font-mono break-all">border-width: var(--sh-border-width); border-style: solid</td><td class="text-sm">sm md lg xl</td></tr>
-<tr data-c=".border-0"><td class="font-mono text-sm"><code>.border-0</code></td><td class="text-sm font-mono break-all">border-width: 0px</td><td class="text-sm">sm md lg xl</td></tr>
+<tr data-c=".border-0"><td class="font-mono text-sm"><code>.border-0</code></td><td class="text-sm font-mono break-all">border-width: 0</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".border-2"><td class="font-mono text-sm"><code>.border-2</code></td><td class="text-sm font-mono break-all">border-width: 2px; border-style: solid</td><td class="text-sm">-</td></tr>
 <tr data-c=".border-4"><td class="font-mono text-sm"><code>.border-4</code></td><td class="text-sm font-mono break-all">border-width: 4px; border-style: solid</td><td class="text-sm">-</td></tr>
-<tr data-c=".border-8"><td class="font-mono text-sm"><code>.border-8</code></td><td class="text-sm font-mono break-all">border-width: 8px; border-style: solid</td><td class="text-sm">-</td></tr>
 <tr data-c=".border-x"><td class="font-mono text-sm"><code>.border-x</code></td><td class="text-sm font-mono break-all">border-left-width: var(--sh-border-width); border-right-width: var(--sh-border-width); border-style: solid</td><td class="text-sm">-</td></tr>
-<tr data-c=".border-x-0"><td class="font-mono text-sm"><code>.border-x-0</code></td><td class="text-sm font-mono break-all">border-left-width: 0px; border-right-width: 0px</td><td class="text-sm">-</td></tr>
-<tr data-c=".border-x-2"><td class="font-mono text-sm"><code>.border-x-2</code></td><td class="text-sm font-mono break-all">border-left-width: 2px; border-right-width: 2px; border-style: solid</td><td class="text-sm">-</td></tr>
+<tr data-c=".border-x-0"><td class="font-mono text-sm"><code>.border-x-0</code></td><td class="text-sm font-mono break-all">border-left-width: 0; border-right-width: 0</td><td class="text-sm">-</td></tr>
 <tr data-c=".border-y"><td class="font-mono text-sm"><code>.border-y</code></td><td class="text-sm font-mono break-all">border-top-width: var(--sh-border-width); border-bottom-width: var(--sh-border-width); border-style: solid</td><td class="text-sm">-</td></tr>
-<tr data-c=".border-y-0"><td class="font-mono text-sm"><code>.border-y-0</code></td><td class="text-sm font-mono break-all">border-top-width: 0px; border-bottom-width: 0px</td><td class="text-sm">-</td></tr>
-<tr data-c=".border-y-2"><td class="font-mono text-sm"><code>.border-y-2</code></td><td class="text-sm font-mono break-all">border-top-width: 2px; border-bottom-width: 2px; border-style: solid</td><td class="text-sm">-</td></tr>
+<tr data-c=".border-y-0"><td class="font-mono text-sm"><code>.border-y-0</code></td><td class="text-sm font-mono break-all">border-top-width: 0; border-bottom-width: 0</td><td class="text-sm">-</td></tr>
 <tr data-c=".border-t"><td class="font-mono text-sm"><code>.border-t</code></td><td class="text-sm font-mono break-all">border-top-width: var(--sh-border-width); border-style: solid</td><td class="text-sm">-</td></tr>
-<tr data-c=".border-t-0"><td class="font-mono text-sm"><code>.border-t-0</code></td><td class="text-sm font-mono break-all">border-top-width: 0px</td><td class="text-sm">-</td></tr>
-<tr data-c=".border-t-2"><td class="font-mono text-sm"><code>.border-t-2</code></td><td class="text-sm font-mono break-all">border-top-width: 2px; border-style: solid</td><td class="text-sm">-</td></tr>
+<tr data-c=".border-t-0"><td class="font-mono text-sm"><code>.border-t-0</code></td><td class="text-sm font-mono break-all">border-top-width: 0</td><td class="text-sm">-</td></tr>
 <tr data-c=".border-r"><td class="font-mono text-sm"><code>.border-r</code></td><td class="text-sm font-mono break-all">border-right-width: var(--sh-border-width); border-style: solid</td><td class="text-sm">-</td></tr>
-<tr data-c=".border-r-0"><td class="font-mono text-sm"><code>.border-r-0</code></td><td class="text-sm font-mono break-all">border-right-width: 0px</td><td class="text-sm">-</td></tr>
-<tr data-c=".border-r-2"><td class="font-mono text-sm"><code>.border-r-2</code></td><td class="text-sm font-mono break-all">border-right-width: 2px; border-style: solid</td><td class="text-sm">-</td></tr>
+<tr data-c=".border-r-0"><td class="font-mono text-sm"><code>.border-r-0</code></td><td class="text-sm font-mono break-all">border-right-width: 0</td><td class="text-sm">-</td></tr>
 <tr data-c=".border-b"><td class="font-mono text-sm"><code>.border-b</code></td><td class="text-sm font-mono break-all">border-bottom-width: var(--sh-border-width); border-style: solid</td><td class="text-sm">-</td></tr>
-<tr data-c=".border-b-0"><td class="font-mono text-sm"><code>.border-b-0</code></td><td class="text-sm font-mono break-all">border-bottom-width: 0px</td><td class="text-sm">-</td></tr>
-<tr data-c=".border-b-2"><td class="font-mono text-sm"><code>.border-b-2</code></td><td class="text-sm font-mono break-all">border-bottom-width: 2px; border-style: solid</td><td class="text-sm">-</td></tr>
+<tr data-c=".border-b-0"><td class="font-mono text-sm"><code>.border-b-0</code></td><td class="text-sm font-mono break-all">border-bottom-width: 0</td><td class="text-sm">-</td></tr>
 <tr data-c=".border-l"><td class="font-mono text-sm"><code>.border-l</code></td><td class="text-sm font-mono break-all">border-left-width: var(--sh-border-width); border-style: solid</td><td class="text-sm">-</td></tr>
-<tr data-c=".border-l-0"><td class="font-mono text-sm"><code>.border-l-0</code></td><td class="text-sm font-mono break-all">border-left-width: 0px</td><td class="text-sm">-</td></tr>
-<tr data-c=".border-l-2"><td class="font-mono text-sm"><code>.border-l-2</code></td><td class="text-sm font-mono break-all">border-left-width: 2px; border-style: solid</td><td class="text-sm">-</td></tr>
+<tr data-c=".border-l-0"><td class="font-mono text-sm"><code>.border-l-0</code></td><td class="text-sm font-mono break-all">border-left-width: 0</td><td class="text-sm">-</td></tr>
 <tr data-c=".border-solid"><td class="font-mono text-sm"><code>.border-solid</code></td><td class="text-sm font-mono break-all">border-style: solid</td><td class="text-sm">-</td></tr>
 <tr data-c=".border-dashed"><td class="font-mono text-sm"><code>.border-dashed</code></td><td class="text-sm font-mono break-all">border-style: dashed</td><td class="text-sm">-</td></tr>
 <tr data-c=".border-dotted"><td class="font-mono text-sm"><code>.border-dotted</code></td><td class="text-sm font-mono break-all">border-style: dotted</td><td class="text-sm">-</td></tr>
@@ -1485,9 +1465,7 @@
 <tr data-c=".divide-y &gt; :not(:last-child)"><td class="font-mono text-sm"><code>.divide-y &gt; :not(:last-child)</code></td><td class="text-sm font-mono break-all">border-bottom-width: var(--sh-border-width); border-style: solid</td><td class="text-sm">-</td></tr>
 <tr data-c=".divide-x-0 &gt; :not(:last-child)"><td class="font-mono text-sm"><code>.divide-x-0 &gt; :not(:last-child)</code></td><td class="text-sm font-mono break-all">border-right-width: 0</td><td class="text-sm">-</td></tr>
 <tr data-c=".divide-y-0 &gt; :not(:last-child)"><td class="font-mono text-sm"><code>.divide-y-0 &gt; :not(:last-child)</code></td><td class="text-sm font-mono break-all">border-bottom-width: 0</td><td class="text-sm">-</td></tr>
-<tr data-c=".divide-x-2 &gt; :not(:last-child)"><td class="font-mono text-sm"><code>.divide-x-2 &gt; :not(:last-child)</code></td><td class="text-sm font-mono break-all">border-right-width: 2px; border-style: solid</td><td class="text-sm">-</td></tr>
-<tr data-c=".divide-y-2 &gt; :not(:last-child)"><td class="font-mono text-sm"><code>.divide-y-2 &gt; :not(:last-child)</code></td><td class="text-sm font-mono break-all">border-bottom-width: 2px; border-style: solid</td><td class="text-sm">-</td></tr>
-<tr data-c=".ring-0"><td class="font-mono text-sm"><code>.ring-0</code></td><td class="text-sm font-mono break-all">box-shadow: 0 0 0 0px var(--sh-ring-color, color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 50%, transparent))</td><td class="text-sm">-</td></tr>
+<tr data-c=".ring-0"><td class="font-mono text-sm"><code>.ring-0</code></td><td class="text-sm font-mono break-all">box-shadow: 0 0 0 0 var(--sh-ring-color, color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 50%, transparent))</td><td class="text-sm">-</td></tr>
 <tr data-c=".ring-1"><td class="font-mono text-sm"><code>.ring-1</code></td><td class="text-sm font-mono break-all">box-shadow: 0 0 0 1px var(--sh-ring-color, color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 50%, transparent))</td><td class="text-sm">-</td></tr>
 <tr data-c=".ring"><td class="font-mono text-sm"><code>.ring</code></td><td class="text-sm font-mono break-all">box-shadow: 0 0 0 3px var(--sh-ring-color, color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 50%, transparent))</td><td class="text-sm">-</td></tr>
 <tr data-c=".ring-2"><td class="font-mono text-sm"><code>.ring-2</code></td><td class="text-sm font-mono break-all">box-shadow: 0 0 0 2px var(--sh-ring-color, color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 50%, transparent))</td><td class="text-sm">-</td></tr>
@@ -1504,27 +1482,26 @@
 </section>
 <section id="u-effects" aria-labelledby="h-u-effects" class="space-y-3">
 <h3 id="h-u-effects" class="text-2xl font-semibold">effects</h3>
-<p class="text-muted text-sm m-0">Shine — minimal effects (shadows, opacity, backdrop blur) (21 rules)</p>
+<p class="text-muted text-sm m-0">Shine — minimal effects (shadows, opacity, backdrop blur) (20 rules)</p>
 <div class="table-wrap"><table class="table table-compact table-hover util-table"><thead><tr><th scope="col">Class</th><th scope="col">CSS</th><th scope="col">Variants</th></tr></thead><tbody>
 <tr data-c=".shadow-none"><td class="font-mono text-sm"><code>.shadow-none</code></td><td class="text-sm font-mono break-all">box-shadow: none</td><td class="text-sm">hover</td></tr>
 <tr data-c=".shadow-sm"><td class="font-mono text-sm"><code>.shadow-sm</code></td><td class="text-sm font-mono break-all">box-shadow: var(--sh-shadow-1)</td><td class="text-sm">hover</td></tr>
 <tr data-c=".shadow"><td class="font-mono text-sm"><code>.shadow</code></td><td class="text-sm font-mono break-all">box-shadow: var(--sh-shadow-2)</td><td class="text-sm">hover</td></tr>
 <tr data-c=".shadow-md"><td class="font-mono text-sm"><code>.shadow-md</code></td><td class="text-sm font-mono break-all">box-shadow: var(--sh-shadow-3)</td><td class="text-sm">hover</td></tr>
 <tr data-c=".shadow-lg"><td class="font-mono text-sm"><code>.shadow-lg</code></td><td class="text-sm font-mono break-all">box-shadow: var(--sh-shadow-4)</td><td class="text-sm">hover</td></tr>
-<tr data-c=".shadow-xl"><td class="font-mono text-sm"><code>.shadow-xl</code></td><td class="text-sm font-mono break-all">box-shadow: var(--sh-shadow-5)</td><td class="text-sm">hover</td></tr>
-<tr data-c=".shadow-2xl"><td class="font-mono text-sm"><code>.shadow-2xl</code></td><td class="text-sm font-mono break-all">box-shadow: var(--sh-shadow-5)</td><td class="text-sm">hover</td></tr>
+<tr data-c=".shadow-xl .shadow-2xl"><td class="font-mono text-sm"><code>.shadow-xl, .shadow-2xl</code></td><td class="text-sm font-mono break-all">box-shadow: var(--sh-shadow-5)</td><td class="text-sm">hover</td></tr>
 <tr data-c=".shadow-elevation"><td class="font-mono text-sm"><code>.shadow-elevation</code></td><td class="text-sm font-mono break-all">box-shadow: var(--sh-elevation, var(--sh-shadow-1))</td><td class="text-sm">-</td></tr>
 <tr data-c=".opacity-0"><td class="font-mono text-sm"><code>.opacity-0</code></td><td class="text-sm font-mono break-all">opacity: 0</td><td class="text-sm">hover</td></tr>
-<tr data-c=".opacity-5"><td class="font-mono text-sm"><code>.opacity-5</code></td><td class="text-sm font-mono break-all">opacity: .05</td><td class="text-sm">hover</td></tr>
-<tr data-c=".opacity-10"><td class="font-mono text-sm"><code>.opacity-10</code></td><td class="text-sm font-mono break-all">opacity: .1</td><td class="text-sm">hover</td></tr>
-<tr data-c=".opacity-20"><td class="font-mono text-sm"><code>.opacity-20</code></td><td class="text-sm font-mono break-all">opacity: .2</td><td class="text-sm">hover</td></tr>
-<tr data-c=".opacity-25"><td class="font-mono text-sm"><code>.opacity-25</code></td><td class="text-sm font-mono break-all">opacity: .25</td><td class="text-sm">hover</td></tr>
 <tr data-c=".opacity-50"><td class="font-mono text-sm"><code>.opacity-50</code></td><td class="text-sm font-mono break-all">opacity: .5</td><td class="text-sm">hover</td></tr>
 <tr data-c=".opacity-75"><td class="font-mono text-sm"><code>.opacity-75</code></td><td class="text-sm font-mono break-all">opacity: .75</td><td class="text-sm">hover</td></tr>
-<tr data-c=".opacity-80"><td class="font-mono text-sm"><code>.opacity-80</code></td><td class="text-sm font-mono break-all">opacity: .8</td><td class="text-sm">hover</td></tr>
-<tr data-c=".opacity-90"><td class="font-mono text-sm"><code>.opacity-90</code></td><td class="text-sm font-mono break-all">opacity: .9</td><td class="text-sm">hover</td></tr>
-<tr data-c=".opacity-95"><td class="font-mono text-sm"><code>.opacity-95</code></td><td class="text-sm font-mono break-all">opacity: .95</td><td class="text-sm">hover</td></tr>
 <tr data-c=".opacity-100"><td class="font-mono text-sm"><code>.opacity-100</code></td><td class="text-sm font-mono break-all">opacity: 1</td><td class="text-sm">hover</td></tr>
+<tr data-c=".opacity-5"><td class="font-mono text-sm"><code>.opacity-5</code></td><td class="text-sm font-mono break-all">opacity: .05</td><td class="text-sm">-</td></tr>
+<tr data-c=".opacity-10"><td class="font-mono text-sm"><code>.opacity-10</code></td><td class="text-sm font-mono break-all">opacity: .1</td><td class="text-sm">-</td></tr>
+<tr data-c=".opacity-20"><td class="font-mono text-sm"><code>.opacity-20</code></td><td class="text-sm font-mono break-all">opacity: .2</td><td class="text-sm">-</td></tr>
+<tr data-c=".opacity-25"><td class="font-mono text-sm"><code>.opacity-25</code></td><td class="text-sm font-mono break-all">opacity: .25</td><td class="text-sm">-</td></tr>
+<tr data-c=".opacity-80"><td class="font-mono text-sm"><code>.opacity-80</code></td><td class="text-sm font-mono break-all">opacity: .8</td><td class="text-sm">-</td></tr>
+<tr data-c=".opacity-90"><td class="font-mono text-sm"><code>.opacity-90</code></td><td class="text-sm font-mono break-all">opacity: .9</td><td class="text-sm">-</td></tr>
+<tr data-c=".opacity-95"><td class="font-mono text-sm"><code>.opacity-95</code></td><td class="text-sm font-mono break-all">opacity: .95</td><td class="text-sm">-</td></tr>
 <tr data-c=".backdrop-blur-sm"><td class="font-mono text-sm"><code>.backdrop-blur-sm</code></td><td class="text-sm font-mono break-all">-webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px)</td><td class="text-sm">-</td></tr>
 <tr data-c=".backdrop-blur-md"><td class="font-mono text-sm"><code>.backdrop-blur-md</code></td><td class="text-sm font-mono break-all">-webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px)</td><td class="text-sm">-</td></tr>
 </tbody></table></div>
@@ -1555,7 +1532,7 @@
 <tr data-c=".snap-y"><td class="font-mono text-sm"><code>.snap-y</code></td><td class="text-sm font-mono break-all">scroll-snap-type: y mandatory</td><td class="text-sm">-</td></tr>
 <tr data-c=".snap-start"><td class="font-mono text-sm"><code>.snap-start</code></td><td class="text-sm font-mono break-all">scroll-snap-align: start</td><td class="text-sm">-</td></tr>
 <tr data-c=".snap-center"><td class="font-mono text-sm"><code>.snap-center</code></td><td class="text-sm font-mono break-all">scroll-snap-align: center</td><td class="text-sm">-</td></tr>
-<tr data-c=".appearance-none"><td class="font-mono text-sm"><code>.appearance-none</code></td><td class="text-sm font-mono break-all">-webkit-appearance: none; appearance: none</td><td class="text-sm">-</td></tr>
+<tr data-c=".appearance-none"><td class="font-mono text-sm"><code>.appearance-none</code></td><td class="text-sm font-mono break-all">appearance: none</td><td class="text-sm">-</td></tr>
 <tr data-c=".touch-none"><td class="font-mono text-sm"><code>.touch-none</code></td><td class="text-sm font-mono break-all">touch-action: none</td><td class="text-sm">-</td></tr>
 <tr data-c=".touch-manipulation"><td class="font-mono text-sm"><code>.touch-manipulation</code></td><td class="text-sm font-mono break-all">touch-action: manipulation</td><td class="text-sm">-</td></tr>
 <tr data-c=".transition"><td class="font-mono text-sm"><code>.transition</code></td><td class="text-sm font-mono break-all">transition-property: color, background-color, border-color, opacity, box-shadow, transform; transition-timing-function: var(--sh-ease); transition-duration: var(--sh-duration)</td><td class="text-sm">-</td></tr>
@@ -1571,6 +1548,30 @@
 <tr data-c=".ease-in"><td class="font-mono text-sm"><code>.ease-in</code></td><td class="text-sm font-mono break-all">transition-timing-function: cubic-bezier(.4, 0, 1, 1)</td><td class="text-sm">-</td></tr>
 <tr data-c=".ease-out"><td class="font-mono text-sm"><code>.ease-out</code></td><td class="text-sm font-mono break-all">transition-timing-function: cubic-bezier(0, 0, .2, 1)</td><td class="text-sm">-</td></tr>
 <tr data-c=".ease-in-out"><td class="font-mono text-sm"><code>.ease-in-out</code></td><td class="text-sm font-mono break-all">transition-timing-function: cubic-bezier(.4, 0, .2, 1)</td><td class="text-sm">-</td></tr>
+</tbody></table></div>
+</section>
+<section id="u-extras" aria-labelledby="h-u-extras" class="space-y-3">
+<h3 id="h-u-extras" class="text-2xl font-semibold">extras</h3>
+<p class="text-muted text-sm m-0">Extras: centering/position helpers, translate, object/overflow/overscroll, container queries (18 rules)</p>
+<div class="table-wrap"><table class="table table-compact table-hover util-table"><thead><tr><th scope="col">Class</th><th scope="col">CSS</th><th scope="col">Variants</th></tr></thead><tbody>
+<tr data-c=".top-1/2"><td class="font-mono text-sm"><code>.top-1/2</code></td><td class="text-sm font-mono break-all">top:50%</td><td class="text-sm">-</td></tr>
+<tr data-c=".left-1/2"><td class="font-mono text-sm"><code>.left-1/2</code></td><td class="text-sm font-mono break-all">left:50%</td><td class="text-sm">-</td></tr>
+<tr data-c=".right-1/2"><td class="font-mono text-sm"><code>.right-1/2</code></td><td class="text-sm font-mono break-all">right:50%</td><td class="text-sm">-</td></tr>
+<tr data-c=".bottom-1/2"><td class="font-mono text-sm"><code>.bottom-1/2</code></td><td class="text-sm font-mono break-all">bottom:50%</td><td class="text-sm">-</td></tr>
+<tr data-c=".top-full"><td class="font-mono text-sm"><code>.top-full</code></td><td class="text-sm font-mono break-all">top:100%</td><td class="text-sm">-</td></tr>
+<tr data-c=".left-full"><td class="font-mono text-sm"><code>.left-full</code></td><td class="text-sm font-mono break-all">left:100%</td><td class="text-sm">-</td></tr>
+<tr data-c=".right-full"><td class="font-mono text-sm"><code>.right-full</code></td><td class="text-sm font-mono break-all">right:100%</td><td class="text-sm">-</td></tr>
+<tr data-c=".bottom-full"><td class="font-mono text-sm"><code>.bottom-full</code></td><td class="text-sm font-mono break-all">bottom:100%</td><td class="text-sm">-</td></tr>
+<tr data-c=".inset-2"><td class="font-mono text-sm"><code>.inset-2</code></td><td class="text-sm font-mono break-all">inset:calc(var(--sh-space)*2)</td><td class="text-sm">-</td></tr>
+<tr data-c=".inset-4"><td class="font-mono text-sm"><code>.inset-4</code></td><td class="text-sm font-mono break-all">inset:calc(var(--sh-space)*4)</td><td class="text-sm">-</td></tr>
+<tr data-c=".-translate-x-1/2"><td class="font-mono text-sm"><code>.-translate-x-1/2</code></td><td class="text-sm font-mono break-all">translate:-50% 0</td><td class="text-sm">-</td></tr>
+<tr data-c=".-translate-y-1/2"><td class="font-mono text-sm"><code>.-translate-y-1/2</code></td><td class="text-sm font-mono break-all">translate:0 -50%</td><td class="text-sm">-</td></tr>
+<tr data-c=".-translate-1/2"><td class="font-mono text-sm"><code>.-translate-1/2</code></td><td class="text-sm font-mono break-all">translate:-50% -50%</td><td class="text-sm">-</td></tr>
+<tr data-c=".object-center"><td class="font-mono text-sm"><code>.object-center</code></td><td class="text-sm font-mono break-all">object-position:center</td><td class="text-sm">-</td></tr>
+<tr data-c=".object-top"><td class="font-mono text-sm"><code>.object-top</code></td><td class="text-sm font-mono break-all">object-position:top</td><td class="text-sm">-</td></tr>
+<tr data-c=".overflow-clip"><td class="font-mono text-sm"><code>.overflow-clip</code></td><td class="text-sm font-mono break-all">overflow:clip</td><td class="text-sm">-</td></tr>
+<tr data-c=".overscroll-contain"><td class="font-mono text-sm"><code>.overscroll-contain</code></td><td class="text-sm font-mono break-all">overscroll-behavior:contain</td><td class="text-sm">-</td></tr>
+<tr data-c=".cq"><td class="font-mono text-sm"><code>.cq</code></td><td class="text-sm font-mono break-all">container-type:inline-size</td><td class="text-sm">-</td></tr>
 </tbody></table></div>
 </section>
 </section>

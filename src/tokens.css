@@ -29,11 +29,11 @@
   --sh-on-info: #fff;
 
   /* ---- Surfaces (light) ------------------------------------------------- */
-  --sh-bg: #ffffff;          /* page */
+  --sh-bg: #fff;          /* page */
   --sh-surface: #f8fafc;     /* cards, panels */
   --sh-surface-2: #f1f5f9;   /* inputs, wells, hover */
   --sh-text: #0f172a;
-  --sh-text-muted: #64748b;
+  --sh-text-muted: #5f6e84;
   --sh-border: #e2e8f0;
 
   /* ---- Shape ------------------------------------------------------------ */
@@ -74,11 +74,11 @@
    data-theme="auto"           follow the OS setting
    ------------------------------------------------------------------------ */
 [data-theme="light"] {
-  --sh-bg: #ffffff;
+  --sh-bg: #fff;
   --sh-surface: #f8fafc;
   --sh-surface-2: #f1f5f9;
   --sh-text: #0f172a;
-  --sh-text-muted: #64748b;
+  --sh-text-muted: #5f6e84;
   --sh-border: #e2e8f0;
   color-scheme: light;
 }

@@ -1,0 +1,27 @@
+/* Extras: centering/position helpers, translate, object/overflow/overscroll, container queries */
+.top-1\/2{top:50%}
+.left-1\/2{left:50%}
+.right-1\/2{right:50%}
+.bottom-1\/2{bottom:50%}
+.top-full{top:100%}
+.left-full{left:100%}
+.right-full{right:100%}
+.bottom-full{bottom:100%}
+.inset-2{inset:calc(var(--sh-space)*2)}
+.inset-4{inset:calc(var(--sh-space)*4)}
+.-translate-x-1\/2{translate:-50% 0}
+.-translate-y-1\/2{translate:0 -50%}
+.-translate-1\/2{translate:-50% -50%}
+.object-center{object-position:center}
+.object-top{object-position:top}
+.overflow-clip{overflow:clip}
+.overscroll-contain{overscroll-behavior:contain}
+.cq{container-type:inline-size}
+@container (min-width:28rem){
+.cq-md\:flex{display:flex}
+.cq-md\:block{display:block}
+.cq-md\:hidden{display:none}
+.cq-md\:flex-row{flex-direction:row}
+.cq-md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cq-md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+}

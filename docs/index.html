@@ -1,217 +1,797 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="auto">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shine playground</title>
+<title>Shine CSS – ultra-light, pure-CSS framework</title>
+<meta name="description" content="Shine is an ultra-light, pure-CSS framework: utility classes, ready-made components and master design knobs. About 15.6 KB gzipped, no JavaScript required. Try the live theme builder and class playground.">
+<meta name="theme-color" content="#4f46e5">
+<link rel="canonical" href="https://asticore.github.io/shine/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Shine CSS">
+<meta property="og:title" content="Shine CSS – ultra-light, pure-CSS framework">
+<meta property="og:description" content="Utility classes, ready-made components and master design knobs in about 15.6 KB gzipped. Build a theme live and export it.">
+<meta property="og:url" content="https://asticore.github.io/shine/">
+<meta property="og:image" content="https://asticore.github.io/shine/logo.svg">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../dist/shine.min.css">
-<style>input[type=color]{width:2.5rem;height:2rem;padding:0;border:0;background:none}pre{white-space:pre-wrap;word-break:break-all}</style>
+<style>
+/* Only what Shine does not ship: color-input chrome, code font, glow, sticky-on-desktop, iframe frame */
+section[id]{scroll-margin-top:4.5rem}
+input[type=color]{inline-size:2.25rem;block-size:2.25rem;padding:2px;border:1px solid var(--sh-border);border-radius:var(--sh-radius);background:var(--sh-surface-2);cursor:pointer;flex:none}
+input[type=color]::-webkit-color-swatch-wrapper{padding:0}
+input[type=color]::-webkit-color-swatch{border:0;border-radius:calc(var(--sh-radius) / 2)}
+input[type=color]::-moz-color-swatch{border:0;border-radius:calc(var(--sh-radius) / 2)}
+textarea.code,pre,code{font-family:var(--sh-font-mono)}
+textarea.code{font-size:.8125rem;line-height:1.5;tab-size:2;white-space:pre;overflow:auto;resize:vertical;min-height:34rem}
+pre{white-space:pre;tab-size:2}
+.hero-glow{background-image:radial-gradient(60rem 28rem at 50% -8%,color-mix(in oklab,var(--sh-primary) 20%,transparent),transparent 70%),radial-gradient(30rem 20rem at 90% 10%,color-mix(in oklab,var(--sh-accent) 14%,transparent),transparent 70%)}
+.text-gradient{background-image:linear-gradient(100deg,var(--sh-primary),var(--sh-accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+#preview{font-family:var(--sh-font-sans)}
+#pg-wrap{overflow-x:auto;background-image:repeating-conic-gradient(var(--sh-surface-2) 0 25%,transparent 0 50%);background-size:16px 16px}
+#pg-frame{display:block;block-size:34rem;border:0;background:#fff;margin-inline:auto;transition:inline-size var(--sh-duration) var(--sh-ease)}
+.demo-slide{min-block-size:9rem;display:grid;place-items:center;font-weight:600;color:var(--sh-on-tone)}
+@media (min-width:1024px){.sticky-lg{position:sticky;top:5rem;align-self:start}.scroll-lg{max-block-size:calc(100vh - 7rem);overflow:auto}}
+</style>
 </head>
-<body class="bg-base text-default">
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
 <header class="sticky top-0 z-50 bg-surface border-b">
-  <details id="panel" class="container mx-auto px-4 py-2">
-    <summary class="font-semibold">Shine playground — master knobs</summary>
-    <p class="text-sm mt-2"><a class="link" href="reference.html">Class and data-attribute reference</a></p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
-      <div class="field"><label class="label" for="k-theme">data-theme</label>
-        <select class="select" id="k-theme" data-attr="theme"><option>light</option><option>dark</option><option>auto</option></select></div>
-      <div class="field"><label class="label" for="k-radius">data-radius: <output id="o-radius">2</output></label>
-        <input type="range" id="k-radius" min="0" max="5" value="2" data-attr="radius"></div>
-      <div class="field"><label class="label" for="k-shadow">data-shadow: <output id="o-shadow">1</output></label>
-        <input type="range" id="k-shadow" min="0" max="5" value="1" data-attr="shadow"></div>
-      <div class="field"><label class="label" for="k-btn">data-btn-radius</label>
-        <select class="select" id="k-btn" data-attr="btn-radius" data-opt="inherit"></select></div>
-      <div class="field"><label class="label" for="k-card">data-card-radius</label>
-        <select class="select" id="k-card" data-attr="card-radius" data-opt="inherit"></select></div>
-      <div class="field"><label class="label" for="k-input">data-input-radius</label>
-        <select class="select" id="k-input" data-attr="input-radius" data-opt="inherit"></select></div>
-      <div class="field"><label class="label" for="k-density">data-density</label>
-        <select class="select" id="k-density" data-attr="density"><option>compact</option><option selected>default</option><option>comfortable</option></select></div>
-      <div class="flex items-center gap-3"><label class="label" for="c-primary">--sh-primary</label><input type="color" id="c-primary" data-var="--sh-primary">
-        <label class="label" for="c-accent">--sh-accent</label><input type="color" id="c-accent" data-var="--sh-accent"></div>
-      <div class="flex items-center"><button class="btn btn-sm btn-outline" id="reset" type="button">Reset knobs</button></div>
+  <nav class="navbar container mx-auto max-w-7xl" aria-label="Main">
+    <a class="navbar-brand flex items-center gap-2" href="#top"><img src="logo.svg" alt="" width="28" height="28">Shine</a>
+    <ul class="navbar-nav">
+      <li><a href="#builder">Theme builder</a></li>
+      <li><a href="#playground">Playground</a></li>
+      <li><a href="#components">Components</a></li>
+      <li><a href="#why">Why Shine</a></li>
+      <li><a href="reference.html">Reference</a></li>
+    </ul>
+    <div class="navbar-end flex items-center gap-2">
+      <label class="sr-only" for="page-theme">Page theme</label>
+      <select class="select input-sm" id="page-theme" name="page-theme"><option value="auto">Auto</option><option value="light">Light</option><option value="dark">Dark</option></select>
+      <a class="btn btn-sm btn-outline" href="https://github.com/asticore/shine">GitHub</a>
     </div>
-    <pre class="bg-surface-2 p-3 rounded text-xs mt-3 overflow-x-auto" id="snippet" aria-label="Resulting html tag"></pre>
-  </details>
+  </nav>
 </header>
 
-<main class="container mx-auto px-4 py-8 space-y-8">
-  <section class="space-y-2">
-    <h1 class="text-4xl font-bold tracking-tight">Shine</h1>
-    <p class="text-lg text-muted max-w-prose">Pure-CSS utility framework. This page is styled only with Shine classes. Turn the knobs above and everything follows. <a class="link" href="reference.html">Full class reference</a>.</p>
-  </section>
+<main id="main">
 
-  <section class="space-y-4" aria-labelledby="h-btn">
-    <h2 id="h-btn" class="text-2xl font-semibold">Buttons</h2>
-    <div class="space-y-3">
-      <div class="flex flex-wrap gap-2 items-center">
-        <button class="btn">Solid</button><button class="btn btn-outline">Outline</button><button class="btn btn-soft">Soft</button>
-        <button class="btn btn-ghost">Ghost</button><button class="btn btn-link">Link</button><button class="btn btn-icon" aria-label="Star">★</button>
+<!-- 1. HERO -->
+<section id="top" class="hero-glow section" aria-labelledby="h-hero">
+  <div class="container mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-7 stack gap-6">
+      <p class="cluster gap-2">
+        <span class="badge badge-solid">15.6 KB gzipped</span>
+        <span class="badge tone-success">0 KB JavaScript</span>
+        <span class="badge tone-neutral">MIT</span>
+      </p>
+      <h1 id="h-hero" class="text-5xl md:text-6xl font-extrabold tracking-tight m-0"><span class="text-gradient">Shine</span><span class="sr-only"> CSS framework</span></h1>
+      <p class="lead m-0 max-w-xl">Ultra-light, pure-CSS framework: utility classes, ready-made components and master design knobs.</p>
+      <p class="text-muted m-0 max-w-xl">The whole framework is one stylesheet of <strong class="text-default">15.6 KB gzipped</strong> (measured with <code>node build.js</code>). Modals, drawers, dropdowns, tooltips and accordions run on native HTML, so there is nothing to compile and no script to load.</p>
+      <div class="cluster gap-3">
+        <a class="btn btn-lg" href="reference.html">Get started</a>
+        <a class="btn btn-lg btn-outline" href="https://github.com/asticore/shine">GitHub</a>
+        <a class="btn btn-lg btn-ghost" href="#builder">Try the theme builder</a>
       </div>
-      <div class="flex flex-wrap gap-2 items-center">
-        <button class="btn tone-secondary">Secondary</button><button class="btn tone-accent">Accent</button><button class="btn tone-success">Success</button>
-        <button class="btn tone-warning btn-soft">Warning</button><button class="btn tone-danger btn-outline">Danger</button><button class="btn tone-info btn-ghost">Info</button>
-      </div>
-      <div class="flex flex-wrap gap-2 items-center">
-        <button class="btn btn-sm">Small</button><button class="btn">Default</button><button class="btn btn-lg">Large</button>
-        <button class="btn" disabled>Disabled</button><button class="btn btn-outline" disabled>Disabled</button>
-      </div>
-      <button class="btn btn-block">Block button</button>
-    </div>
-  </section>
-
-  <section class="space-y-4" aria-labelledby="h-card">
-    <h2 id="h-card" class="text-2xl font-semibold">Cards</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <article class="card">
-        <div class="card-header"><h3 class="card-title">Header</h3></div>
-        <div class="card-body">Body text inside a card. Radius and shadow follow the knobs.</div>
-        <div class="card-footer flex gap-2"><button class="btn btn-sm">Save</button><button class="btn btn-sm btn-ghost">Cancel</button></div>
-      </article>
-      <article class="card">
-        <div class="card-media h-32 bg-primary" role="img" aria-label="Placeholder image"></div>
-        <div class="card-body"><h3 class="card-title">With media</h3><p class="text-muted text-sm">A colored div as placeholder.</p></div>
-      </article>
-      <article class="card card-flat">
-        <div class="card-body"><h3 class="card-title">Flat card</h3><p class="text-muted text-sm">No elevation.</p></div>
-      </article>
-    </div>
-  </section>
-
-  <section class="space-y-4" aria-labelledby="h-form">
-    <h2 id="h-form" class="text-2xl font-semibold">Form</h2>
-    <form class="card" onsubmit="return false"><div class="card-body grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="field"><label class="label" for="f-name">Name</label><input class="input" id="f-name" placeholder="Ada Lovelace"><span class="hint">Helper text</span></div>
-      <div class="field"><label class="label" for="f-mail">Email (invalid)</label><input class="input is-invalid" id="f-mail" value="not-an-email" aria-invalid="true"><span class="hint">Enter a valid email</span></div>
-      <div class="field"><label class="label" for="f-sel">Plan</label><select class="select" id="f-sel"><option>Free</option><option>Pro</option></select></div>
-      <div class="field"><label class="label" for="f-sm">Large input</label><input class="input input-lg" id="f-sm" placeholder="input-lg"></div>
-      <div class="field md:col-span-2"><label class="label" for="f-msg">Message</label><textarea class="textarea" id="f-msg" rows="3"></textarea></div>
-      <div class="flex flex-wrap items-center gap-4">
-        <label class="flex items-center gap-2"><input type="checkbox" class="checkbox" checked> Checkbox</label>
-        <label class="flex items-center gap-2"><input type="radio" class="radio" name="r" checked> Radio A</label>
-        <label class="flex items-center gap-2"><input type="radio" class="radio" name="r"> Radio B</label>
-        <label class="flex items-center gap-2"><input type="checkbox" class="switch" checked> Switch</label>
-      </div>
-    </div></form>
-  </section>
-
-  <section class="space-y-4" aria-labelledby="h-misc">
-    <h2 id="h-misc" class="text-2xl font-semibold">Badges, avatars, divider</h2>
-    <div class="flex flex-wrap items-center gap-2">
-      <span class="badge">Default</span><span class="badge tone-success">Success</span><span class="badge tone-danger badge-solid">Solid</span>
-      <span class="badge tone-info badge-outline">Outline</span><span class="badge tone-warning">Warning</span>
-      <span class="avatar">AB</span><span class="avatar tone-accent">CD</span><span class="kbd">Ctrl</span><span class="kbd">K</span>
-    </div>
-    <hr class="divider">
-  </section>
-
-  <section class="space-y-3" aria-labelledby="h-alert">
-    <h2 id="h-alert" class="text-2xl font-semibold">Alerts</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-      <div class="alert tone-info"><span class="alert-title">Info</span> Soft alert.</div>
-      <div class="alert alert-solid tone-primary"><span class="alert-title">Primary</span> Solid alert.</div>
-      <div class="alert alert-solid tone-success"><span class="alert-title">Success</span> Saved.</div>
-      <div class="alert alert-solid tone-warning"><span class="alert-title">Warning</span> Careful.</div>
-      <div class="alert alert-solid tone-danger"><span class="alert-title">Danger</span> Failed.</div>
-      <div class="alert alert-solid tone-neutral"><span class="alert-title">Neutral</span> FYI.</div>
-    </div>
-  </section>
-
-  <section class="space-y-4" aria-labelledby="h-util">
-    <h2 id="h-util" class="text-2xl font-semibold">Utilities</h2>
-    <p class="text-muted text-sm">Responsive grid <code>grid-cols-1 md:grid-cols-3</code></p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <div class="p-4 bg-primary-soft rounded-lg">One</div><div class="p-4 bg-accent-soft rounded-lg">Two</div><div class="p-4 bg-success-soft rounded-lg">Three</div>
-    </div>
-    <div class="flex items-center justify-between gap-2 p-4 bg-surface-2 rounded-lg"><span>flex justify-between</span><span class="text-muted">gap-2 p-4</span></div>
-    <div class="space-y-1">
-      <p class="text-xs">text-xs</p><p class="text-sm">text-sm</p><p class="text-base">text-base</p><p class="text-lg">text-lg</p>
-      <p class="text-xl font-medium">text-xl</p><p class="text-2xl font-semibold">text-2xl</p><p class="text-3xl font-bold">text-3xl</p>
-    </div>
-    <div class="flex overflow-x-auto rounded-lg" aria-label="Gray scale">
-      <div class="bg-gray-50 h-12 w-16 flex-none"></div><div class="bg-gray-100 h-12 w-16 flex-none"></div><div class="bg-gray-200 h-12 w-16 flex-none"></div>
-      <div class="bg-gray-300 h-12 w-16 flex-none"></div><div class="bg-gray-400 h-12 w-16 flex-none"></div><div class="bg-gray-500 h-12 w-16 flex-none"></div>
-      <div class="bg-gray-600 h-12 w-16 flex-none"></div><div class="bg-gray-700 h-12 w-16 flex-none"></div><div class="bg-gray-800 h-12 w-16 flex-none"></div>
-      <div class="bg-gray-900 h-12 w-16 flex-none"></div><div class="bg-gray-950 h-12 w-16 flex-none"></div>
-    </div>
-    <div class="flex overflow-x-auto" aria-label="Opacity steps">
-      <div class="bg-primary bg-o-10 h-12 w-16 flex-none"></div><div class="bg-primary bg-o-25 h-12 w-16 flex-none"></div><div class="bg-primary bg-o-50 h-12 w-16 flex-none"></div>
-      <div class="bg-primary bg-o-75 h-12 w-16 flex-none"></div><div class="bg-primary bg-o-100 h-12 w-16 flex-none"></div>
-    </div>
-    <p class="text-sm text-muted">bg-primary + bg-o-10 / 25 / 50 / 75 / 100</p>
-  </section>
-
-  <section class="space-y-4" aria-labelledby="h-comp">
-    <h2 id="h-comp" class="text-2xl font-semibold">More components <a class="link text-base font-normal" href="reference.html#components">(docs)</a></h2>
-    <div class="flex flex-wrap items-center gap-3 pb-16">
-      <button class="btn" command="show-modal" commandfor="pg-modal">Modal</button>
-      <dialog id="pg-modal" class="modal" aria-labelledby="pg-modal-t">
-        <div class="modal-header"><h3 class="card-title" id="pg-modal-t">Modal</h3><button class="btn-close" command="close" commandfor="pg-modal" aria-label="Close"></button></div>
-        <div class="modal-body">Native dialog, no JS.</div>
-        <div class="modal-footer"><button class="btn" command="close" commandfor="pg-modal">OK</button></div>
-      </dialog>
-      <button class="btn btn-outline" popovertarget="pg-oc">Offcanvas</button>
-      <aside id="pg-oc" popover class="offcanvas" aria-label="Demo panel">
-        <div class="offcanvas-header"><strong>Panel</strong><button class="btn-close" popovertarget="pg-oc" popovertargetaction="hide" aria-label="Close"></button></div>
-        <div class="offcanvas-body">Popover API.</div>
-      </aside>
-      <details class="dropdown"><summary class="btn btn-soft">Dropdown</summary>
-        <ul class="menu"><li><a href="#h-comp" class="active">Profile</a></li><li><a href="#h-comp">Settings</a></li><li><hr class="menu-divider"></li><li><button type="button">Sign out</button></li></ul></details>
-      <button class="btn btn-ghost" data-tooltip="Tooltip text">Tooltip</button>
-    </div>
-    <nav class="navbar border rounded-lg" aria-label="Demo navbar"><a class="navbar-brand" href="#h-comp">Brand</a>
-      <ul class="navbar-nav"><li><a href="#h-comp" aria-current="page">Home</a></li><li><a href="#h-comp">Docs</a></li></ul><a class="navbar-end btn btn-sm" href="#h-comp">Sign in</a></nav>
-    <nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="#h-comp">Home</a></li><li><a href="#h-comp">Docs</a></li><li aria-current="page">Page</li></ol></nav>
-    <ul class="tabs"><li><a href="#h-comp" aria-current="page">Overview</a></li><li><a href="#h-comp">Usage</a></li><li><a href="#h-comp">API</a></li></ul>
-    <div class="accordion"><details open><summary>Accordion item</summary><p>Native details.</p></details><details><summary>Another</summary><p>More.</p></details></div>
-    <div class="table-wrap"><table class="table table-striped"><thead><tr><th>Name</th><th>Role</th></tr></thead><tbody><tr><td>Ada</td><td>Engineer</td></tr><tr><td>Grace</td><td>Admiral</td></tr></tbody></table></div>
-    <progress class="progress" value="60" max="100" aria-label="Progress"></progress>
-  </section>
-
-  <section class="space-y-4" aria-labelledby="h-scope">
-    <h2 id="h-scope" class="text-2xl font-semibold">Scoped themes</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div data-theme="dark" class="p-6 rounded-lg space-y-3">
-        <h3 class="text-lg font-semibold">data-theme="dark" section</h3>
-        <p class="text-muted">Dark island inside the page.</p>
-        <div class="field"><label class="label" for="s-in">Input</label><input class="input" id="s-in" placeholder="Dark input"></div>
-        <button class="btn">Primary</button> <span class="badge tone-success">Live</span>
-      </div>
-      <div style="--sh-primary:#e11d48" class="p-6 rounded-lg border space-y-3">
-        <h3 class="text-lg font-semibold">style="--sh-primary:#e11d48"</h3>
-        <p class="text-muted">Re-branded subtree.</p>
-        <button class="btn">Rose button</button> <button class="btn btn-outline">Outline</button> <span class="badge">Badge</span>
-        <input type="checkbox" class="switch" checked aria-label="Rose switch">
+      <div>
+        <p class="label" id="l-install">Drop it in your &lt;head&gt;</p>
+        <div class="flex items-stretch gap-2 max-w-xl" role="group" aria-labelledby="l-install">
+          <code class="flex-1 min-w-0 overflow-x-auto whitespace-nowrap bg-surface-2 border rounded-lg px-3 py-2 text-sm" id="install-code" tabindex="0">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asticore/shine@main/dist/shine.min.css"&gt;</code>
+          <button class="btn btn-outline flex-none" type="button" data-copy="#install-code">Copy</button>
+        </div>
       </div>
     </div>
-  </section>
+    <div class="lg:col-span-5" aria-hidden="false">
+      <div class="card" style="--sh-card-radius:calc(var(--sh-radius) * 1.5)">
+        <div class="card-body stack">
+          <div class="flex items-center justify-between gap-3">
+            <div><h2 class="card-title m-0 text-lg">Welcome back</h2><p class="text-sm text-muted m-0">Styled with Shine classes only.</p></div>
+            <div class="avatar-group" style="--sh-avatar-ring:var(--sh-surface)"><span class="avatar">AL</span><span class="avatar tone-accent">GH</span><span class="avatar tone-success">KJ</span></div>
+          </div>
+          <div class="floating"><input class="input" id="h-mail" type="email" placeholder=" " autocomplete="off"><label for="h-mail">Email</label></div>
+          <div class="floating"><input class="input" id="h-pass" type="password" placeholder=" " autocomplete="off"><label for="h-pass">Password</label></div>
+          <label class="flex items-center gap-2 text-sm"><input type="checkbox" class="switch" checked> Remember me</label>
+          <div class="btn-group w-full"><button class="btn flex-1" type="button">Sign in</button><button class="btn btn-outline flex-1" type="button">Create account</button></div>
+          <div class="alert tone-success"><span class="alert-title">Tip</span> Open the builder to restyle this card.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. THEME BUILDER -->
+<section id="builder" class="section pt-0" aria-labelledby="h-builder">
+  <div class="container mx-auto max-w-7xl stack gap-8">
+    <header class="stack gap-2 max-w-3xl">
+      <p class="label m-0 text-primary">Theme builder</p>
+      <h2 id="h-builder" class="text-3xl md:text-4xl font-bold tracking-tight m-0">Design your theme with a few knobs</h2>
+      <p class="lead m-0">Shine reads everything from base tokens. Change a color, a corner level or the spacing unit and the whole preview follows. Copy the result as an <code>&lt;html&gt;</code> tag or a CSS block.</p>
+      <noscript><p class="alert tone-warning">The live builder needs JavaScript. The framework itself never does: copy the attributes shown in the <a class="link" href="reference.html">reference</a>.</p></noscript>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start" id="builder-ui">
+      <form class="lg:col-span-4 card sticky-lg" id="bform" aria-label="Theme controls" onsubmit="return false">
+        <div class="card-body stack gap-5 scroll-lg">
+          <fieldset class="stack gap-2 border-0 p-0 m-0 min-w-0"><legend class="label mb-2">Presets</legend>
+            <div class="cluster gap-2" id="presets">
+              <button class="btn btn-sm btn-soft" type="button" data-preset="default">Default</button>
+              <button class="btn btn-sm btn-soft" type="button" data-preset="ocean">Ocean</button>
+              <button class="btn btn-sm btn-soft" type="button" data-preset="forest">Forest</button>
+              <button class="btn btn-sm btn-soft" type="button" data-preset="sunset">Sunset</button>
+              <button class="btn btn-sm btn-soft" type="button" data-preset="mono">Mono</button>
+              <button class="btn btn-sm btn-soft" type="button" data-preset="pill">Rounded Pill</button>
+              <button class="btn btn-sm btn-soft" type="button" data-preset="brutal">Sharp/Brutal</button>
+            </div>
+          </fieldset>
+
+          <div class="field"><label class="label" for="b-theme">Theme (<code>data-theme</code>)</label>
+            <select class="select" id="b-theme" name="theme"><option value="light">light</option><option value="dark">dark</option><option value="auto">auto (follow OS)</option></select></div>
+
+          <fieldset class="stack gap-3 border-0 p-0 m-0 min-w-0"><legend class="label mb-2">Brand colors</legend>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-x-4 gap-y-3">
+              <label class="flex items-center gap-3 text-sm"><input type="color" name="primary"><span>Primary<br><output class="text-xs text-muted font-mono" data-out="primary"></output></span></label>
+              <label class="flex items-center gap-3 text-sm"><input type="color" name="secondary"><span>Secondary<br><output class="text-xs text-muted font-mono" data-out="secondary"></output></span></label>
+              <label class="flex items-center gap-3 text-sm"><input type="color" name="accent"><span>Accent<br><output class="text-xs text-muted font-mono" data-out="accent"></output></span></label>
+              <label class="flex items-center gap-3 text-sm"><input type="color" name="success"><span>Success<br><output class="text-xs text-muted font-mono" data-out="success"></output></span></label>
+              <label class="flex items-center gap-3 text-sm"><input type="color" name="warning"><span>Warning<br><output class="text-xs text-muted font-mono" data-out="warning"></output></span></label>
+              <label class="flex items-center gap-3 text-sm"><input type="color" name="danger"><span>Danger<br><output class="text-xs text-muted font-mono" data-out="danger"></output></span></label>
+              <label class="flex items-center gap-3 text-sm"><input type="color" name="info"><span>Info<br><output class="text-xs text-muted font-mono" data-out="info"></output></span></label>
+            </div>
+            <label class="flex items-center gap-2 text-sm"><input type="checkbox" class="switch" name="auto"> Auto on-colors (black or white text by luminance)</label>
+          </fieldset>
+
+          <fieldset class="stack gap-3 border-0 p-0 m-0 min-w-0"><legend class="label mb-2">Shape and depth</legend>
+            <div class="field"><label class="label" for="b-radius">Corner level <code>data-radius</code>: <output data-out="radius"></output></label><input class="range" type="range" id="b-radius" name="radius" min="0" max="5" step="1"></div>
+            <div class="grid grid-cols-3 gap-2">
+              <div class="field"><label class="label" for="b-btn">Button</label><select class="select input-sm" id="b-btn" name="btn"><option value="">inherit</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+              <div class="field"><label class="label" for="b-card">Card</label><select class="select input-sm" id="b-card" name="card"><option value="">inherit</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+              <div class="field"><label class="label" for="b-input">Input</label><select class="select input-sm" id="b-input" name="input"><option value="">inherit</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+            </div>
+            <div class="field"><label class="label" for="b-shadow">Elevation <code>data-shadow</code>: <output data-out="shadow"></output></label><input class="range" type="range" id="b-shadow" name="shadow" min="0" max="5" step="1"></div>
+            <div class="field"><label class="label" for="b-density">Density <code>data-density</code></label>
+              <select class="select" id="b-density" name="density"><option value="">default</option><option value="compact">compact</option><option value="comfortable">comfortable</option></select></div>
+            <div class="field"><label class="label" for="b-space">Spacing unit <code>--sh-space</code>: <output data-out="space"></output></label><input class="range" type="range" id="b-space" name="space" min="0.2" max="0.35" step="0.01"></div>
+          </fieldset>
+
+          <fieldset class="stack gap-3 border-0 p-0 m-0 min-w-0"><legend class="label mb-2">Typography</legend>
+            <div class="field"><label class="label" for="b-font">Font family</label>
+              <select class="select" id="b-font" name="font">
+                <option value="">System sans (default)</option>
+                <option value="ui-serif, Georgia, Cambria, 'Times New Roman', serif">System serif</option>
+                <option value="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">System mono</option>
+                <option value="Georgia, 'Times New Roman', serif">Georgia</option>
+                <option value="'Helvetica Neue', Helvetica, Arial, sans-serif">Helvetica / Arial</option>
+                <option value="'Trebuchet MS', 'Lucida Grande', sans-serif">Trebuchet</option>
+                <option value="Verdana, Geneva, sans-serif">Verdana</option>
+                <option value="'Palatino Linotype', Palatino, 'Book Antiqua', serif">Palatino</option>
+              </select></div>
+            <div class="field"><label class="label" for="b-size">Base font size: <output data-out="size"></output></label><input class="range" type="range" id="b-size" name="size" min="13" max="20" step="1"></div>
+          </fieldset>
+
+          <details class="border rounded-lg">
+            <summary class="px-3 py-2 cursor-pointer font-medium text-sm">Advanced: surface colors</summary>
+            <div class="p-3 stack gap-4">
+              <fieldset class="border-0 p-0 m-0 min-w-0"><legend class="label mb-2">Light surfaces</legend>
+                <div class="grid grid-cols-2 gap-x-3 gap-y-2 text-sm">
+                  <label class="flex items-center gap-2"><input type="color" name="ls.bg"> Page</label>
+                  <label class="flex items-center gap-2"><input type="color" name="ls.surface"> Surface</label>
+                  <label class="flex items-center gap-2"><input type="color" name="ls.surface-2"> Surface 2</label>
+                  <label class="flex items-center gap-2"><input type="color" name="ls.text"> Text</label>
+                  <label class="flex items-center gap-2"><input type="color" name="ls.text-muted"> Muted</label>
+                  <label class="flex items-center gap-2"><input type="color" name="ls.border"> Border</label>
+                </div></fieldset>
+              <fieldset class="border-0 p-0 m-0 min-w-0"><legend class="label mb-2">Dark surfaces</legend>
+                <div class="grid grid-cols-2 gap-x-3 gap-y-2 text-sm">
+                  <label class="flex items-center gap-2"><input type="color" name="ds.bg"> Page</label>
+                  <label class="flex items-center gap-2"><input type="color" name="ds.surface"> Surface</label>
+                  <label class="flex items-center gap-2"><input type="color" name="ds.surface-2"> Surface 2</label>
+                  <label class="flex items-center gap-2"><input type="color" name="ds.text"> Text</label>
+                  <label class="flex items-center gap-2"><input type="color" name="ds.text-muted"> Muted</label>
+                  <label class="flex items-center gap-2"><input type="color" name="ds.border"> Border</label>
+                </div></fieldset>
+            </div>
+          </details>
+          <button class="btn btn-outline btn-block" type="button" id="b-reset">Reset all</button>
+        </div>
+      </form>
+
+      <div class="lg:col-span-8 stack gap-6 min-w-0">
+        <div id="preview" data-theme="light" class="border rounded-lg overflow-hidden" role="region" aria-label="Live theme preview">
+          <nav class="navbar border-b" aria-label="Preview navbar">
+            <a class="navbar-brand" href="#preview">Acme</a>
+            <ul class="navbar-nav"><li><a href="#preview" aria-current="page">Overview</a></li><li><a href="#preview">Reports</a></li><li><a href="#preview">Team</a></li></ul>
+            <a class="navbar-end btn btn-sm" href="#preview">Sign in</a>
+          </nav>
+          <div class="p-4 md:p-6 stack gap-6">
+            <div class="card"><div class="card-body stack gap-3">
+              <div class="cluster gap-2"><span class="badge">New</span><span class="badge tone-success">Live</span><span class="badge badge-outline tone-info">Beta</span><span class="badge badge-solid tone-danger">3 alerts</span></div>
+              <h3 class="card-title text-2xl m-0">Ship a calmer dashboard</h3>
+              <p class="text-muted m-0 max-w-prose">Every color, corner and shadow here comes from a handful of tokens. Move a slider and watch it update.</p>
+              <div class="cluster gap-2">
+                <button class="btn" type="button">Primary</button><button class="btn tone-secondary" type="button">Secondary</button><button class="btn tone-accent" type="button">Accent</button>
+                <button class="btn btn-outline" type="button">Outline</button><button class="btn btn-soft" type="button">Soft</button><button class="btn btn-ghost" type="button">Ghost</button>
+              </div>
+              <div class="cluster gap-2">
+                <button class="btn btn-sm tone-success" type="button">Success</button><button class="btn btn-sm tone-warning" type="button">Warning</button><button class="btn btn-sm tone-danger" type="button">Danger</button><button class="btn btn-sm tone-info" type="button">Info</button><button class="btn btn-sm" type="button" disabled>Disabled</button>
+              </div>
+            </div></div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="card"><div class="card-body stat"><span class="stat-label">Revenue</span><span class="stat-value">$48.2k</span><span class="stat-desc">+12% this month</span></div></div>
+              <div class="card"><div class="card-body stat"><span class="stat-label">Active users</span><span class="stat-value">2,915</span><span class="stat-desc">+4.1% this week</span></div></div>
+              <div class="card"><div class="card-body stat"><span class="stat-label">Conversion</span><span class="stat-value">3.8%</span><span class="stat-desc">-0.3% vs. last week</span></div></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <form class="card" onsubmit="return false" aria-label="Preview form"><div class="card-body stack gap-3">
+                <h3 class="card-title m-0">Create project</h3>
+                <div class="field"><label class="label" for="pv-name">Project name</label><input class="input" id="pv-name" placeholder="Aurora" autocomplete="off"><span class="hint">Letters and numbers only.</span></div>
+                <div class="field"><label class="label" for="pv-plan">Plan</label><select class="select" id="pv-plan"><option>Free</option><option>Pro</option><option>Team</option></select></div>
+                <div class="field"><label class="label" for="pv-mail">Email</label><input class="input is-invalid" id="pv-mail" value="not-an-email" aria-invalid="true" aria-describedby="pv-mail-h"><span class="hint" id="pv-mail-h">Enter a valid email.</span></div>
+                <div class="cluster gap-4 text-sm"><label class="flex items-center gap-2"><input type="checkbox" class="checkbox" checked> Public</label><label class="flex items-center gap-2"><input type="checkbox" class="switch" checked> Notify</label></div>
+                <div class="cluster gap-2"><button class="btn" type="button">Create</button><button class="btn btn-ghost" type="button">Cancel</button></div>
+              </div></form>
+              <div class="stack gap-4">
+                <div class="alert tone-info"><span class="alert-title">Heads up</span> Maintenance starts at 02:00 UTC.</div>
+                <div class="alert alert-solid tone-success"><span class="alert-title">Saved</span> Your changes are live.</div>
+                <div class="alert tone-warning"><span class="alert-title">Almost full</span> 92% of storage used.</div>
+                <div class="alert alert-solid tone-danger"><span class="alert-title">Failed</span> Payment was declined.</div>
+                <progress class="progress" value="64" max="100" aria-label="Upload progress"></progress>
+              </div>
+            </div>
+
+            <div class="table-wrap"><table class="table table-striped table-hover">
+              <caption class="sr-only">Recent invoices</caption>
+              <thead><tr><th scope="col">Invoice</th><th scope="col">Customer</th><th scope="col">Status</th><th scope="col">Amount</th></tr></thead>
+              <tbody>
+                <tr><td>#1042</td><td>Ada Lovelace</td><td><span class="badge tone-success">Paid</span></td><td>$1,200</td></tr>
+                <tr><td>#1043</td><td>Grace Hopper</td><td><span class="badge tone-warning">Pending</span></td><td>$860</td></tr>
+                <tr><td>#1044</td><td>Alan Turing</td><td><span class="badge tone-danger">Overdue</span></td><td>$2,450</td></tr>
+              </tbody></table></div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+          <div class="stack gap-2 min-w-0">
+            <div class="flex items-center justify-between gap-2"><h3 class="text-base font-semibold m-0" id="h-ex-html">Your &lt;html&gt; tag</h3><button class="btn btn-sm btn-outline" type="button" data-copy="#out-html">Copy</button></div>
+            <pre class="m-0 p-4 bg-surface-2 rounded-lg overflow-x-auto text-sm" id="out-html" tabindex="0" aria-labelledby="h-ex-html">&lt;html lang="en"&gt;</pre>
+          </div>
+          <div class="stack gap-2 min-w-0">
+            <div class="flex items-center justify-between gap-2 flex-wrap"><h3 class="text-base font-semibold m-0" id="h-ex-css">CSS overrides</h3>
+              <span class="cluster gap-2"><button class="btn btn-sm btn-outline" type="button" data-copy="#out-css">Copy</button><button class="btn btn-sm" type="button" id="dl-css">Download theme.css</button></span></div>
+            <pre class="m-0 p-4 bg-surface-2 rounded-lg overflow-x-auto text-sm" id="out-css" tabindex="0" aria-labelledby="h-ex-css">/* defaults, nothing overridden */</pre>
+          </div>
+        </div>
+        <p class="text-sm text-muted m-0">Only changed tokens are exported. Your settings are saved in this browser and encoded in the URL hash, so you can share the link.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. PLAYGROUND -->
+<section id="playground" class="section bg-surface border-y" aria-labelledby="h-play">
+  <div class="container mx-auto max-w-7xl stack gap-6">
+    <header class="stack gap-2 max-w-3xl">
+      <p class="label m-0 text-primary">Class playground</p>
+      <h2 id="h-play" class="text-3xl md:text-4xl font-bold tracking-tight m-0">Edit HTML, inspect classes, test breakpoints</h2>
+      <p class="lead m-0">Pick a section template, edit the markup, then click any element in the preview to add or remove Shine classes. The preview uses your theme from the builder above.</p>
+      <noscript><p class="alert tone-warning">The playground needs JavaScript. Every class used is documented in the <a class="link" href="reference.html">reference</a>.</p></noscript>
+    </header>
+
+    <div class="cluster gap-3 items-end" role="toolbar" aria-label="Playground tools">
+      <div class="field"><label class="label" for="pg-tpl">Template</label>
+        <select class="select" id="pg-tpl">
+          <option value="hero">Hero</option><option value="pricing">Pricing cards</option><option value="features">Feature grid</option>
+          <option value="login">Login form</option><option value="stats">Dashboard stats</option><option value="blog">Blog post (prose)</option>
+          <option value="navbar">Navbar + offcanvas</option><option value="faq">FAQ accordion</option><option value="modal">Modal demo</option><option value="footer">Footer</option>
+        </select></div>
+      <div class="field"><span class="label block" id="l-vw">Viewport</span>
+        <div class="btn-group" role="group" aria-labelledby="l-vw" id="pg-vw">
+          <button class="btn btn-sm btn-outline" type="button" data-vw="375px" aria-pressed="false">375</button>
+          <button class="btn btn-sm btn-outline" type="button" data-vw="768px" aria-pressed="false">768</button>
+          <button class="btn btn-sm btn-outline" type="button" data-vw="1024px" aria-pressed="false">1024</button>
+          <button class="btn btn-sm" type="button" data-vw="100%" aria-pressed="true">Full</button>
+        </div></div>
+      <label class="flex items-center gap-2 text-sm pb-2"><input type="checkbox" class="switch" id="pg-inspect" checked> Click to inspect</label>
+      <span class="cluster gap-2 ml-auto"><button class="btn btn-sm btn-outline" type="button" id="pg-reset">Reset</button><button class="btn btn-sm" type="button" data-copy="#pg-src">Copy HTML</button></span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div class="field min-w-0"><label class="label" for="pg-src">HTML (editable)</label>
+        <textarea class="textarea code" id="pg-src" spellcheck="false" autocomplete="off" autocapitalize="off" rows="22"></textarea></div>
+      <div class="field min-w-0"><span class="label block" id="l-pg-prev">Live preview <span class="text-muted font-normal">(sandboxed iframe)</span></span>
+        <div id="pg-wrap" class="border rounded-lg"><iframe id="pg-frame" title="Live HTML preview" sandbox="allow-same-origin" aria-labelledby="l-pg-prev"></iframe></div></div>
+    </div>
+
+    <div class="card card-flat"><div class="card-body stack gap-3" id="pg-insp">
+      <div class="flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base">Class inspector</h3><span class="text-sm text-muted"><span id="pg-tag">Click an element in the preview.</span> <button class="btn btn-sm btn-ghost" type="button" id="pg-parent" disabled>Select parent</button></span></div>
+      <ul class="cluster gap-2 list-none p-0 m-0" id="pg-chips" aria-label="Classes on the selected element"><li class="text-sm text-muted">No element selected.</li></ul>
+      <form class="flex gap-2 max-w-xl" id="pg-add" onsubmit="return false">
+        <label class="sr-only" for="pg-cls">Add class</label>
+        <input class="input" id="pg-cls" list="pg-classes" placeholder="Add class, e.g. md:grid-cols-3" autocomplete="off" disabled>
+        <datalist id="pg-classes"></datalist>
+        <button class="btn" type="submit">Add</button>
+      </form>
+      <p class="text-xs text-muted m-0" id="pg-count" aria-live="polite"></p>
+    </div></div>
+  </div>
+</section>
+
+<!-- 4. COMPONENTS -->
+<section id="components" class="section" aria-labelledby="h-comp">
+  <div class="container mx-auto max-w-7xl stack gap-8">
+    <header class="stack gap-2 max-w-3xl">
+      <p class="label m-0 text-primary">Components</p>
+      <h2 id="h-comp" class="text-3xl md:text-4xl font-bold tracking-tight m-0">Everything ready to use</h2>
+      <p class="lead m-0">Every example is live and styled with Shine alone. Open <em>Code</em> to copy the markup. Use the page theme switch in the header to check dark mode.</p>
+    </header>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-buttons">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-buttons">Buttons</h3><span class="text-xs text-muted cluster gap-1"><code>btn</code> <code>btn-*</code> <code>tone-*</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<div class="stack gap-3 w-full">
+  <div class="cluster gap-2"><button class="btn" type="button">Solid</button><button class="btn btn-outline" type="button">Outline</button><button class="btn btn-soft" type="button">Soft</button><button class="btn btn-ghost" type="button">Ghost</button><button class="btn btn-link" type="button">Link</button><button class="btn btn-icon" type="button" aria-label="Favorite">★</button></div>
+  <div class="cluster gap-2"><button class="btn tone-secondary" type="button">Secondary</button><button class="btn tone-accent" type="button">Accent</button><button class="btn tone-success" type="button">Success</button><button class="btn tone-warning btn-soft" type="button">Warning</button><button class="btn tone-danger btn-outline" type="button">Danger</button><button class="btn tone-info btn-ghost" type="button">Info</button></div>
+  <div class="cluster gap-2"><button class="btn btn-sm" type="button">Small</button><button class="btn" type="button">Default</button><button class="btn btn-lg" type="button">Large</button><button class="btn" type="button" disabled>Disabled</button></div>
+  <button class="btn btn-block" type="button">Block button</button>
+</div>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="stack gap-3 w-full"&gt;
+  &lt;div class="cluster gap-2"&gt;&lt;button class="btn" type="button"&gt;Solid&lt;/button&gt;&lt;button class="btn btn-outline" type="button"&gt;Outline&lt;/button&gt;&lt;button class="btn btn-soft" type="button"&gt;Soft&lt;/button&gt;&lt;button class="btn btn-ghost" type="button"&gt;Ghost&lt;/button&gt;&lt;button class="btn btn-link" type="button"&gt;Link&lt;/button&gt;&lt;button class="btn btn-icon" type="button" aria-label="Favorite"&gt;★&lt;/button&gt;&lt;/div&gt;
+  &lt;div class="cluster gap-2"&gt;&lt;button class="btn tone-secondary" type="button"&gt;Secondary&lt;/button&gt;&lt;button class="btn tone-accent" type="button"&gt;Accent&lt;/button&gt;&lt;button class="btn tone-success" type="button"&gt;Success&lt;/button&gt;&lt;button class="btn tone-warning btn-soft" type="button"&gt;Warning&lt;/button&gt;&lt;button class="btn tone-danger btn-outline" type="button"&gt;Danger&lt;/button&gt;&lt;button class="btn tone-info btn-ghost" type="button"&gt;Info&lt;/button&gt;&lt;/div&gt;
+  &lt;div class="cluster gap-2"&gt;&lt;button class="btn btn-sm" type="button"&gt;Small&lt;/button&gt;&lt;button class="btn" type="button"&gt;Default&lt;/button&gt;&lt;button class="btn btn-lg" type="button"&gt;Large&lt;/button&gt;&lt;button class="btn" type="button" disabled&gt;Disabled&lt;/button&gt;&lt;/div&gt;
+  &lt;button class="btn btn-block" type="button"&gt;Block button&lt;/button&gt;
+&lt;/div&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-button-group">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-button-group">Button group</h3><span class="text-xs text-muted cluster gap-1"><code>btn-group</code> <code>btn-group-vertical</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<div class="btn-group" role="group" aria-label="Text alignment"><button class="btn btn-outline" type="button">Left</button><button class="btn btn-outline" type="button">Center</button><button class="btn btn-outline" type="button">Right</button></div>
+<div class="btn-group-vertical" role="group" aria-label="Sort"><button class="btn" type="button">Newest</button><button class="btn" type="button">Popular</button><button class="btn" type="button">Rating</button></div>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="btn-group" role="group" aria-label="Text alignment"&gt;&lt;button class="btn btn-outline" type="button"&gt;Left&lt;/button&gt;&lt;button class="btn btn-outline" type="button"&gt;Center&lt;/button&gt;&lt;button class="btn btn-outline" type="button"&gt;Right&lt;/button&gt;&lt;/div&gt;
+&lt;div class="btn-group-vertical" role="group" aria-label="Sort"&gt;&lt;button class="btn" type="button"&gt;Newest&lt;/button&gt;&lt;button class="btn" type="button"&gt;Popular&lt;/button&gt;&lt;button class="btn" type="button"&gt;Rating&lt;/button&gt;&lt;/div&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-cards">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-cards">Cards</h3><span class="text-xs text-muted cluster gap-1"><code>card</code> <code>card-header</code> <code>card-body</code> <code>card-footer</code> <code>card-media</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+  <article class="card">
+    <div class="card-header"><h4 class="card-title m-0">Header</h4></div>
+    <div class="card-body">Radius and elevation follow the knobs.</div>
+    <div class="card-footer cluster gap-2"><button class="btn btn-sm" type="button">Save</button><button class="btn btn-sm btn-ghost" type="button">Cancel</button></div>
+  </article>
+  <article class="card card-flat">
+    <div class="card-media h-24 bg-primary" role="img" aria-label="Placeholder"></div>
+    <div class="card-body"><h4 class="card-title m-0">Flat with media</h4><p class="text-muted text-sm m-0">No elevation, stretched link.</p><a class="stretched-link link text-sm" href="#components">Read more</a></div>
+  </article>
+</div>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full"&gt;
+  &lt;article class="card"&gt;
+    &lt;div class="card-header"&gt;&lt;h4 class="card-title m-0"&gt;Header&lt;/h4&gt;&lt;/div&gt;
+    &lt;div class="card-body"&gt;Radius and elevation follow the knobs.&lt;/div&gt;
+    &lt;div class="card-footer cluster gap-2"&gt;&lt;button class="btn btn-sm" type="button"&gt;Save&lt;/button&gt;&lt;button class="btn btn-sm btn-ghost" type="button"&gt;Cancel&lt;/button&gt;&lt;/div&gt;
+  &lt;/article&gt;
+  &lt;article class="card card-flat"&gt;
+    &lt;div class="card-media h-24 bg-primary" role="img" aria-label="Placeholder"&gt;&lt;/div&gt;
+    &lt;div class="card-body"&gt;&lt;h4 class="card-title m-0"&gt;Flat with media&lt;/h4&gt;&lt;p class="text-muted text-sm m-0"&gt;No elevation, stretched link.&lt;/p&gt;&lt;a class="stretched-link link text-sm" href="#components"&gt;Read more&lt;/a&gt;&lt;/div&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-form-controls">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-form-controls">Form controls</h3><span class="text-xs text-muted cluster gap-1"><code>input</code> <code>select</code> <code>textarea</code> <code>checkbox</code> <code>radio</code> <code>switch</code> <code>range</code> <code>file</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<form class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full" onsubmit="return false">
+  <div class="field"><label class="label" for="g-name">Name</label><input class="input" id="g-name" placeholder="Ada Lovelace" autocomplete="off"><span class="hint">Helper text</span></div>
+  <div class="field"><label class="label" for="g-mail">Email</label><input class="input is-invalid" id="g-mail" value="oops" aria-invalid="true" aria-describedby="g-mail-h"><span class="hint" id="g-mail-h">Enter a valid email</span></div>
+  <div class="field"><label class="label" for="g-plan">Plan</label><select class="select" id="g-plan"><option>Free</option><option>Pro</option></select></div>
+  <div class="field"><label class="label" for="g-lg">Large</label><input class="input input-lg" id="g-lg" placeholder="input-lg" autocomplete="off"></div>
+  <div class="field sm:col-span-2"><label class="label" for="g-msg">Message</label><textarea class="textarea" id="g-msg" rows="2"></textarea></div>
+  <div class="field"><label class="label" for="g-range">Volume</label><input class="range" type="range" id="g-range" value="40"></div>
+  <div class="field"><label class="label" for="g-file">Upload</label><input class="file" type="file" id="g-file"></div>
+  <div class="cluster gap-4 sm:col-span-2">
+    <label class="flex items-center gap-2"><input type="checkbox" class="checkbox" checked> Checkbox</label>
+    <label class="flex items-center gap-2"><input type="radio" class="radio" name="g-r" checked> Radio A</label>
+    <label class="flex items-center gap-2"><input type="radio" class="radio" name="g-r"> Radio B</label>
+    <label class="flex items-center gap-2"><input type="checkbox" class="switch" checked> Switch</label>
+  </div>
+</form>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;form class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full" onsubmit="return false"&gt;
+  &lt;div class="field"&gt;&lt;label class="label" for="g-name"&gt;Name&lt;/label&gt;&lt;input class="input" id="g-name" placeholder="Ada Lovelace" autocomplete="off"&gt;&lt;span class="hint"&gt;Helper text&lt;/span&gt;&lt;/div&gt;
+  &lt;div class="field"&gt;&lt;label class="label" for="g-mail"&gt;Email&lt;/label&gt;&lt;input class="input is-invalid" id="g-mail" value="oops" aria-invalid="true" aria-describedby="g-mail-h"&gt;&lt;span class="hint" id="g-mail-h"&gt;Enter a valid email&lt;/span&gt;&lt;/div&gt;
+  &lt;div class="field"&gt;&lt;label class="label" for="g-plan"&gt;Plan&lt;/label&gt;&lt;select class="select" id="g-plan"&gt;&lt;option&gt;Free&lt;/option&gt;&lt;option&gt;Pro&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;
+  &lt;div class="field"&gt;&lt;label class="label" for="g-lg"&gt;Large&lt;/label&gt;&lt;input class="input input-lg" id="g-lg" placeholder="input-lg" autocomplete="off"&gt;&lt;/div&gt;
+  &lt;div class="field sm:col-span-2"&gt;&lt;label class="label" for="g-msg"&gt;Message&lt;/label&gt;&lt;textarea class="textarea" id="g-msg" rows="2"&gt;&lt;/textarea&gt;&lt;/div&gt;
+  &lt;div class="field"&gt;&lt;label class="label" for="g-range"&gt;Volume&lt;/label&gt;&lt;input class="range" type="range" id="g-range" value="40"&gt;&lt;/div&gt;
+  &lt;div class="field"&gt;&lt;label class="label" for="g-file"&gt;Upload&lt;/label&gt;&lt;input class="file" type="file" id="g-file"&gt;&lt;/div&gt;
+  &lt;div class="cluster gap-4 sm:col-span-2"&gt;
+    &lt;label class="flex items-center gap-2"&gt;&lt;input type="checkbox" class="checkbox" checked&gt; Checkbox&lt;/label&gt;
+    &lt;label class="flex items-center gap-2"&gt;&lt;input type="radio" class="radio" name="g-r" checked&gt; Radio A&lt;/label&gt;
+    &lt;label class="flex items-center gap-2"&gt;&lt;input type="radio" class="radio" name="g-r"&gt; Radio B&lt;/label&gt;
+    &lt;label class="flex items-center gap-2"&gt;&lt;input type="checkbox" class="switch" checked&gt; Switch&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-input-group-and-floating-labels">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-input-group-and-floating-labels">Input group and floating labels</h3><span class="text-xs text-muted cluster gap-1"><code>input-group</code> <code>input-addon</code> <code>floating</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<div class="stack gap-4 w-full">
+  <div class="input-group"><span class="input-addon">@</span><label class="sr-only" for="g-user">Username</label><input class="input" id="g-user" placeholder="username" autocomplete="off"></div>
+  <div class="input-group"><label class="sr-only" for="g-search">Search</label><input class="input" id="g-search" placeholder="Search components" autocomplete="off"><button class="btn" type="button">Search</button></div>
+  <div class="floating"><input class="input" id="g-fl1" placeholder=" " autocomplete="off"><label for="g-fl1">Full name</label></div>
+  <div class="floating"><textarea class="textarea" id="g-fl2" placeholder=" " rows="2"></textarea><label for="g-fl2">Notes</label></div>
+</div>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="stack gap-4 w-full"&gt;
+  &lt;div class="input-group"&gt;&lt;span class="input-addon"&gt;@&lt;/span&gt;&lt;label class="sr-only" for="g-user"&gt;Username&lt;/label&gt;&lt;input class="input" id="g-user" placeholder="username" autocomplete="off"&gt;&lt;/div&gt;
+  &lt;div class="input-group"&gt;&lt;label class="sr-only" for="g-search"&gt;Search&lt;/label&gt;&lt;input class="input" id="g-search" placeholder="Search components" autocomplete="off"&gt;&lt;button class="btn" type="button"&gt;Search&lt;/button&gt;&lt;/div&gt;
+  &lt;div class="floating"&gt;&lt;input class="input" id="g-fl1" placeholder=" " autocomplete="off"&gt;&lt;label for="g-fl1"&gt;Full name&lt;/label&gt;&lt;/div&gt;
+  &lt;div class="floating"&gt;&lt;textarea class="textarea" id="g-fl2" placeholder=" " rows="2"&gt;&lt;/textarea&gt;&lt;label for="g-fl2"&gt;Notes&lt;/label&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-badges-avatars-kbd">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-badges-avatars-kbd">Badges, avatars, kbd</h3><span class="text-xs text-muted cluster gap-1"><code>badge</code> <code>avatar</code> <code>avatar-group</code> <code>dot</code> <code>indicator</code> <code>kbd</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<div class="stack gap-4 w-full">
+  <div class="cluster gap-2"><span class="badge">Default</span><span class="badge tone-success">Success</span><span class="badge badge-solid tone-danger">Solid</span><span class="badge badge-outline tone-info">Outline</span><span class="badge tone-warning"><span class="dot tone-warning"></span> Pending</span></div>
+  <div class="cluster gap-4">
+    <span class="avatar">AB</span><span class="avatar tone-accent">CD</span>
+    <div class="avatar-group"><span class="avatar">AL</span><span class="avatar tone-accent">GH</span><span class="avatar tone-success">KJ</span><span class="avatar tone-secondary">+4</span></div>
+    <span class="indicator"><span class="indicator-item badge badge-solid tone-danger">3</span><button class="btn btn-outline" type="button">Inbox</button></span>
+    <span>Press <kbd class="kbd">Ctrl</kbd> + <kbd class="kbd">K</kbd></span>
+  </div>
+</div>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="stack gap-4 w-full"&gt;
+  &lt;div class="cluster gap-2"&gt;&lt;span class="badge"&gt;Default&lt;/span&gt;&lt;span class="badge tone-success"&gt;Success&lt;/span&gt;&lt;span class="badge badge-solid tone-danger"&gt;Solid&lt;/span&gt;&lt;span class="badge badge-outline tone-info"&gt;Outline&lt;/span&gt;&lt;span class="badge tone-warning"&gt;&lt;span class="dot tone-warning"&gt;&lt;/span&gt; Pending&lt;/span&gt;&lt;/div&gt;
+  &lt;div class="cluster gap-4"&gt;
+    &lt;span class="avatar"&gt;AB&lt;/span&gt;&lt;span class="avatar tone-accent"&gt;CD&lt;/span&gt;
+    &lt;div class="avatar-group"&gt;&lt;span class="avatar"&gt;AL&lt;/span&gt;&lt;span class="avatar tone-accent"&gt;GH&lt;/span&gt;&lt;span class="avatar tone-success"&gt;KJ&lt;/span&gt;&lt;span class="avatar tone-secondary"&gt;+4&lt;/span&gt;&lt;/div&gt;
+    &lt;span class="indicator"&gt;&lt;span class="indicator-item badge badge-solid tone-danger"&gt;3&lt;/span&gt;&lt;button class="btn btn-outline" type="button"&gt;Inbox&lt;/button&gt;&lt;/span&gt;
+    &lt;span&gt;Press &lt;kbd class="kbd"&gt;Ctrl&lt;/kbd&gt; + &lt;kbd class="kbd"&gt;K&lt;/kbd&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-alerts">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-alerts">Alerts</h3><span class="text-xs text-muted cluster gap-1"><code>alert</code> <code>alert-solid</code> <code>alert-title</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<div class="stack gap-3 w-full">
+  <div class="alert tone-info"><span class="alert-title">Info</span> A soft alert.</div>
+  <div class="alert alert-solid tone-success"><span class="alert-title">Success</span> Your changes were saved.</div>
+  <div class="alert alert-solid tone-warning"><span class="alert-title">Warning</span> Check your input.</div>
+  <div class="alert alert-solid tone-danger"><span class="alert-title">Danger</span> Something failed.</div>
+</div>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="stack gap-3 w-full"&gt;
+  &lt;div class="alert tone-info"&gt;&lt;span class="alert-title"&gt;Info&lt;/span&gt; A soft alert.&lt;/div&gt;
+  &lt;div class="alert alert-solid tone-success"&gt;&lt;span class="alert-title"&gt;Success&lt;/span&gt; Your changes were saved.&lt;/div&gt;
+  &lt;div class="alert alert-solid tone-warning"&gt;&lt;span class="alert-title"&gt;Warning&lt;/span&gt; Check your input.&lt;/div&gt;
+  &lt;div class="alert alert-solid tone-danger"&gt;&lt;span class="alert-title"&gt;Danger&lt;/span&gt; Something failed.&lt;/div&gt;
+&lt;/div&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-modal">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-modal">Modal</h3><span class="text-xs text-muted cluster gap-1"><code>modal</code> <code>modal-header</code> <code>modal-body</code> <code>modal-footer</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<button class="btn" type="button" command="show-modal" commandfor="g-modal">Open modal</button>
+<dialog id="g-modal" class="modal" aria-labelledby="g-modal-t">
+  <div class="modal-header"><h4 class="card-title m-0" id="g-modal-t">Modal title</h4><button class="btn-close" type="button" command="close" commandfor="g-modal" aria-label="Close"></button></div>
+  <div class="modal-body">Native dialog: Esc or the backdrop closes it and focus is trapped by the browser.</div>
+  <div class="modal-footer"><button class="btn btn-ghost" type="button" command="close" commandfor="g-modal">Cancel</button><button class="btn" type="button" command="close" commandfor="g-modal">OK</button></div>
+</dialog>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;button class="btn" type="button" command="show-modal" commandfor="g-modal"&gt;Open modal&lt;/button&gt;
+&lt;dialog id="g-modal" class="modal" aria-labelledby="g-modal-t"&gt;
+  &lt;div class="modal-header"&gt;&lt;h4 class="card-title m-0" id="g-modal-t"&gt;Modal title&lt;/h4&gt;&lt;button class="btn-close" type="button" command="close" commandfor="g-modal" aria-label="Close"&gt;&lt;/button&gt;&lt;/div&gt;
+  &lt;div class="modal-body"&gt;Native dialog: Esc or the backdrop closes it and focus is trapped by the browser.&lt;/div&gt;
+  &lt;div class="modal-footer"&gt;&lt;button class="btn btn-ghost" type="button" command="close" commandfor="g-modal"&gt;Cancel&lt;/button&gt;&lt;button class="btn" type="button" command="close" commandfor="g-modal"&gt;OK&lt;/button&gt;&lt;/div&gt;
+&lt;/dialog&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-offcanvas">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-offcanvas">Offcanvas</h3><span class="text-xs text-muted cluster gap-1"><code>offcanvas</code> <code>offcanvas-right</code> <code>offcanvas-top</code> <code>offcanvas-bottom</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<button class="btn btn-outline" type="button" popovertarget="g-oc">Left panel</button>
+<button class="btn btn-outline" type="button" popovertarget="g-oc2">Right panel</button>
+<aside id="g-oc" popover class="offcanvas" aria-label="Left panel">
+  <div class="offcanvas-header"><strong>Menu</strong><button class="btn-close" type="button" popovertarget="g-oc" popovertargetaction="hide" aria-label="Close"></button></div>
+  <div class="offcanvas-body"><ul class="menu"><li><a href="#components">Dashboard</a></li><li><a href="#components">Projects</a></li><li><a href="#components">Settings</a></li></ul></div>
+</aside>
+<aside id="g-oc2" popover class="offcanvas offcanvas-right" aria-label="Right panel">
+  <div class="offcanvas-header"><strong>Filters</strong><button class="btn-close" type="button" popovertarget="g-oc2" popovertargetaction="hide" aria-label="Close"></button></div>
+  <div class="offcanvas-body">Built on the Popover API.</div>
+</aside>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;button class="btn btn-outline" type="button" popovertarget="g-oc"&gt;Left panel&lt;/button&gt;
+&lt;button class="btn btn-outline" type="button" popovertarget="g-oc2"&gt;Right panel&lt;/button&gt;
+&lt;aside id="g-oc" popover class="offcanvas" aria-label="Left panel"&gt;
+  &lt;div class="offcanvas-header"&gt;&lt;strong&gt;Menu&lt;/strong&gt;&lt;button class="btn-close" type="button" popovertarget="g-oc" popovertargetaction="hide" aria-label="Close"&gt;&lt;/button&gt;&lt;/div&gt;
+  &lt;div class="offcanvas-body"&gt;&lt;ul class="menu"&gt;&lt;li&gt;&lt;a href="#components"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#components"&gt;Projects&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#components"&gt;Settings&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
+&lt;/aside&gt;
+&lt;aside id="g-oc2" popover class="offcanvas offcanvas-right" aria-label="Right panel"&gt;
+  &lt;div class="offcanvas-header"&gt;&lt;strong&gt;Filters&lt;/strong&gt;&lt;button class="btn-close" type="button" popovertarget="g-oc2" popovertargetaction="hide" aria-label="Close"&gt;&lt;/button&gt;&lt;/div&gt;
+  &lt;div class="offcanvas-body"&gt;Built on the Popover API.&lt;/div&gt;
+&lt;/aside&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-dropdowns">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-dropdowns">Dropdowns</h3><span class="text-xs text-muted cluster gap-1"><code>dropdown</code> <code>menu</code> <code>dropdown-menu</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<details class="dropdown"><summary class="btn btn-soft">Details dropdown</summary>
+  <ul class="menu"><li><a href="#components" class="active">Profile</a></li><li><a href="#components">Settings</a></li><li><hr class="menu-divider"></li><li><button type="button">Sign out</button></li></ul></details>
+<button class="btn btn-outline" type="button" popovertarget="g-pop">Popover menu</button>
+<div id="g-pop" popover class="menu dropdown-menu"><ul class="list-none p-0 m-0"><li><a href="#components">Duplicate</a></li><li><a href="#components">Archive</a></li><li><button type="button">Delete</button></li></ul></div>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;details class="dropdown"&gt;&lt;summary class="btn btn-soft"&gt;Details dropdown&lt;/summary&gt;
+  &lt;ul class="menu"&gt;&lt;li&gt;&lt;a href="#components" class="active"&gt;Profile&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#components"&gt;Settings&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;hr class="menu-divider"&gt;&lt;/li&gt;&lt;li&gt;&lt;button type="button"&gt;Sign out&lt;/button&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/details&gt;
+&lt;button class="btn btn-outline" type="button" popovertarget="g-pop"&gt;Popover menu&lt;/button&gt;
+&lt;div id="g-pop" popover class="menu dropdown-menu"&gt;&lt;ul class="list-none p-0 m-0"&gt;&lt;li&gt;&lt;a href="#components"&gt;Duplicate&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#components"&gt;Archive&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;button type="button"&gt;Delete&lt;/button&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-tooltip-and-toast">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-tooltip-and-toast">Tooltip and toast</h3><span class="text-xs text-muted cluster gap-1"><code>data-tooltip</code> <code>toast</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<button class="btn btn-outline" type="button" data-tooltip="Top tooltip">Top</button>
+<button class="btn btn-outline" type="button" data-tooltip="Bottom tooltip" data-tooltip-pos="bottom">Bottom</button>
+<button class="btn btn-outline" type="button" data-tooltip="Right tooltip" data-tooltip-pos="right">Right</button>
+<button class="btn tone-success" type="button" popovertarget="g-toast">Show toast</button>
+<div id="g-toast" popover="manual" class="toast tone-success" role="status"><strong>Saved.</strong> Your changes are live. <button class="btn-close" type="button" popovertarget="g-toast" popovertargetaction="hide" aria-label="Dismiss"></button></div>
+<div class="toast tone-info w-full">A static toast is just a notice card.</div>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;button class="btn btn-outline" type="button" data-tooltip="Top tooltip"&gt;Top&lt;/button&gt;
+&lt;button class="btn btn-outline" type="button" data-tooltip="Bottom tooltip" data-tooltip-pos="bottom"&gt;Bottom&lt;/button&gt;
+&lt;button class="btn btn-outline" type="button" data-tooltip="Right tooltip" data-tooltip-pos="right"&gt;Right&lt;/button&gt;
+&lt;button class="btn tone-success" type="button" popovertarget="g-toast"&gt;Show toast&lt;/button&gt;
+&lt;div id="g-toast" popover="manual" class="toast tone-success" role="status"&gt;&lt;strong&gt;Saved.&lt;/strong&gt; Your changes are live. &lt;button class="btn-close" type="button" popovertarget="g-toast" popovertargetaction="hide" aria-label="Dismiss"&gt;&lt;/button&gt;&lt;/div&gt;
+&lt;div class="toast tone-info w-full"&gt;A static toast is just a notice card.&lt;/div&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-navbar">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-navbar">Navbar</h3><span class="text-xs text-muted cluster gap-1"><code>navbar</code> <code>navbar-brand</code> <code>navbar-nav</code> <code>navbar-end</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<nav class="navbar border rounded-lg w-full" aria-label="Demo navbar"><a class="navbar-brand" href="#components">Brand</a>
+  <ul class="navbar-nav"><li><a href="#components" aria-current="page">Home</a></li><li><a href="#components">Docs</a></li><li><a href="#components">Pricing</a></li></ul>
+  <a class="navbar-end btn btn-sm" href="#components">Sign in</a></nav>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;nav class="navbar border rounded-lg w-full" aria-label="Demo navbar"&gt;&lt;a class="navbar-brand" href="#components"&gt;Brand&lt;/a&gt;
+  &lt;ul class="navbar-nav"&gt;&lt;li&gt;&lt;a href="#components" aria-current="page"&gt;Home&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#components"&gt;Docs&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#components"&gt;Pricing&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+  &lt;a class="navbar-end btn btn-sm" href="#components"&gt;Sign in&lt;/a&gt;&lt;/nav&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-breadcrumb-and-pagination">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-breadcrumb-and-pagination">Breadcrumb and pagination</h3><span class="text-xs text-muted cluster gap-1"><code>breadcrumb</code> <code>pagination</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<div class="stack gap-4 w-full">
+  <nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="#components">Home</a></li><li><a href="#components">Library</a></li><li aria-current="page">Data</li></ol></nav>
+  <nav aria-label="Pagination"><ul class="pagination"><li><span aria-disabled="true">Prev</span></li><li><a href="#components">1</a></li><li><a href="#components" aria-current="page">2</a></li><li><a href="#components">3</a></li><li><a href="#components">Next</a></li></ul></nav>
+</div>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="stack gap-4 w-full"&gt;
+  &lt;nav aria-label="Breadcrumb"&gt;&lt;ol class="breadcrumb"&gt;&lt;li&gt;&lt;a href="#components"&gt;Home&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#components"&gt;Library&lt;/a&gt;&lt;/li&gt;&lt;li aria-current="page"&gt;Data&lt;/li&gt;&lt;/ol&gt;&lt;/nav&gt;
+  &lt;nav aria-label="Pagination"&gt;&lt;ul class="pagination"&gt;&lt;li&gt;&lt;span aria-disabled="true"&gt;Prev&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#components"&gt;1&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#components" aria-current="page"&gt;2&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#components"&gt;3&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#components"&gt;Next&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/nav&gt;
+&lt;/div&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-tabs">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-tabs">Tabs</h3><span class="text-xs text-muted cluster gap-1"><code>tabs</code> <code>tabs-pills</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<div class="stack gap-4 w-full">
+  <ul class="tabs"><li><a href="#components" aria-current="page">Overview</a></li><li><a href="#components">Usage</a></li><li><a href="#components">API</a></li></ul>
+  <ul class="tabs tabs-pills"><li><a href="#components" aria-current="page">Day</a></li><li><a href="#components">Week</a></li><li><a href="#components">Month</a></li></ul>
+</div>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="stack gap-4 w-full"&gt;
+  &lt;ul class="tabs"&gt;&lt;li&gt;&lt;a href="#components" aria-current="page"&gt;Overview&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#components"&gt;Usage&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#components"&gt;API&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+  &lt;ul class="tabs tabs-pills"&gt;&lt;li&gt;&lt;a href="#components" aria-current="page"&gt;Day&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#components"&gt;Week&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#components"&gt;Month&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;/div&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-accordion">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-accordion">Accordion</h3><span class="text-xs text-muted cluster gap-1"><code>accordion</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<div class="accordion w-full">
+  <details name="g-acc" open><summary>What is Shine?</summary><p>A single prebuilt stylesheet with utilities, components and design knobs.</p></details>
+  <details name="g-acc"><summary>Does it need JavaScript?</summary><p>No. Native details, dialog and popover elements do the work.</p></details>
+  <details name="g-acc"><summary>Can I override it?</summary><p>Yes. Shine lives in cascade layers, so your CSS always wins.</p></details>
+</div>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="accordion w-full"&gt;
+  &lt;details name="g-acc" open&gt;&lt;summary&gt;What is Shine?&lt;/summary&gt;&lt;p&gt;A single prebuilt stylesheet with utilities, components and design knobs.&lt;/p&gt;&lt;/details&gt;
+  &lt;details name="g-acc"&gt;&lt;summary&gt;Does it need JavaScript?&lt;/summary&gt;&lt;p&gt;No. Native details, dialog and popover elements do the work.&lt;/p&gt;&lt;/details&gt;
+  &lt;details name="g-acc"&gt;&lt;summary&gt;Can I override it?&lt;/summary&gt;&lt;p&gt;Yes. Shine lives in cascade layers, so your CSS always wins.&lt;/p&gt;&lt;/details&gt;
+&lt;/div&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-table">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-table">Table</h3><span class="text-xs text-muted cluster gap-1"><code>table</code> <code>table-striped</code> <code>table-hover</code> <code>table-wrap</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<div class="table-wrap w-full"><table class="table table-striped table-hover">
+  <thead><tr><th scope="col">Name</th><th scope="col">Role</th><th scope="col">Status</th></tr></thead>
+  <tbody><tr><td>Ada Lovelace</td><td>Engineer</td><td><span class="badge tone-success">Active</span></td></tr><tr><td>Grace Hopper</td><td>Admiral</td><td><span class="badge tone-warning">Away</span></td></tr><tr><td>Alan Turing</td><td>Researcher</td><td><span class="badge">Offline</span></td></tr></tbody>
+</table></div>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="table-wrap w-full"&gt;&lt;table class="table table-striped table-hover"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;Name&lt;/th&gt;&lt;th scope="col"&gt;Role&lt;/th&gt;&lt;th scope="col"&gt;Status&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Ada Lovelace&lt;/td&gt;&lt;td&gt;Engineer&lt;/td&gt;&lt;td&gt;&lt;span class="badge tone-success"&gt;Active&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Grace Hopper&lt;/td&gt;&lt;td&gt;Admiral&lt;/td&gt;&lt;td&gt;&lt;span class="badge tone-warning"&gt;Away&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Alan Turing&lt;/td&gt;&lt;td&gt;Researcher&lt;/td&gt;&lt;td&gt;&lt;span class="badge"&gt;Offline&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+&lt;/table&gt;&lt;/div&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-progress-meter-stat">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-progress-meter-stat">Progress, meter, stat</h3><span class="text-xs text-muted cluster gap-1"><code>progress</code> <code>meter</code> <code>stat</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<div class="stack gap-4 w-full">
+  <div><label class="label" for="g-prog">Uploading</label><progress class="progress" id="g-prog" value="60" max="100">60%</progress></div>
+  <div><label class="label" for="g-meter">Disk usage</label><meter class="meter" id="g-meter" min="0" max="100" low="40" high="80" optimum="20" value="55">55%</meter></div>
+  <div class="grid grid-cols-2 gap-4"><div class="stat"><span class="stat-label">Visitors</span><span class="stat-value">12.4k</span><span class="stat-desc">+8% vs. last week</span></div><div class="stat"><span class="stat-label">Bounce rate</span><span class="stat-value">32%</span><span class="stat-desc">-2.1 pts</span></div></div>
+</div>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="stack gap-4 w-full"&gt;
+  &lt;div&gt;&lt;label class="label" for="g-prog"&gt;Uploading&lt;/label&gt;&lt;progress class="progress" id="g-prog" value="60" max="100"&gt;60%&lt;/progress&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;label class="label" for="g-meter"&gt;Disk usage&lt;/label&gt;&lt;meter class="meter" id="g-meter" min="0" max="100" low="40" high="80" optimum="20" value="55"&gt;55%&lt;/meter&gt;&lt;/div&gt;
+  &lt;div class="grid grid-cols-2 gap-4"&gt;&lt;div class="stat"&gt;&lt;span class="stat-label"&gt;Visitors&lt;/span&gt;&lt;span class="stat-value"&gt;12.4k&lt;/span&gt;&lt;span class="stat-desc"&gt;+8% vs. last week&lt;/span&gt;&lt;/div&gt;&lt;div class="stat"&gt;&lt;span class="stat-label"&gt;Bounce rate&lt;/span&gt;&lt;span class="stat-value"&gt;32%&lt;/span&gt;&lt;span class="stat-desc"&gt;-2.1 pts&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-list-group">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-list-group">List group</h3><span class="text-xs text-muted cluster gap-1"><code>list-group</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+  <div class="list-group"><a href="#components" aria-current="true">Active item</a><a href="#components">Second item</a><a href="#components">Third item</a></div>
+  <ul class="list-group"><li class="flex justify-between"><span>Inbox</span><span class="badge">12</span></li><li class="flex justify-between"><span>Drafts</span><span class="badge tone-warning">3</span></li><li class="flex justify-between"><span>Sent</span><span class="badge tone-success">48</span></li></ul>
+</div>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full"&gt;
+  &lt;div class="list-group"&gt;&lt;a href="#components" aria-current="true"&gt;Active item&lt;/a&gt;&lt;a href="#components"&gt;Second item&lt;/a&gt;&lt;a href="#components"&gt;Third item&lt;/a&gt;&lt;/div&gt;
+  &lt;ul class="list-group"&gt;&lt;li class="flex justify-between"&gt;&lt;span&gt;Inbox&lt;/span&gt;&lt;span class="badge"&gt;12&lt;/span&gt;&lt;/li&gt;&lt;li class="flex justify-between"&gt;&lt;span&gt;Drafts&lt;/span&gt;&lt;span class="badge tone-warning"&gt;3&lt;/span&gt;&lt;/li&gt;&lt;li class="flex justify-between"&gt;&lt;span&gt;Sent&lt;/span&gt;&lt;span class="badge tone-success"&gt;48&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;/div&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-carousel">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-carousel">Carousel</h3><span class="text-xs text-muted cluster gap-1"><code>carousel</code> <code>carousel-peek</code> <code>carousel-hide-bar</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<div class="carousel rounded-lg w-full" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Demo slides">
+  <div class="demo-slide tone-primary bg-primary">Slide 1</div><div class="demo-slide tone-accent bg-accent">Slide 2</div><div class="demo-slide tone-success bg-success">Slide 3</div>
+</div>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="carousel rounded-lg w-full" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Demo slides"&gt;
+  &lt;div class="demo-slide tone-primary bg-primary"&gt;Slide 1&lt;/div&gt;&lt;div class="demo-slide tone-accent bg-accent"&gt;Slide 2&lt;/div&gt;&lt;div class="demo-slide tone-success bg-success"&gt;Slide 3&lt;/div&gt;
+&lt;/div&gt;</code></pre></details>
+</article>
+<article class="flex flex-col card card-flat lg:col-span-2 min-w-0" aria-labelledby="demo-layout-primitives">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-layout-primitives">Layout primitives</h3><span class="text-xs text-muted cluster gap-1"><code>stack</code> <code>cluster</code> <code>center</code> <code>section</code> <code>grid</code> <code>divider</code> <code>vr</code></span></div>
+<div class="card-body cluster gap-3 flex-1 content-start">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+  <div class="stack gap-2 p-4 bg-surface-2 rounded-lg"><strong>.stack</strong><span class="badge">one</span><span class="badge">two</span><span class="badge">three</span></div>
+  <div class="cluster gap-2 p-4 bg-surface-2 rounded-lg"><strong>.cluster</strong><span class="badge">one</span><span class="badge">two</span><span class="badge">three</span><span class="badge">four</span></div>
+  <div class="p-4 bg-surface-2 rounded-lg"><strong>.grid grid-cols-1 md:grid-cols-3</strong><div class="divider">or</div><div class="flex items-center gap-3 h-8"><span>left</span><span class="vr"></span><span>right</span></div></div>
+</div>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full"&gt;
+  &lt;div class="stack gap-2 p-4 bg-surface-2 rounded-lg"&gt;&lt;strong&gt;.stack&lt;/strong&gt;&lt;span class="badge"&gt;one&lt;/span&gt;&lt;span class="badge"&gt;two&lt;/span&gt;&lt;span class="badge"&gt;three&lt;/span&gt;&lt;/div&gt;
+  &lt;div class="cluster gap-2 p-4 bg-surface-2 rounded-lg"&gt;&lt;strong&gt;.cluster&lt;/strong&gt;&lt;span class="badge"&gt;one&lt;/span&gt;&lt;span class="badge"&gt;two&lt;/span&gt;&lt;span class="badge"&gt;three&lt;/span&gt;&lt;span class="badge"&gt;four&lt;/span&gt;&lt;/div&gt;
+  &lt;div class="p-4 bg-surface-2 rounded-lg"&gt;&lt;strong&gt;.grid grid-cols-1 md:grid-cols-3&lt;/strong&gt;&lt;div class="divider"&gt;or&lt;/div&gt;&lt;div class="flex items-center gap-3 h-8"&gt;&lt;span&gt;left&lt;/span&gt;&lt;span class="vr"&gt;&lt;/span&gt;&lt;span&gt;right&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre></details>
+</article>
+    </div>
+  </div>
+</section>
+
+<!-- 5. WHY -->
+<section id="why" class="section bg-surface border-t" aria-labelledby="h-why">
+  <div class="container mx-auto max-w-7xl stack gap-8">
+    <header class="stack gap-2 max-w-3xl">
+      <p class="label m-0 text-primary">Why Shine</p>
+      <h2 id="h-why" class="text-3xl md:text-4xl font-bold tracking-tight m-0">Small enough to forget about</h2>
+      <p class="lead m-0">One stylesheet, a few knobs, and your own CSS always wins.</p>
+    </header>
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0 m-0">
+      <li class="card"><div class="card-body stack gap-2"><span class="avatar" aria-hidden="true">01</span><h3 class="card-title m-0">Master knobs</h3><p class="text-muted m-0">Brand color, theme, corner level, shadow depth and density set once on <code>&lt;html&gt;</code>. Everything follows.</p></div></li>
+      <li class="card"><div class="card-body stack gap-2"><span class="avatar tone-accent" aria-hidden="true">02</span><h3 class="card-title m-0">Utilities without a compiler</h3><p class="text-muted m-0">Write <code>flex</code>, <code>p-4</code> and <code>md:grid-cols-3</code> straight in your HTML. Nothing to install.</p></div></li>
+      <li class="card"><div class="card-body stack gap-2"><span class="avatar tone-success" aria-hidden="true">03</span><h3 class="card-title m-0">Components without JavaScript</h3><p class="text-muted m-0">Modals, drawers, dropdowns, tooltips, toasts, accordions: native <code>dialog</code>, <code>popover</code> and <code>details</code>.</p></div></li>
+      <li class="card"><div class="card-body stack gap-2"><span class="avatar tone-info" aria-hidden="true">04</span><h3 class="card-title m-0">15.6 KB gzipped</h3><p class="text-muted m-0">Smaller than most hero images. Trim it further with <code>node build.js --only=...</code>.</p></div></li>
+      <li class="card"><div class="card-body stack gap-2"><span class="avatar tone-warning" aria-hidden="true">05</span><h3 class="card-title m-0">Accessible by default</h3><p class="text-muted m-0">Semantic HTML targets, visible focus rings, a skip link, reduced-motion and print styles.</p></div></li>
+      <li class="card"><div class="card-body stack gap-2"><span class="avatar tone-danger" aria-hidden="true">06</span><h3 class="card-title m-0">No specificity fights</h3><p class="text-muted m-0">Built on CSS cascade layers: your unlayered CSS beats Shine without <code>!important</code>.</p></div></li>
+    </ul>
+  </div>
+</section>
 </main>
 
-<script>
-const h = document.documentElement, $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
-const attrs = {}, vars = {};
-$$('[data-opt]').forEach(s => s.innerHTML = ['inherit',0,1,2,3,4,5].map(v => `<option>${v}</option>`).join(''));
-function render() {
-  const a = Object.entries(attrs).map(([k, v]) => ` data-${k}="${v}"`).join('');
-  const st = Object.entries(vars).map(([k, v]) => `${k}:${v}`).join('; ');
-  $('#snippet').textContent = `<html${a}${st ? ` style="${st}"` : ''}>`;
-}
-function apply(el) {
-  const k = el.dataset.attr, v = el.value;
-  if (v === 'inherit' || v === 'default') { h.removeAttribute('data-' + k); delete attrs[k]; }
-  else { h.setAttribute('data-' + k, v); attrs[k] = v; }
-  const o = $('#o-' + k); if (o) o.textContent = v;
-  render();
-}
-$$('[data-attr]').forEach(el => { el.addEventListener('input', () => apply(el)); });
-$$('[data-var]').forEach(el => {
-  el.value = '#' + getComputedStyle(h).getPropertyValue(el.dataset.var).trim().replace('#', '').padEnd(6, '0').slice(0, 6);
-  el.addEventListener('input', () => { h.style.setProperty(el.dataset.var, el.value); vars[el.dataset.var] = el.value; render(); });
-});
-$('#reset').onclick = () => { location.reload(); };
-$('#panel').open = innerWidth >= 768;
-['theme', 'radius', 'shadow'].forEach(k => attrs[k] = h.getAttribute('data-' + k) || undefined);
-attrs.theme = 'light'; delete attrs.radius; delete attrs.shadow; render();
-</script>
+<footer class="border-t py-12">
+  <div class="container mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-12 gap-8">
+    <div class="md:col-span-6 stack gap-2"><a class="navbar-brand flex items-center gap-2" href="#top"><img src="logo.svg" alt="" width="24" height="24">Shine</a><p class="text-muted text-sm m-0 max-w-sm">Ultra-light, pure-CSS framework: utility classes, ready-made components and master design knobs.</p></div>
+    <nav class="md:col-span-3" aria-label="Footer"><h2 class="label">Project</h2><ul class="list-none p-0 m-0 stack gap-2 text-sm"><li><a class="link" href="reference.html">Reference</a></li><li><a class="link" href="https://github.com/asticore/shine">GitHub</a></li><li><a class="link" href="https://github.com/asticore/shine/blob/main/LICENSE">License (MIT)</a></li></ul></nav>
+    <nav class="md:col-span-3" aria-label="On this page"><h2 class="label">On this page</h2><ul class="list-none p-0 m-0 stack gap-2 text-sm"><li><a class="link" href="#builder">Theme builder</a></li><li><a class="link" href="#playground">Playground</a></li><li><a class="link" href="#components">Components</a></li></ul></nav>
+  </div>
+  <p class="center max-w-7xl text-xs text-muted mt-8 mb-0">Released under the MIT license. This page is styled with Shine only.</p>
+</footer>
+
+<!-- Playground templates (inert until chosen) -->
+<template id="tpl-hero"><section class="section center stack gap-6 text-center">
+  <span class="badge mx-auto">New in v1</span>
+  <h1 class="text-5xl font-extrabold tracking-tight m-0">Build faster with less CSS</h1>
+  <p class="text-lg text-muted max-w-xl mx-auto m-0">A tiny stylesheet with utilities, components and design knobs. No build step required.</p>
+  <div class="cluster justify-center gap-3">
+    <a class="btn btn-lg" href="#">Get started</a>
+    <a class="btn btn-lg btn-outline" href="#">View on GitHub</a>
+  </div>
+</section></template>
+<template id="tpl-pricing"><section class="section center stack gap-8">
+  <div class="text-center stack gap-2"><h2 class="text-3xl font-bold m-0">Simple pricing</h2><p class="text-muted m-0">Pick a plan. Change it any time.</p></div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="card"><div class="card-body stack gap-3"><h3 class="card-title m-0">Hobby</h3><p class="text-4xl font-bold m-0">$0<span class="text-base font-normal text-muted">/mo</span></p><ul class="list-disc pl-4 text-sm text-muted m-0"><li>1 project</li><li>Community support</li></ul><a class="btn btn-outline btn-block" href="#">Start free</a></div></div>
+    <div class="card ring-2 ring-primary"><div class="card-body stack gap-3"><div class="flex items-center justify-between"><h3 class="card-title m-0">Pro</h3><span class="badge badge-solid">Popular</span></div><p class="text-4xl font-bold m-0">$19<span class="text-base font-normal text-muted">/mo</span></p><ul class="list-disc pl-4 text-sm text-muted m-0"><li>Unlimited projects</li><li>Priority support</li></ul><a class="btn btn-block" href="#">Go Pro</a></div></div>
+    <div class="card"><div class="card-body stack gap-3"><h3 class="card-title m-0">Team</h3><p class="text-4xl font-bold m-0">$49<span class="text-base font-normal text-muted">/mo</span></p><ul class="list-disc pl-4 text-sm text-muted m-0"><li>10 seats</li><li>SSO and audit log</li></ul><a class="btn btn-outline btn-block" href="#">Contact us</a></div></div>
+  </div>
+</section></template>
+<template id="tpl-features"><section class="section center stack gap-8">
+  <h2 class="text-3xl font-bold text-center m-0">Everything you need</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="stack gap-2"><span class="avatar">1</span><h3 class="text-lg font-semibold m-0">Fast</h3><p class="text-muted m-0">Tiny CSS, instant paint.</p></div>
+    <div class="stack gap-2"><span class="avatar tone-accent">2</span><h3 class="text-lg font-semibold m-0">Flexible</h3><p class="text-muted m-0">Utilities for fine control.</p></div>
+    <div class="stack gap-2"><span class="avatar tone-success">3</span><h3 class="text-lg font-semibold m-0">Themeable</h3><p class="text-muted m-0">Change one token, restyle all.</p></div>
+    <div class="stack gap-2"><span class="avatar tone-info">4</span><h3 class="text-lg font-semibold m-0">Accessible</h3><p class="text-muted m-0">Focus rings and semantics.</p></div>
+    <div class="stack gap-2"><span class="avatar tone-warning">5</span><h3 class="text-lg font-semibold m-0">Native</h3><p class="text-muted m-0">Dialog, popover, details.</p></div>
+    <div class="stack gap-2"><span class="avatar tone-danger">6</span><h3 class="text-lg font-semibold m-0">Layered</h3><p class="text-muted m-0">Your CSS always wins.</p></div>
+  </div>
+</section></template>
+<template id="tpl-login"><section class="section center">
+  <form class="card max-w-md mx-auto"><div class="card-body stack gap-4">
+    <div><h2 class="card-title text-2xl m-0">Sign in</h2><p class="text-muted text-sm m-0">Welcome back.</p></div>
+    <div class="field"><label class="label" for="l-mail">Email</label><input class="input" id="l-mail" type="email" placeholder="you@example.com"></div>
+    <div class="field"><label class="label" for="l-pass">Password</label><input class="input" id="l-pass" type="password"></div>
+    <div class="flex items-center justify-between text-sm"><label class="flex items-center gap-2"><input type="checkbox" class="checkbox"> Remember me</label><a class="link" href="#">Forgot?</a></div>
+    <button class="btn btn-block" type="button">Sign in</button>
+    <div class="divider">or</div>
+    <button class="btn btn-outline btn-block" type="button">Continue with GitHub</button>
+  </div></form>
+</section></template>
+<template id="tpl-stats"><section class="p-6 stack gap-6">
+  <h2 class="text-2xl font-bold m-0">Dashboard</h2>
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="card"><div class="card-body stat"><span class="stat-label">Revenue</span><span class="stat-value">$48.2k</span><span class="stat-desc">+12% this month</span></div></div>
+    <div class="card"><div class="card-body stat"><span class="stat-label">Users</span><span class="stat-value">2,915</span><span class="stat-desc">+4.1%</span></div></div>
+    <div class="card"><div class="card-body stat"><span class="stat-label">Orders</span><span class="stat-value">318</span><span class="stat-desc">+22 today</span></div></div>
+    <div class="card"><div class="card-body stat"><span class="stat-label">Refunds</span><span class="stat-value">1.2%</span><span class="stat-desc">-0.4 pts</span></div></div>
+  </div>
+  <div class="card"><div class="card-body stack gap-2"><h3 class="card-title m-0">Goal progress</h3><progress class="progress" value="72" max="100" aria-label="Goal progress"></progress></div></div>
+</section></template>
+<template id="tpl-blog"><article class="prose center py-8">
+  <p class="text-sm text-muted">March 3 · 5 min read</p>
+  <h1>Designing with tokens</h1>
+  <p class="lead">Small decisions, made once, applied everywhere.</p>
+  <p>Design tokens are named values such as <code>--sh-primary</code>. Because components read from them, a single change restyles the page.</p>
+  <h2>Why it works</h2>
+  <ul><li>One source of truth</li><li>Scoped overrides on any element</li><li>No build step</li></ul>
+  <blockquote>Make the common case effortless and the rare case possible.</blockquote>
+  <p>Read more in the <a href="#">reference</a>.</p>
+</article></template>
+<template id="tpl-navbar"><div>
+  <nav class="navbar border-b" aria-label="Site"><a class="navbar-brand" href="#">Acme</a>
+    <ul class="navbar-nav"><li><a href="#" aria-current="page">Home</a></li><li><a href="#">Products</a></li><li><a href="#">About</a></li></ul>
+    <button class="navbar-end btn btn-outline btn-sm" type="button" popovertarget="pg-menu">Menu</button></nav>
+  <aside id="pg-menu" popover class="offcanvas" aria-label="Menu">
+    <div class="offcanvas-header"><strong>Menu</strong><button class="btn-close" type="button" popovertarget="pg-menu" popovertargetaction="hide" aria-label="Close"></button></div>
+    <div class="offcanvas-body"><ul class="menu"><li><a href="#" class="active">Home</a></li><li><a href="#">Products</a></li><li><a href="#">About</a></li></ul></div>
+  </aside>
+  <div class="section center"><p class="text-muted">Page content goes here. Press Menu to open the offcanvas.</p></div>
+</div></template>
+<template id="tpl-faq"><section class="section center max-w-3xl stack gap-6">
+  <h2 class="text-3xl font-bold m-0">Frequently asked questions</h2>
+  <div class="accordion">
+    <details name="faq" open><summary>What is Shine?</summary><p>An ultra-light CSS framework with utilities and components.</p></details>
+    <details name="faq"><summary>Is JavaScript required?</summary><p>No. Native HTML elements power every interactive component.</p></details>
+    <details name="faq"><summary>How do I theme it?</summary><p>Set data attributes and CSS variables on the html element.</p></details>
+  </div>
+</section></template>
+<template id="tpl-modal"><section class="section center stack gap-4 text-center">
+  <h2 class="text-2xl font-bold m-0">Modal demo</h2>
+  <div><button class="btn" type="button" command="show-modal" commandfor="pg-modal">Open dialog</button></div>
+  <dialog id="pg-modal" class="modal" aria-labelledby="pg-modal-t">
+    <div class="modal-header"><h3 class="card-title m-0" id="pg-modal-t">Delete project?</h3><button class="btn-close" type="button" command="close" commandfor="pg-modal" aria-label="Close"></button></div>
+    <div class="modal-body">This action cannot be undone.</div>
+    <div class="modal-footer"><button class="btn btn-ghost" type="button" command="close" commandfor="pg-modal">Cancel</button><button class="btn tone-danger" type="button" command="close" commandfor="pg-modal">Delete</button></div>
+  </dialog>
+</section></template>
+<template id="tpl-footer"><footer class="bg-surface border-t py-12">
+  <div class="center grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div class="col-span-2 stack gap-2"><strong class="text-lg">Acme</strong><p class="text-sm text-muted m-0 max-w-xs">Making things people want since 2020.</p></div>
+    <nav aria-label="Product"><h2 class="label">Product</h2><ul class="list-none p-0 m-0 stack gap-2 text-sm"><li><a class="link" href="#">Features</a></li><li><a class="link" href="#">Pricing</a></li></ul></nav>
+    <nav aria-label="Company"><h2 class="label">Company</h2><ul class="list-none p-0 m-0 stack gap-2 text-sm"><li><a class="link" href="#">About</a></li><li><a class="link" href="#">Contact</a></li></ul></nav>
+  </div>
+</footer></template>
+
+<script src="builder.js"></script>
 </body>
 </html>

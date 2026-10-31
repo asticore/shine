@@ -93,14 +93,26 @@ for (const [name, L] of layers) {
   out += `\n@layer ${name} {\n${body}\n}\n`;
 }
 
-const minify = css => css
+// Spaces around * and / are optional inside calc()/min()/max()/clamp() (only + and - need them)
+const tightMath = css => {
+  let out = '', i = 0;
+  const re = /\b(?:calc|min|max|clamp)\(/g;
+  for (let m; (m = re.exec(css)); ) {
+    let d = 1, j = m.index + m[0].length;
+    while (d && j < css.length) { const c = css[j++]; if (c === '(') d++; else if (c === ')') d--; }
+    out += css.slice(i, m.index) + css.slice(m.index, j).replace(/ ?([*\/]) ?/g, '$1');
+    i = re.lastIndex = j;
+  }
+  return out + css.slice(i);
+};
+
+const minify = css => tightMath(css
   .replace(/\/\*(?!!)[\s\S]*?\*\//g, '')
   .replace(/\s+/g, ' ')
   .replace(/\s*([{};,>])\s*/g, '$1')
   .replace(/:\s+/g, ':')
   .replace(/;}/g, '}')
-  .replace(/\b0\./g, '.')
-  .trim();
+  .replace(/\b0\./g, '.')).trim();
 
 fs.mkdirSync(DIST, { recursive: true });
 const min = minify(out);

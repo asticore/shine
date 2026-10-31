@@ -90,7 +90,6 @@
 
 .progress {
   appearance: none;
-  -webkit-appearance: none;
   display: block;
   width: 100%;
   height: .5rem;
@@ -118,7 +117,6 @@
 /* Meter: green/amber/red from optimum/low/high ranges */
 .meter {
   appearance: none;
-  -webkit-appearance: none;
   display: block;
   width: 100%;
   height: .5rem;
