@@ -507,7 +507,7 @@ const utilToc = { id: 'utilities', label: 'Utilities', sub: utilSections.map(u =
 toc.push(utilToc);
 sections.push(`<section id="utilities" aria-labelledby="h-utilities" class="space-y-8">
 <h2 id="h-utilities" class="text-3xl font-bold tracking-tight">Utilities</h2>
-<p class="max-w-prose">${utilCount} utility rules, generated from <code>src/utilities/*.css</code> when this page is built. Class names follow Tailwind. The last column lists the prefixed versions that the build creates, such as <code>md:p-4</code> or <code>hover:bg-primary</code>.</p>
+<p class="max-w-prose">${utilCount} utility rules, generated from <code>src/utilities/*.css</code> when this page is built. Class names follow familiar utility conventions (inspired by Tailwind CSS). The last column lists the prefixed versions that the build creates, such as <code>md:p-4</code> or <code>hover:bg-primary</code>.</p>
 <div class="field max-w-md" id="util-search-box" hidden>
 <label class="label" for="util-search">Filter utilities by class name</label>
 <input class="input" id="util-search" type="search" placeholder="e.g. flex, p-4, bg-primary" autocomplete="off">

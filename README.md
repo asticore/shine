@@ -7,7 +7,7 @@
 <h1 align="center">Shine CSS</h1>
 
 <p align="center">
-  <strong>Ultra-light, pure-CSS utility framework with Tailwind-style classes and master design knobs.</strong>
+  <strong>Ultra-light, pure-CSS framework: utility classes, ready-made components and master design knobs.</strong>
   <br>
   One stylesheet. No JavaScript. No build step. ~15 KB gzipped.
   <br>
@@ -30,10 +30,10 @@
 
 ## Why Shine?
 
-**Shine** is a lightweight CSS framework for building fast, accessible, SEO-friendly websites. It combines the utility classes of **Tailwind CSS** with the ready-made components of **Bootstrap**, in a single file smaller than most hero images.
+**Shine** is a lightweight CSS framework for building fast, accessible, SEO-friendly websites. It gives you utility classes for fine control and ready-made components for speed, all in a single file smaller than most hero images.
 
 - **Master knobs.** Set your brand color, dark or light theme, corner roundness (levels 0–5), shadow depth and spacing density once on `<html>`. Every button, card, input and utility follows.
-- **Tailwind class names.** Use `flex`, `p-4`, `md:grid-cols-3` and `text-lg` without a compiler.
+- **Utility classes, no compiler.** Write `flex`, `p-4`, `md:grid-cols-3` and `text-lg` straight in your HTML. Nothing to install or build.
 - **Components without JavaScript.** Modals, off-canvas menus, dropdowns, tooltips, toasts, accordions and tabs run on native HTML: `<dialog>`, `popover` and `<details>`.
 - **Small enough to forget about.** About 15 KB gzipped for the whole framework, or less with `node build.js --only=...`.
 - **Semantic and accessible.** Styles target real HTML elements and ARIA states. Includes focus rings, a skip link, reduced-motion support and print styles.
@@ -67,12 +67,31 @@ Then build with classes:
 
 ## Contents
 
+- [How Shine compares](#how-shine-compares)
 - [Master knobs](#1-master-knobs)
 - [Tones](#2-tones)
 - [Components](#3-components)
-- [Utilities](#4-utilities-tailwind-names)
+- [Utilities](#4-utilities)
 - [Cascade](#5-cascade)
 - [Build / customize](#build--customize)
+
+## How Shine compares
+
+| | **Shine** | Bootstrap 5 | Tailwind CSS 4 | UnoCSS | Bulma 1 | Pico CSS 2 |
+|---|---|---|---|---|---|---|
+| Size (min + gzip, approx.) | **~15 KB** CSS | ~30 KB CSS + ~23 KB JS | Depends on build (purged) | Depends on build | ~25 KB CSS | ~11 KB CSS |
+| Works without a build step | **Yes** | Yes | No (CLI / PostCSS / Vite) | No (or runtime script) | Yes | Yes |
+| Modals, dropdowns, off-canvas without JS | **Yes** (native `dialog`, `popover`, `details`) | No (needs bootstrap.js) | No components | No components | No (you write the JS) | Modal and dropdown only |
+| Utility classes | **Yes** | Partial | Yes | Yes | Partial | No (classless) |
+| Ready-made components | **Yes** | Yes | No | No | Yes | Basic |
+| Global corner / shadow / density levels | **One attribute each** (`data-radius="0–5"`) | Sass / CSS variables | Theme config | Theme config | CSS variables | CSS variables |
+| Per-component overrides (e.g. only buttons pill-shaped) | **Yes** (`data-btn-radius`) | Sass variables | Per-class | Per-class | CSS variables | CSS variables |
+| Dark mode | `data-theme`, per section | `data-bs-theme`, per section | `dark:` variant | `dark:` variant | Theme attribute / class | `data-theme`, per section |
+| Your CSS always wins (cascade layers) | **Yes** | No | Yes | Varies | No | No |
+
+Sizes are rough figures for each project's default distribution and change between versions; check each project for exact numbers.
+
+**Inspiration.** Shine's utility class names follow conventions popularized by [Tailwind CSS](https://tailwindcss.com), so they feel familiar. Its component set takes cues from [Bootstrap](https://getbootstrap.com). Unlike either, Shine is a single prebuilt stylesheet driven by a few global knobs.
 
 ## 1. Master knobs
 
@@ -136,7 +155,7 @@ All of it works with zero JavaScript: native `<dialog>`, `popover` and `<details
 
 Full class guide: `docs/reference.html` (generated from the CSS by `node docs.js`).
 
-## 4. Utilities (Tailwind names)
+## 4. Utilities
 
 Layout, flex/grid, spacing, sizing, typography, color, borders, shadows, interactivity —
 `flex items-center gap-4 p-6 md:grid-cols-3 text-lg font-semibold bg-surface rounded-lg hover:bg-primary`.
