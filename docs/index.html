@@ -11,6 +11,7 @@
 <header class="sticky top-0 z-50 bg-surface border-b">
   <details id="panel" class="container mx-auto px-4 py-2">
     <summary class="font-semibold">Shine playground — master knobs</summary>
+    <p class="text-sm mt-2"><a class="link" href="reference.html">Class and data-attribute reference</a></p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
       <div class="field"><label class="label" for="k-theme">data-theme</label>
         <select class="select" id="k-theme" data-attr="theme"><option>light</option><option>dark</option><option>auto</option></select></div>
@@ -37,7 +38,7 @@
 <main class="container mx-auto px-4 py-8 space-y-8">
   <section class="space-y-2">
     <h1 class="text-4xl font-bold tracking-tight">Shine</h1>
-    <p class="text-lg text-muted max-w-prose">Pure-CSS utility framework. This page is styled only with Shine classes. Turn the knobs above and everything follows.</p>
+    <p class="text-lg text-muted max-w-prose">Pure-CSS utility framework. This page is styled only with Shine classes. Turn the knobs above and everything follows. <a class="link" href="reference.html">Full class reference</a>.</p>
   </section>
 
   <section class="space-y-4" aria-labelledby="h-btn">
@@ -138,6 +139,33 @@
       <div class="bg-primary bg-o-75 h-12 w-16 flex-none"></div><div class="bg-primary bg-o-100 h-12 w-16 flex-none"></div>
     </div>
     <p class="text-sm text-muted">bg-primary + bg-o-10 / 25 / 50 / 75 / 100</p>
+  </section>
+
+  <section class="space-y-4" aria-labelledby="h-comp">
+    <h2 id="h-comp" class="text-2xl font-semibold">More components <a class="link text-base font-normal" href="reference.html#components">(docs)</a></h2>
+    <div class="flex flex-wrap items-center gap-3 pb-16">
+      <button class="btn" command="show-modal" commandfor="pg-modal">Modal</button>
+      <dialog id="pg-modal" class="modal" aria-labelledby="pg-modal-t">
+        <div class="modal-header"><h3 class="card-title" id="pg-modal-t">Modal</h3><button class="btn-close" command="close" commandfor="pg-modal" aria-label="Close"></button></div>
+        <div class="modal-body">Native dialog, no JS.</div>
+        <div class="modal-footer"><button class="btn" command="close" commandfor="pg-modal">OK</button></div>
+      </dialog>
+      <button class="btn btn-outline" popovertarget="pg-oc">Offcanvas</button>
+      <aside id="pg-oc" popover class="offcanvas" aria-label="Demo panel">
+        <div class="offcanvas-header"><strong>Panel</strong><button class="btn-close" popovertarget="pg-oc" popovertargetaction="hide" aria-label="Close"></button></div>
+        <div class="offcanvas-body">Popover API.</div>
+      </aside>
+      <details class="dropdown"><summary class="btn btn-soft">Dropdown</summary>
+        <ul class="menu"><li><a href="#h-comp" class="active">Profile</a></li><li><a href="#h-comp">Settings</a></li><li><hr class="menu-divider"></li><li><button type="button">Sign out</button></li></ul></details>
+      <button class="btn btn-ghost" data-tooltip="Tooltip text">Tooltip</button>
+    </div>
+    <nav class="navbar border rounded-lg" aria-label="Demo navbar"><a class="navbar-brand" href="#h-comp">Brand</a>
+      <ul class="navbar-nav"><li><a href="#h-comp" aria-current="page">Home</a></li><li><a href="#h-comp">Docs</a></li></ul><a class="navbar-end btn btn-sm" href="#h-comp">Sign in</a></nav>
+    <nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="#h-comp">Home</a></li><li><a href="#h-comp">Docs</a></li><li aria-current="page">Page</li></ol></nav>
+    <ul class="tabs"><li><a href="#h-comp" aria-current="page">Overview</a></li><li><a href="#h-comp">Usage</a></li><li><a href="#h-comp">API</a></li></ul>
+    <div class="accordion"><details open><summary>Accordion item</summary><p>Native details.</p></details><details><summary>Another</summary><p>More.</p></details></div>
+    <div class="table-wrap"><table class="table table-striped"><thead><tr><th>Name</th><th>Role</th></tr></thead><tbody><tr><td>Ada</td><td>Engineer</td></tr><tr><td>Grace</td><td>Admiral</td></tr></tbody></table></div>
+    <progress class="progress" value="60" max="100" aria-label="Progress"></progress>
   </section>
 
   <section class="space-y-4" aria-labelledby="h-scope">
