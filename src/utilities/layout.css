@@ -1,5 +1,5 @@
 /* Layout: display, position, overflow, container, misc */
-/* @variants responsive */
+/* @variants responsive print */
 .block{display:block}
 .inline-block{display:inline-block}
 .inline{display:inline}
@@ -55,6 +55,29 @@
 .object-contain{object-fit:contain}
 .aspect-square{aspect-ratio:1/1}
 .aspect-video{aspect-ratio:16/9}
+.aspect-auto{aspect-ratio:auto}
+.aspect-4\/3{aspect-ratio:4/3}
+.columns-1{columns:1}
+.columns-2{columns:2}
+.columns-3{columns:3}
+.columns-4{columns:4}
+.align-baseline{vertical-align:baseline}
+.align-top{vertical-align:top}
+.align-middle{vertical-align:middle}
+.align-bottom{vertical-align:bottom}
+.align-text-top{vertical-align:text-top}
+.scroll-mt-0{scroll-margin-top:calc(var(--sh-space)*0)}
+.scroll-mt-4{scroll-margin-top:calc(var(--sh-space)*4)}
+.scroll-mt-8{scroll-margin-top:calc(var(--sh-space)*8)}
+.scroll-mt-16{scroll-margin-top:calc(var(--sh-space)*16)}
+.scroll-mt-20{scroll-margin-top:calc(var(--sh-space)*20)}
+.scroll-mt-24{scroll-margin-top:calc(var(--sh-space)*24)}
+.scroll-pt-0{scroll-padding-top:calc(var(--sh-space)*0)}
+.scroll-pt-4{scroll-padding-top:calc(var(--sh-space)*4)}
+.scroll-pt-8{scroll-padding-top:calc(var(--sh-space)*8)}
+.scroll-pt-16{scroll-padding-top:calc(var(--sh-space)*16)}
+.scroll-pt-20{scroll-padding-top:calc(var(--sh-space)*20)}
+.scroll-pt-24{scroll-padding-top:calc(var(--sh-space)*24)}
 /* @variants responsive */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
 .not-sr-only{position:static;width:auto;height:auto;padding:0;margin:0;overflow:visible;clip:auto;white-space:normal}

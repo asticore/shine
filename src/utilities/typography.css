@@ -3,6 +3,7 @@
 .font-sans { font-family: var(--sh-font-sans); }
 .font-serif { font-family: var(--sh-font-serif); }
 .font-mono { font-family: var(--sh-font-mono); }
+.font-heading { font-family: var(--sh-font-heading, var(--sh-font-sans)); }
 
 /* @variants responsive */
 .text-xs { font-size: .75rem; line-height: 1rem; }
@@ -71,6 +72,9 @@
 .break-all { word-break: break-all; }
 .text-balance { text-wrap: balance; }
 .text-pretty { text-wrap: pretty; }
+.text-wrap { text-wrap: wrap; }
+.text-nowrap { text-wrap: nowrap; }
+.tabular-nums { font-variant-numeric: tabular-nums; }
 .list-disc { list-style-type: disc; }
 .list-decimal { list-style-type: decimal; }
 .list-none { list-style-type: none; }
