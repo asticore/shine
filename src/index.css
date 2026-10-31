@@ -1,0 +1,29 @@
+/* Shine — entry point.
+   Works directly in the browser (no build), minus variant classes (sm:, md:, hover:...).
+   Run `node build.js` for dist/shine.css with all variants.
+   Layer order = cascade order. Your own unlayered CSS always beats Shine. */
+@layer shine.tokens, shine.reset, shine.base, shine.components, shine.utilities;
+
+@import url("./tokens.css") layer(shine.tokens);
+@import url("./reset.css") layer(shine.reset);
+@import url("./base.css") layer(shine.base);
+
+@import url("./components/layout.css") layer(shine.components);
+@import url("./components/button.css") layer(shine.components);
+@import url("./components/card.css") layer(shine.components);
+@import url("./components/form.css") layer(shine.components);
+@import url("./components/badge.css") layer(shine.components);
+@import url("./components/alert.css") layer(shine.components);
+@import url("./components/overlay.css") layer(shine.components);
+@import url("./components/nav.css") layer(shine.components);
+@import url("./components/content.css") layer(shine.components);
+
+@import url("./utilities/typography.css") layer(shine.utilities);
+@import url("./utilities/layout.css") layer(shine.utilities);
+@import url("./utilities/flex-grid.css") layer(shine.utilities);
+@import url("./utilities/spacing.css") layer(shine.utilities);
+@import url("./utilities/sizing.css") layer(shine.utilities);
+@import url("./utilities/color.css") layer(shine.utilities);
+@import url("./utilities/borders.css") layer(shine.utilities);
+@import url("./utilities/effects.css") layer(shine.utilities);
+@import url("./utilities/interactivity.css") layer(shine.utilities);

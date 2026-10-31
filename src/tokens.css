@@ -1,0 +1,168 @@
+/* ==========================================================================
+   Shine — design tokens (the "master knobs")
+   Edit values here, or override any --sh-* variable on any element.
+   Everything in Shine reads from these, so one change restyles everything.
+
+   RULE: only BASE tokens live here. Derived values (soft tints, hover shades,
+   component radius, etc.) are computed where they are USED, so overriding a
+   base token on any element (e.g. style="--sh-primary:#e11d48") re-themes
+   that whole subtree.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand ------------------------------------------------------------ */
+  --sh-primary: #4f46e5;
+  --sh-secondary: #64748b;
+  --sh-accent: #db2777;
+  --sh-success: #15803d;
+  --sh-warning: #b45309;
+  --sh-danger: #dc2626;
+  --sh-info: #0369a1;
+
+  /* Text color placed ON a solid brand fill */
+  --sh-on-primary: #fff;
+  --sh-on-secondary: #fff;
+  --sh-on-accent: #fff;
+  --sh-on-success: #fff;
+  --sh-on-warning: #fff;
+  --sh-on-danger: #fff;
+  --sh-on-info: #fff;
+
+  /* ---- Surfaces (light) ------------------------------------------------- */
+  --sh-bg: #ffffff;          /* page */
+  --sh-surface: #f8fafc;     /* cards, panels */
+  --sh-surface-2: #f1f5f9;   /* inputs, wells, hover */
+  --sh-text: #0f172a;
+  --sh-text-muted: #64748b;
+  --sh-border: #e2e8f0;
+
+  /* ---- Shape ------------------------------------------------------------ */
+  --sh-radius: .5rem;        /* global corner level (see data-radius) */
+  --sh-border-width: 1px;
+
+  /* ---- Space ------------------------------------------------------------ */
+  --sh-space: .25rem;        /* spacing unit: p-4 = 4 x this */
+  --sh-density: 1;           /* component padding multiplier */
+
+  /* ---- Elevation -------------------------------------------------------- */
+  --sh-shadow-1: 0 1px 2px rgb(0 0 0 / .06), 0 1px 3px rgb(0 0 0 / .08);
+  --sh-shadow-2: 0 2px 4px rgb(0 0 0 / .06), 0 4px 8px rgb(0 0 0 / .08);
+  --sh-shadow-3: 0 4px 8px rgb(0 0 0 / .06), 0 10px 20px rgb(0 0 0 / .10);
+  --sh-shadow-4: 0 8px 16px rgb(0 0 0 / .08), 0 20px 40px rgb(0 0 0 / .12);
+  --sh-shadow-5: 0 12px 24px rgb(0 0 0 / .10), 0 32px 64px rgb(0 0 0 / .18);
+
+  /* ---- Typography ------------------------------------------------------- */
+  --sh-font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --sh-font-serif: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  --sh-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --sh-leading: 1.5;
+
+  /* ---- Motion ----------------------------------------------------------- */
+  --sh-duration: 150ms;
+  --sh-ease: cubic-bezier(.4, 0, .2, 1);
+
+  color-scheme: light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --sh-duration: 0s; }
+}
+
+/* ---- Themes -------------------------------------------------------------
+   <html data-theme="dark">   whole site dark
+   <section data-theme="dark"> just that section (it also paints its own bg)
+   data-theme="auto"           follow the OS setting
+   ------------------------------------------------------------------------ */
+[data-theme="light"] {
+  --sh-bg: #ffffff;
+  --sh-surface: #f8fafc;
+  --sh-surface-2: #f1f5f9;
+  --sh-text: #0f172a;
+  --sh-text-muted: #64748b;
+  --sh-border: #e2e8f0;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --sh-bg: #0b0f19;
+  --sh-surface: #121826;
+  --sh-surface-2: #1c2433;
+  --sh-text: #f1f5f9;
+  --sh-text-muted: #94a3b8;
+  --sh-border: #263042;
+  --sh-shadow-1: 0 1px 2px rgb(0 0 0 / .3), 0 1px 3px rgb(0 0 0 / .4);
+  --sh-shadow-2: 0 2px 4px rgb(0 0 0 / .3), 0 4px 8px rgb(0 0 0 / .4);
+  --sh-shadow-3: 0 4px 8px rgb(0 0 0 / .3), 0 10px 20px rgb(0 0 0 / .45);
+  --sh-shadow-4: 0 8px 16px rgb(0 0 0 / .35), 0 20px 40px rgb(0 0 0 / .5);
+  --sh-shadow-5: 0 12px 24px rgb(0 0 0 / .4), 0 32px 64px rgb(0 0 0 / .6);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] {
+    --sh-bg: #0b0f19;
+    --sh-surface: #121826;
+    --sh-surface-2: #1c2433;
+    --sh-text: #f1f5f9;
+    --sh-text-muted: #94a3b8;
+    --sh-border: #263042;
+    --sh-shadow-1: 0 1px 2px rgb(0 0 0 / .3), 0 1px 3px rgb(0 0 0 / .4);
+    --sh-shadow-2: 0 2px 4px rgb(0 0 0 / .3), 0 4px 8px rgb(0 0 0 / .4);
+    --sh-shadow-3: 0 4px 8px rgb(0 0 0 / .3), 0 10px 20px rgb(0 0 0 / .45);
+    --sh-shadow-4: 0 8px 16px rgb(0 0 0 / .35), 0 20px 40px rgb(0 0 0 / .5);
+    --sh-shadow-5: 0 12px 24px rgb(0 0 0 / .4), 0 32px 64px rgb(0 0 0 / .6);
+    color-scheme: dark;
+  }
+}
+
+/* ---- Corner level: data-radius="0".."5" on any element ----------------- */
+[data-radius="0"] { --sh-radius: 0; }
+[data-radius="1"] { --sh-radius: .25rem; }
+[data-radius="2"] { --sh-radius: .5rem; }
+[data-radius="3"] { --sh-radius: .75rem; }
+[data-radius="4"] { --sh-radius: 1.25rem; }
+[data-radius="5"] { --sh-radius: 2rem; }
+
+/* Per-component corner level (falls back to data-radius / --sh-radius) */
+[data-btn-radius="0"] { --sh-btn-radius: 0; }
+[data-btn-radius="1"] { --sh-btn-radius: .25rem; }
+[data-btn-radius="2"] { --sh-btn-radius: .5rem; }
+[data-btn-radius="3"] { --sh-btn-radius: .75rem; }
+[data-btn-radius="4"] { --sh-btn-radius: 1.25rem; }
+[data-btn-radius="5"] { --sh-btn-radius: 9999px; }
+
+[data-card-radius="0"] { --sh-card-radius: 0; }
+[data-card-radius="1"] { --sh-card-radius: .25rem; }
+[data-card-radius="2"] { --sh-card-radius: .5rem; }
+[data-card-radius="3"] { --sh-card-radius: .75rem; }
+[data-card-radius="4"] { --sh-card-radius: 1.25rem; }
+[data-card-radius="5"] { --sh-card-radius: 2rem; }
+
+[data-input-radius="0"] { --sh-input-radius: 0; }
+[data-input-radius="1"] { --sh-input-radius: .25rem; }
+[data-input-radius="2"] { --sh-input-radius: .5rem; }
+[data-input-radius="3"] { --sh-input-radius: .75rem; }
+[data-input-radius="4"] { --sh-input-radius: 1.25rem; }
+[data-input-radius="5"] { --sh-input-radius: 9999px; }
+
+/* ---- Elevation level: data-shadow="0".."5" ----------------------------- */
+[data-shadow="0"] { --sh-elevation: none; }
+[data-shadow="1"] { --sh-elevation: var(--sh-shadow-1); }
+[data-shadow="2"] { --sh-elevation: var(--sh-shadow-2); }
+[data-shadow="3"] { --sh-elevation: var(--sh-shadow-3); }
+[data-shadow="4"] { --sh-elevation: var(--sh-shadow-4); }
+[data-shadow="5"] { --sh-elevation: var(--sh-shadow-5); }
+
+/* ---- Density: data-density="compact|comfortable" ----------------------- */
+[data-density="compact"] { --sh-density: .75; }
+[data-density="comfortable"] { --sh-density: 1.25; }
+
+/* ---- Tones: recolor any component, e.g. <button class="btn tone-danger"> */
+.tone-primary   { --sh-tone: var(--sh-primary);   --sh-on-tone: var(--sh-on-primary); }
+.tone-secondary { --sh-tone: var(--sh-secondary); --sh-on-tone: var(--sh-on-secondary); }
+.tone-accent    { --sh-tone: var(--sh-accent);    --sh-on-tone: var(--sh-on-accent); }
+.tone-success   { --sh-tone: var(--sh-success);   --sh-on-tone: var(--sh-on-success); }
+.tone-warning   { --sh-tone: var(--sh-warning);   --sh-on-tone: var(--sh-on-warning); }
+.tone-danger    { --sh-tone: var(--sh-danger);    --sh-on-tone: var(--sh-on-danger); }
+.tone-info      { --sh-tone: var(--sh-info);      --sh-on-tone: var(--sh-on-info); }
+.tone-neutral   { --sh-tone: var(--sh-text);      --sh-on-tone: var(--sh-bg); }

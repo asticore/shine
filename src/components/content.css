@@ -1,0 +1,276 @@
+/* Content — .accordion (<details>), .table (.table-striped .table-hover .table-compact .table-wrap),
+   .progress (<progress>), .prose (long-form semantic HTML), .skip-link.
+   Knobs: --sh-card-radius, --sh-tone, --sh-density. */
+
+.accordion {
+  border: var(--sh-border-width) solid var(--sh-border);
+  border-radius: var(--sh-card-radius, var(--sh-radius));
+  overflow: clip;
+}
+
+.accordion > details + details {
+  border-top: var(--sh-border-width) solid var(--sh-border);
+}
+
+.accordion summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--sh-space) * 4);
+  padding: calc(var(--sh-space) * 3 * var(--sh-density)) calc(var(--sh-space) * 4 * var(--sh-density));
+  font-weight: 500;
+  list-style: none;
+  transition: background-color var(--sh-duration) var(--sh-ease);
+}
+
+.accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion summary:focus-visible { outline-offset: -2px; }
+
+.accordion summary:hover {
+  background: var(--sh-surface);
+}
+
+.accordion summary::after {
+  content: "";
+  flex: none;
+  width: .5rem;
+  height: .5rem;
+  margin-right: .25rem;
+  border-right: 2px solid var(--sh-text-muted);
+  border-bottom: 2px solid var(--sh-text-muted);
+  transform: rotate(45deg);
+  transition: transform var(--sh-duration) var(--sh-ease);
+}
+
+.accordion details[open] > summary::after {
+  transform: rotate(-135deg);
+}
+
+.accordion > details > :not(summary) {
+  margin: 0;
+  padding: 0 calc(var(--sh-space) * 4 * var(--sh-density)) calc(var(--sh-space) * 4 * var(--sh-density));
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table :is(th, td) {
+  padding: calc(var(--sh-space) * 3 * var(--sh-density)) calc(var(--sh-space) * 4 * var(--sh-density));
+  border-bottom: var(--sh-border-width) solid var(--sh-border);
+  text-align: left;
+}
+
+.table th {
+  color: var(--sh-text-muted);
+  font-size: .875rem;
+  font-weight: 600;
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background: var(--sh-surface);
+}
+
+.table-hover tbody tr:hover {
+  background: var(--sh-surface-2);
+}
+
+.table-compact :is(th, td) {
+  padding: calc(var(--sh-space) * 1.5 * var(--sh-density)) calc(var(--sh-space) * 3 * var(--sh-density));
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.progress {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
+  height: .5rem;
+  border: 0;
+  border-radius: 9999px;
+  background: var(--sh-surface-2);
+  overflow: hidden;
+}
+
+.progress::-webkit-progress-bar {
+  background: var(--sh-surface-2);
+}
+
+.progress::-webkit-progress-value {
+  background: var(--sh-tone, var(--sh-primary));
+  border-radius: 9999px;
+  transition: width var(--sh-duration) var(--sh-ease);
+}
+
+.progress::-moz-progress-bar {
+  background: var(--sh-tone, var(--sh-primary));
+  border-radius: 9999px;
+}
+
+/* Meter: green/amber/red from optimum/low/high ranges */
+.meter {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
+  height: .5rem;
+  border: 0;
+  border-radius: 9999px;
+  background: var(--sh-surface-2);
+  overflow: hidden;
+}
+.meter::-webkit-meter-bar {
+  height: .5rem;
+  border: 0;
+  background: var(--sh-surface-2);
+}
+.meter::-webkit-meter-optimum-value { background: var(--sh-success); }
+.meter::-webkit-meter-suboptimum-value { background: var(--sh-warning); }
+.meter::-webkit-meter-even-less-good-value { background: var(--sh-danger); }
+.meter:-moz-meter-optimum::-moz-meter-bar { background: var(--sh-success); }
+.meter:-moz-meter-sub-optimum::-moz-meter-bar { background: var(--sh-warning); }
+.meter:-moz-meter-sub-sub-optimum::-moz-meter-bar { background: var(--sh-danger); }
+
+/* Stat: label / big number / description */
+.stat { display: grid; gap: calc(var(--sh-space) * 1); }
+.stat-label,
+.stat-desc {
+  font-size: .875rem;
+  color: var(--sh-text-muted);
+}
+.stat-value {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+}
+
+.prose {
+  max-width: 65ch;
+  line-height: 1.7;
+}
+
+:where(.prose > * + *) {
+  margin-top: 1.25em;
+}
+
+:where(.prose) :is(h1, h2, h3, h4) {
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+:where(.prose) :is(h2, h3, h4) {
+  margin-top: 2em;
+}
+
+:where(.prose) h1 { font-size: 2.25rem; font-weight: 800; }
+:where(.prose) h2 { font-size: 1.5rem; }
+:where(.prose) h3 { font-size: 1.25rem; }
+:where(.prose) h4 { font-size: 1rem; }
+
+:where(.prose) :is(ul, ol) {
+  padding-left: 1.5em;
+}
+
+:where(.prose) ul { list-style: disc; }
+:where(.prose) ol { list-style: decimal; }
+:where(.prose) li + li { margin-top: .25em; }
+
+:where(.prose) a {
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text));
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+:where(.prose) blockquote {
+  padding-left: 1em;
+  border-left: 4px solid var(--sh-tone, var(--sh-primary));
+  color: var(--sh-text-muted);
+  font-style: italic;
+}
+
+:where(.prose) :is(code, pre) {
+  font-family: var(--sh-font-mono);
+  font-size: .875em;
+  background: var(--sh-surface-2);
+}
+
+:where(.prose) code {
+  padding: .15em .35em;
+  border-radius: calc(var(--sh-radius) / 2);
+}
+
+:where(.prose) pre {
+  padding: 1em;
+  border-radius: var(--sh-radius);
+  overflow: auto;
+}
+
+:where(.prose) pre code {
+  padding: 0;
+  background: none;
+  font-size: inherit;
+}
+
+:where(.prose) img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--sh-radius);
+}
+
+:where(.prose) hr {
+  border: 0;
+  border-top: var(--sh-border-width) solid var(--sh-border);
+}
+
+:where(.prose) table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .875em;
+}
+
+:where(.prose) :is(th, td) {
+  padding: .5em .75em;
+  border-bottom: var(--sh-border-width) solid var(--sh-border);
+  text-align: left;
+}
+
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: calc(var(--sh-space) * 2);
+  left: calc(var(--sh-space) * 2);
+  z-index: 100;
+  width: auto;
+  height: auto;
+  padding: calc(var(--sh-space) * 2 * var(--sh-density)) calc(var(--sh-space) * 4 * var(--sh-density));
+  overflow: visible;
+  clip-path: none;
+  border-radius: var(--sh-btn-radius, var(--sh-radius));
+  background: var(--sh-tone, var(--sh-primary));
+  color: var(--sh-on-tone, var(--sh-on-primary));
+  text-decoration: none;
+}
+
+/* ---- Print (last component file so it wins over nav/card/overlay rules) ---- */
+@media print {
+  .navbar, .offcanvas, .toast, .btn-close, .skip-link, dialog:not([open]) { display: none; }
+  .card, .modal { box-shadow: none; }
+  .prose a[href^="http"]::after { content: " (" attr(href) ")"; }
+  .card, pre, tr { break-inside: avoid; }
+}

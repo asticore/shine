@@ -1,0 +1,305 @@
+/* Overlay — .modal, .offcanvas, .btn-close, .dropdown/.menu, [data-tooltip]. Zero JS (native dialog/popover/details).
+   Knobs: --sh-card-radius, --sh-density, --sh-duration. Fade/slide use @starting-style (no keyframes). */
+
+/* ---- Modal & offcanvas shell ------------------------------------------- */
+.modal,
+.offcanvas {
+  padding: 0;
+  background: var(--sh-surface);
+  color: var(--sh-text);
+  box-shadow: var(--sh-shadow-5);
+  transition: opacity var(--sh-duration) var(--sh-ease), transform var(--sh-duration) var(--sh-ease), overlay var(--sh-duration) allow-discrete, display var(--sh-duration) allow-discrete;
+}
+
+.modal {
+  width: 100%;
+  max-width: min(32rem, 100% - 2rem);
+  border: var(--sh-border-width) solid var(--sh-border);
+  border-radius: var(--sh-card-radius, var(--sh-radius));
+  opacity: 0;
+  transform: scale(.96);
+}
+
+.modal-sm { max-width: min(24rem, 100% - 2rem); }
+.modal-lg { max-width: min(48rem, 100% - 2rem); }
+.modal-full {
+  max-width: none;
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+}
+
+.modal:is([open], :popover-open),
+.offcanvas:is([open], :popover-open) {
+  opacity: 1;
+  transform: none;
+}
+
+@starting-style {
+  .modal:is([open], :popover-open) {
+    opacity: 0;
+    transform: scale(.96);
+  }
+}
+
+.modal::backdrop,
+.offcanvas::backdrop {
+  background-color: transparent;
+  transition: background-color var(--sh-duration) var(--sh-ease), overlay var(--sh-duration) allow-discrete, display var(--sh-duration) allow-discrete;
+}
+
+:is(.modal, .offcanvas):is([open], :popover-open)::backdrop {
+  background-color: color-mix(in oklab, black 50%, transparent);
+}
+
+@starting-style {
+  :is(.modal, .offcanvas):is([open], :popover-open)::backdrop { background-color: transparent; }
+}
+
+html:has(:modal) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer,
+.offcanvas-header,
+.offcanvas-body {
+  padding: calc(var(--sh-space) * 4 * var(--sh-density)) calc(var(--sh-space) * 5 * var(--sh-density));
+}
+
+.modal-header,
+.offcanvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--sh-space) * 3);
+  border-bottom: var(--sh-border-width) solid var(--sh-border);
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: calc(var(--sh-space) * 2);
+  border-top: var(--sh-border-width) solid var(--sh-border);
+}
+
+/* ---- Offcanvas (left by default) --------------------------------------- */
+.offcanvas {
+  --sh-oc: translateX(-100%);
+  inset: 0 auto 0 0;
+  width: min(20rem, 85vw);
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  overflow: auto;
+  transform: var(--sh-oc);
+}
+
+.offcanvas-right {
+  --sh-oc: translateX(100%);
+  inset: 0 0 0 auto;
+}
+
+.offcanvas-top,
+.offcanvas-bottom {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+}
+
+.offcanvas-top {
+  --sh-oc: translateY(-100%);
+  inset: 0 0 auto;
+}
+
+.offcanvas-bottom {
+  --sh-oc: translateY(100%);
+  inset: auto 0 0;
+}
+
+@starting-style {
+  .offcanvas:is([open], :popover-open) {
+    opacity: 0;
+    transform: var(--sh-oc);
+  }
+}
+
+/* ---- Close button ------------------------------------------------------ */
+.btn-close {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--sh-btn-radius, var(--sh-radius));
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+  opacity: .6;
+  cursor: pointer;
+  transition: opacity var(--sh-duration) var(--sh-ease), background-color var(--sh-duration) var(--sh-ease);
+}
+
+.btn-close::before { content: "\00d7"; }
+
+.btn-close:hover,
+.btn-close:focus-visible {
+  opacity: 1;
+  background: color-mix(in oklab, currentColor 12%, transparent);
+}
+
+/* ---- Dropdown & menu --------------------------------------------------- */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown > summary { list-style: none; }
+.dropdown > summary::-webkit-details-marker { display: none; }
+
+.dropdown > .menu,
+.dropdown-menu[popover] {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 50;
+  min-width: 12rem;
+  margin-top: calc(var(--sh-space) * 1);
+  background: var(--sh-surface);
+  color: var(--sh-text);
+  border: var(--sh-border-width) solid var(--sh-border);
+  border-radius: var(--sh-card-radius, var(--sh-radius));
+  box-shadow: var(--sh-shadow-3);
+}
+
+.dropdown-end > .menu {
+  left: auto;
+  right: 0;
+}
+
+/* Popover dropdown: <button popovertarget=id> + <div popover class="menu dropdown-menu">. Anchored to its invoker. */
+.dropdown-menu[popover] {
+  inset: auto;
+  position-area: block-end span-inline-end;
+  position-try-fallbacks: flip-block, flip-inline;
+  overflow: visible;
+}
+.dropdown-menu-end[popover] { position-area: block-end span-inline-start; }
+.menu[popover]:not(:popover-open) { display: none; }
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin: 0;
+  padding: calc(var(--sh-space) * 1 * var(--sh-density));
+  list-style: none;
+}
+
+.menu :is(a, button) {
+  display: block;
+  width: 100%;
+  padding: calc(var(--sh-space) * 2 * var(--sh-density)) calc(var(--sh-space) * 3 * var(--sh-density));
+  border: 0;
+  border-radius: var(--sh-radius);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+}
+
+.menu :is(a, button):hover,
+.menu :is(a, button):focus-visible {
+  background: var(--sh-surface-2);
+}
+
+.menu :is([aria-current], .active) {
+  background: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 15%, transparent);
+  font-weight: 600;
+}
+
+.menu-divider {
+  height: var(--sh-border-width);
+  margin: calc(var(--sh-space) * 1) 0;
+  padding: 0;
+  border: 0;
+  background: var(--sh-border);
+}
+
+/* ---- Tooltip ----------------------------------------------------------- */
+[data-tooltip] { position: relative; }
+
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  inset: auto auto 100% 50%;
+  z-index: 60;
+  margin: 0 0 .5rem;
+  padding: calc(var(--sh-space) * 1 * var(--sh-density)) calc(var(--sh-space) * 2 * var(--sh-density));
+  border-radius: var(--sh-radius);
+  background: var(--sh-text);
+  color: var(--sh-bg);
+  font-size: .75rem;
+  font-weight: 400;
+  line-height: 1.4;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%);
+  transition: opacity var(--sh-duration) var(--sh-ease), visibility var(--sh-duration);
+}
+
+[data-tooltip]:is(:hover, :focus-visible, :focus-within)::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+[data-tooltip-pos="bottom"]::after {
+  inset: 100% auto auto 50%;
+  margin: .5rem 0 0;
+}
+
+[data-tooltip-pos="left"]::after {
+  inset: 50% 100% auto auto;
+  margin: 0 .5rem 0 0;
+  transform: translateY(-50%);
+}
+
+[data-tooltip-pos="right"]::after {
+  inset: 50% auto auto 100%;
+  margin: 0 0 0 .5rem;
+  transform: translateY(-50%);
+}
+
+/* ---- Toast: <div popover="manual" class="toast"> (open via popovertarget or showPopover()). Static use = card notice. */
+.toast {
+  inset: auto 1rem 1rem auto;
+  width: min(22rem, 100% - 2rem);
+  margin: 0;
+  padding: calc(var(--sh-space) * 3 * var(--sh-density)) calc(var(--sh-space) * 4 * var(--sh-density));
+  background: var(--sh-surface);
+  color: var(--sh-text);
+  border: var(--sh-border-width) solid var(--sh-border);
+  border-inline-start: 4px solid var(--sh-tone, var(--sh-primary));
+  border-radius: var(--sh-card-radius, var(--sh-radius));
+  box-shadow: var(--sh-shadow-4);
+}
+.toast:not([popover]) {
+  position: static;
+  width: auto;
+  box-shadow: var(--sh-elevation, var(--sh-shadow-1));
+}
+.toast-top { inset-block: 1rem auto; }
+.toast-left { inset-inline: 1rem auto; }
+.toast-center {
+  inset-inline: 0;
+  margin-inline: auto;
+}

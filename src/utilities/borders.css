@@ -1,0 +1,75 @@
+/* Shine — borders, radius, rings. Loads after color.css: default border-color uses :where() (0 specificity) so .border-{color} always wins. */
+@property --sh-ring-color { syntax: "*"; inherits: false; }
+
+/* @variants responsive */
+.border { border-width: var(--sh-border-width); border-style: solid; }
+.border-0 { border-width: 0px; }
+/* @end */
+
+.border-2 { border-width: 2px; border-style: solid; }
+.border-4 { border-width: 4px; border-style: solid; }
+.border-8 { border-width: 8px; border-style: solid; }
+.border-x { border-left-width: var(--sh-border-width); border-right-width: var(--sh-border-width); border-style: solid; }
+.border-x-0 { border-left-width: 0px; border-right-width: 0px; }
+.border-x-2 { border-left-width: 2px; border-right-width: 2px; border-style: solid; }
+.border-y { border-top-width: var(--sh-border-width); border-bottom-width: var(--sh-border-width); border-style: solid; }
+.border-y-0 { border-top-width: 0px; border-bottom-width: 0px; }
+.border-y-2 { border-top-width: 2px; border-bottom-width: 2px; border-style: solid; }
+.border-t { border-top-width: var(--sh-border-width); border-style: solid; }
+.border-t-0 { border-top-width: 0px; }
+.border-t-2 { border-top-width: 2px; border-style: solid; }
+.border-r { border-right-width: var(--sh-border-width); border-style: solid; }
+.border-r-0 { border-right-width: 0px; }
+.border-r-2 { border-right-width: 2px; border-style: solid; }
+.border-b { border-bottom-width: var(--sh-border-width); border-style: solid; }
+.border-b-0 { border-bottom-width: 0px; }
+.border-b-2 { border-bottom-width: 2px; border-style: solid; }
+.border-l { border-left-width: var(--sh-border-width); border-style: solid; }
+.border-l-0 { border-left-width: 0px; }
+.border-l-2 { border-left-width: 2px; border-style: solid; }
+.border-solid { border-style: solid; }
+.border-dashed { border-style: dashed; }
+.border-dotted { border-style: dotted; }
+.border-none { border-style: none; }
+
+.rounded-none { border-radius: 0; }
+.rounded-sm { border-radius: calc(var(--sh-radius) * .5); }
+.rounded { border-radius: var(--sh-radius); }
+.rounded-md { border-radius: calc(var(--sh-radius) * 1.25); }
+.rounded-lg { border-radius: calc(var(--sh-radius) * 1.5); }
+.rounded-xl { border-radius: calc(var(--sh-radius) * 2); }
+.rounded-2xl { border-radius: calc(var(--sh-radius) * 3); }
+.rounded-full { border-radius: 9999px; }
+.rounded-t { border-top-left-radius: var(--sh-radius); border-top-right-radius: var(--sh-radius); }
+.rounded-t-lg { border-top-left-radius: calc(var(--sh-radius) * 1.5); border-top-right-radius: calc(var(--sh-radius) * 1.5); }
+.rounded-t-none { border-top-left-radius: 0; border-top-right-radius: 0; }
+.rounded-r { border-top-right-radius: var(--sh-radius); border-bottom-right-radius: var(--sh-radius); }
+.rounded-r-lg { border-top-right-radius: calc(var(--sh-radius) * 1.5); border-bottom-right-radius: calc(var(--sh-radius) * 1.5); }
+.rounded-r-none { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.rounded-b { border-bottom-left-radius: var(--sh-radius); border-bottom-right-radius: var(--sh-radius); }
+.rounded-b-lg { border-bottom-left-radius: calc(var(--sh-radius) * 1.5); border-bottom-right-radius: calc(var(--sh-radius) * 1.5); }
+.rounded-b-none { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.rounded-l { border-top-left-radius: var(--sh-radius); border-bottom-left-radius: var(--sh-radius); }
+.rounded-l-lg { border-top-left-radius: calc(var(--sh-radius) * 1.5); border-bottom-left-radius: calc(var(--sh-radius) * 1.5); }
+.rounded-l-none { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+
+.divide-x > :not(:last-child) { border-right-width: var(--sh-border-width); border-style: solid; }
+.divide-y > :not(:last-child) { border-bottom-width: var(--sh-border-width); border-style: solid; }
+.divide-x-0 > :not(:last-child) { border-right-width: 0; }
+.divide-y-0 > :not(:last-child) { border-bottom-width: 0; }
+.divide-x-2 > :not(:last-child) { border-right-width: 2px; border-style: solid; }
+.divide-y-2 > :not(:last-child) { border-bottom-width: 2px; border-style: solid; }
+
+.ring-0 { box-shadow: 0 0 0 0px var(--sh-ring-color, color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 50%, transparent)); }
+.ring-1 { box-shadow: 0 0 0 1px var(--sh-ring-color, color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 50%, transparent)); }
+.ring { box-shadow: 0 0 0 3px var(--sh-ring-color, color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 50%, transparent)); }
+.ring-2 { box-shadow: 0 0 0 2px var(--sh-ring-color, color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 50%, transparent)); }
+.ring-4 { box-shadow: 0 0 0 4px var(--sh-ring-color, color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 50%, transparent)); }
+.ring-primary { --sh-ring-color: color-mix(in oklab, var(--sh-primary) 50%, transparent); }
+.ring-secondary { --sh-ring-color: color-mix(in oklab, var(--sh-secondary) 50%, transparent); }
+.ring-accent { --sh-ring-color: color-mix(in oklab, var(--sh-accent) 50%, transparent); }
+.ring-success { --sh-ring-color: color-mix(in oklab, var(--sh-success) 50%, transparent); }
+.ring-warning { --sh-ring-color: color-mix(in oklab, var(--sh-warning) 50%, transparent); }
+.ring-danger { --sh-ring-color: color-mix(in oklab, var(--sh-danger) 50%, transparent); }
+.ring-info { --sh-ring-color: color-mix(in oklab, var(--sh-info) 50%, transparent); }
+.outline-none { outline: 2px solid transparent; outline-offset: 2px; }

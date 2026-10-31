@@ -1,0 +1,24 @@
+{
+  "name": "shine-css",
+  "version": "0.2.0",
+  "description": "Ultra-light, pure-CSS utility framework with master design knobs.",
+  "style": "dist/shine.min.css",
+  "main": "dist/shine.min.css",
+  "unpkg": "dist/shine.min.css",
+  "jsdelivr": "dist/shine.min.css",
+  "exports": {
+    ".": "./dist/shine.min.css",
+    "./full": "./dist/shine.css",
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "src"],
+  "sideEffects": ["*.css"],
+  "scripts": {
+    "build": "node build.js && node docs.js",
+    "docs": "node docs.js"
+  },
+  "repository": { "type": "git", "url": "git+https://github.com/asticore/shine.git" },
+  "keywords": ["css", "utility-first", "tailwind-alternative", "design-tokens", "no-javascript"],
+  "license": "MIT"
+}

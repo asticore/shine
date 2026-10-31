@@ -1,0 +1,74 @@
+/* Badge, Avatar, Divider. Badge recolors with tone-*; knob: --sh-badge-radius. */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--sh-space) * 1);
+  padding: calc(var(--sh-space) * .5 * var(--sh-density)) calc(var(--sh-space) * 2.5 * var(--sh-density));
+  border: var(--sh-border-width) solid transparent;
+  border-radius: var(--sh-badge-radius, 9999px);
+  background: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 15%, transparent);
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 75%, var(--sh-text));
+  font-size: .75rem;
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.badge-solid {
+  background: var(--sh-tone, var(--sh-primary));
+  color: var(--sh-on-tone, var(--sh-on-primary));
+}
+
+.badge-outline {
+  background: transparent;
+  border-color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 60%, transparent);
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 75%, var(--sh-text));
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--sh-surface-2);
+  color: var(--sh-text-muted);
+  font-size: .875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-group { display: flex; }
+.avatar-group > .avatar { box-shadow: 0 0 0 2px var(--sh-avatar-ring, var(--sh-bg)); }
+.avatar-group > .avatar + .avatar { margin-inline-start: calc(var(--sh-space) * -3); }
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--sh-space) * 3);
+  margin-block: calc(var(--sh-space) * 4);
+  color: var(--sh-text-muted);
+  font-size: .75rem;
+  border: 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-top: var(--sh-border-width) solid var(--sh-border);
+}
+
+/* Plain <hr class="divider"> or empty divider: single unbroken line */
+.divider:empty::after { display: none; }
+.divider:empty { gap: 0; }
