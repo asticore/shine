@@ -23,7 +23,7 @@
   transition: background-color var(--sh-duration) var(--sh-ease), border-color var(--sh-duration) var(--sh-ease), color var(--sh-duration) var(--sh-ease);
 }
 
-.btn:hover {
+.btn:hover:where(:not(:disabled,[aria-disabled="true"])) {
   background: color-mix(in oklab, var(--sh-tone, var(--sh-primary)), black 12%);
 }
 
@@ -53,8 +53,8 @@
   color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text));
 }
 
-.btn-outline:hover,
-.btn-ghost:hover {
+.btn-outline:hover:where(:not(:disabled,[aria-disabled="true"])),
+.btn-ghost:hover:where(:not(:disabled,[aria-disabled="true"])) {
   background: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 12%, transparent);
 }
 
@@ -68,7 +68,7 @@
   color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text));
 }
 
-.btn-soft:hover {
+.btn-soft:hover:where(:not(:disabled,[aria-disabled="true"])) {
   background: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 25%, transparent);
 }
 
@@ -89,7 +89,7 @@
   text-underline-offset: .2em;
 }
 
-.btn-link:hover,
+.btn-link:hover:where(:not(:disabled,[aria-disabled="true"])),
 .btn-link:active {
   background: transparent;
   color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)), black 15%);

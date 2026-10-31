@@ -6,24 +6,23 @@
 .shadow { box-shadow: var(--sh-shadow-2); }
 .shadow-md { box-shadow: var(--sh-shadow-3); }
 .shadow-lg { box-shadow: var(--sh-shadow-4); }
-.shadow-xl { box-shadow: var(--sh-shadow-5); }
-.shadow-2xl { box-shadow: var(--sh-shadow-5); }
+.shadow-xl, .shadow-2xl { box-shadow: var(--sh-shadow-5); }
 /* @end */
 .shadow-elevation { box-shadow: var(--sh-elevation, var(--sh-shadow-1)); }
 
 /* @variants hover */
 .opacity-0 { opacity: 0; }
+.opacity-50 { opacity: .5; }
+.opacity-75 { opacity: .75; }
+.opacity-100 { opacity: 1; }
+/* @end */
 .opacity-5 { opacity: .05; }
 .opacity-10 { opacity: .1; }
 .opacity-20 { opacity: .2; }
 .opacity-25 { opacity: .25; }
-.opacity-50 { opacity: .5; }
-.opacity-75 { opacity: .75; }
 .opacity-80 { opacity: .8; }
 .opacity-90 { opacity: .9; }
 .opacity-95 { opacity: .95; }
-.opacity-100 { opacity: 1; }
-/* @end */
 
 .backdrop-blur-sm { -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
 .backdrop-blur-md { -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }

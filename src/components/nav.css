@@ -36,7 +36,7 @@
   color: var(--sh-text);
 }
 
-.navbar-nav a[aria-current="page"] {
+.navbar-nav a:not(.btn)[aria-current="page"] {
   color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text));
   font-weight: 600;
 }

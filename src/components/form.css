@@ -31,7 +31,7 @@
 .input:focus,
 .select:focus,
 .textarea:focus {
-  outline: none;
+  outline: 2px solid transparent; /* keeps a visible ring in forced-colors mode */
   border-color: var(--_tone);
   box-shadow: 0 0 0 3px color-mix(in oklab, var(--_tone) 25%, transparent);
 }
@@ -66,9 +66,8 @@
 
 .select {
   appearance: none;
-  -webkit-appearance: none;
   padding-right: calc(var(--sh-space) * 9);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%2394a3b8' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 8 5 5 5-5'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%2394a3b8' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='m5 8 5 5 5-5'/></svg>");
   background-repeat: no-repeat;
   background-position: right calc(var(--sh-space) * 2.5) center;
   background-size: 1.25em;
@@ -91,7 +90,6 @@
 
 .switch {
   appearance: none;
-  -webkit-appearance: none;
   position: relative;
   flex: none;
   width: 2.5rem;

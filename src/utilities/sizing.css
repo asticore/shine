@@ -27,7 +27,6 @@
 .w-48{width:calc(var(--sh-space)*48)}
 .w-64{width:calc(var(--sh-space)*64)}
 .w-80{width:calc(var(--sh-space)*80)}
-.w-96{width:calc(var(--sh-space)*96)}
 .w-screen{width:100vw}
 .w-min{width:min-content}
 .w-max{width:max-content}
@@ -55,7 +54,6 @@
 .h-48{height:calc(var(--sh-space)*48)}
 .h-64{height:calc(var(--sh-space)*64)}
 .h-80{height:calc(var(--sh-space)*80)}
-.h-96{height:calc(var(--sh-space)*96)}
 .h-screen{height:100vh;height:100dvh}
 .h-min{height:min-content}
 .h-max{height:max-content}
@@ -82,10 +80,6 @@
 .max-w-6xl{max-width:72rem}
 .max-w-7xl{max-width:80rem}
 .max-w-prose{max-width:65ch}
-.max-w-screen-sm{max-width:640px}
-.max-w-screen-md{max-width:768px}
-.max-w-screen-lg{max-width:1024px}
-.max-w-screen-xl{max-width:1280px}
 .max-h-full{max-height:100%}
 .max-h-screen{max-height:100vh;max-height:100dvh}
 .size-4{width:calc(var(--sh-space)*4);height:calc(var(--sh-space)*4)}
@@ -94,5 +88,4 @@
 .size-8{width:calc(var(--sh-space)*8);height:calc(var(--sh-space)*8)}
 .size-10{width:calc(var(--sh-space)*10);height:calc(var(--sh-space)*10)}
 .size-12{width:calc(var(--sh-space)*12);height:calc(var(--sh-space)*12)}
-.size-16{width:calc(var(--sh-space)*16);height:calc(var(--sh-space)*16)}
 .size-full{width:100%;height:100%}

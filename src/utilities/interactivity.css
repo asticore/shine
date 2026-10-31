@@ -22,7 +22,7 @@
 .snap-y { scroll-snap-type: y mandatory; }
 .snap-start { scroll-snap-align: start; }
 .snap-center { scroll-snap-align: center; }
-.appearance-none { -webkit-appearance: none; appearance: none; }
+.appearance-none { appearance: none; }
 .touch-none { touch-action: none; }
 .touch-manipulation { touch-action: manipulation; }
 
