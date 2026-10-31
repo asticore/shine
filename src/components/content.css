@@ -115,6 +115,43 @@
   border-radius: 9999px;
 }
 
+/* Meter: green/amber/red from optimum/low/high ranges */
+.meter {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
+  height: .5rem;
+  border: 0;
+  border-radius: 9999px;
+  background: var(--sh-surface-2);
+  overflow: hidden;
+}
+.meter::-webkit-meter-bar {
+  height: .5rem;
+  border: 0;
+  background: var(--sh-surface-2);
+}
+.meter::-webkit-meter-optimum-value { background: var(--sh-success); }
+.meter::-webkit-meter-suboptimum-value { background: var(--sh-warning); }
+.meter::-webkit-meter-even-less-good-value { background: var(--sh-danger); }
+.meter:-moz-meter-optimum::-moz-meter-bar { background: var(--sh-success); }
+.meter:-moz-meter-sub-optimum::-moz-meter-bar { background: var(--sh-warning); }
+.meter:-moz-meter-sub-sub-optimum::-moz-meter-bar { background: var(--sh-danger); }
+
+/* Stat: label / big number / description */
+.stat { display: grid; gap: calc(var(--sh-space) * 1); }
+.stat-label,
+.stat-desc {
+  font-size: .875rem;
+  color: var(--sh-text-muted);
+}
+.stat-value {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+}
+
 .prose {
   max-width: 65ch;
   line-height: 1.7;

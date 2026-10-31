@@ -37,3 +37,14 @@ hr { border-color: var(--sh-border); }
   text-decoration: underline;
   text-underline-offset: .2em;
 }
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .navbar, .offcanvas, .toast, .btn-close, .skip-link, dialog:not([open]) { display: none; }
+  .card, .modal { box-shadow: none; }
+  .prose a[href^="http"]::after { content: " (" attr(href) ")"; }
+  .card, pre, tr { break-inside: avoid; }
+}

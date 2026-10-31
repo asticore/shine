@@ -63,6 +63,21 @@ const layerDecl = (read('src/index.css').match(/@layer[^;{]+;/) || ['@layer shin
 /* ---------------------------------------------------------------- components */
 const COMPONENTS = [
   {
+    id: 'layout', file: 'layout', title: 'Layout primitives',
+    intro: 'Easy-to-use building blocks for spacing and page width. Gap and padding follow <code>--sh-stack-gap</code> and <code>--sh-center-max</code>; utilities such as <code>gap-2</code> or <code>py-4</code> override them.',
+    desc: {
+      stack: 'Vertical flex column with a consistent gap.', cluster: 'Wrapping horizontal row, vertically centered, with a gap.',
+      center: 'Centered container with a max width and side padding.', section: 'Large vertical padding for a page section (scales with density).',
+    },
+    examples: [{ html: `<div class="stack">
+  <strong>Stack</strong>
+  <p class="m-0">Children are spaced evenly.</p>
+  <div class="cluster">
+    <span class="badge">Cluster</span><span class="badge">of</span><span class="badge">items</span><button class="btn btn-sm">Action</button>
+  </div>
+</div>`, wrap: 'block' }],
+  },
+  {
     id: 'button', file: 'button', title: 'Button',
     intro: 'A <code>btn</code> is solid by default. Add a style (outline, soft, ghost, link), a size, and a tone class to recolor it.',
     desc: {
@@ -107,6 +122,9 @@ const COMPONENTS = [
       checkbox: 'Checkbox tinted with the tone.', radio: 'Radio button tinted with the tone.',
       switch: 'Toggle switch (use on a checkbox input).', label: 'Form label.',
       field: 'Groups label, control and hint in a tidy grid.', hint: 'Small helper text under a control.',
+      'input-group': 'Joins inputs, buttons and addons into one bar with shared borders.',
+      'input-addon': 'Muted text cell (a prefix, suffix or unit) inside an input-group.',
+      range: 'Slider (use on input type=range), tinted with the tone.', file: 'File picker (use on input type=file) with a soft-button style.',
     },
     examples: [{ html: `<div class="field">
   <label class="label" for="ex-name">Name</label>
@@ -128,20 +146,28 @@ const COMPONENTS = [
 </div>
 <label class="flex items-center gap-2"><input type="checkbox" class="checkbox" checked> Checkbox</label>
 <label class="flex items-center gap-2"><input type="radio" class="radio" name="ex-r" checked> Radio</label>
-<label class="flex items-center gap-2"><input type="checkbox" class="switch" checked> Switch</label>`, wrap: 'grid grid-cols-1 md:grid-cols-2 gap-4' }],
+<label class="flex items-center gap-2"><input type="checkbox" class="switch" checked> Switch</label>
+<div class="input-group">
+  <span class="input-addon">https://</span>
+  <input class="input" aria-label="Domain" placeholder="example.com">
+  <button class="btn">Go</button>
+</div>
+<input type="range" class="range" aria-label="Volume" value="40">
+<input type="file" class="file" aria-label="Upload file">`, wrap: 'grid grid-cols-1 md:grid-cols-2 gap-4' }],
   },
   {
     id: 'badge', file: 'badge', title: 'Badge, avatar, divider',
     intro: 'Small status chips, round avatars and separators. Badges take tone classes.',
     desc: {
       badge: 'Small tinted pill.', 'badge-solid': 'Solid tone fill.', 'badge-outline': 'Outlined, no fill.',
-      avatar: 'Round box for initials or an image.', divider: 'Horizontal rule; put text inside for a labelled divider.',
+      avatar: 'Round box for initials or an image.', 'avatar-group': 'Overlapping row of avatars, each ringed in the page background.', divider: 'Horizontal rule; put text inside for a labelled divider.',
     },
     examples: [{ html: `<span class="badge">Default</span>
 <span class="badge tone-success">Success</span>
 <span class="badge badge-solid tone-danger">Solid</span>
 <span class="badge badge-outline tone-info">Outline</span>
 <span class="avatar">AB</span>
+<div class="avatar-group"><span class="avatar">AB</span><span class="avatar">CD</span><span class="avatar">EF</span></div>
 <hr class="divider">
 <div class="divider">or</div>`, wrap: 'flex flex-wrap items-center gap-2' }],
   },
@@ -165,9 +191,17 @@ const COMPONENTS = [
       'btn-close': 'Round close button with a multiplication sign.', dropdown: 'Wrapper for a details/summary dropdown.',
       'dropdown-end': 'Aligns the menu to the right edge.', 'dropdown-menu': 'Popover menu: put on an element with popover, open with a popovertarget button. Closes on outside click and Esc.', 'dropdown-menu-end': 'Aligns a popover menu to the end edge of its button.', menu: 'Vertical list of links or buttons.',
       'menu-divider': 'Thin separator line between menu items.', active: 'Highlights the current menu or tab item.',
+      toast: 'Notification box. On an element with popover="manual" it floats bottom-right; without popover it is a static notice. Tone sets the left border.',
+      'toast-top': 'Positions the toast at the top.', 'toast-left': 'Positions the toast at the left.', 'toast-center': 'Centers the toast horizontally.',
       'data-tooltip': 'Attribute: text shown on hover or focus.', 'data-tooltip-pos': 'Attribute: top (default), bottom, left or right.',
     },
     examples: [
+      { title: 'Toast', html: `<button class="btn" popovertarget="demo-toast">Show toast</button>
+<div id="demo-toast" popover="manual" class="toast tone-success" role="status">
+  <strong>Saved.</strong> Your changes are live.
+  <button class="btn-close" popovertarget="demo-toast" popovertargetaction="hide" aria-label="Dismiss"></button>
+</div>
+<div class="toast tone-info">A static toast is just a card notice.</div>`, note: 'Showing needs a trigger: a <code>popovertarget</code> button works with no JS, but opening one automatically (after a save, say) needs <code>el.showPopover()</code>; popover="manual" does not auto-dismiss, so call <code>hidePopover()</code> after a timeout if you want that.' },
       { title: 'Modal', html: `<button class="btn" command="show-modal" commandfor="demo-modal">Open modal</button>
 <dialog id="demo-modal" class="modal" aria-labelledby="demo-modal-title">
   <div class="modal-header">
@@ -250,13 +284,16 @@ const COMPONENTS = [
 </nav>`, wrap: 'grid gap-5' }],
   },
   {
-    id: 'content', file: 'content', title: 'Content: accordion, table, progress, prose',
+    id: 'content', file: 'content', title: 'Content: accordion, table, progress, meter, stat, prose',
     intro: 'Building blocks for documents. The accordion is plain <code>&lt;details&gt;</code>; the progress bar is a native <code>&lt;progress&gt;</code>; <code>prose</code> styles long-form HTML such as articles.',
     desc: {
       accordion: 'Bordered stack of &lt;details&gt; items with a chevron.', table: 'Full-width table with row borders.',
       'table-striped': 'Zebra rows.', 'table-hover': 'Highlights the row under the pointer.',
       'table-compact': 'Tighter cell padding.', 'table-wrap': 'Scrolls a wide table sideways.',
       progress: 'Rounded progress bar (use on &lt;progress&gt;).', prose: 'Styles plain h1-h4, p, lists, code, tables and quotes inside it.',
+      meter: 'Gauge bar (use on &lt;meter&gt;); green, amber or red from low/high/optimum.',
+      stat: 'Metric block: label, big value, description. Works inside a card.',
+      'stat-label': 'Small muted label above the value.', 'stat-value': 'Large bold number.', 'stat-desc': 'Small muted note under the value.',
       'skip-link': 'Hidden link that appears on keyboard focus; place first in body.',
     },
     examples: [{ html: `<div class="accordion">
@@ -276,6 +313,14 @@ const COMPONENTS = [
 
 <progress class="progress" value="60" max="100" aria-label="Upload"></progress>
 <progress class="progress tone-success" value="30" max="100" aria-label="Done"></progress>
+
+<meter class="meter" value="80" min="0" max="100" low="30" high="70" optimum="100" aria-label="Good"></meter>
+<meter class="meter" value="50" min="0" max="100" low="30" high="70" optimum="100" aria-label="Fair"></meter>
+<meter class="meter" value="15" min="0" max="100" low="30" high="70" optimum="100" aria-label="Poor"></meter>
+
+<div class="card"><div class="card-body stat">
+  <span class="stat-label">Revenue</span><span class="stat-value">$12,480</span><span class="stat-desc">+8% from last month</span>
+</div></div>
 
 <a class="skip-link" href="#main">Skip to content</a>`, wrap: 'grid gap-5' }],
   },
@@ -348,6 +393,7 @@ const utilSections = utilFiles.map(f => {
     if (r.kinds.includes('responsive')) v.push(...Object.keys(BREAKPOINTS));
     if (r.kinds.includes('hover')) v.push('hover');
     if (r.kinds.includes('focus')) v.push('focus');
+    if (r.kinds.includes('print')) v.push('print');
     utilCount++; variantCount += v.length * names.length;
     rows.push(`<tr data-c="${esc(names.join(' ').toLowerCase())}"><td class="font-mono text-sm"><code>${esc(names.join(', '))}</code></td><td class="text-sm font-mono break-all">${esc(tidyBody(r.body))}</td><td class="text-sm">${v.length ? v.join(' ') : '-'}</td></tr>`);
   }

@@ -8,6 +8,7 @@
 @import url("./reset.css") layer(shine.reset);
 @import url("./base.css") layer(shine.base);
 
+@import url("./components/layout.css") layer(shine.components);
 @import url("./components/button.css") layer(shine.components);
 @import url("./components/card.css") layer(shine.components);
 @import url("./components/form.css") layer(shine.components);

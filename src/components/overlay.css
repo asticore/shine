@@ -277,3 +277,28 @@ html:has(:modal) {
   margin: 0 0 0 .5rem;
   transform: translateY(-50%);
 }
+
+/* ---- Toast: <div popover="manual" class="toast"> (open via popovertarget or showPopover()). Static use = card notice. */
+.toast {
+  inset: auto 1rem 1rem auto;
+  width: min(22rem, 100% - 2rem);
+  margin: 0;
+  padding: calc(var(--sh-space) * 3 * var(--sh-density)) calc(var(--sh-space) * 4 * var(--sh-density));
+  background: var(--sh-surface);
+  color: var(--sh-text);
+  border: var(--sh-border-width) solid var(--sh-border);
+  border-inline-start: 4px solid var(--sh-tone, var(--sh-primary));
+  border-radius: var(--sh-card-radius, var(--sh-radius));
+  box-shadow: var(--sh-shadow-4);
+}
+.toast:not([popover]) {
+  position: static;
+  width: auto;
+  box-shadow: var(--sh-elevation, var(--sh-shadow-1));
+}
+.toast-top { inset-block: 1rem auto; }
+.toast-left { inset-inline: 1rem auto; }
+.toast-center {
+  inset-inline: 0;
+  margin-inline: auto;
+}
