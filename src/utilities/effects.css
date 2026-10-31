@@ -4,9 +4,9 @@
 .shadow-none { box-shadow: none; }
 .shadow-sm { box-shadow: var(--sh-shadow-1); }
 .shadow { box-shadow: var(--sh-shadow-2); }
-.shadow-md { box-shadow: var(--sh-shadow-2); }
-.shadow-lg { box-shadow: var(--sh-shadow-3); }
-.shadow-xl { box-shadow: var(--sh-shadow-4); }
+.shadow-md { box-shadow: var(--sh-shadow-3); }
+.shadow-lg { box-shadow: var(--sh-shadow-4); }
+.shadow-xl { box-shadow: var(--sh-shadow-5); }
 .shadow-2xl { box-shadow: var(--sh-shadow-5); }
 /* @end */
 .shadow-elevation { box-shadow: var(--sh-elevation, var(--sh-shadow-1)); }

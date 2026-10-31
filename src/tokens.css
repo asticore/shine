@@ -11,13 +11,13 @@
 
 :root {
   /* ---- Brand ------------------------------------------------------------ */
-  --sh-primary: #6366f1;
+  --sh-primary: #4f46e5;
   --sh-secondary: #64748b;
-  --sh-accent: #ec4899;
-  --sh-success: #16a34a;
-  --sh-warning: #d97706;
+  --sh-accent: #db2777;
+  --sh-success: #15803d;
+  --sh-warning: #b45309;
   --sh-danger: #dc2626;
-  --sh-info: #0284c7;
+  --sh-info: #0369a1;
 
   /* Text color placed ON a solid brand fill */
   --sh-on-primary: #fff;
@@ -62,6 +62,10 @@
   --sh-ease: cubic-bezier(.4, 0, .2, 1);
 
   color-scheme: light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --sh-duration: 0s; }
 }
 
 /* ---- Themes -------------------------------------------------------------

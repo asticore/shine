@@ -14,11 +14,11 @@
 @import url("./components/badge.css") layer(shine.components);
 @import url("./components/alert.css") layer(shine.components);
 
+@import url("./utilities/typography.css") layer(shine.utilities);
 @import url("./utilities/layout.css") layer(shine.utilities);
 @import url("./utilities/flex-grid.css") layer(shine.utilities);
 @import url("./utilities/spacing.css") layer(shine.utilities);
 @import url("./utilities/sizing.css") layer(shine.utilities);
-@import url("./utilities/typography.css") layer(shine.utilities);
 @import url("./utilities/color.css") layer(shine.utilities);
 @import url("./utilities/borders.css") layer(shine.utilities);
 @import url("./utilities/effects.css") layer(shine.utilities);

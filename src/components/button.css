@@ -50,7 +50,7 @@
 .btn-outline {
   background: transparent;
   border-color: var(--sh-tone, var(--sh-primary));
-  color: var(--sh-tone, var(--sh-primary));
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
 }
 
 .btn-outline:hover,
@@ -78,12 +78,12 @@
 
 .btn-ghost {
   background: transparent;
-  color: var(--sh-tone, var(--sh-primary));
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
 }
 
 .btn-link {
   background: transparent;
-  color: var(--sh-tone, var(--sh-primary));
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
   padding-inline: 0;
   text-decoration: underline;
   text-underline-offset: .2em;

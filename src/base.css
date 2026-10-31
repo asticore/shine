@@ -31,7 +31,7 @@ body {
 hr { border-color: var(--sh-border); }
 
 .link {
-  color: var(--sh-primary);
+  color: color-mix(in oklab, var(--sh-primary) 80%, var(--sh-text));
   text-decoration: none;
   transition: color var(--sh-duration) var(--sh-ease);
 }
@@ -39,3 +39,7 @@ hr { border-color: var(--sh-border); }
   text-decoration: underline;
   text-underline-offset: .2em;
 }
+
+/* Default border color (0 specificity, in base layer so components/utilities win) */
+:where(.border, .border-2, .border-4, .border-8, .border-x, .border-x-2, .border-y, .border-y-2, .border-t, .border-t-2, .border-r, .border-r-2, .border-b, .border-b-2, .border-l, .border-l-2) { border-color: var(--sh-border); }
+:where(.divide-x, .divide-y, .divide-x-2, .divide-y-2) > :where(:not(:last-child)) { border-color: var(--sh-border); }

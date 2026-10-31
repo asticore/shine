@@ -39,3 +39,16 @@
 .ease-in { transition-timing-function: cubic-bezier(.4, 0, 1, 1); }
 .ease-out { transition-timing-function: cubic-bezier(0, 0, .2, 1); }
 .ease-in-out { transition-timing-function: cubic-bezier(.4, 0, .2, 1); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: .01ms;
+    animation-iteration-count: 1;
+    transition-duration: .01ms;
+    scroll-behavior: auto;
+  }
+  .duration-75, .duration-150, .duration-200, .duration-300, .duration-500, .scroll-smooth {
+    transition-duration: .01ms;
+    scroll-behavior: auto;
+  }
+}

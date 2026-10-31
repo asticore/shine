@@ -1,7 +1,11 @@
 /* Shine — borders, radius, rings. Loads after color.css: default border-color uses :where() (0 specificity) so .border-{color} always wins. */
+@property --sh-ring-color { syntax: "*"; inherits: false; }
 
+/* @variants responsive */
 .border { border-width: var(--sh-border-width); border-style: solid; }
 .border-0 { border-width: 0px; }
+/* @end */
+
 .border-2 { border-width: 2px; border-style: solid; }
 .border-4 { border-width: 4px; border-style: solid; }
 .border-8 { border-width: 8px; border-style: solid; }
@@ -27,7 +31,6 @@
 .border-dashed { border-style: dashed; }
 .border-dotted { border-style: dotted; }
 .border-none { border-style: none; }
-:where(.border,.border-2,.border-4,.border-8,.border-x,.border-x-2,.border-y,.border-y-2,.border-t,.border-t-2,.border-r,.border-r-2,.border-b,.border-b-2,.border-l,.border-l-2) { border-color: var(--sh-border); }
 
 .rounded-none { border-radius: 0; }
 .rounded-sm { border-radius: calc(var(--sh-radius) * .5); }
@@ -50,18 +53,12 @@
 .rounded-l-lg { border-top-left-radius: calc(var(--sh-radius) * 1.5); border-bottom-left-radius: calc(var(--sh-radius) * 1.5); }
 .rounded-l-none { border-top-left-radius: 0; border-bottom-left-radius: 0; }
 
-/* @variants responsive */
-.border { border-width: var(--sh-border-width); border-style: solid; }
-.border-0 { border-width: 0; }
-/* @end */
-
 .divide-x > :not(:last-child) { border-right-width: var(--sh-border-width); border-style: solid; }
 .divide-y > :not(:last-child) { border-bottom-width: var(--sh-border-width); border-style: solid; }
 .divide-x-0 > :not(:last-child) { border-right-width: 0; }
 .divide-y-0 > :not(:last-child) { border-bottom-width: 0; }
 .divide-x-2 > :not(:last-child) { border-right-width: 2px; border-style: solid; }
 .divide-y-2 > :not(:last-child) { border-bottom-width: 2px; border-style: solid; }
-:where(.divide-x, .divide-y, .divide-x-2, .divide-y-2) > :not(:last-child) { border-color: var(--sh-border); }
 
 .ring-0 { box-shadow: 0 0 0 0px var(--sh-ring-color, color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 50%, transparent)); }
 .ring-1 { box-shadow: 0 0 0 1px var(--sh-ring-color, color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 50%, transparent)); }

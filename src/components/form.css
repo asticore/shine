@@ -22,9 +22,9 @@
   opacity: 1;
 }
 
-.input:hover:not(:disabled),
-.select:hover:not(:disabled),
-.textarea:hover:not(:disabled) {
+.input:where(:hover:not(:disabled)),
+.select:where(:hover:not(:disabled)),
+.textarea:where(:hover:not(:disabled)) {
   border-color: color-mix(in oklab, var(--sh-text) 25%, var(--sh-border));
 }
 

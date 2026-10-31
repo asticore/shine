@@ -1,5 +1,9 @@
 /* Shine — color utilities (semantic + gray). Opacity: .bg-o-50 etc. set --sh-*-o */
 
+@property --sh-bg-o { syntax: "<percentage>"; inherits: false; initial-value: 100%; }
+@property --sh-text-o { syntax: "<percentage>"; inherits: false; initial-value: 100%; }
+@property --sh-border-o { syntax: "<percentage>"; inherits: false; initial-value: 100%; }
+
 /* @variants hover */
 .bg-primary { background-color: color-mix(in oklab, var(--sh-primary) var(--sh-bg-o, 100%), transparent); }
 .bg-secondary { background-color: color-mix(in oklab, var(--sh-secondary) var(--sh-bg-o, 100%), transparent); }
