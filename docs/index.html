@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shine playground</title>
+<link rel="stylesheet" href="../dist/shine.min.css">
+<style>input[type=color]{width:2.5rem;height:2rem;padding:0;border:0;background:none}pre{white-space:pre-wrap;word-break:break-all}</style>
+</head>
+<body class="bg-base text-default">
+<header class="sticky top-0 z-50 bg-surface border-b">
+  <details id="panel" class="container mx-auto px-4 py-2">
+    <summary class="font-semibold">Shine playground — master knobs</summary>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
+      <div class="field"><label class="label" for="k-theme">data-theme</label>
+        <select class="select" id="k-theme" data-attr="theme"><option>light</option><option>dark</option><option>auto</option></select></div>
+      <div class="field"><label class="label" for="k-radius">data-radius: <output id="o-radius">2</output></label>
+        <input type="range" id="k-radius" min="0" max="5" value="2" data-attr="radius"></div>
+      <div class="field"><label class="label" for="k-shadow">data-shadow: <output id="o-shadow">1</output></label>
+        <input type="range" id="k-shadow" min="0" max="5" value="1" data-attr="shadow"></div>
+      <div class="field"><label class="label" for="k-btn">data-btn-radius</label>
+        <select class="select" id="k-btn" data-attr="btn-radius" data-opt="inherit"></select></div>
+      <div class="field"><label class="label" for="k-card">data-card-radius</label>
+        <select class="select" id="k-card" data-attr="card-radius" data-opt="inherit"></select></div>
+      <div class="field"><label class="label" for="k-input">data-input-radius</label>
+        <select class="select" id="k-input" data-attr="input-radius" data-opt="inherit"></select></div>
+      <div class="field"><label class="label" for="k-density">data-density</label>
+        <select class="select" id="k-density" data-attr="density"><option>compact</option><option selected>default</option><option>comfortable</option></select></div>
+      <div class="flex items-center gap-3"><label class="label" for="c-primary">--sh-primary</label><input type="color" id="c-primary" data-var="--sh-primary">
+        <label class="label" for="c-accent">--sh-accent</label><input type="color" id="c-accent" data-var="--sh-accent"></div>
+      <div class="flex items-center"><button class="btn btn-sm btn-outline" id="reset" type="button">Reset knobs</button></div>
+    </div>
+    <pre class="bg-surface-2 p-3 rounded text-xs mt-3 overflow-x-auto" id="snippet" aria-label="Resulting html tag"></pre>
+  </details>
+</header>
+
+<main class="container mx-auto px-4 py-8 space-y-8">
+  <section class="space-y-2">
+    <h1 class="text-4xl font-bold tracking-tight">Shine</h1>
+    <p class="text-lg text-muted max-w-prose">Pure-CSS utility framework. This page is styled only with Shine classes. Turn the knobs above and everything follows.</p>
+  </section>
+
+  <section class="space-y-4" aria-labelledby="h-btn">
+    <h2 id="h-btn" class="text-2xl font-semibold">Buttons</h2>
+    <div class="space-y-3">
+      <div class="flex flex-wrap gap-2 items-center">
+        <button class="btn">Solid</button><button class="btn btn-outline">Outline</button><button class="btn btn-soft">Soft</button>
+        <button class="btn btn-ghost">Ghost</button><button class="btn btn-link">Link</button><button class="btn btn-icon" aria-label="Star">★</button>
+      </div>
+      <div class="flex flex-wrap gap-2 items-center">
+        <button class="btn tone-secondary">Secondary</button><button class="btn tone-accent">Accent</button><button class="btn tone-success">Success</button>
+        <button class="btn tone-warning btn-soft">Warning</button><button class="btn tone-danger btn-outline">Danger</button><button class="btn tone-info btn-ghost">Info</button>
+      </div>
+      <div class="flex flex-wrap gap-2 items-center">
+        <button class="btn btn-sm">Small</button><button class="btn">Default</button><button class="btn btn-lg">Large</button>
+        <button class="btn" disabled>Disabled</button><button class="btn btn-outline" disabled>Disabled</button>
+      </div>
+      <button class="btn btn-block">Block button</button>
+    </div>
+  </section>
+
+  <section class="space-y-4" aria-labelledby="h-card">
+    <h2 id="h-card" class="text-2xl font-semibold">Cards</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <article class="card">
+        <div class="card-header"><h3 class="card-title">Header</h3></div>
+        <div class="card-body">Body text inside a card. Radius and shadow follow the knobs.</div>
+        <div class="card-footer flex gap-2"><button class="btn btn-sm">Save</button><button class="btn btn-sm btn-ghost">Cancel</button></div>
+      </article>
+      <article class="card">
+        <div class="card-media h-32 bg-primary" role="img" aria-label="Placeholder image"></div>
+        <div class="card-body"><h3 class="card-title">With media</h3><p class="text-muted text-sm">A colored div as placeholder.</p></div>
+      </article>
+      <article class="card card-flat">
+        <div class="card-body"><h3 class="card-title">Flat card</h3><p class="text-muted text-sm">No elevation.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="space-y-4" aria-labelledby="h-form">
+    <h2 id="h-form" class="text-2xl font-semibold">Form</h2>
+    <form class="card" onsubmit="return false"><div class="card-body grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="field"><label class="label" for="f-name">Name</label><input class="input" id="f-name" placeholder="Ada Lovelace"><span class="hint">Helper text</span></div>
+      <div class="field"><label class="label" for="f-mail">Email (invalid)</label><input class="input is-invalid" id="f-mail" value="not-an-email" aria-invalid="true"><span class="hint">Enter a valid email</span></div>
+      <div class="field"><label class="label" for="f-sel">Plan</label><select class="select" id="f-sel"><option>Free</option><option>Pro</option></select></div>
+      <div class="field"><label class="label" for="f-sm">Large input</label><input class="input input-lg" id="f-sm" placeholder="input-lg"></div>
+      <div class="field md:col-span-2"><label class="label" for="f-msg">Message</label><textarea class="textarea" id="f-msg" rows="3"></textarea></div>
+      <div class="flex flex-wrap items-center gap-4">
+        <label class="flex items-center gap-2"><input type="checkbox" class="checkbox" checked> Checkbox</label>
+        <label class="flex items-center gap-2"><input type="radio" class="radio" name="r" checked> Radio A</label>
+        <label class="flex items-center gap-2"><input type="radio" class="radio" name="r"> Radio B</label>
+        <label class="flex items-center gap-2"><input type="checkbox" class="switch" checked> Switch</label>
+      </div>
+    </div></form>
+  </section>
+
+  <section class="space-y-4" aria-labelledby="h-misc">
+    <h2 id="h-misc" class="text-2xl font-semibold">Badges, avatars, divider</h2>
+    <div class="flex flex-wrap items-center gap-2">
+      <span class="badge">Default</span><span class="badge tone-success">Success</span><span class="badge tone-danger badge-solid">Solid</span>
+      <span class="badge tone-info badge-outline">Outline</span><span class="badge tone-warning">Warning</span>
+      <span class="avatar">AB</span><span class="avatar tone-accent">CD</span><span class="kbd">Ctrl</span><span class="kbd">K</span>
+    </div>
+    <hr class="divider">
+  </section>
+
+  <section class="space-y-3" aria-labelledby="h-alert">
+    <h2 id="h-alert" class="text-2xl font-semibold">Alerts</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div class="alert tone-info"><span class="alert-title">Info</span> Soft alert.</div>
+      <div class="alert alert-solid tone-primary"><span class="alert-title">Primary</span> Solid alert.</div>
+      <div class="alert alert-solid tone-success"><span class="alert-title">Success</span> Saved.</div>
+      <div class="alert alert-solid tone-warning"><span class="alert-title">Warning</span> Careful.</div>
+      <div class="alert alert-solid tone-danger"><span class="alert-title">Danger</span> Failed.</div>
+      <div class="alert alert-solid tone-neutral"><span class="alert-title">Neutral</span> FYI.</div>
+    </div>
+  </section>
+
+  <section class="space-y-4" aria-labelledby="h-util">
+    <h2 id="h-util" class="text-2xl font-semibold">Utilities</h2>
+    <p class="text-muted text-sm">Responsive grid <code>grid-cols-1 md:grid-cols-3</code></p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="p-4 bg-primary-soft rounded-lg">One</div><div class="p-4 bg-accent-soft rounded-lg">Two</div><div class="p-4 bg-success-soft rounded-lg">Three</div>
+    </div>
+    <div class="flex items-center justify-between gap-2 p-4 bg-surface-2 rounded-lg"><span>flex justify-between</span><span class="text-muted">gap-2 p-4</span></div>
+    <div class="space-y-1">
+      <p class="text-xs">text-xs</p><p class="text-sm">text-sm</p><p class="text-base">text-base</p><p class="text-lg">text-lg</p>
+      <p class="text-xl font-medium">text-xl</p><p class="text-2xl font-semibold">text-2xl</p><p class="text-3xl font-bold">text-3xl</p>
+    </div>
+    <div class="flex overflow-x-auto rounded-lg" aria-label="Gray scale">
+      <div class="bg-gray-50 h-12 w-16 flex-none"></div><div class="bg-gray-100 h-12 w-16 flex-none"></div><div class="bg-gray-200 h-12 w-16 flex-none"></div>
+      <div class="bg-gray-300 h-12 w-16 flex-none"></div><div class="bg-gray-400 h-12 w-16 flex-none"></div><div class="bg-gray-500 h-12 w-16 flex-none"></div>
+      <div class="bg-gray-600 h-12 w-16 flex-none"></div><div class="bg-gray-700 h-12 w-16 flex-none"></div><div class="bg-gray-800 h-12 w-16 flex-none"></div>
+      <div class="bg-gray-900 h-12 w-16 flex-none"></div><div class="bg-gray-950 h-12 w-16 flex-none"></div>
+    </div>
+    <div class="flex overflow-x-auto" aria-label="Opacity steps">
+      <div class="bg-primary bg-o-10 h-12 w-16 flex-none"></div><div class="bg-primary bg-o-25 h-12 w-16 flex-none"></div><div class="bg-primary bg-o-50 h-12 w-16 flex-none"></div>
+      <div class="bg-primary bg-o-75 h-12 w-16 flex-none"></div><div class="bg-primary bg-o-100 h-12 w-16 flex-none"></div>
+    </div>
+    <p class="text-sm text-muted">bg-primary + bg-o-10 / 25 / 50 / 75 / 100</p>
+  </section>
+
+  <section class="space-y-4" aria-labelledby="h-scope">
+    <h2 id="h-scope" class="text-2xl font-semibold">Scoped themes</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div data-theme="dark" class="p-6 rounded-lg space-y-3">
+        <h3 class="text-lg font-semibold">data-theme="dark" section</h3>
+        <p class="text-muted">Dark island inside the page.</p>
+        <div class="field"><label class="label" for="s-in">Input</label><input class="input" id="s-in" placeholder="Dark input"></div>
+        <button class="btn">Primary</button> <span class="badge tone-success">Live</span>
+      </div>
+      <div style="--sh-primary:#e11d48" class="p-6 rounded-lg border space-y-3">
+        <h3 class="text-lg font-semibold">style="--sh-primary:#e11d48"</h3>
+        <p class="text-muted">Re-branded subtree.</p>
+        <button class="btn">Rose button</button> <button class="btn btn-outline">Outline</button> <span class="badge">Badge</span>
+        <input type="checkbox" class="switch" checked aria-label="Rose switch">
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const h = document.documentElement, $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const attrs = {}, vars = {};
+$$('[data-opt]').forEach(s => s.innerHTML = ['inherit',0,1,2,3,4,5].map(v => `<option>${v}</option>`).join(''));
+function render() {
+  const a = Object.entries(attrs).map(([k, v]) => ` data-${k}="${v}"`).join('');
+  const st = Object.entries(vars).map(([k, v]) => `${k}:${v}`).join('; ');
+  $('#snippet').textContent = `<html${a}${st ? ` style="${st}"` : ''}>`;
+}
+function apply(el) {
+  const k = el.dataset.attr, v = el.value;
+  if (v === 'inherit' || v === 'default') { h.removeAttribute('data-' + k); delete attrs[k]; }
+  else { h.setAttribute('data-' + k, v); attrs[k] = v; }
+  const o = $('#o-' + k); if (o) o.textContent = v;
+  render();
+}
+$$('[data-attr]').forEach(el => { el.addEventListener('input', () => apply(el)); });
+$$('[data-var]').forEach(el => {
+  el.value = '#' + getComputedStyle(h).getPropertyValue(el.dataset.var).trim().replace('#', '').padEnd(6, '0').slice(0, 6);
+  el.addEventListener('input', () => { h.style.setProperty(el.dataset.var, el.value); vars[el.dataset.var] = el.value; render(); });
+});
+$('#reset').onclick = () => { location.reload(); };
+$('#panel').open = innerWidth >= 768;
+['theme', 'radius', 'shadow'].forEach(k => attrs[k] = h.getAttribute('data-' + k) || undefined);
+attrs.theme = 'light'; delete attrs.radius; delete attrs.shadow; render();
+</script>
+</body>
+</html>
