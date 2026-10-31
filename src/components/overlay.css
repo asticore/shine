@@ -55,7 +55,10 @@
   :is(.modal, .offcanvas):is([open], :popover-open)::backdrop { background-color: transparent; }
 }
 
-html:has(:modal) { overflow: hidden; }
+html:has(:modal) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
 
 .modal-header,
 .modal-body,
@@ -90,7 +93,6 @@ html:has(:modal) { overflow: hidden; }
   max-width: none;
   max-height: none;
   margin: 0;
-  border: 0;
   overflow: auto;
   transform: var(--sh-oc);
 }
@@ -161,7 +163,8 @@ html:has(:modal) { overflow: hidden; }
 .dropdown > summary { list-style: none; }
 .dropdown > summary::-webkit-details-marker { display: none; }
 
-.dropdown > .menu {
+.dropdown > .menu,
+.dropdown-menu[popover] {
   position: absolute;
   top: 100%;
   left: 0;
@@ -179,6 +182,15 @@ html:has(:modal) { overflow: hidden; }
   left: auto;
   right: 0;
 }
+
+/* Popover dropdown: <button popovertarget=id> + <div popover class="menu dropdown-menu">. Anchored to its invoker. */
+.dropdown-menu[popover] {
+  inset: auto;
+  position-area: block-end span-inline-end;
+  position-try-fallbacks: flip-block, flip-inline;
+  overflow: visible;
+}
+.dropdown-menu-end[popover] { position-area: block-end span-inline-start; }
 
 .menu {
   display: flex;
@@ -200,7 +212,6 @@ html:has(:modal) { overflow: hidden; }
   font: inherit;
   text-align: left;
   text-decoration: none;
-  cursor: pointer;
 }
 
 .menu :is(a, button):hover,
@@ -245,7 +256,7 @@ html:has(:modal) { overflow: hidden; }
   transition: opacity var(--sh-duration) var(--sh-ease), visibility var(--sh-duration);
 }
 
-[data-tooltip]:is(:hover, :focus-visible)::after {
+[data-tooltip]:is(:hover, :focus-visible, :focus-within)::after {
   opacity: 1;
   visibility: visible;
 }

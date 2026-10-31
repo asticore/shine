@@ -3,7 +3,7 @@
 ::before,
 ::after {
   box-sizing: border-box;
-  border: 0 solid;
+  border: 0 solid var(--sh-border);
 }
 
 html {

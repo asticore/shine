@@ -426,7 +426,9 @@
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.btn-close</code></td><td>Round close button with a multiplication sign.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.dropdown</code></td><td>Wrapper for a details/summary dropdown.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.menu</code></td><td>Vertical list of links or buttons.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.dropdown-menu</code></td><td>Popover menu: put on an element with popover, open with a popovertarget button. Closes on outside click and Esc.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.dropdown-end</code></td><td>Aligns the menu to the right edge.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.dropdown-menu-end</code></td><td>Aligns a popover menu to the end edge of its button.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.active</code></td><td>Highlights the current menu or tab item.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.menu-divider</code></td><td>Thin separator line between menu items.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">data-tooltip</code></td><td>Attribute: text shown on hover or focus.</td></tr>
@@ -868,12 +870,6 @@
 <tr data-c=".pl-12"><td class="font-mono text-sm"><code>.pl-12</code></td><td class="text-sm font-mono break-all">padding-left:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
 <tr data-c=".pl-16"><td class="font-mono text-sm"><code>.pl-16</code></td><td class="text-sm font-mono break-all">padding-left:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
 <tr data-c=".m-auto"><td class="font-mono text-sm"><code>.m-auto</code></td><td class="text-sm font-mono break-all">margin:auto</td><td class="text-sm">sm md lg xl</td></tr>
-<tr data-c=".mx-auto"><td class="font-mono text-sm"><code>.mx-auto</code></td><td class="text-sm font-mono break-all">margin-inline:auto</td><td class="text-sm">sm md lg xl</td></tr>
-<tr data-c=".my-auto"><td class="font-mono text-sm"><code>.my-auto</code></td><td class="text-sm font-mono break-all">margin-block:auto</td><td class="text-sm">sm md lg xl</td></tr>
-<tr data-c=".mt-auto"><td class="font-mono text-sm"><code>.mt-auto</code></td><td class="text-sm font-mono break-all">margin-top:auto</td><td class="text-sm">-</td></tr>
-<tr data-c=".mr-auto"><td class="font-mono text-sm"><code>.mr-auto</code></td><td class="text-sm font-mono break-all">margin-right:auto</td><td class="text-sm">-</td></tr>
-<tr data-c=".mb-auto"><td class="font-mono text-sm"><code>.mb-auto</code></td><td class="text-sm font-mono break-all">margin-bottom:auto</td><td class="text-sm">-</td></tr>
-<tr data-c=".ml-auto"><td class="font-mono text-sm"><code>.ml-auto</code></td><td class="text-sm font-mono break-all">margin-left:auto</td><td class="text-sm">-</td></tr>
 <tr data-c=".m-0"><td class="font-mono text-sm"><code>.m-0</code></td><td class="text-sm font-mono break-all">margin:0</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".m-px"><td class="font-mono text-sm"><code>.m-px</code></td><td class="text-sm font-mono break-all">margin:1px</td><td class="text-sm">-</td></tr>
 <tr data-c=".m-0.5"><td class="font-mono text-sm"><code>.m-0.5</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*0.5)</td><td class="text-sm">-</td></tr>
@@ -891,6 +887,7 @@
 <tr data-c=".m-16"><td class="font-mono text-sm"><code>.m-16</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
 <tr data-c=".m-20"><td class="font-mono text-sm"><code>.m-20</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*20)</td><td class="text-sm">-</td></tr>
 <tr data-c=".m-24"><td class="font-mono text-sm"><code>.m-24</code></td><td class="text-sm font-mono break-all">margin:calc(var(--sh-space)*24)</td><td class="text-sm">-</td></tr>
+<tr data-c=".mx-auto"><td class="font-mono text-sm"><code>.mx-auto</code></td><td class="text-sm font-mono break-all">margin-inline:auto</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".mx-0"><td class="font-mono text-sm"><code>.mx-0</code></td><td class="text-sm font-mono break-all">margin-inline:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".mx-px"><td class="font-mono text-sm"><code>.mx-px</code></td><td class="text-sm font-mono break-all">margin-inline:1px</td><td class="text-sm">-</td></tr>
 <tr data-c=".mx-0.5"><td class="font-mono text-sm"><code>.mx-0.5</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*0.5)</td><td class="text-sm">-</td></tr>
@@ -908,6 +905,7 @@
 <tr data-c=".mx-16"><td class="font-mono text-sm"><code>.mx-16</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mx-20"><td class="font-mono text-sm"><code>.mx-20</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*20)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mx-24"><td class="font-mono text-sm"><code>.mx-24</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*24)</td><td class="text-sm">-</td></tr>
+<tr data-c=".my-auto"><td class="font-mono text-sm"><code>.my-auto</code></td><td class="text-sm font-mono break-all">margin-block:auto</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".my-0"><td class="font-mono text-sm"><code>.my-0</code></td><td class="text-sm font-mono break-all">margin-block:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".my-px"><td class="font-mono text-sm"><code>.my-px</code></td><td class="text-sm font-mono break-all">margin-block:1px</td><td class="text-sm">-</td></tr>
 <tr data-c=".my-0.5"><td class="font-mono text-sm"><code>.my-0.5</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*0.5)</td><td class="text-sm">-</td></tr>
@@ -928,12 +926,14 @@
 <tr data-c=".mt-0"><td class="font-mono text-sm"><code>.mt-0</code></td><td class="text-sm font-mono break-all">margin-top:0</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".mt-4"><td class="font-mono text-sm"><code>.mt-4</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*4)</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".mt-8"><td class="font-mono text-sm"><code>.mt-8</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*8)</td><td class="text-sm">sm md lg xl</td></tr>
+<tr data-c=".mt-auto"><td class="font-mono text-sm"><code>.mt-auto</code></td><td class="text-sm font-mono break-all">margin-top:auto</td><td class="text-sm">-</td></tr>
 <tr data-c=".mt-1"><td class="font-mono text-sm"><code>.mt-1</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*1)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mt-2"><td class="font-mono text-sm"><code>.mt-2</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*2)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mt-3"><td class="font-mono text-sm"><code>.mt-3</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*3)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mt-6"><td class="font-mono text-sm"><code>.mt-6</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*6)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mt-12"><td class="font-mono text-sm"><code>.mt-12</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mt-16"><td class="font-mono text-sm"><code>.mt-16</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
+<tr data-c=".mr-auto"><td class="font-mono text-sm"><code>.mr-auto</code></td><td class="text-sm font-mono break-all">margin-right:auto</td><td class="text-sm">-</td></tr>
 <tr data-c=".mr-0"><td class="font-mono text-sm"><code>.mr-0</code></td><td class="text-sm font-mono break-all">margin-right:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".mr-1"><td class="font-mono text-sm"><code>.mr-1</code></td><td class="text-sm font-mono break-all">margin-right:calc(var(--sh-space)*1)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mr-2"><td class="font-mono text-sm"><code>.mr-2</code></td><td class="text-sm font-mono break-all">margin-right:calc(var(--sh-space)*2)</td><td class="text-sm">-</td></tr>
@@ -946,12 +946,14 @@
 <tr data-c=".mb-0"><td class="font-mono text-sm"><code>.mb-0</code></td><td class="text-sm font-mono break-all">margin-bottom:0</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".mb-4"><td class="font-mono text-sm"><code>.mb-4</code></td><td class="text-sm font-mono break-all">margin-bottom:calc(var(--sh-space)*4)</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".mb-8"><td class="font-mono text-sm"><code>.mb-8</code></td><td class="text-sm font-mono break-all">margin-bottom:calc(var(--sh-space)*8)</td><td class="text-sm">sm md lg xl</td></tr>
+<tr data-c=".mb-auto"><td class="font-mono text-sm"><code>.mb-auto</code></td><td class="text-sm font-mono break-all">margin-bottom:auto</td><td class="text-sm">-</td></tr>
 <tr data-c=".mb-1"><td class="font-mono text-sm"><code>.mb-1</code></td><td class="text-sm font-mono break-all">margin-bottom:calc(var(--sh-space)*1)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mb-2"><td class="font-mono text-sm"><code>.mb-2</code></td><td class="text-sm font-mono break-all">margin-bottom:calc(var(--sh-space)*2)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mb-3"><td class="font-mono text-sm"><code>.mb-3</code></td><td class="text-sm font-mono break-all">margin-bottom:calc(var(--sh-space)*3)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mb-6"><td class="font-mono text-sm"><code>.mb-6</code></td><td class="text-sm font-mono break-all">margin-bottom:calc(var(--sh-space)*6)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mb-12"><td class="font-mono text-sm"><code>.mb-12</code></td><td class="text-sm font-mono break-all">margin-bottom:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
 <tr data-c=".mb-16"><td class="font-mono text-sm"><code>.mb-16</code></td><td class="text-sm font-mono break-all">margin-bottom:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
+<tr data-c=".ml-auto"><td class="font-mono text-sm"><code>.ml-auto</code></td><td class="text-sm font-mono break-all">margin-left:auto</td><td class="text-sm">-</td></tr>
 <tr data-c=".ml-0"><td class="font-mono text-sm"><code>.ml-0</code></td><td class="text-sm font-mono break-all">margin-left:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".ml-1"><td class="font-mono text-sm"><code>.ml-1</code></td><td class="text-sm font-mono break-all">margin-left:calc(var(--sh-space)*1)</td><td class="text-sm">-</td></tr>
 <tr data-c=".ml-2"><td class="font-mono text-sm"><code>.ml-2</code></td><td class="text-sm font-mono break-all">margin-left:calc(var(--sh-space)*2)</td><td class="text-sm">-</td></tr>
@@ -961,10 +963,6 @@
 <tr data-c=".ml-8"><td class="font-mono text-sm"><code>.ml-8</code></td><td class="text-sm font-mono break-all">margin-left:calc(var(--sh-space)*8)</td><td class="text-sm">-</td></tr>
 <tr data-c=".ml-12"><td class="font-mono text-sm"><code>.ml-12</code></td><td class="text-sm font-mono break-all">margin-left:calc(var(--sh-space)*12)</td><td class="text-sm">-</td></tr>
 <tr data-c=".ml-16"><td class="font-mono text-sm"><code>.ml-16</code></td><td class="text-sm font-mono break-all">margin-left:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
-<tr data-c=".-mt-1"><td class="font-mono text-sm"><code>.-mt-1</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*-1)</td><td class="text-sm">-</td></tr>
-<tr data-c=".-mt-2"><td class="font-mono text-sm"><code>.-mt-2</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*-2)</td><td class="text-sm">-</td></tr>
-<tr data-c=".-mt-4"><td class="font-mono text-sm"><code>.-mt-4</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*-4)</td><td class="text-sm">-</td></tr>
-<tr data-c=".-mt-8"><td class="font-mono text-sm"><code>.-mt-8</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*-8)</td><td class="text-sm">-</td></tr>
 <tr data-c=".-mx-1"><td class="font-mono text-sm"><code>.-mx-1</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*-1)</td><td class="text-sm">-</td></tr>
 <tr data-c=".-mx-2"><td class="font-mono text-sm"><code>.-mx-2</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*-2)</td><td class="text-sm">-</td></tr>
 <tr data-c=".-mx-4"><td class="font-mono text-sm"><code>.-mx-4</code></td><td class="text-sm font-mono break-all">margin-inline:calc(var(--sh-space)*-4)</td><td class="text-sm">-</td></tr>
@@ -973,6 +971,10 @@
 <tr data-c=".-my-2"><td class="font-mono text-sm"><code>.-my-2</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*-2)</td><td class="text-sm">-</td></tr>
 <tr data-c=".-my-4"><td class="font-mono text-sm"><code>.-my-4</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*-4)</td><td class="text-sm">-</td></tr>
 <tr data-c=".-my-8"><td class="font-mono text-sm"><code>.-my-8</code></td><td class="text-sm font-mono break-all">margin-block:calc(var(--sh-space)*-8)</td><td class="text-sm">-</td></tr>
+<tr data-c=".-mt-1"><td class="font-mono text-sm"><code>.-mt-1</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*-1)</td><td class="text-sm">-</td></tr>
+<tr data-c=".-mt-2"><td class="font-mono text-sm"><code>.-mt-2</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*-2)</td><td class="text-sm">-</td></tr>
+<tr data-c=".-mt-4"><td class="font-mono text-sm"><code>.-mt-4</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*-4)</td><td class="text-sm">-</td></tr>
+<tr data-c=".-mt-8"><td class="font-mono text-sm"><code>.-mt-8</code></td><td class="text-sm font-mono break-all">margin-top:calc(var(--sh-space)*-8)</td><td class="text-sm">-</td></tr>
 <tr data-c=".space-x-0&gt;:not(:last-child)"><td class="font-mono text-sm"><code>.space-x-0&gt;:not(:last-child)</code></td><td class="text-sm font-mono break-all">margin-inline-end:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".space-y-0&gt;:not(:last-child)"><td class="font-mono text-sm"><code>.space-y-0&gt;:not(:last-child)</code></td><td class="text-sm font-mono break-all">margin-block-end:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".space-x-1&gt;:not(:last-child)"><td class="font-mono text-sm"><code>.space-x-1&gt;:not(:last-child)</code></td><td class="text-sm font-mono break-all">margin-inline-end:calc(var(--sh-space)*1)</td><td class="text-sm">-</td></tr>

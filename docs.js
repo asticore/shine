@@ -163,7 +163,7 @@ const COMPONENTS = [
       'offcanvas-right': 'Slides in from the right.', 'offcanvas-top': 'Slides in from the top.', 'offcanvas-bottom': 'Slides in from the bottom.',
       'offcanvas-header': 'Top bar of an offcanvas.', 'offcanvas-body': 'Padded content of an offcanvas.',
       'btn-close': 'Round close button with a multiplication sign.', dropdown: 'Wrapper for a details/summary dropdown.',
-      'dropdown-end': 'Aligns the menu to the right edge.', menu: 'Vertical list of links or buttons.',
+      'dropdown-end': 'Aligns the menu to the right edge.', 'dropdown-menu': 'Popover menu: put on an element with popover, open with a popovertarget button. Closes on outside click and Esc.', 'dropdown-menu-end': 'Aligns a popover menu to the end edge of its button.', menu: 'Vertical list of links or buttons.',
       'menu-divider': 'Thin separator line between menu items.', active: 'Highlights the current menu or tab item.',
       'data-tooltip': 'Attribute: text shown on hover or focus.', 'data-tooltip-pos': 'Attribute: top (default), bottom, left or right.',
     },
@@ -287,7 +287,7 @@ function classesOf(file) {
   const found = [];
   for (const m of css.matchAll(/([^{}]+)\{[^{}]*\}/g)) {
     if (m[1].trim().startsWith('@')) continue;
-    for (const c of m[1].matchAll(/\.([a-zA-Z][\w-]*)|\[(data-[\w-]+)\]/g)) {
+    for (const c of m[1].replace(/:not\([^)]*\)/g, '').matchAll(/\.([a-zA-Z][\w-]*)|\[(data-[\w-]+)\]/g)) {
       const name = c[1] || c[2];
       if (!found.includes(name)) found.push(name);
     }

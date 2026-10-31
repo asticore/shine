@@ -26,18 +26,18 @@
   list-style: none;
 }
 
-.navbar-nav a {
+.navbar-nav a:not(.btn) {
   color: var(--sh-text-muted);
   text-decoration: none;
   transition: color var(--sh-duration) var(--sh-ease);
 }
 
-.navbar-nav a:hover {
+.navbar-nav a:not(.btn):hover {
   color: var(--sh-text);
 }
 
 .navbar-nav a[aria-current="page"] {
-  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text));
   font-weight: 600;
 }
 
@@ -62,7 +62,7 @@
 }
 
 .breadcrumb a {
-  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text));
   text-decoration: none;
 }
 
@@ -98,7 +98,7 @@
   transition: background-color var(--sh-duration) var(--sh-ease), color var(--sh-duration) var(--sh-ease);
 }
 
-.pagination a:hover {
+.pagination a:not([aria-current]):hover {
   background: var(--sh-surface-2);
 }
 
@@ -135,17 +135,16 @@
   font-size: .875rem;
   font-weight: 500;
   text-decoration: none;
-  cursor: pointer;
   transition: color var(--sh-duration) var(--sh-ease), background-color var(--sh-duration) var(--sh-ease), border-color var(--sh-duration) var(--sh-ease);
 }
 
-.tabs :is(a, button):hover {
+.tabs :is(a, button):not([aria-current], [aria-selected="true"], .active):hover {
   color: var(--sh-text);
 }
 
 .tabs :is([aria-current="page"], [aria-selected="true"], .active) {
   border-bottom-color: var(--sh-tone, var(--sh-primary));
-  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text));
 }
 
 .tabs-pills {

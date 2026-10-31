@@ -180,7 +180,7 @@
 ::before,
 ::after {
   box-sizing: border-box;
-  border: 0 solid;
+  border: 0 solid var(--sh-border);
 }
 
 html {
@@ -304,8 +304,6 @@ html {
 }
 
 body {
-  font-family: var(--sh-font-sans);
-  line-height: var(--sh-leading);
   background-color: var(--sh-bg);
   color: var(--sh-text);
   -webkit-font-smoothing: antialiased;
@@ -330,7 +328,7 @@ body {
 hr { border-color: var(--sh-border); }
 
 .link {
-  color: color-mix(in oklab, var(--sh-primary) 80%, var(--sh-text));
+  color: color-mix(in oklab, var(--sh-primary) 65%, var(--sh-text));
   text-decoration: none;
   transition: color var(--sh-duration) var(--sh-ease);
 }
@@ -338,10 +336,6 @@ hr { border-color: var(--sh-border); }
   text-decoration: underline;
   text-underline-offset: .2em;
 }
-
-/* Default border color (0 specificity, in base layer so components/utilities win) */
-:where(.border, .border-2, .border-4, .border-8, .border-x, .border-x-2, .border-y, .border-y-2, .border-t, .border-t-2, .border-r, .border-r-2, .border-b, .border-b-2, .border-l, .border-l-2) { border-color: var(--sh-border); }
-:where(.divide-x, .divide-y, .divide-x-2, .divide-y-2) > :where(:not(:last-child)) { border-color: var(--sh-border); }
 }
 
 @layer shine.components {
@@ -398,7 +392,7 @@ hr { border-color: var(--sh-border); }
 .btn-outline {
   background: transparent;
   border-color: var(--sh-tone, var(--sh-primary));
-  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text));
 }
 
 .btn-outline:hover,
@@ -413,7 +407,7 @@ hr { border-color: var(--sh-border); }
 
 .btn-soft {
   background: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 15%, transparent);
-  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text));
 }
 
 .btn-soft:hover {
@@ -426,12 +420,12 @@ hr { border-color: var(--sh-border); }
 
 .btn-ghost {
   background: transparent;
-  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text));
 }
 
 .btn-link {
   background: transparent;
-  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text));
   padding-inline: 0;
   text-decoration: underline;
   text-underline-offset: .2em;
@@ -592,7 +586,7 @@ hr { border-color: var(--sh-border); }
   height: 1.5rem;
   margin: 0;
   vertical-align: middle;
-  background-color: color-mix(in oklab, var(--sh-text) 20%, var(--sh-bg));
+  background-color: color-mix(in oklab, var(--sh-text) 45%, var(--sh-bg));
   border-radius: 9999px;
   cursor: pointer;
   transition: background-color var(--sh-duration) var(--sh-ease);
@@ -813,7 +807,10 @@ hr { border-color: var(--sh-border); }
   :is(.modal, .offcanvas):is([open], :popover-open)::backdrop { background-color: transparent; }
 }
 
-html:has(:modal) { overflow: hidden; }
+html:has(:modal) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
 
 .modal-header,
 .modal-body,
@@ -848,7 +845,6 @@ html:has(:modal) { overflow: hidden; }
   max-width: none;
   max-height: none;
   margin: 0;
-  border: 0;
   overflow: auto;
   transform: var(--sh-oc);
 }
@@ -919,7 +915,8 @@ html:has(:modal) { overflow: hidden; }
 .dropdown > summary { list-style: none; }
 .dropdown > summary::-webkit-details-marker { display: none; }
 
-.dropdown > .menu {
+.dropdown > .menu,
+.dropdown-menu[popover] {
   position: absolute;
   top: 100%;
   left: 0;
@@ -937,6 +934,15 @@ html:has(:modal) { overflow: hidden; }
   left: auto;
   right: 0;
 }
+
+/* Popover dropdown: <button popovertarget=id> + <div popover class="menu dropdown-menu">. Anchored to its invoker. */
+.dropdown-menu[popover] {
+  inset: auto;
+  position-area: block-end span-inline-end;
+  position-try-fallbacks: flip-block, flip-inline;
+  overflow: visible;
+}
+.dropdown-menu-end[popover] { position-area: block-end span-inline-start; }
 
 .menu {
   display: flex;
@@ -958,7 +964,6 @@ html:has(:modal) { overflow: hidden; }
   font: inherit;
   text-align: left;
   text-decoration: none;
-  cursor: pointer;
 }
 
 .menu :is(a, button):hover,
@@ -1003,7 +1008,7 @@ html:has(:modal) { overflow: hidden; }
   transition: opacity var(--sh-duration) var(--sh-ease), visibility var(--sh-duration);
 }
 
-[data-tooltip]:is(:hover, :focus-visible)::after {
+[data-tooltip]:is(:hover, :focus-visible, :focus-within)::after {
   opacity: 1;
   visibility: visible;
 }
@@ -1054,18 +1059,18 @@ html:has(:modal) { overflow: hidden; }
   list-style: none;
 }
 
-.navbar-nav a {
+.navbar-nav a:not(.btn) {
   color: var(--sh-text-muted);
   text-decoration: none;
   transition: color var(--sh-duration) var(--sh-ease);
 }
 
-.navbar-nav a:hover {
+.navbar-nav a:not(.btn):hover {
   color: var(--sh-text);
 }
 
 .navbar-nav a[aria-current="page"] {
-  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text));
   font-weight: 600;
 }
 
@@ -1090,7 +1095,7 @@ html:has(:modal) { overflow: hidden; }
 }
 
 .breadcrumb a {
-  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text));
   text-decoration: none;
 }
 
@@ -1126,7 +1131,7 @@ html:has(:modal) { overflow: hidden; }
   transition: background-color var(--sh-duration) var(--sh-ease), color var(--sh-duration) var(--sh-ease);
 }
 
-.pagination a:hover {
+.pagination a:not([aria-current]):hover {
   background: var(--sh-surface-2);
 }
 
@@ -1163,17 +1168,16 @@ html:has(:modal) { overflow: hidden; }
   font-size: .875rem;
   font-weight: 500;
   text-decoration: none;
-  cursor: pointer;
   transition: color var(--sh-duration) var(--sh-ease), background-color var(--sh-duration) var(--sh-ease), border-color var(--sh-duration) var(--sh-ease);
 }
 
-.tabs :is(a, button):hover {
+.tabs :is(a, button):not([aria-current], [aria-selected="true"], .active):hover {
   color: var(--sh-text);
 }
 
 .tabs :is([aria-current="page"], [aria-selected="true"], .active) {
   border-bottom-color: var(--sh-tone, var(--sh-primary));
-  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text));
 }
 
 .tabs-pills {
@@ -1213,13 +1217,14 @@ html:has(:modal) { overflow: hidden; }
   padding: calc(var(--sh-space) * 3 * var(--sh-density)) calc(var(--sh-space) * 4 * var(--sh-density));
   font-weight: 500;
   list-style: none;
-  cursor: pointer;
   transition: background-color var(--sh-duration) var(--sh-ease);
 }
 
 .accordion summary::-webkit-details-marker {
   display: none;
 }
+
+.accordion summary:focus-visible { outline-offset: -2px; }
 
 .accordion summary:hover {
   background: var(--sh-surface);
@@ -1289,7 +1294,6 @@ html:has(:modal) { overflow: hidden; }
   border: 0;
   border-radius: 9999px;
   background: var(--sh-surface-2);
-  color: var(--sh-tone, var(--sh-primary));
   overflow: hidden;
 }
 
@@ -1313,7 +1317,7 @@ html:has(:modal) { overflow: hidden; }
   line-height: 1.7;
 }
 
-.prose > * + * {
+:where(.prose > * + *) {
   margin-top: 1.25em;
 }
 
@@ -1340,7 +1344,7 @@ html:has(:modal) { overflow: hidden; }
 :where(.prose) li + li { margin-top: .25em; }
 
 :where(.prose) a {
-  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text));
   text-decoration: underline;
   text-underline-offset: .2em;
 }
@@ -1372,6 +1376,7 @@ html:has(:modal) { overflow: hidden; }
 :where(.prose) pre code {
   padding: 0;
   background: none;
+  font-size: inherit;
 }
 
 :where(.prose) img {
@@ -1802,14 +1807,6 @@ html:has(:modal) { overflow: hidden; }
 .pl-16{padding-left:calc(var(--sh-space)*16)}
 
 .m-auto{margin:auto}
-.mx-auto{margin-inline:auto}
-.my-auto{margin-block:auto}
-
-.mt-auto{margin-top:auto}
-.mr-auto{margin-right:auto}
-.mb-auto{margin-bottom:auto}
-.ml-auto{margin-left:auto}
-
 .m-0{margin:0}
 
 .m-px{margin:1px}
@@ -1828,6 +1825,9 @@ html:has(:modal) { overflow: hidden; }
 .m-16{margin:calc(var(--sh-space)*16)}
 .m-20{margin:calc(var(--sh-space)*20)}
 .m-24{margin:calc(var(--sh-space)*24)}
+
+.mx-auto{margin-inline:auto}
+
 .mx-0{margin-inline:0}
 .mx-px{margin-inline:1px}
 .mx-0\.5{margin-inline:calc(var(--sh-space)*0.5)}
@@ -1845,6 +1845,9 @@ html:has(:modal) { overflow: hidden; }
 .mx-16{margin-inline:calc(var(--sh-space)*16)}
 .mx-20{margin-inline:calc(var(--sh-space)*20)}
 .mx-24{margin-inline:calc(var(--sh-space)*24)}
+
+.my-auto{margin-block:auto}
+
 .my-0{margin-block:0}
 .my-px{margin-block:1px}
 .my-0\.5{margin-block:calc(var(--sh-space)*0.5)}
@@ -1867,12 +1870,14 @@ html:has(:modal) { overflow: hidden; }
 .mt-4{margin-top:calc(var(--sh-space)*4)}
 .mt-8{margin-top:calc(var(--sh-space)*8)}
 
+.mt-auto{margin-top:auto}
 .mt-1{margin-top:calc(var(--sh-space)*1)}
 .mt-2{margin-top:calc(var(--sh-space)*2)}
 .mt-3{margin-top:calc(var(--sh-space)*3)}
 .mt-6{margin-top:calc(var(--sh-space)*6)}
 .mt-12{margin-top:calc(var(--sh-space)*12)}
 .mt-16{margin-top:calc(var(--sh-space)*16)}
+.mr-auto{margin-right:auto}
 .mr-0{margin-right:0}
 .mr-1{margin-right:calc(var(--sh-space)*1)}
 .mr-2{margin-right:calc(var(--sh-space)*2)}
@@ -1887,12 +1892,14 @@ html:has(:modal) { overflow: hidden; }
 .mb-4{margin-bottom:calc(var(--sh-space)*4)}
 .mb-8{margin-bottom:calc(var(--sh-space)*8)}
 
+.mb-auto{margin-bottom:auto}
 .mb-1{margin-bottom:calc(var(--sh-space)*1)}
 .mb-2{margin-bottom:calc(var(--sh-space)*2)}
 .mb-3{margin-bottom:calc(var(--sh-space)*3)}
 .mb-6{margin-bottom:calc(var(--sh-space)*6)}
 .mb-12{margin-bottom:calc(var(--sh-space)*12)}
 .mb-16{margin-bottom:calc(var(--sh-space)*16)}
+.ml-auto{margin-left:auto}
 .ml-0{margin-left:0}
 .ml-1{margin-left:calc(var(--sh-space)*1)}
 .ml-2{margin-left:calc(var(--sh-space)*2)}
@@ -1902,10 +1909,6 @@ html:has(:modal) { overflow: hidden; }
 .ml-8{margin-left:calc(var(--sh-space)*8)}
 .ml-12{margin-left:calc(var(--sh-space)*12)}
 .ml-16{margin-left:calc(var(--sh-space)*16)}
-.-mt-1{margin-top:calc(var(--sh-space)*-1)}
-.-mt-2{margin-top:calc(var(--sh-space)*-2)}
-.-mt-4{margin-top:calc(var(--sh-space)*-4)}
-.-mt-8{margin-top:calc(var(--sh-space)*-8)}
 .-mx-1{margin-inline:calc(var(--sh-space)*-1)}
 .-mx-2{margin-inline:calc(var(--sh-space)*-2)}
 .-mx-4{margin-inline:calc(var(--sh-space)*-4)}
@@ -1914,6 +1917,10 @@ html:has(:modal) { overflow: hidden; }
 .-my-2{margin-block:calc(var(--sh-space)*-2)}
 .-my-4{margin-block:calc(var(--sh-space)*-4)}
 .-my-8{margin-block:calc(var(--sh-space)*-8)}
+.-mt-1{margin-top:calc(var(--sh-space)*-1)}
+.-mt-2{margin-top:calc(var(--sh-space)*-2)}
+.-mt-4{margin-top:calc(var(--sh-space)*-4)}
+.-mt-8{margin-top:calc(var(--sh-space)*-8)}
 .space-x-0>:not(:last-child){margin-inline-end:0}
 .space-y-0>:not(:last-child){margin-block-end:0}
 .space-x-1>:not(:last-child){margin-inline-end:calc(var(--sh-space)*1)}
@@ -2433,9 +2440,9 @@ html:has(:modal) { overflow: hidden; }
 .sm\:py-12{padding-block:calc(var(--sh-space)*12)}
 .sm\:py-16{padding-block:calc(var(--sh-space)*16)}
 .sm\:m-auto{margin:auto}
+.sm\:m-0{margin:0}
 .sm\:mx-auto{margin-inline:auto}
 .sm\:my-auto{margin-block:auto}
-.sm\:m-0{margin:0}
 .sm\:mt-0{margin-top:0}
 .sm\:mt-4{margin-top:calc(var(--sh-space)*4)}
 .sm\:mt-8{margin-top:calc(var(--sh-space)*8)}
@@ -2540,9 +2547,9 @@ html:has(:modal) { overflow: hidden; }
 .md\:py-12{padding-block:calc(var(--sh-space)*12)}
 .md\:py-16{padding-block:calc(var(--sh-space)*16)}
 .md\:m-auto{margin:auto}
+.md\:m-0{margin:0}
 .md\:mx-auto{margin-inline:auto}
 .md\:my-auto{margin-block:auto}
-.md\:m-0{margin:0}
 .md\:mt-0{margin-top:0}
 .md\:mt-4{margin-top:calc(var(--sh-space)*4)}
 .md\:mt-8{margin-top:calc(var(--sh-space)*8)}
@@ -2647,9 +2654,9 @@ html:has(:modal) { overflow: hidden; }
 .lg\:py-12{padding-block:calc(var(--sh-space)*12)}
 .lg\:py-16{padding-block:calc(var(--sh-space)*16)}
 .lg\:m-auto{margin:auto}
+.lg\:m-0{margin:0}
 .lg\:mx-auto{margin-inline:auto}
 .lg\:my-auto{margin-block:auto}
-.lg\:m-0{margin:0}
 .lg\:mt-0{margin-top:0}
 .lg\:mt-4{margin-top:calc(var(--sh-space)*4)}
 .lg\:mt-8{margin-top:calc(var(--sh-space)*8)}
@@ -2754,9 +2761,9 @@ html:has(:modal) { overflow: hidden; }
 .xl\:py-12{padding-block:calc(var(--sh-space)*12)}
 .xl\:py-16{padding-block:calc(var(--sh-space)*16)}
 .xl\:m-auto{margin:auto}
+.xl\:m-0{margin:0}
 .xl\:mx-auto{margin-inline:auto}
 .xl\:my-auto{margin-block:auto}
-.xl\:m-0{margin:0}
 .xl\:mt-0{margin-top:0}
 .xl\:mt-4{margin-top:calc(var(--sh-space)*4)}
 .xl\:mt-8{margin-top:calc(var(--sh-space)*8)}

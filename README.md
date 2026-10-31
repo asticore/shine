@@ -58,6 +58,16 @@ Small set, all driven by the knobs above:
 - **Form** `input select textarea` · `checkbox radio switch` · `label field hint` · `input-sm input-lg`
 - **Badge** `badge` · `badge-solid badge-outline` · `avatar` · `divider`
 - **Alert** `alert` · `alert-solid alert-title` · `kbd`
+- **Modal** `<dialog class="modal">` opened by `<button command="show-modal" commandfor="id">` · `modal-header modal-body modal-footer` · `modal-sm modal-lg modal-full` · `btn-close`
+- **Offcanvas** `<aside popover id="menu" class="offcanvas">` opened by `<button popovertarget="menu">` · `offcanvas-right offcanvas-top offcanvas-bottom`
+- **Dropdown** `<details class="dropdown">` + `menu`, or `<div popover class="menu dropdown-menu">` (closes on outside click / Esc)
+- **Tooltip** `data-tooltip="text"` · `data-tooltip-pos="bottom|left|right"`
+- **Nav** `navbar navbar-brand navbar-nav navbar-end` · `breadcrumb` · `pagination` · `tabs tabs-pills`
+- **Content** `accordion` (on `<details name>`) · `table table-striped table-hover` · `progress` · `prose` · `skip-link`
+
+All of it works with zero JavaScript: native `<dialog>`, `popover` and `<details>` give you open/close, Esc and focus handling.
+
+Full class guide: `docs/reference.html` (generated from the CSS by `node docs.js`).
 
 ## 4. Utilities (Tailwind names)
 

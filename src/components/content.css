@@ -20,13 +20,14 @@
   padding: calc(var(--sh-space) * 3 * var(--sh-density)) calc(var(--sh-space) * 4 * var(--sh-density));
   font-weight: 500;
   list-style: none;
-  cursor: pointer;
   transition: background-color var(--sh-duration) var(--sh-ease);
 }
 
 .accordion summary::-webkit-details-marker {
   display: none;
 }
+
+.accordion summary:focus-visible { outline-offset: -2px; }
 
 .accordion summary:hover {
   background: var(--sh-surface);
@@ -96,7 +97,6 @@
   border: 0;
   border-radius: 9999px;
   background: var(--sh-surface-2);
-  color: var(--sh-tone, var(--sh-primary));
   overflow: hidden;
 }
 
@@ -120,7 +120,7 @@
   line-height: 1.7;
 }
 
-.prose > * + * {
+:where(.prose > * + *) {
   margin-top: 1.25em;
 }
 
@@ -147,7 +147,7 @@
 :where(.prose) li + li { margin-top: .25em; }
 
 :where(.prose) a {
-  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text));
   text-decoration: underline;
   text-underline-offset: .2em;
 }
@@ -179,6 +179,7 @@
 :where(.prose) pre code {
   padding: 0;
   background: none;
+  font-size: inherit;
 }
 
 :where(.prose) img {

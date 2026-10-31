@@ -98,7 +98,7 @@
   height: 1.5rem;
   margin: 0;
   vertical-align: middle;
-  background-color: color-mix(in oklab, var(--sh-text) 20%, var(--sh-bg));
+  background-color: color-mix(in oklab, var(--sh-text) 45%, var(--sh-bg));
   border-radius: 9999px;
   cursor: pointer;
   transition: background-color var(--sh-duration) var(--sh-ease);
