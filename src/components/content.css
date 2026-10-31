@@ -266,3 +266,11 @@
   color: var(--sh-on-tone, var(--sh-on-primary));
   text-decoration: none;
 }
+
+/* ---- Print (last component file so it wins over nav/card/overlay rules) ---- */
+@media print {
+  .navbar, .offcanvas, .toast, .btn-close, .skip-link, dialog:not([open]) { display: none; }
+  .card, .modal { box-shadow: none; }
+  .prose a[href^="http"]::after { content: " (" attr(href) ")"; }
+  .card, pre, tr { break-inside: avoid; }
+}
