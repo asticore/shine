@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="Shine logo">
+  <rect width="96" height="96" rx="22" fill="#4f46e5"/>
+  <path d="M48 16c2.6 17.4 14.6 29.4 32 32-17.4 2.6-29.4 14.6-32 32-2.6-17.4-14.6-29.4-32-32 17.4-2.6 29.4-14.6 32-32z" fill="#fff"/>
+  <circle cx="72" cy="24" r="5" fill="#fbcfe8"/>
+</svg>
