@@ -40,8 +40,13 @@ hr { border-color: var(--sh-border); }
 
 /* Print: body here; component overrides live at the end of components/content.css (components layer beats base) */
 @media print {
-  body {
-    background: #fff;
-    color: #000;
+  :root, [data-theme] {
+    --sh-bg: #fff;
+    --sh-surface: #fff;
+    --sh-surface-2: #f1f5f9;
+    --sh-text: #000;
+    --sh-text-muted: #475569;
+    --sh-border: #cbd5e1;
+    color-scheme: light;
   }
 }

@@ -339,9 +339,14 @@ hr { border-color: var(--sh-border); }
 
 /* Print: body here; component overrides live at the end of components/content.css (components layer beats base) */
 @media print {
-  body {
-    background: #fff;
-    color: #000;
+  :root, [data-theme] {
+    --sh-bg: #fff;
+    --sh-surface: #fff;
+    --sh-surface-2: #f1f5f9;
+    --sh-text: #000;
+    --sh-text-muted: #475569;
+    --sh-border: #cbd5e1;
+    color-scheme: light;
   }
 }
 }
@@ -783,7 +788,7 @@ hr { border-color: var(--sh-border); }
 }
 
 .avatar-group { display: flex; }
-.avatar-group > .avatar { box-shadow: 0 0 0 2px var(--sh-bg); }
+.avatar-group > .avatar { box-shadow: 0 0 0 2px var(--sh-avatar-ring, var(--sh-bg)); }
 .avatar-group > .avatar + .avatar { margin-inline-start: calc(var(--sh-space) * -3); }
 
 .divider {
@@ -1041,6 +1046,7 @@ html:has(:modal) {
   overflow: visible;
 }
 .dropdown-menu-end[popover] { position-area: block-end span-inline-start; }
+.menu[popover]:not(:popover-open) { display: none; }
 
 .menu {
   display: flex;
@@ -1749,13 +1755,13 @@ html:has(:modal) {
 .align-middle{vertical-align:middle}
 .align-bottom{vertical-align:bottom}
 .align-text-top{vertical-align:text-top}
-.scroll-mt-0{scroll-margin-top:calc(var(--sh-space)*0)}
+.scroll-mt-0{scroll-margin-top:0}
 .scroll-mt-4{scroll-margin-top:calc(var(--sh-space)*4)}
 .scroll-mt-8{scroll-margin-top:calc(var(--sh-space)*8)}
 .scroll-mt-16{scroll-margin-top:calc(var(--sh-space)*16)}
 .scroll-mt-20{scroll-margin-top:calc(var(--sh-space)*20)}
 .scroll-mt-24{scroll-margin-top:calc(var(--sh-space)*24)}
-.scroll-pt-0{scroll-padding-top:calc(var(--sh-space)*0)}
+.scroll-pt-0{scroll-padding-top:0}
 .scroll-pt-4{scroll-padding-top:calc(var(--sh-space)*4)}
 .scroll-pt-8{scroll-padding-top:calc(var(--sh-space)*8)}
 .scroll-pt-16{scroll-padding-top:calc(var(--sh-space)*16)}

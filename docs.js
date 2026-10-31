@@ -122,7 +122,7 @@ const COMPONENTS = [
       checkbox: 'Checkbox tinted with the tone.', radio: 'Radio button tinted with the tone.',
       switch: 'Toggle switch (use on a checkbox input).', label: 'Form label.',
       field: 'Groups label, control and hint in a tidy grid.', hint: 'Small helper text under a control.',
-      'input-group': 'Joins inputs, buttons and addons into one bar with shared borders.',
+      'input-group': 'Joins inputs, buttons and addons into one bar with shared borders. Items must be direct children.',
       'input-addon': 'Muted text cell (a prefix, suffix or unit) inside an input-group.',
       range: 'Slider (use on input type=range), tinted with the tone.', file: 'File picker (use on input type=file) with a soft-button style.',
     },
@@ -160,7 +160,7 @@ const COMPONENTS = [
     intro: 'Small status chips, round avatars and separators. Badges take tone classes.',
     desc: {
       badge: 'Small tinted pill.', 'badge-solid': 'Solid tone fill.', 'badge-outline': 'Outlined, no fill.',
-      avatar: 'Round box for initials or an image.', 'avatar-group': 'Overlapping row of avatars, each ringed in the page background.', divider: 'Horizontal rule; put text inside for a labelled divider.',
+      avatar: 'Round box for initials or an image.', 'avatar-group': 'Overlapping row of avatars, each ringed in the page background. On a card, set style="--sh-avatar-ring:var(--sh-surface)".', divider: 'Horizontal rule; put text inside for a labelled divider.',
     },
     examples: [{ html: `<span class="badge">Default</span>
 <span class="badge tone-success">Success</span>
@@ -191,7 +191,7 @@ const COMPONENTS = [
       'btn-close': 'Round close button with a multiplication sign.', dropdown: 'Wrapper for a details/summary dropdown.',
       'dropdown-end': 'Aligns the menu to the right edge.', 'dropdown-menu': 'Popover menu: put on an element with popover, open with a popovertarget button. Closes on outside click and Esc.', 'dropdown-menu-end': 'Aligns a popover menu to the end edge of its button.', menu: 'Vertical list of links or buttons.',
       'menu-divider': 'Thin separator line between menu items.', active: 'Highlights the current menu or tab item.',
-      toast: 'Notification box. On an element with popover="manual" it floats bottom-right; without popover it is a static notice. Tone sets the left border.',
+      toast: 'Notification box. On an element with popover="manual" it floats bottom-right; without popover it is a static notice. Tone sets the left border. Show one floating toast at a time; they share the same corner.',
       'toast-top': 'Positions the toast at the top.', 'toast-left': 'Positions the toast at the left.', 'toast-center': 'Centers the toast horizontally.',
       'data-tooltip': 'Attribute: text shown on hover or focus.', 'data-tooltip-pos': 'Attribute: top (default), bottom, left or right.',
     },

@@ -317,7 +317,7 @@
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.label</code></td><td>Form label.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.field</code></td><td>Groups label, control and hint in a tidy grid.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.hint</code></td><td>Small helper text under a control.</td></tr>
-<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.input-group</code></td><td>Joins inputs, buttons and addons into one bar with shared borders.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.input-group</code></td><td>Joins inputs, buttons and addons into one bar with shared borders. Items must be direct children.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.input-addon</code></td><td>Muted text cell (a prefix, suffix or unit) inside an input-group.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.range</code></td><td>Slider (use on input type=range), tinted with the tone.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.file</code></td><td>File picker (use on input type=file) with a soft-button style.</td></tr>
@@ -351,7 +351,7 @@
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.badge-solid</code></td><td>Solid tone fill.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.badge-outline</code></td><td>Outlined, no fill.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.avatar</code></td><td>Round box for initials or an image.</td></tr>
-<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.avatar-group</code></td><td>Overlapping row of avatars, each ringed in the page background.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.avatar-group</code></td><td>Overlapping row of avatars, each ringed in the page background. On a card, set style="--sh-avatar-ring:var(--sh-surface)".</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.divider</code></td><td>Horizontal rule; put text inside for a labelled divider.</td></tr>
 </tbody></table></div>
 </section>
@@ -497,7 +497,7 @@
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.active</code></td><td>Highlights the current menu or tab item.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.menu-divider</code></td><td>Thin separator line between menu items.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">data-tooltip</code></td><td>Attribute: text shown on hover or focus.</td></tr>
-<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.toast</code></td><td>Notification box. On an element with popover="manual" it floats bottom-right; without popover it is a static notice. Tone sets the left border.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.toast</code></td><td>Notification box. On an element with popover="manual" it floats bottom-right; without popover it is a static notice. Tone sets the left border. Show one floating toast at a time; they share the same corner.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.toast-top</code></td><td>Positions the toast at the top.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.toast-left</code></td><td>Positions the toast at the left.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.toast-center</code></td><td>Centers the toast horizontally.</td></tr>
@@ -746,13 +746,13 @@
 <tr data-c=".align-middle"><td class="font-mono text-sm"><code>.align-middle</code></td><td class="text-sm font-mono break-all">vertical-align:middle</td><td class="text-sm">-</td></tr>
 <tr data-c=".align-bottom"><td class="font-mono text-sm"><code>.align-bottom</code></td><td class="text-sm font-mono break-all">vertical-align:bottom</td><td class="text-sm">-</td></tr>
 <tr data-c=".align-text-top"><td class="font-mono text-sm"><code>.align-text-top</code></td><td class="text-sm font-mono break-all">vertical-align:text-top</td><td class="text-sm">-</td></tr>
-<tr data-c=".scroll-mt-0"><td class="font-mono text-sm"><code>.scroll-mt-0</code></td><td class="text-sm font-mono break-all">scroll-margin-top:calc(var(--sh-space)*0)</td><td class="text-sm">-</td></tr>
+<tr data-c=".scroll-mt-0"><td class="font-mono text-sm"><code>.scroll-mt-0</code></td><td class="text-sm font-mono break-all">scroll-margin-top:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".scroll-mt-4"><td class="font-mono text-sm"><code>.scroll-mt-4</code></td><td class="text-sm font-mono break-all">scroll-margin-top:calc(var(--sh-space)*4)</td><td class="text-sm">-</td></tr>
 <tr data-c=".scroll-mt-8"><td class="font-mono text-sm"><code>.scroll-mt-8</code></td><td class="text-sm font-mono break-all">scroll-margin-top:calc(var(--sh-space)*8)</td><td class="text-sm">-</td></tr>
 <tr data-c=".scroll-mt-16"><td class="font-mono text-sm"><code>.scroll-mt-16</code></td><td class="text-sm font-mono break-all">scroll-margin-top:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
 <tr data-c=".scroll-mt-20"><td class="font-mono text-sm"><code>.scroll-mt-20</code></td><td class="text-sm font-mono break-all">scroll-margin-top:calc(var(--sh-space)*20)</td><td class="text-sm">-</td></tr>
 <tr data-c=".scroll-mt-24"><td class="font-mono text-sm"><code>.scroll-mt-24</code></td><td class="text-sm font-mono break-all">scroll-margin-top:calc(var(--sh-space)*24)</td><td class="text-sm">-</td></tr>
-<tr data-c=".scroll-pt-0"><td class="font-mono text-sm"><code>.scroll-pt-0</code></td><td class="text-sm font-mono break-all">scroll-padding-top:calc(var(--sh-space)*0)</td><td class="text-sm">-</td></tr>
+<tr data-c=".scroll-pt-0"><td class="font-mono text-sm"><code>.scroll-pt-0</code></td><td class="text-sm font-mono break-all">scroll-padding-top:0</td><td class="text-sm">-</td></tr>
 <tr data-c=".scroll-pt-4"><td class="font-mono text-sm"><code>.scroll-pt-4</code></td><td class="text-sm font-mono break-all">scroll-padding-top:calc(var(--sh-space)*4)</td><td class="text-sm">-</td></tr>
 <tr data-c=".scroll-pt-8"><td class="font-mono text-sm"><code>.scroll-pt-8</code></td><td class="text-sm font-mono break-all">scroll-padding-top:calc(var(--sh-space)*8)</td><td class="text-sm">-</td></tr>
 <tr data-c=".scroll-pt-16"><td class="font-mono text-sm"><code>.scroll-pt-16</code></td><td class="text-sm font-mono break-all">scroll-padding-top:calc(var(--sh-space)*16)</td><td class="text-sm">-</td></tr>
