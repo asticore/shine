@@ -1,0 +1,163 @@
+/* Nav — .navbar (.navbar-brand .navbar-nav .navbar-end), .breadcrumb, .pagination, .tabs (.tabs-pills).
+   Use <nav>, <ol>/<ul>, aria-current="page". Knobs: --sh-tone, --sh-btn-radius, --sh-density. */
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--sh-space) * 4);
+  padding: calc(var(--sh-space) * 3 * var(--sh-density)) calc(var(--sh-space) * 4 * var(--sh-density));
+}
+
+.navbar-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--sh-text);
+  text-decoration: none;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--sh-space) * 4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar-nav a {
+  color: var(--sh-text-muted);
+  text-decoration: none;
+  transition: color var(--sh-duration) var(--sh-ease);
+}
+
+.navbar-nav a:hover {
+  color: var(--sh-text);
+}
+
+.navbar-nav a[aria-current="page"] {
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
+  font-weight: 600;
+}
+
+.navbar-end {
+  margin-left: auto;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--sh-space) * 2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: .875rem;
+}
+
+.breadcrumb li + li::before {
+  content: "/";
+  margin-right: calc(var(--sh-space) * 2);
+  color: var(--sh-text-muted);
+}
+
+.breadcrumb a {
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb [aria-current="page"] {
+  color: var(--sh-text-muted);
+}
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--sh-space) * 1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pagination :is(a, span) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  padding: calc(var(--sh-space) * 1.5 * var(--sh-density)) calc(var(--sh-space) * 2 * var(--sh-density));
+  border: var(--sh-border-width) solid var(--sh-border);
+  border-radius: var(--sh-btn-radius, var(--sh-radius));
+  color: var(--sh-text);
+  font-size: .875rem;
+  line-height: 1.25;
+  text-decoration: none;
+  transition: background-color var(--sh-duration) var(--sh-ease), color var(--sh-duration) var(--sh-ease);
+}
+
+.pagination a:hover {
+  background: var(--sh-surface-2);
+}
+
+.pagination [aria-current="page"] {
+  background: var(--sh-tone, var(--sh-primary));
+  border-color: var(--sh-tone, var(--sh-primary));
+  color: var(--sh-on-tone, var(--sh-on-primary));
+}
+
+.pagination [aria-disabled="true"] {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--sh-space) * 1);
+  margin: 0;
+  padding: 0;
+  border-bottom: var(--sh-border-width) solid var(--sh-border);
+  list-style: none;
+}
+
+.tabs :is(a, button) {
+  display: inline-block;
+  margin-bottom: -1px;
+  padding: calc(var(--sh-space) * 2 * var(--sh-density)) calc(var(--sh-space) * 4 * var(--sh-density));
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--sh-text-muted);
+  font: inherit;
+  font-size: .875rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--sh-duration) var(--sh-ease), background-color var(--sh-duration) var(--sh-ease), border-color var(--sh-duration) var(--sh-ease);
+}
+
+.tabs :is(a, button):hover {
+  color: var(--sh-text);
+}
+
+.tabs :is([aria-current="page"], [aria-selected="true"], .active) {
+  border-bottom-color: var(--sh-tone, var(--sh-primary));
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 80%, var(--sh-text));
+}
+
+.tabs-pills {
+  border-bottom: 0;
+}
+
+.tabs-pills :is(a, button) {
+  margin-bottom: 0;
+  border-bottom: 0;
+  border-radius: var(--sh-btn-radius, var(--sh-radius));
+}
+
+.tabs-pills :is([aria-current="page"], [aria-selected="true"], .active) {
+  background: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 15%, transparent);
+}
