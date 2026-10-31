@@ -39,13 +39,13 @@
 .bg-danger-soft { background-color: color-mix(in oklab, var(--sh-danger) 15%, transparent); }
 .bg-info-soft { background-color: color-mix(in oklab, var(--sh-info) 15%, transparent); }
 /* @variants hover */
-.text-primary { color: color-mix(in oklab, var(--sh-primary) var(--sh-text-o, 100%), transparent); }
-.text-secondary { color: color-mix(in oklab, var(--sh-secondary) var(--sh-text-o, 100%), transparent); }
-.text-accent { color: color-mix(in oklab, var(--sh-accent) var(--sh-text-o, 100%), transparent); }
-.text-success { color: color-mix(in oklab, var(--sh-success) var(--sh-text-o, 100%), transparent); }
-.text-warning { color: color-mix(in oklab, var(--sh-warning) var(--sh-text-o, 100%), transparent); }
-.text-danger { color: color-mix(in oklab, var(--sh-danger) var(--sh-text-o, 100%), transparent); }
-.text-info { color: color-mix(in oklab, var(--sh-info) var(--sh-text-o, 100%), transparent); }
+.text-primary { color: color-mix(in oklab, color-mix(in oklab, var(--sh-primary) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent); }
+.text-secondary { color: color-mix(in oklab, color-mix(in oklab, var(--sh-secondary) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent); }
+.text-accent { color: color-mix(in oklab, color-mix(in oklab, var(--sh-accent) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent); }
+.text-success { color: color-mix(in oklab, color-mix(in oklab, var(--sh-success) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent); }
+.text-warning { color: color-mix(in oklab, color-mix(in oklab, var(--sh-warning) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent); }
+.text-danger { color: color-mix(in oklab, color-mix(in oklab, var(--sh-danger) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent); }
+.text-info { color: color-mix(in oklab, color-mix(in oklab, var(--sh-info) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent); }
 /* @end */
 .text-default { color: color-mix(in oklab, var(--sh-text) var(--sh-text-o, 100%), transparent); }
 .text-muted { color: color-mix(in oklab, var(--sh-text-muted) var(--sh-text-o, 100%), transparent); }

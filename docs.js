@@ -606,6 +606,8 @@ const html = `<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shine CSS reference: classes, data attributes and tokens</title>
 <meta name="description" content="${esc(DESC)}">
+<link rel="canonical" href="https://asticore.github.io/shine/docs/reference.html">
+<meta property="og:url" content="https://asticore.github.io/shine/docs/reference.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Shine CSS reference: classes, data attributes and tokens">
 <meta property="og:description" content="${esc(DESC)}">

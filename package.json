@@ -12,13 +12,32 @@
     "./src/*": "./src/*",
     "./package.json": "./package.json"
   },
-  "files": ["dist", "src"],
-  "sideEffects": ["*.css"],
+  "files": [
+    "dist",
+    "src"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "build": "node build.js && node docs.js",
-    "docs": "node docs.js"
+    "docs": "node docs.js",
+    "test": "node tests/smoke.js chromium firefox webkit"
   },
-  "repository": { "type": "git", "url": "git+https://github.com/asticore/shine.git" },
-  "keywords": ["css", "utility-first", "tailwind-alternative", "design-tokens", "no-javascript"],
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asticore/shine.git"
+  },
+  "keywords": [
+    "css",
+    "utility-first",
+    "tailwind-alternative",
+    "design-tokens",
+    "no-javascript"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "playwright": "^1.56.0"
+  },
+  "homepage": "https://asticore.github.io/shine/docs/"
 }

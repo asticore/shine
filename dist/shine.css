@@ -79,6 +79,7 @@
    data-theme="auto"           follow the OS setting
    ------------------------------------------------------------------------ */
 [data-theme="light"] {
+  --sh-brand-text: 100%;
   --sh-bg: #fff;
   --sh-surface: #f8fafc;
   --sh-surface-2: #f1f5f9;
@@ -89,6 +90,7 @@
 }
 
 [data-theme="dark"] {
+  --sh-brand-text: 75%; /* brand-colored text mixes toward --sh-text for contrast */
   --sh-bg: #0b0f19;
   --sh-surface: #121826;
   --sh-surface-2: #1c2433;
@@ -105,6 +107,7 @@
 
 @media (prefers-color-scheme: dark) {
   [data-theme="auto"] {
+    --sh-brand-text: 75%;
     --sh-bg: #0b0f19;
     --sh-surface: #121826;
     --sh-surface-2: #1c2433;
@@ -2339,13 +2342,13 @@ html:has(:modal) {
 .bg-danger-soft { background-color: color-mix(in oklab, var(--sh-danger) 15%, transparent); }
 .bg-info-soft { background-color: color-mix(in oklab, var(--sh-info) 15%, transparent); }
 
-.text-primary { color: color-mix(in oklab, var(--sh-primary) var(--sh-text-o, 100%), transparent); }
-.text-secondary { color: color-mix(in oklab, var(--sh-secondary) var(--sh-text-o, 100%), transparent); }
-.text-accent { color: color-mix(in oklab, var(--sh-accent) var(--sh-text-o, 100%), transparent); }
-.text-success { color: color-mix(in oklab, var(--sh-success) var(--sh-text-o, 100%), transparent); }
-.text-warning { color: color-mix(in oklab, var(--sh-warning) var(--sh-text-o, 100%), transparent); }
-.text-danger { color: color-mix(in oklab, var(--sh-danger) var(--sh-text-o, 100%), transparent); }
-.text-info { color: color-mix(in oklab, var(--sh-info) var(--sh-text-o, 100%), transparent); }
+.text-primary { color: color-mix(in oklab, color-mix(in oklab, var(--sh-primary) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent); }
+.text-secondary { color: color-mix(in oklab, color-mix(in oklab, var(--sh-secondary) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent); }
+.text-accent { color: color-mix(in oklab, color-mix(in oklab, var(--sh-accent) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent); }
+.text-success { color: color-mix(in oklab, color-mix(in oklab, var(--sh-success) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent); }
+.text-warning { color: color-mix(in oklab, color-mix(in oklab, var(--sh-warning) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent); }
+.text-danger { color: color-mix(in oklab, color-mix(in oklab, var(--sh-danger) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent); }
+.text-info { color: color-mix(in oklab, color-mix(in oklab, var(--sh-info) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent); }
 
 .text-default { color: color-mix(in oklab, var(--sh-text) var(--sh-text-o, 100%), transparent); }
 .text-muted { color: color-mix(in oklab, var(--sh-text-muted) var(--sh-text-o, 100%), transparent); }
@@ -2617,13 +2620,13 @@ html:has(:modal) {
 .hover\:bg-danger:hover{background-color: color-mix(in oklab, var(--sh-danger) var(--sh-bg-o, 100%), transparent);}
 .hover\:bg-info:hover{background-color: color-mix(in oklab, var(--sh-info) var(--sh-bg-o, 100%), transparent);}
 .hover\:bg-surface-2:hover{background-color: color-mix(in oklab, var(--sh-surface-2) var(--sh-bg-o, 100%), transparent);}
-.hover\:text-primary:hover{color: color-mix(in oklab, var(--sh-primary) var(--sh-text-o, 100%), transparent);}
-.hover\:text-secondary:hover{color: color-mix(in oklab, var(--sh-secondary) var(--sh-text-o, 100%), transparent);}
-.hover\:text-accent:hover{color: color-mix(in oklab, var(--sh-accent) var(--sh-text-o, 100%), transparent);}
-.hover\:text-success:hover{color: color-mix(in oklab, var(--sh-success) var(--sh-text-o, 100%), transparent);}
-.hover\:text-warning:hover{color: color-mix(in oklab, var(--sh-warning) var(--sh-text-o, 100%), transparent);}
-.hover\:text-danger:hover{color: color-mix(in oklab, var(--sh-danger) var(--sh-text-o, 100%), transparent);}
-.hover\:text-info:hover{color: color-mix(in oklab, var(--sh-info) var(--sh-text-o, 100%), transparent);}
+.hover\:text-primary:hover{color: color-mix(in oklab, color-mix(in oklab, var(--sh-primary) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
+.hover\:text-secondary:hover{color: color-mix(in oklab, color-mix(in oklab, var(--sh-secondary) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
+.hover\:text-accent:hover{color: color-mix(in oklab, color-mix(in oklab, var(--sh-accent) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
+.hover\:text-success:hover{color: color-mix(in oklab, color-mix(in oklab, var(--sh-success) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
+.hover\:text-warning:hover{color: color-mix(in oklab, color-mix(in oklab, var(--sh-warning) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
+.hover\:text-danger:hover{color: color-mix(in oklab, color-mix(in oklab, var(--sh-danger) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
+.hover\:text-info:hover{color: color-mix(in oklab, color-mix(in oklab, var(--sh-info) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
 .hover\:shadow-none:hover{box-shadow: none;}
 .hover\:shadow-sm:hover{box-shadow: var(--sh-shadow-1);}
 .hover\:shadow:hover{box-shadow: var(--sh-shadow-2);}
