@@ -74,6 +74,7 @@
    data-theme="auto"           follow the OS setting
    ------------------------------------------------------------------------ */
 [data-theme="light"] {
+  --sh-brand-text: 100%;
   --sh-bg: #fff;
   --sh-surface: #f8fafc;
   --sh-surface-2: #f1f5f9;
@@ -84,6 +85,7 @@
 }
 
 [data-theme="dark"] {
+  --sh-brand-text: 75%; /* brand-colored text mixes toward --sh-text for contrast */
   --sh-bg: #0b0f19;
   --sh-surface: #121826;
   --sh-surface-2: #1c2433;
@@ -100,6 +102,7 @@
 
 @media (prefers-color-scheme: dark) {
   [data-theme="auto"] {
+    --sh-brand-text: 75%;
     --sh-bg: #0b0f19;
     --sh-surface: #121826;
     --sh-surface-2: #1c2433;

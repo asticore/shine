@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium firefox webkit
+      - name: Build (fails if over the gzip budget)
+        run: npm run build
+      - name: dist and reference are committed and up to date
+        run: git diff --exit-code -- dist docs/reference.html
+      - name: Cross-browser smoke test
+        run: npm test

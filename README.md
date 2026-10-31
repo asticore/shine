@@ -12,9 +12,9 @@
   One stylesheet. No JavaScript. No build step. ~15 KB gzipped.
   <br>
   <br>
-  <a href="docs/reference.html"><strong>Class reference</strong></a>
+  <a href="https://asticore.github.io/shine/docs/reference.html"><strong>Class reference</strong></a>
   ·
-  <a href="docs/index.html">Live playground</a>
+  <a href="https://asticore.github.io/shine/docs/">Theme builder &amp; playground</a>
   ·
   <a href="#quick-start">Quick start</a>
   ·
@@ -22,7 +22,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/gzip-15.6%20KB-4f46e5" alt="Size: 15.6 KB gzip">
+  <img src="https://img.shields.io/badge/gzip-15.7%20KB-4f46e5" alt="Size: 15.7 KB gzip">
   <img src="https://img.shields.io/badge/JavaScript-none-16a34a" alt="No JavaScript required">
   <img src="https://img.shields.io/badge/dependencies-0-16a34a" alt="Zero dependencies">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT license"></a>
@@ -79,7 +79,7 @@ Then build with classes:
 
 | | **Shine** | Bootstrap 5 | Tailwind CSS 4 | UnoCSS | Angular Material | Foundation 6 | daisyUI 5 |
 |---|---|---|---|---|---|---|---|
-| Size (min + gzip, approx.) | **~15.6 KB** CSS, everything included | ~30 KB CSS + ~23 KB JS | Usually under 10 KB **after** a build strips unused classes; the full unbuilt set is several MB | Depends on build | Theme CSS + Angular runtime JS | ~20 KB CSS + JS plugins | Depends on Tailwind build |
+| Size (min + gzip) | **~15.7 KB** CSS, everything included | 30 KB CSS + 23 KB JS (5.3.8) | Usually under 10 KB **after** a build strips unused classes; the no-build browser script is 72 KB of JS | Depends on build; runtime script 57 KB of JS | Styles ship inside the Angular app JS | 17 KB CSS + 39 KB JS (6.9) | Depends on Tailwind build; full CDN CSS 96 KB |
 | Works without a build step | **Yes**, one `<link>` | Yes | No (CLI / PostCSS / Vite) | No (or runtime script) | No (Angular app) | Yes | No (Tailwind plugin) |
 | Modals, dropdowns, off-canvas without JS | **Yes** (native `dialog`, `popover`, `details`) | No (needs bootstrap.js) | No components | No components | No (Angular components) | No (JS plugins) | Mostly |
 | Utility classes | **Yes** | Partial | Yes | Yes | No | Partial | Yes (via Tailwind) |
@@ -89,7 +89,7 @@ Then build with classes:
 | Per-component overrides (e.g. only buttons pill-shaped) | **Yes** (`data-btn-radius`) | Sass variables | Per class | Per class | Sass mixins | Sass | Theme variables |
 | Dark mode | `data-theme`, per section | `data-bs-theme`, per section | `dark:` variant | `dark:` variant | Theme classes | Custom | `data-theme`, per section |
 
-Sizes are rough figures for each project's default distribution and change between versions; check each project for exact numbers.
+Sizes measured with `gzip -9` on each project's npm distribution (Bootstrap 5.3.8, Foundation 6.9.0, daisyUI 5.7, @tailwindcss/browser 4.3, @unocss/runtime 66); they change between versions.
 
 **Inspiration.** Shine's utility class names follow conventions popularized by [Tailwind CSS](https://tailwindcss.com), so they feel familiar. Its component set takes cues from [Bootstrap](https://getbootstrap.com). Unlike either, Shine is a single prebuilt stylesheet driven by a few global knobs.
 
@@ -184,6 +184,8 @@ node build.js                              # full build → dist/
 node build.js --exclude=alert,badge        # drop modules
 node build.js --only=tokens,reset,base,button,card   # just what you need
 ```
+
+Tests: `npm install && npx playwright install && npm test` runs a smoke test in Chromium, Firefox and WebKit (also run by CI on every push and pull request).
 
 No dependencies. Or skip the build and `@import "shine/src/index.css"` (variant classes need the build).
 
