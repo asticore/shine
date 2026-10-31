@@ -35,6 +35,9 @@
 .btn-group-vertical > .btn:not(:last-child) { border-end-start-radius: 0; border-end-end-radius: 0; }
 .btn-group > .btn:is(:hover, :focus-visible),
 .btn-group-vertical > .btn:is(:hover, :focus-visible) { position: relative; z-index: 1; }
+/* Divider between joined solid buttons */
+.btn-group > .btn:not(.btn-outline, .btn-ghost, .btn-link) + .btn { border-inline-start-color: color-mix(in oklab, currentColor 30%, transparent); }
+.btn-group-vertical > .btn:not(.btn-outline, .btn-ghost, .btn-link) + .btn { border-top-color: color-mix(in oklab, currentColor 30%, transparent); }
 
 .floating { position: relative; }
 .floating > .input,

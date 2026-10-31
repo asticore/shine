@@ -22,7 +22,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/gzip-15.5%20KB-4f46e5" alt="Size: 15.5 KB gzip">
+  <img src="https://img.shields.io/badge/gzip-15.6%20KB-4f46e5" alt="Size: 15.6 KB gzip">
   <img src="https://img.shields.io/badge/JavaScript-none-16a34a" alt="No JavaScript required">
   <img src="https://img.shields.io/badge/dependencies-0-16a34a" alt="Zero dependencies">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT license"></a>
@@ -79,7 +79,7 @@ Then build with classes:
 
 | | **Shine** | Bootstrap 5 | Tailwind CSS 4 | UnoCSS | Angular Material | Foundation 6 | daisyUI 5 |
 |---|---|---|---|---|---|---|---|
-| Size (min + gzip, approx.) | **~15.5 KB** CSS, everything included | ~30 KB CSS + ~23 KB JS | Usually under 10 KB **after** a build strips unused classes; the full unbuilt set is several MB | Depends on build | Theme CSS + Angular runtime JS | ~20 KB CSS + JS plugins | Depends on Tailwind build |
+| Size (min + gzip, approx.) | **~15.6 KB** CSS, everything included | ~30 KB CSS + ~23 KB JS | Usually under 10 KB **after** a build strips unused classes; the full unbuilt set is several MB | Depends on build | Theme CSS + Angular runtime JS | ~20 KB CSS + JS plugins | Depends on Tailwind build |
 | Works without a build step | **Yes**, one `<link>` | Yes | No (CLI / PostCSS / Vite) | No (or runtime script) | No (Angular app) | Yes | No (Tailwind plugin) |
 | Modals, dropdowns, off-canvas without JS | **Yes** (native `dialog`, `popover`, `details`) | No (needs bootstrap.js) | No components | No components | No (Angular components) | No (JS plugins) | Mostly |
 | Utility classes | **Yes** | Partial | Yes | Yes | No | Partial | Yes (via Tailwind) |
