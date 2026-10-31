@@ -1,0 +1,41 @@
+/* Shine — base: page defaults, themes paint, focus ring, selection, .link */
+html {
+  font-family: var(--sh-font-sans);
+  line-height: var(--sh-leading);
+}
+
+body {
+  font-family: var(--sh-font-sans);
+  line-height: var(--sh-leading);
+  background-color: var(--sh-bg);
+  color: var(--sh-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* A themed element paints its own surface so nested dark/light sections work */
+[data-theme] {
+  background-color: var(--sh-bg);
+  color: var(--sh-text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--sh-ring, var(--sh-primary));
+  outline-offset: 2px;
+}
+
+::selection {
+  background-color: color-mix(in oklab, var(--sh-primary) 25%, transparent);
+}
+
+hr { border-color: var(--sh-border); }
+
+.link {
+  color: var(--sh-primary);
+  text-decoration: none;
+  transition: color var(--sh-duration) var(--sh-ease);
+}
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
