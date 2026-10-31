@@ -1600,6 +1600,104 @@ html:has(:modal) {
   .prose a[href^="http"]::after { content: " (" attr(href) ")"; }
   .card, pre, tr { break-inside: avoid; }
 }
+
+/* ./components/extras.css */
+/* Extras — list-group, btn-group, floating, carousel, stretched-link, indicator, dot, vr, lead, mark.
+   Knobs: --sh-tone, --sh-btn-radius, --sh-radius, --sh-density. */
+
+.list-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: var(--sh-border-width) solid var(--sh-border);
+  border-radius: var(--sh-radius);
+  overflow: hidden;
+}
+.list-group > * {
+  display: block;
+  padding: calc(var(--sh-space) * 3 * var(--sh-density)) calc(var(--sh-space) * 4 * var(--sh-density));
+  color: inherit;
+  text-decoration: none;
+}
+.list-group > * + * { border-top: var(--sh-border-width) solid var(--sh-border); }
+.list-group > :is(a, button) { background: none; border-inline: 0; border-bottom: 0; font: inherit; text-align: start; cursor: pointer; }
+.list-group > :is(a, button):hover { background: var(--sh-surface-2); }
+.list-group > :is([aria-current], .active),
+.list-group > :is([aria-current], .active):hover {
+  background: var(--sh-tone, var(--sh-primary));
+  color: var(--sh-on-tone, var(--sh-on-primary));
+}
+
+.btn-group,
+.btn-group-vertical { display: inline-flex; vertical-align: middle; }
+.btn-group-vertical { flex-direction: column; }
+.btn-group > .btn:not(:first-child) { margin-inline-start: calc(var(--sh-border-width) * -1); border-start-start-radius: 0; border-end-start-radius: 0; }
+.btn-group > .btn:not(:last-child) { border-start-end-radius: 0; border-end-end-radius: 0; }
+.btn-group-vertical > .btn:not(:first-child) { margin-top: calc(var(--sh-border-width) * -1); border-start-start-radius: 0; border-start-end-radius: 0; }
+.btn-group-vertical > .btn:not(:last-child) { border-end-start-radius: 0; border-end-end-radius: 0; }
+.btn-group > .btn:is(:hover, :focus-visible),
+.btn-group-vertical > .btn:is(:hover, :focus-visible) { position: relative; z-index: 1; }
+
+.floating { position: relative; }
+.floating > .input,
+.floating > .textarea { padding-top: calc(var(--sh-space) * 5 * var(--sh-density)); padding-bottom: calc(var(--sh-space) * 1.5 * var(--sh-density)); }
+.floating > label {
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  padding: calc(var(--sh-space) * 5 * var(--sh-density)) calc(var(--sh-space) * 3 * var(--sh-density)) 0;
+  color: var(--sh-text-muted);
+  font-size: .875rem;
+  line-height: 1.5;
+  pointer-events: none;
+  transform-origin: 0 0;
+  transition: translate var(--sh-duration) var(--sh-ease), color var(--sh-duration) var(--sh-ease);
+}
+.floating > :is(.input, .textarea):is(:focus, :not(:placeholder-shown)) ~ label {
+  translate: 0 calc(var(--sh-space) * -3.5 * var(--sh-density));
+  font-size: .75rem;
+  line-height: 1;
+}
+.floating > :is(.input, .textarea):focus ~ label { color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text)); }
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+}
+.carousel > * { flex: 0 0 100%; scroll-snap-align: start; }
+.carousel-peek > * { flex-basis: 85%; }
+.carousel-hide-bar { scrollbar-width: none; }
+.carousel-hide-bar::-webkit-scrollbar { display: none; }
+
+.stretched-link::after { content: ""; position: absolute; inset: 0; }
+:has(> .stretched-link), .card:has(.stretched-link) { position: relative; }
+
+.indicator { position: relative; display: inline-flex; }
+.indicator-item { position: absolute; top: 0; right: 0; translate: 50% -50%; z-index: 1; }
+
+.dot {
+  display: inline-block;
+  inline-size: .5rem;
+  block-size: .5rem;
+  border-radius: 50%;
+  background: var(--sh-tone, var(--sh-primary));
+}
+
+.vr { align-self: stretch; width: var(--sh-border-width); background: var(--sh-border); }
+
+.lead { font-size: 1.25rem; font-weight: 300; color: color-mix(in oklab, var(--sh-text) 80%, var(--sh-bg)); }
+
+:where(mark), .mark {
+  padding: .1em .25em;
+  border-radius: calc(var(--sh-radius) / 2);
+  background: color-mix(in oklab, var(--sh-warning) 25%, transparent);
+  color: inherit;
+}
 }
 
 @layer shine.utilities {
@@ -2565,6 +2663,35 @@ html:has(:modal) {
     transition-duration: .01ms;
     scroll-behavior: auto;
   }
+}
+
+/* ./utilities/extras.css */
+/* Extras: centering/position helpers, translate, object/overflow/overscroll, container queries */
+.top-1\/2{top:50%}
+.left-1\/2{left:50%}
+.right-1\/2{right:50%}
+.bottom-1\/2{bottom:50%}
+.top-full{top:100%}
+.left-full{left:100%}
+.right-full{right:100%}
+.bottom-full{bottom:100%}
+.inset-2{inset:calc(var(--sh-space)*2)}
+.inset-4{inset:calc(var(--sh-space)*4)}
+.-translate-x-1\/2{translate:-50% 0}
+.-translate-y-1\/2{translate:0 -50%}
+.-translate-1\/2{translate:-50% -50%}
+.object-center{object-position:center}
+.object-top{object-position:top}
+.overflow-clip{overflow:clip}
+.overscroll-contain{overscroll-behavior:contain}
+.cq{container-type:inline-size}
+@container (min-width:28rem){
+.cq-md\:flex{display:flex}
+.cq-md\:block{display:block}
+.cq-md\:hidden{display:none}
+.cq-md\:flex-row{flex-direction:row}
+.cq-md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cq-md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 
 /* hover: */
