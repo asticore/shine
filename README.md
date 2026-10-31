@@ -72,6 +72,10 @@ Differences from Tailwind, on purpose:
 - **No `dark:` variant** — themes handle dark mode via tokens.
 - Variants: `sm: md: lg: xl:` on layout-critical utilities, `hover:` / `focus:` on colors, opacity, shadow.
 
+Known limitation: `data-shadow` picks its shadow on the element that carries it, so with
+`<html data-shadow="3">` a nested `data-theme="dark"` section keeps the light-theme shadow strength.
+Put `data-shadow` on (or inside) the dark section if that matters.
+
 ## 5. Cascade
 
 Built with `@layer shine.tokens, reset, base, components, utilities`.

@@ -35,8 +35,21 @@ const imports = [...index.matchAll(/@import\s+url\(["']?([^"')]+)["']?\)\s+layer
   .filter(i => !args.exclude || !args.exclude.includes(i.name))
   .filter(i => !args.only || args.only.includes(i.name));
 
+const VARIANTS = ['responsive', 'hover', 'focus'];
+
+// Split a selector list on top-level commas only (keeps :is(a, b) intact)
+const splitSelectors = sel => {
+  const parts = []; let depth = 0, cur = '';
+  for (const ch of sel) {
+    if (ch === '(') depth++;
+    if (ch === ')') depth--;
+    if (ch === ',' && depth === 0) { parts.push(cur); cur = ''; } else cur += ch;
+  }
+  return [...parts, cur];
+};
+
 const prefixSelector = (sel, prefix, pseudo = '') =>
-  sel.split(',').map(s => {
+  splitSelectors(sel).map(s => {
     const m = s.trim().match(/^\.((?:\\.|[\w-])+)([\s\S]*)$/);
     if (!m) throw new Error(`Variant blocks need class selectors, got: "${s.trim()}"`);
     return `.${prefix}\\:${m[1]}${pseudo}${m[2]}`;
@@ -56,6 +69,8 @@ for (const imp of imports) {
   const L = layers.get(imp.layer);
   css = css.replace(/\/\*\s*@variants([^*]*)\*\/([\s\S]*?)\/\*\s*@end\s*\*\//g, (_, kinds, block) => {
     const want = kinds.trim().split(/\s+/);
+    const bad = want.filter(k => !VARIANTS.includes(k));
+    if (bad.length) throw new Error(`${imp.file}: unknown variant "${bad.join(', ')}" (use ${VARIANTS.join(', ')})`);
     for (const r of rulesOf(block)) {
       if (want.includes('hover')) L.hover.push(`${prefixSelector(r.sel, 'hover', ':hover')}{${r.body}}`);
       if (want.includes('focus')) L.focus.push(`${prefixSelector(r.sel, 'focus', ':focus-visible')}{${r.body}}`);
