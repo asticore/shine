@@ -4,7 +4,7 @@ Pure-CSS utility framework. Tailwind class names, no build step required, ~16 KB
 Turn a few **master knobs** and the whole site follows; drop to utility classes when you want granular control.
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asticore/shine/dist/shine.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asticore/shine@main/dist/shine.min.css">
 ```
 
 ## 1. Master knobs

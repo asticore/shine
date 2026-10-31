@@ -52,7 +52,7 @@ Wrap rules that need prefixes:
 /* @end */
 ```
 - `responsive` → `sm: md: lg: xl:` (640/768/1024/1280, mobile-first).
-- `hover` → `hover:x:hover`, `focus` → `focus:x:focus-visible`.
+- `hover` → `hover:x:hover`, `focus` → `focus:x:focus-visible`, `print` → `print:x` inside `@media print`.
 - Inside a block: flat rules only, every selector starts with one class. No nested `@media`.
 - Use variants sparingly (each responsive block costs ×5). Good candidates: display, flex/grid
   direction/cols/span, gap, padding, margin (common steps), width/max-width, text size/align, order.

@@ -8,7 +8,7 @@
      .flex { display: flex; }
      /* @end *\/
    generates  .sm\:flex .md\:flex .lg\:flex .xl\:flex  (min-width media queries)
-              .hover\:flex:hover   .focus\:flex:focus-visible
+              .hover\:flex:hover   .focus\:flex:focus-visible   .print\:flex (@media print)
 
    Usage:
      node build.js                      full build
@@ -35,7 +35,7 @@ const imports = [...index.matchAll(/@import\s+url\(["']?([^"')]+)["']?\)\s+layer
   .filter(i => !args.exclude || !args.exclude.includes(i.name))
   .filter(i => !args.only || args.only.includes(i.name));
 
-const VARIANTS = ['responsive', 'hover', 'focus'];
+const VARIANTS = ['responsive', 'hover', 'focus', 'print'];
 
 // Split a selector list on top-level commas only (keeps :is(a, b) intact)
 const splitSelectors = sel => {
@@ -65,7 +65,7 @@ for (const imp of imports) {
   const file = path.join(SRC, imp.file);
   if (!fs.existsSync(file)) { missing.push(imp.file); continue; }
   let css = fs.readFileSync(file, 'utf8');
-  if (!layers.has(imp.layer)) layers.set(imp.layer, { css: [], hover: [], focus: [], bp: Object.fromEntries(Object.keys(BREAKPOINTS).map(k => [k, []])) });
+  if (!layers.has(imp.layer)) layers.set(imp.layer, { css: [], hover: [], focus: [], print: [], bp: Object.fromEntries(Object.keys(BREAKPOINTS).map(k => [k, []])) });
   const L = layers.get(imp.layer);
   css = css.replace(/\/\*\s*@variants([^*]*)\*\/([\s\S]*?)\/\*\s*@end\s*\*\//g, (_, kinds, block) => {
     const want = kinds.trim().split(/\s+/);
@@ -74,6 +74,7 @@ for (const imp of imports) {
     for (const r of rulesOf(block)) {
       if (want.includes('hover')) L.hover.push(`${prefixSelector(r.sel, 'hover', ':hover')}{${r.body}}`);
       if (want.includes('focus')) L.focus.push(`${prefixSelector(r.sel, 'focus', ':focus-visible')}{${r.body}}`);
+      if (want.includes('print')) L.print.push(`${prefixSelector(r.sel, 'print')}{${r.body}}`);
       if (want.includes('responsive')) for (const bp in BREAKPOINTS) L.bp[bp].push(`${prefixSelector(r.sel, bp)}{${r.body}}`);
     }
     return block;
@@ -88,6 +89,7 @@ for (const [name, L] of layers) {
   if (L.focus.length) body += `\n\n/* focus: */\n${L.focus.join('\n')}`;
   for (const bp in BREAKPOINTS) if (L.bp[bp].length)
     body += `\n\n@media (min-width: ${BREAKPOINTS[bp]}px) {\n${L.bp[bp].join('\n')}\n}`;
+  if (L.print.length) body += `\n\n@media print {\n${L.print.join('\n')}\n}`;
   out += `\n@layer ${name} {\n${body}\n}\n`;
 }
 
