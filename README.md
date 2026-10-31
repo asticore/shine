@@ -1,11 +1,78 @@
-# Shine
+<p align="center">
+  <a href="https://github.com/asticore/shine">
+    <img src="docs/logo.svg" alt="Shine CSS logo" width="88" height="88">
+  </a>
+</p>
 
-Pure-CSS utility framework. Tailwind class names, no build step required, ~16 KB gzip ceiling.
-Turn a few **master knobs** and the whole site follows; drop to utility classes when you want granular control.
+<h1 align="center">Shine CSS</h1>
+
+<p align="center">
+  <strong>Ultra-light, pure-CSS utility framework with Tailwind-style classes and master design knobs.</strong>
+  <br>
+  One stylesheet. No JavaScript. No build step. ~15 KB gzipped.
+  <br>
+  <br>
+  <a href="docs/reference.html"><strong>Class reference</strong></a>
+  ·
+  <a href="docs/index.html">Live playground</a>
+  ·
+  <a href="#quick-start">Quick start</a>
+  ·
+  <a href="https://github.com/asticore/shine/issues">Report a bug</a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/gzip-15.5%20KB-4f46e5" alt="Size: 15.5 KB gzip">
+  <img src="https://img.shields.io/badge/JavaScript-none-16a34a" alt="No JavaScript required">
+  <img src="https://img.shields.io/badge/dependencies-0-16a34a" alt="Zero dependencies">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT license"></a>
+</p>
+
+## Why Shine?
+
+**Shine** is a lightweight CSS framework for building fast, accessible, SEO-friendly websites. It combines the utility classes of **Tailwind CSS** with the ready-made components of **Bootstrap**, in a single file smaller than most hero images.
+
+- **Master knobs.** Set your brand color, dark or light theme, corner roundness (levels 0–5), shadow depth and spacing density once on `<html>`. Every button, card, input and utility follows.
+- **Tailwind class names.** Use `flex`, `p-4`, `md:grid-cols-3` and `text-lg` without a compiler.
+- **Components without JavaScript.** Modals, off-canvas menus, dropdowns, tooltips, toasts, accordions and tabs run on native HTML: `<dialog>`, `popover` and `<details>`.
+- **Small enough to forget about.** About 15 KB gzipped for the whole framework, or less with `node build.js --only=...`.
+- **Semantic and accessible.** Styles target real HTML elements and ARIA states. Includes focus rings, a skip link, reduced-motion support and print styles.
+- **No specificity fights.** Built on CSS cascade layers, so your own CSS always wins without `!important`.
+
+## Quick start
+
+Add one line to your `<head>`:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asticore/shine@main/dist/shine.min.css">
 ```
+
+Then build with classes:
+
+```html
+<html data-theme="auto" data-radius="3" style="--sh-primary:#0ea5e9">
+  <body>
+    <main class="center section stack">
+      <h1 class="text-4xl font-bold">Hello, Shine</h1>
+      <div class="card">
+        <div class="card-body">
+          <p class="text-muted">Change the knobs on &lt;html&gt; and everything restyles.</p>
+          <button class="btn mt-4">Get started</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+```
+
+## Contents
+
+- [Master knobs](#1-master-knobs)
+- [Tones](#2-tones)
+- [Components](#3-components)
+- [Utilities](#4-utilities-tailwind-names)
+- [Cascade](#5-cascade)
+- [Build / customize](#build--customize)
 
 ## 1. Master knobs
 
