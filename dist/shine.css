@@ -1328,7 +1328,7 @@ html:has(:modal) {
 }
 
 /* ./components/content.css */
-/* Content — .accordion (<details>), .table (.table-striped .table-hover .table-compact .table-wrap),
+/* Content — .accordion (<details>), .table (.table-striped .table-hover .table-compact .table-bordered .table-borderless .table-wrap .table-sticky-col .table-stack),
    .progress (<progress>), .prose (long-form semantic HTML), .skip-link.
    Knobs: --sh-card-radius, --sh-tone, --sh-density. */
 
@@ -1387,35 +1387,59 @@ html:has(:modal) {
 .table {
   width: 100%;
   border-collapse: collapse;
-  text-align: left;
+  text-align: start;
+  vertical-align: top;
+  font-variant-numeric: tabular-nums;
 }
 
 .table :is(th, td) {
   padding: calc(var(--sh-space) * 3 * var(--sh-density)) calc(var(--sh-space) * 4 * var(--sh-density));
   border-bottom: var(--sh-border-width) solid var(--sh-border);
-  text-align: left;
+  text-align: inherit;
+  vertical-align: inherit;
 }
 
-.table th {
+.table thead th {
   color: var(--sh-text-muted);
   font-size: .875rem;
   font-weight: 600;
+  vertical-align: bottom;
 }
 
-.table-striped tbody tr:nth-child(even) {
-  background: var(--sh-surface);
+.table tbody th { font-weight: 600; }
+.table tfoot :is(th, td) { font-weight: 600; border-bottom: 0; border-top: calc(var(--sh-border-width) * 2) solid var(--sh-border); }
+.table caption { padding-block: calc(var(--sh-space) * 2); color: var(--sh-text-muted); font-size: .875rem; text-align: start; }
+
+.table-striped :where(tbody tr:nth-child(even)) { background: var(--sh-surface); }
+.table-hover :where(tbody tr):hover { background: var(--sh-surface-2); }
+.table-compact :is(th, td) { padding: calc(var(--sh-space) * 1.5 * var(--sh-density)) calc(var(--sh-space) * 3 * var(--sh-density)); }
+.table-bordered :is(th, td) { border: var(--sh-border-width) solid var(--sh-border); }
+.table-borderless :is(th, td) { border: 0; }
+
+/* Highlighted rows/cells: .active, aria-selected, or any tone-* class */
+.table :is(tr, th, td):is(.active, [aria-selected="true"], [class*="tone-"]) {
+  background: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 12%, transparent);
 }
 
-.table-hover tbody tr:hover {
-  background: var(--sh-surface-2);
-}
+/* Sortable headers: set aria-sort with your own JS; Shine draws the arrow */
+.table th[aria-sort] { cursor: pointer; white-space: nowrap; }
+.table th[aria-sort]::after { content: "\2195"; margin-inline-start: .35em; opacity: .4; }
+.table th[aria-sort="ascending"]::after { content: "\2191"; opacity: 1; }
+.table th[aria-sort="descending"]::after { content: "\2193"; opacity: 1; }
 
-.table-compact :is(th, td) {
-  padding: calc(var(--sh-space) * 1.5 * var(--sh-density)) calc(var(--sh-space) * 3 * var(--sh-density));
-}
+/* Scroll container; give it max-h-* for a sticky header, add .table-sticky-col for a pinned first column */
+.table-wrap { overflow: auto; }
+.table-wrap thead th { position: sticky; top: 0; z-index: 1; background: var(--sh-table-head-bg, var(--sh-bg)); }
+.table-sticky-col :is(th, td):first-child { position: sticky; left: 0; background: var(--sh-table-head-bg, var(--sh-bg)); }
 
-.table-wrap {
-  overflow-x: auto;
+/* Stack rows as cards on phones: add data-label="Column" to each <td> */
+@media (max-width: 639.98px) {
+  .table-stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .table-stack :is(tr, td) { display: block; }
+  .table-stack tr { border: var(--sh-border-width) solid var(--sh-border); border-radius: var(--sh-radius); margin-bottom: calc(var(--sh-space) * 3); }
+  .table-stack td { display: grid; grid-template-columns: minmax(6rem, 40%) 1fr; gap: calc(var(--sh-space) * 2); }
+  .table-stack tr > :last-child { border-bottom: 0; }
+  .table-stack td[data-label]::before { content: attr(data-label); color: var(--sh-text-muted); font-weight: 600; }
 }
 
 .progress {
@@ -1935,20 +1959,20 @@ html:has(:modal) {
 
 .grid-cols-none{grid-template-columns:none}
 
-.col-span-1{grid-column:span 1/span 1}
-.col-span-2{grid-column:span 2/span 2}
-.col-span-3{grid-column:span 3/span 3}
-.col-span-4{grid-column:span 4/span 4}
-.col-span-5{grid-column:span 5/span 5}
-.col-span-6{grid-column:span 6/span 6}
-.col-span-7{grid-column:span 7/span 7}
-.col-span-8{grid-column:span 8/span 8}
-.col-span-9{grid-column:span 9/span 9}
-.col-span-10{grid-column:span 10/span 10}
-.col-span-11{grid-column:span 11/span 11}
-.col-span-12{grid-column:span 12/span 12}
+.col-span-1{grid-column:span 1}
+.col-span-2{grid-column:span 2}
+.col-span-3{grid-column:span 3}
+.col-span-4{grid-column:span 4}
+.col-span-5{grid-column:span 5}
+.col-span-6{grid-column:span 6}
+.col-span-8{grid-column:span 8}
+.col-span-9{grid-column:span 9}
+.col-span-12{grid-column:span 12}
 .col-span-full{grid-column:1/-1}
 
+.col-span-7{grid-column:span 7}
+.col-span-10{grid-column:span 10}
+.col-span-11{grid-column:span 11}
 
 .col-start-1{grid-column-start:1}
 .col-start-2{grid-column-start:2}
@@ -1959,9 +1983,9 @@ html:has(:modal) {
 .grid-rows-1{grid-template-rows:repeat(1,minmax(0,1fr))}
 .grid-rows-2{grid-template-rows:repeat(2,minmax(0,1fr))}
 .grid-rows-3{grid-template-rows:repeat(3,minmax(0,1fr))}
-.row-span-1{grid-row:span 1/span 1}
-.row-span-2{grid-row:span 2/span 2}
-.row-span-3{grid-row:span 3/span 3}
+.row-span-1{grid-row:span 1}
+.row-span-2{grid-row:span 2}
+.row-span-3{grid-row:span 3}
 .row-span-full{grid-row:1/-1}
 .row-start-1{grid-row-start:1}
 .grid-flow-row{grid-auto-flow:row}
@@ -2609,6 +2633,14 @@ html:has(:modal) {
 .cq-md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 
+/* Tables */
+.table-auto{table-layout:auto}
+.table-fixed{table-layout:fixed}
+.border-collapse{border-collapse:collapse}
+.border-separate{border-collapse:separate}
+.caption-top{caption-side:top}
+.caption-bottom{caption-side:bottom}
+
 /* hover: */
 .hover\:underline:hover{text-decoration-line: underline;}
 .hover\:no-underline:hover{text-decoration-line: none;}
@@ -2684,18 +2716,15 @@ html:has(:modal) {
 .sm\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}
 .sm\:grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}
 .sm\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}
-.sm\:col-span-1{grid-column:span 1/span 1}
-.sm\:col-span-2{grid-column:span 2/span 2}
-.sm\:col-span-3{grid-column:span 3/span 3}
-.sm\:col-span-4{grid-column:span 4/span 4}
-.sm\:col-span-5{grid-column:span 5/span 5}
-.sm\:col-span-6{grid-column:span 6/span 6}
-.sm\:col-span-7{grid-column:span 7/span 7}
-.sm\:col-span-8{grid-column:span 8/span 8}
-.sm\:col-span-9{grid-column:span 9/span 9}
-.sm\:col-span-10{grid-column:span 10/span 10}
-.sm\:col-span-11{grid-column:span 11/span 11}
-.sm\:col-span-12{grid-column:span 12/span 12}
+.sm\:col-span-1{grid-column:span 1}
+.sm\:col-span-2{grid-column:span 2}
+.sm\:col-span-3{grid-column:span 3}
+.sm\:col-span-4{grid-column:span 4}
+.sm\:col-span-5{grid-column:span 5}
+.sm\:col-span-6{grid-column:span 6}
+.sm\:col-span-8{grid-column:span 8}
+.sm\:col-span-9{grid-column:span 9}
+.sm\:col-span-12{grid-column:span 12}
 .sm\:col-span-full{grid-column:1/-1}
 .sm\:col-start-1{grid-column-start:1}
 .sm\:col-start-2{grid-column-start:2}
@@ -2804,18 +2833,15 @@ html:has(:modal) {
 .md\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}
 .md\:grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}
 .md\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}
-.md\:col-span-1{grid-column:span 1/span 1}
-.md\:col-span-2{grid-column:span 2/span 2}
-.md\:col-span-3{grid-column:span 3/span 3}
-.md\:col-span-4{grid-column:span 4/span 4}
-.md\:col-span-5{grid-column:span 5/span 5}
-.md\:col-span-6{grid-column:span 6/span 6}
-.md\:col-span-7{grid-column:span 7/span 7}
-.md\:col-span-8{grid-column:span 8/span 8}
-.md\:col-span-9{grid-column:span 9/span 9}
-.md\:col-span-10{grid-column:span 10/span 10}
-.md\:col-span-11{grid-column:span 11/span 11}
-.md\:col-span-12{grid-column:span 12/span 12}
+.md\:col-span-1{grid-column:span 1}
+.md\:col-span-2{grid-column:span 2}
+.md\:col-span-3{grid-column:span 3}
+.md\:col-span-4{grid-column:span 4}
+.md\:col-span-5{grid-column:span 5}
+.md\:col-span-6{grid-column:span 6}
+.md\:col-span-8{grid-column:span 8}
+.md\:col-span-9{grid-column:span 9}
+.md\:col-span-12{grid-column:span 12}
 .md\:col-span-full{grid-column:1/-1}
 .md\:col-start-1{grid-column-start:1}
 .md\:col-start-2{grid-column-start:2}
@@ -2924,18 +2950,15 @@ html:has(:modal) {
 .lg\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}
 .lg\:grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}
 .lg\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}
-.lg\:col-span-1{grid-column:span 1/span 1}
-.lg\:col-span-2{grid-column:span 2/span 2}
-.lg\:col-span-3{grid-column:span 3/span 3}
-.lg\:col-span-4{grid-column:span 4/span 4}
-.lg\:col-span-5{grid-column:span 5/span 5}
-.lg\:col-span-6{grid-column:span 6/span 6}
-.lg\:col-span-7{grid-column:span 7/span 7}
-.lg\:col-span-8{grid-column:span 8/span 8}
-.lg\:col-span-9{grid-column:span 9/span 9}
-.lg\:col-span-10{grid-column:span 10/span 10}
-.lg\:col-span-11{grid-column:span 11/span 11}
-.lg\:col-span-12{grid-column:span 12/span 12}
+.lg\:col-span-1{grid-column:span 1}
+.lg\:col-span-2{grid-column:span 2}
+.lg\:col-span-3{grid-column:span 3}
+.lg\:col-span-4{grid-column:span 4}
+.lg\:col-span-5{grid-column:span 5}
+.lg\:col-span-6{grid-column:span 6}
+.lg\:col-span-8{grid-column:span 8}
+.lg\:col-span-9{grid-column:span 9}
+.lg\:col-span-12{grid-column:span 12}
 .lg\:col-span-full{grid-column:1/-1}
 .lg\:col-start-1{grid-column-start:1}
 .lg\:col-start-2{grid-column-start:2}
@@ -3044,18 +3067,15 @@ html:has(:modal) {
 .xl\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}
 .xl\:grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}
 .xl\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}
-.xl\:col-span-1{grid-column:span 1/span 1}
-.xl\:col-span-2{grid-column:span 2/span 2}
-.xl\:col-span-3{grid-column:span 3/span 3}
-.xl\:col-span-4{grid-column:span 4/span 4}
-.xl\:col-span-5{grid-column:span 5/span 5}
-.xl\:col-span-6{grid-column:span 6/span 6}
-.xl\:col-span-7{grid-column:span 7/span 7}
-.xl\:col-span-8{grid-column:span 8/span 8}
-.xl\:col-span-9{grid-column:span 9/span 9}
-.xl\:col-span-10{grid-column:span 10/span 10}
-.xl\:col-span-11{grid-column:span 11/span 11}
-.xl\:col-span-12{grid-column:span 12/span 12}
+.xl\:col-span-1{grid-column:span 1}
+.xl\:col-span-2{grid-column:span 2}
+.xl\:col-span-3{grid-column:span 3}
+.xl\:col-span-4{grid-column:span 4}
+.xl\:col-span-5{grid-column:span 5}
+.xl\:col-span-6{grid-column:span 6}
+.xl\:col-span-8{grid-column:span 8}
+.xl\:col-span-9{grid-column:span 9}
+.xl\:col-span-12{grid-column:span 12}
 .xl\:col-span-full{grid-column:1/-1}
 .xl\:col-start-1{grid-column-start:1}
 .xl\:col-start-2{grid-column-start:2}

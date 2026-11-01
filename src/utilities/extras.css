@@ -25,3 +25,11 @@
 .cq-md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .cq-md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
+
+/* Tables */
+.table-auto{table-layout:auto}
+.table-fixed{table-layout:fixed}
+.border-collapse{border-collapse:collapse}
+.border-separate{border-collapse:separate}
+.caption-top{caption-side:top}
+.caption-bottom{caption-side:bottom}

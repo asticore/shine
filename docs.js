@@ -289,7 +289,12 @@ const COMPONENTS = [
     desc: {
       accordion: 'Bordered stack of &lt;details&gt; items with a chevron.', table: 'Full-width table with row borders.',
       'table-striped': 'Zebra rows.', 'table-hover': 'Highlights the row under the pointer.',
-      'table-compact': 'Tighter cell padding.', 'table-wrap': 'Scrolls a wide table sideways.',
+      'table-compact': 'Tighter cell padding.', 'table-wrap': 'Scroll container for a table. Give it max-h-* and the header row sticks.',
+      'table-bordered': 'Borders on every cell.', 'table-borderless': 'No cell borders.',
+      'table-sticky-col': 'Pins the first column while the table scrolls sideways (inside .table-wrap).',
+      'table-stack': 'On phones, each row becomes a card. Put data-label="Column" on every td.',
+      'data-label': 'Attribute on a td: the column name shown in .table-stack mode.',
+      active: 'Highlights a row or cell (also aria-selected="true" or any tone-* class).',
       progress: 'Rounded progress bar (use on &lt;progress&gt;).', prose: 'Styles plain h1-h4, p, lists, code, tables and quotes inside it.',
       meter: 'Gauge bar (use on &lt;meter&gt;); green, amber or red from low/high/optimum.',
       stat: 'Metric block: label, big value, description. Works inside a card.',
@@ -301,15 +306,23 @@ const COMPONENTS = [
   <details><summary>Second item</summary><p>More content.</p></details>
 </div>
 
-<div class="table-wrap">
-  <table class="table table-striped table-hover">
-    <thead><tr><th>Name</th><th>Role</th></tr></thead>
+<div class="table-wrap max-h-full">
+  <table class="table table-striped table-hover table-stack">
+    <caption>Team (sort arrows come from aria-sort; stacks into cards on phones)</caption>
+    <thead><tr><th aria-sort="ascending">Name</th><th aria-sort="none">Role</th><th class="text-right">Commits</th></tr></thead>
     <tbody>
-      <tr><td>Ada</td><td>Engineer</td></tr>
-      <tr><td>Grace</td><td>Admiral</td></tr>
+      <tr><td data-label="Name">Ada</td><td data-label="Role">Engineer</td><td data-label="Commits" class="text-right">1,204</td></tr>
+      <tr class="tone-success"><td data-label="Name">Grace</td><td data-label="Role">Admiral</td><td data-label="Commits" class="text-right">982</td></tr>
+      <tr aria-selected="true"><td data-label="Name">Alan</td><td data-label="Role">Researcher</td><td data-label="Commits" class="text-right">640</td></tr>
     </tbody>
+    <tfoot><tr><td>Total</td><td></td><td class="text-right">2,826</td></tr></tfoot>
   </table>
 </div>
+
+<table class="table table-bordered table-compact">
+  <thead><tr><th>Plan</th><th>Price</th></tr></thead>
+  <tbody><tr><td>Free</td><td>$0</td></tr><tr class="tone-danger"><td>Legacy</td><td>Ends soon</td></tr></tbody>
+</table>
 
 <progress class="progress" value="60" max="100" aria-label="Upload"></progress>
 <progress class="progress tone-success" value="30" max="100" aria-label="Done"></progress>

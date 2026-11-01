@@ -1,4 +1,4 @@
-/* Content — .accordion (<details>), .table (.table-striped .table-hover .table-compact .table-wrap),
+/* Content — .accordion (<details>), .table (.table-striped .table-hover .table-compact .table-bordered .table-borderless .table-wrap .table-sticky-col .table-stack),
    .progress (<progress>), .prose (long-form semantic HTML), .skip-link.
    Knobs: --sh-card-radius, --sh-tone, --sh-density. */
 
@@ -57,35 +57,59 @@
 .table {
   width: 100%;
   border-collapse: collapse;
-  text-align: left;
+  text-align: start;
+  vertical-align: top;
+  font-variant-numeric: tabular-nums;
 }
 
 .table :is(th, td) {
   padding: calc(var(--sh-space) * 3 * var(--sh-density)) calc(var(--sh-space) * 4 * var(--sh-density));
   border-bottom: var(--sh-border-width) solid var(--sh-border);
-  text-align: left;
+  text-align: inherit;
+  vertical-align: inherit;
 }
 
-.table th {
+.table thead th {
   color: var(--sh-text-muted);
   font-size: .875rem;
   font-weight: 600;
+  vertical-align: bottom;
 }
 
-.table-striped tbody tr:nth-child(even) {
-  background: var(--sh-surface);
+.table tbody th { font-weight: 600; }
+.table tfoot :is(th, td) { font-weight: 600; border-bottom: 0; border-top: calc(var(--sh-border-width) * 2) solid var(--sh-border); }
+.table caption { padding-block: calc(var(--sh-space) * 2); color: var(--sh-text-muted); font-size: .875rem; text-align: start; }
+
+.table-striped :where(tbody tr:nth-child(even)) { background: var(--sh-surface); }
+.table-hover :where(tbody tr):hover { background: var(--sh-surface-2); }
+.table-compact :is(th, td) { padding: calc(var(--sh-space) * 1.5 * var(--sh-density)) calc(var(--sh-space) * 3 * var(--sh-density)); }
+.table-bordered :is(th, td) { border: var(--sh-border-width) solid var(--sh-border); }
+.table-borderless :is(th, td) { border: 0; }
+
+/* Highlighted rows/cells: .active, aria-selected, or any tone-* class */
+.table :is(tr, th, td):is(.active, [aria-selected="true"], [class*="tone-"]) {
+  background: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 12%, transparent);
 }
 
-.table-hover tbody tr:hover {
-  background: var(--sh-surface-2);
-}
+/* Sortable headers: set aria-sort with your own JS; Shine draws the arrow */
+.table th[aria-sort] { cursor: pointer; white-space: nowrap; }
+.table th[aria-sort]::after { content: "\2195"; margin-inline-start: .35em; opacity: .4; }
+.table th[aria-sort="ascending"]::after { content: "\2191"; opacity: 1; }
+.table th[aria-sort="descending"]::after { content: "\2193"; opacity: 1; }
 
-.table-compact :is(th, td) {
-  padding: calc(var(--sh-space) * 1.5 * var(--sh-density)) calc(var(--sh-space) * 3 * var(--sh-density));
-}
+/* Scroll container; give it max-h-* for a sticky header, add .table-sticky-col for a pinned first column */
+.table-wrap { overflow: auto; }
+.table-wrap thead th { position: sticky; top: 0; z-index: 1; background: var(--sh-table-head-bg, var(--sh-bg)); }
+.table-sticky-col :is(th, td):first-child { position: sticky; left: 0; background: var(--sh-table-head-bg, var(--sh-bg)); }
 
-.table-wrap {
-  overflow-x: auto;
+/* Stack rows as cards on phones: add data-label="Column" to each <td> */
+@media (max-width: 639.98px) {
+  .table-stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .table-stack :is(tr, td) { display: block; }
+  .table-stack tr { border: var(--sh-border-width) solid var(--sh-border); border-radius: var(--sh-radius); margin-bottom: calc(var(--sh-space) * 3); }
+  .table-stack td { display: grid; grid-template-columns: minmax(6rem, 40%) 1fr; gap: calc(var(--sh-space) * 2); }
+  .table-stack tr > :last-child { border-bottom: 0; }
+  .table-stack td[data-label]::before { content: attr(data-label); color: var(--sh-text-muted); font-weight: 600; }
 }
 
 .progress {

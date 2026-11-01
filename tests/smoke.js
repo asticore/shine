@@ -20,6 +20,8 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><link rel="styles
 <div id="resp" class="block md:flex">r</div>
 <div id="pr" class="print:hidden block">p</div>
 <div class="btn-group"><button id="g1" class="btn">1</button><button id="g2" class="btn">2</button></div>
+<table class="table table-striped"><tbody><tr><td>a</td></tr><tr id="trow" class="tone-danger"><td>b</td></tr></tbody></table>
+<table class="table table-stack"><tbody><tr><td id="stk" data-label="L">x</td></tr></tbody></table>
 <dialog id="modal" class="modal"><div class="modal-body">Hi</div></dialog>
 <button id="mt" popovertarget="menu" class="btn">Menu</button>
 <div id="menu" popover class="menu dropdown-menu"><a href="#">One</a></div>
@@ -65,6 +67,9 @@ async function run(name) {
   check('border-primary wins over default border color', bd[2] > 150 && bd[0] < 150, bd);
   check('md:flex at 1000px', (await css('#resp', 'display')) === 'flex', await css('#resp', 'display'));
   check('btn-group inner radius', (await css('#g1', 'borderTopRightRadius')) === '0px', await css('#g1', 'borderTopRightRadius'));
+  const tr = await css('#trow', 'backgroundColor');
+  check('toned row beats stripe', tr[0] > tr[2] + 20, tr);
+  check('table-stack stays a table on wide screens', (await css('#stk', 'display')) === 'table-cell', await css('#stk', 'display'));
   check('popover menu hidden when closed', (await css('#menu', 'display')) === 'none', await css('#menu', 'display'));
   await p.click('#mt');
   check('popover menu shown when open', (await css('#menu', 'display')) !== 'none', await css('#menu', 'display'));
@@ -74,6 +79,8 @@ async function run(name) {
   await p.$eval('#modal', d => d.showModal());
   const m = await p.$eval('#modal', d => { const r = d.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; });
   check('modal roughly centered', Math.abs(m[0] - 500) < 20 && Math.abs(m[1] - 350) < 40, m);
+  await p.setViewportSize({ width: 375, height: 700 });
+  check('table-stack stacks on phones', (await css('#stk', 'display')) === 'grid', await css('#stk', 'display'));
   await p.emulateMedia({ media: 'print' });
   check('print:hidden', (await css('#pr', 'display')) === 'none', await css('#pr', 'display'));
   check('no page errors', errors.length === 0, errors);
