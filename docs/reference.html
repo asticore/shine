@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shine CSS reference: classes, data attributes and tokens</title>
-<meta name="description" content="Reference for every Shine CSS class and data attribute: master knobs, tones, components with live examples, and 765 utility classes with their CSS.">
+<meta name="description" content="Reference for every Shine CSS class and data attribute: master knobs, tones, components with live examples, and 771 utility classes with their CSS.">
 <link rel="canonical" href="https://asticore.github.io/shine/docs/reference.html">
 <meta property="og:url" content="https://asticore.github.io/shine/docs/reference.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Shine CSS reference: classes, data attributes and tokens">
-<meta property="og:description" content="Reference for every Shine CSS class and data attribute: master knobs, tones, components with live examples, and 765 utility classes with their CSS.">
+<meta property="og:description" content="Reference for every Shine CSS class and data attribute: master knobs, tones, components with live examples, and 771 utility classes with their CSS.">
 <link rel="stylesheet" href="../dist/shine.min.css">
 </head>
 <body>
@@ -606,15 +606,23 @@
   <details><summary>Second item</summary><p>More content.</p></details>
 </div>
 
-<div class="table-wrap">
-  <table class="table table-striped table-hover">
-    <thead><tr><th>Name</th><th>Role</th></tr></thead>
+<div class="table-wrap max-h-full">
+  <table class="table table-striped table-hover table-stack">
+    <caption>Team (sort arrows come from aria-sort; stacks into cards on phones)</caption>
+    <thead><tr><th aria-sort="ascending">Name</th><th aria-sort="none">Role</th><th class="text-right">Commits</th></tr></thead>
     <tbody>
-      <tr><td>Ada</td><td>Engineer</td></tr>
-      <tr><td>Grace</td><td>Admiral</td></tr>
+      <tr><td data-label="Name">Ada</td><td data-label="Role">Engineer</td><td data-label="Commits" class="text-right">1,204</td></tr>
+      <tr class="tone-success"><td data-label="Name">Grace</td><td data-label="Role">Admiral</td><td data-label="Commits" class="text-right">982</td></tr>
+      <tr aria-selected="true"><td data-label="Name">Alan</td><td data-label="Role">Researcher</td><td data-label="Commits" class="text-right">640</td></tr>
     </tbody>
+    <tfoot><tr><td>Total</td><td></td><td class="text-right">2,826</td></tr></tfoot>
   </table>
 </div>
+
+<table class="table table-bordered table-compact">
+  <thead><tr><th>Plan</th><th>Price</th></tr></thead>
+  <tbody><tr><td>Free</td><td>$0</td></tr><tr class="tone-danger"><td>Legacy</td><td>Ends soon</td></tr></tbody>
+</table>
 
 <progress class="progress" value="60" max="100" aria-label="Upload"></progress>
 <progress class="progress tone-success" value="30" max="100" aria-label="Done"></progress>
@@ -634,15 +642,23 @@
   &lt;details&gt;&lt;summary&gt;Second item&lt;/summary&gt;&lt;p&gt;More content.&lt;/p&gt;&lt;/details&gt;
 &lt;/div&gt;
 
-&lt;div class=&quot;table-wrap&quot;&gt;
-  &lt;table class=&quot;table table-striped table-hover&quot;&gt;
-    &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Role&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+&lt;div class=&quot;table-wrap max-h-full&quot;&gt;
+  &lt;table class=&quot;table table-striped table-hover table-stack&quot;&gt;
+    &lt;caption&gt;Team (sort arrows come from aria-sort; stacks into cards on phones)&lt;/caption&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th aria-sort=&quot;ascending&quot;&gt;Name&lt;/th&gt;&lt;th aria-sort=&quot;none&quot;&gt;Role&lt;/th&gt;&lt;th class=&quot;text-right&quot;&gt;Commits&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
     &lt;tbody&gt;
-      &lt;tr&gt;&lt;td&gt;Ada&lt;/td&gt;&lt;td&gt;Engineer&lt;/td&gt;&lt;/tr&gt;
-      &lt;tr&gt;&lt;td&gt;Grace&lt;/td&gt;&lt;td&gt;Admiral&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td data-label=&quot;Name&quot;&gt;Ada&lt;/td&gt;&lt;td data-label=&quot;Role&quot;&gt;Engineer&lt;/td&gt;&lt;td data-label=&quot;Commits&quot; class=&quot;text-right&quot;&gt;1,204&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr class=&quot;tone-success&quot;&gt;&lt;td data-label=&quot;Name&quot;&gt;Grace&lt;/td&gt;&lt;td data-label=&quot;Role&quot;&gt;Admiral&lt;/td&gt;&lt;td data-label=&quot;Commits&quot; class=&quot;text-right&quot;&gt;982&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr aria-selected=&quot;true&quot;&gt;&lt;td data-label=&quot;Name&quot;&gt;Alan&lt;/td&gt;&lt;td data-label=&quot;Role&quot;&gt;Researcher&lt;/td&gt;&lt;td data-label=&quot;Commits&quot; class=&quot;text-right&quot;&gt;640&lt;/td&gt;&lt;/tr&gt;
     &lt;/tbody&gt;
+    &lt;tfoot&gt;&lt;tr&gt;&lt;td&gt;Total&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td class=&quot;text-right&quot;&gt;2,826&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;
   &lt;/table&gt;
 &lt;/div&gt;
+
+&lt;table class=&quot;table table-bordered table-compact&quot;&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Plan&lt;/th&gt;&lt;th&gt;Price&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Free&lt;/td&gt;&lt;td&gt;$0&lt;/td&gt;&lt;/tr&gt;&lt;tr class=&quot;tone-danger&quot;&gt;&lt;td&gt;Legacy&lt;/td&gt;&lt;td&gt;Ends soon&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;progress class=&quot;progress&quot; value=&quot;60&quot; max=&quot;100&quot; aria-label=&quot;Upload&quot;&gt;&lt;/progress&gt;
 &lt;progress class=&quot;progress tone-success&quot; value=&quot;30&quot; max=&quot;100&quot; aria-label=&quot;Done&quot;&gt;&lt;/progress&gt;
@@ -663,7 +679,13 @@
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.table-striped</code></td><td>Zebra rows.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.table-hover</code></td><td>Highlights the row under the pointer.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.table-compact</code></td><td>Tighter cell padding.</td></tr>
-<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.table-wrap</code></td><td>Scrolls a wide table sideways.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.table-bordered</code></td><td>Borders on every cell.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.table-borderless</code></td><td>No cell borders.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.active</code></td><td>Highlights a row or cell (also aria-selected="true" or any tone-* class).</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.table-wrap</code></td><td>Scroll container for a table. Give it max-h-* and the header row sticks.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.table-sticky-col</code></td><td>Pins the first column while the table scrolls sideways (inside .table-wrap).</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.table-stack</code></td><td>On phones, each row becomes a card. Put data-label="Column" on every td.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">data-label</code></td><td>Attribute on a td: the column name shown in .table-stack mode.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.progress</code></td><td>Rounded progress bar (use on &lt;progress&gt;).</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.meter</code></td><td>Gauge bar (use on &lt;meter&gt;); green, amber or red from low/high/optimum.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.stat</code></td><td>Metric block: label, big value, description. Works inside a card.</td></tr>
@@ -744,7 +766,7 @@
 </section>
 <section id="utilities" aria-labelledby="h-utilities" class="space-y-8">
 <h2 id="h-utilities" class="text-3xl font-bold tracking-tight">Utilities</h2>
-<p class="max-w-prose">765 utility rules, generated from <code>src/utilities/*.css</code> when this page is built. Class names follow familiar utility conventions (inspired by Tailwind CSS). The last column lists the prefixed versions that the build creates, such as <code>md:p-4</code> or <code>hover:bg-primary</code>.</p>
+<p class="max-w-prose">771 utility rules, generated from <code>src/utilities/*.css</code> when this page is built. Class names follow familiar utility conventions (inspired by Tailwind CSS). The last column lists the prefixed versions that the build creates, such as <code>md:p-4</code> or <code>hover:bg-primary</code>.</p>
 <div class="field max-w-md" id="util-search-box" hidden>
 <label class="label" for="util-search">Filter utilities by class name</label>
 <input class="input" id="util-search" type="search" placeholder="e.g. flex, p-4, bg-primary" autocomplete="off">
@@ -885,19 +907,19 @@
 <tr data-c=".grid-cols-6"><td class="font-mono text-sm"><code>.grid-cols-6</code></td><td class="text-sm font-mono break-all">grid-template-columns:repeat(6,minmax(0,1fr))</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".grid-cols-12"><td class="font-mono text-sm"><code>.grid-cols-12</code></td><td class="text-sm font-mono break-all">grid-template-columns:repeat(12,minmax(0,1fr))</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".grid-cols-none"><td class="font-mono text-sm"><code>.grid-cols-none</code></td><td class="text-sm font-mono break-all">grid-template-columns:none</td><td class="text-sm">-</td></tr>
-<tr data-c=".col-span-1"><td class="font-mono text-sm"><code>.col-span-1</code></td><td class="text-sm font-mono break-all">grid-column:span 1/span 1</td><td class="text-sm">sm md lg xl</td></tr>
-<tr data-c=".col-span-2"><td class="font-mono text-sm"><code>.col-span-2</code></td><td class="text-sm font-mono break-all">grid-column:span 2/span 2</td><td class="text-sm">sm md lg xl</td></tr>
-<tr data-c=".col-span-3"><td class="font-mono text-sm"><code>.col-span-3</code></td><td class="text-sm font-mono break-all">grid-column:span 3/span 3</td><td class="text-sm">sm md lg xl</td></tr>
-<tr data-c=".col-span-4"><td class="font-mono text-sm"><code>.col-span-4</code></td><td class="text-sm font-mono break-all">grid-column:span 4/span 4</td><td class="text-sm">sm md lg xl</td></tr>
-<tr data-c=".col-span-5"><td class="font-mono text-sm"><code>.col-span-5</code></td><td class="text-sm font-mono break-all">grid-column:span 5/span 5</td><td class="text-sm">sm md lg xl</td></tr>
-<tr data-c=".col-span-6"><td class="font-mono text-sm"><code>.col-span-6</code></td><td class="text-sm font-mono break-all">grid-column:span 6/span 6</td><td class="text-sm">sm md lg xl</td></tr>
-<tr data-c=".col-span-7"><td class="font-mono text-sm"><code>.col-span-7</code></td><td class="text-sm font-mono break-all">grid-column:span 7/span 7</td><td class="text-sm">sm md lg xl</td></tr>
-<tr data-c=".col-span-8"><td class="font-mono text-sm"><code>.col-span-8</code></td><td class="text-sm font-mono break-all">grid-column:span 8/span 8</td><td class="text-sm">sm md lg xl</td></tr>
-<tr data-c=".col-span-9"><td class="font-mono text-sm"><code>.col-span-9</code></td><td class="text-sm font-mono break-all">grid-column:span 9/span 9</td><td class="text-sm">sm md lg xl</td></tr>
-<tr data-c=".col-span-10"><td class="font-mono text-sm"><code>.col-span-10</code></td><td class="text-sm font-mono break-all">grid-column:span 10/span 10</td><td class="text-sm">sm md lg xl</td></tr>
-<tr data-c=".col-span-11"><td class="font-mono text-sm"><code>.col-span-11</code></td><td class="text-sm font-mono break-all">grid-column:span 11/span 11</td><td class="text-sm">sm md lg xl</td></tr>
-<tr data-c=".col-span-12"><td class="font-mono text-sm"><code>.col-span-12</code></td><td class="text-sm font-mono break-all">grid-column:span 12/span 12</td><td class="text-sm">sm md lg xl</td></tr>
+<tr data-c=".col-span-1"><td class="font-mono text-sm"><code>.col-span-1</code></td><td class="text-sm font-mono break-all">grid-column:span 1</td><td class="text-sm">sm md lg xl</td></tr>
+<tr data-c=".col-span-2"><td class="font-mono text-sm"><code>.col-span-2</code></td><td class="text-sm font-mono break-all">grid-column:span 2</td><td class="text-sm">sm md lg xl</td></tr>
+<tr data-c=".col-span-3"><td class="font-mono text-sm"><code>.col-span-3</code></td><td class="text-sm font-mono break-all">grid-column:span 3</td><td class="text-sm">sm md lg xl</td></tr>
+<tr data-c=".col-span-4"><td class="font-mono text-sm"><code>.col-span-4</code></td><td class="text-sm font-mono break-all">grid-column:span 4</td><td class="text-sm">sm md lg xl</td></tr>
+<tr data-c=".col-span-5"><td class="font-mono text-sm"><code>.col-span-5</code></td><td class="text-sm font-mono break-all">grid-column:span 5</td><td class="text-sm">sm md lg xl</td></tr>
+<tr data-c=".col-span-6"><td class="font-mono text-sm"><code>.col-span-6</code></td><td class="text-sm font-mono break-all">grid-column:span 6</td><td class="text-sm">sm md lg xl</td></tr>
+<tr data-c=".col-span-8"><td class="font-mono text-sm"><code>.col-span-8</code></td><td class="text-sm font-mono break-all">grid-column:span 8</td><td class="text-sm">sm md lg xl</td></tr>
+<tr data-c=".col-span-9"><td class="font-mono text-sm"><code>.col-span-9</code></td><td class="text-sm font-mono break-all">grid-column:span 9</td><td class="text-sm">sm md lg xl</td></tr>
+<tr data-c=".col-span-12"><td class="font-mono text-sm"><code>.col-span-12</code></td><td class="text-sm font-mono break-all">grid-column:span 12</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".col-span-full"><td class="font-mono text-sm"><code>.col-span-full</code></td><td class="text-sm font-mono break-all">grid-column:1/-1</td><td class="text-sm">sm md lg xl</td></tr>
+<tr data-c=".col-span-7"><td class="font-mono text-sm"><code>.col-span-7</code></td><td class="text-sm font-mono break-all">grid-column:span 7</td><td class="text-sm">-</td></tr>
+<tr data-c=".col-span-10"><td class="font-mono text-sm"><code>.col-span-10</code></td><td class="text-sm font-mono break-all">grid-column:span 10</td><td class="text-sm">-</td></tr>
+<tr data-c=".col-span-11"><td class="font-mono text-sm"><code>.col-span-11</code></td><td class="text-sm font-mono break-all">grid-column:span 11</td><td class="text-sm">-</td></tr>
 <tr data-c=".col-start-1"><td class="font-mono text-sm"><code>.col-start-1</code></td><td class="text-sm font-mono break-all">grid-column-start:1</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".col-start-2"><td class="font-mono text-sm"><code>.col-start-2</code></td><td class="text-sm font-mono break-all">grid-column-start:2</td><td class="text-sm">sm md lg xl</td></tr>
 <tr data-c=".col-start-3"><td class="font-mono text-sm"><code>.col-start-3</code></td><td class="text-sm font-mono break-all">grid-column-start:3</td><td class="text-sm">sm md lg xl</td></tr>
@@ -906,9 +928,9 @@
 <tr data-c=".grid-rows-1"><td class="font-mono text-sm"><code>.grid-rows-1</code></td><td class="text-sm font-mono break-all">grid-template-rows:repeat(1,minmax(0,1fr))</td><td class="text-sm">-</td></tr>
 <tr data-c=".grid-rows-2"><td class="font-mono text-sm"><code>.grid-rows-2</code></td><td class="text-sm font-mono break-all">grid-template-rows:repeat(2,minmax(0,1fr))</td><td class="text-sm">-</td></tr>
 <tr data-c=".grid-rows-3"><td class="font-mono text-sm"><code>.grid-rows-3</code></td><td class="text-sm font-mono break-all">grid-template-rows:repeat(3,minmax(0,1fr))</td><td class="text-sm">-</td></tr>
-<tr data-c=".row-span-1"><td class="font-mono text-sm"><code>.row-span-1</code></td><td class="text-sm font-mono break-all">grid-row:span 1/span 1</td><td class="text-sm">-</td></tr>
-<tr data-c=".row-span-2"><td class="font-mono text-sm"><code>.row-span-2</code></td><td class="text-sm font-mono break-all">grid-row:span 2/span 2</td><td class="text-sm">-</td></tr>
-<tr data-c=".row-span-3"><td class="font-mono text-sm"><code>.row-span-3</code></td><td class="text-sm font-mono break-all">grid-row:span 3/span 3</td><td class="text-sm">-</td></tr>
+<tr data-c=".row-span-1"><td class="font-mono text-sm"><code>.row-span-1</code></td><td class="text-sm font-mono break-all">grid-row:span 1</td><td class="text-sm">-</td></tr>
+<tr data-c=".row-span-2"><td class="font-mono text-sm"><code>.row-span-2</code></td><td class="text-sm font-mono break-all">grid-row:span 2</td><td class="text-sm">-</td></tr>
+<tr data-c=".row-span-3"><td class="font-mono text-sm"><code>.row-span-3</code></td><td class="text-sm font-mono break-all">grid-row:span 3</td><td class="text-sm">-</td></tr>
 <tr data-c=".row-span-full"><td class="font-mono text-sm"><code>.row-span-full</code></td><td class="text-sm font-mono break-all">grid-row:1/-1</td><td class="text-sm">-</td></tr>
 <tr data-c=".row-start-1"><td class="font-mono text-sm"><code>.row-start-1</code></td><td class="text-sm font-mono break-all">grid-row-start:1</td><td class="text-sm">-</td></tr>
 <tr data-c=".grid-flow-row"><td class="font-mono text-sm"><code>.grid-flow-row</code></td><td class="text-sm font-mono break-all">grid-auto-flow:row</td><td class="text-sm">-</td></tr>
@@ -1554,7 +1576,7 @@
 </section>
 <section id="u-extras" aria-labelledby="h-u-extras" class="space-y-3">
 <h3 id="h-u-extras" class="text-2xl font-semibold">extras</h3>
-<p class="text-muted text-sm m-0">Extras: centering/position helpers, translate, object/overflow/overscroll, container queries (18 rules)</p>
+<p class="text-muted text-sm m-0">Extras: centering/position helpers, translate, object/overflow/overscroll, container queries (24 rules)</p>
 <div class="table-wrap"><table class="table table-compact table-hover util-table"><thead><tr><th scope="col">Class</th><th scope="col">CSS</th><th scope="col">Variants</th></tr></thead><tbody>
 <tr data-c=".top-1/2"><td class="font-mono text-sm"><code>.top-1/2</code></td><td class="text-sm font-mono break-all">top:50%</td><td class="text-sm">-</td></tr>
 <tr data-c=".left-1/2"><td class="font-mono text-sm"><code>.left-1/2</code></td><td class="text-sm font-mono break-all">left:50%</td><td class="text-sm">-</td></tr>
@@ -1574,6 +1596,13 @@
 <tr data-c=".overflow-clip"><td class="font-mono text-sm"><code>.overflow-clip</code></td><td class="text-sm font-mono break-all">overflow:clip</td><td class="text-sm">-</td></tr>
 <tr data-c=".overscroll-contain"><td class="font-mono text-sm"><code>.overscroll-contain</code></td><td class="text-sm font-mono break-all">overscroll-behavior:contain</td><td class="text-sm">-</td></tr>
 <tr data-c=".cq"><td class="font-mono text-sm"><code>.cq</code></td><td class="text-sm font-mono break-all">container-type:inline-size</td><td class="text-sm">-</td></tr>
+<tr data-g><th colspan="3" scope="colgroup" class="text-left">Tables</th></tr>
+<tr data-c=".table-auto"><td class="font-mono text-sm"><code>.table-auto</code></td><td class="text-sm font-mono break-all">table-layout:auto</td><td class="text-sm">-</td></tr>
+<tr data-c=".table-fixed"><td class="font-mono text-sm"><code>.table-fixed</code></td><td class="text-sm font-mono break-all">table-layout:fixed</td><td class="text-sm">-</td></tr>
+<tr data-c=".border-collapse"><td class="font-mono text-sm"><code>.border-collapse</code></td><td class="text-sm font-mono break-all">border-collapse:collapse</td><td class="text-sm">-</td></tr>
+<tr data-c=".border-separate"><td class="font-mono text-sm"><code>.border-separate</code></td><td class="text-sm font-mono break-all">border-collapse:separate</td><td class="text-sm">-</td></tr>
+<tr data-c=".caption-top"><td class="font-mono text-sm"><code>.caption-top</code></td><td class="text-sm font-mono break-all">caption-side:top</td><td class="text-sm">-</td></tr>
+<tr data-c=".caption-bottom"><td class="font-mono text-sm"><code>.caption-bottom</code></td><td class="text-sm font-mono break-all">caption-side:bottom</td><td class="text-sm">-</td></tr>
 </tbody></table></div>
 </section>
 </section>

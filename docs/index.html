@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shine CSS – ultra-light, pure-CSS framework</title>
-<meta name="description" content="Shine is an ultra-light, pure-CSS framework: utility classes, ready-made components and master design knobs. About 15.7 KB gzipped, no JavaScript required. Try the live theme builder and class playground.">
+<meta name="description" content="Shine is an ultra-light, pure-CSS framework: utility classes, ready-made components and master design knobs. About 16 KB gzipped, no JavaScript required. Try the live theme builder and class playground.">
 <meta name="theme-color" content="#4f46e5">
 <link rel="canonical" href="https://asticore.github.io/shine/docs/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Shine CSS">
 <meta property="og:title" content="Shine CSS – ultra-light, pure-CSS framework">
-<meta property="og:description" content="Utility classes, ready-made components and master design knobs in about 15.7 KB gzipped. Build a theme live and export it.">
+<meta property="og:description" content="Utility classes, ready-made components and master design knobs in about 16 KB gzipped. Build a theme live and export it.">
 <meta property="og:url" content="https://asticore.github.io/shine/docs/">
 <meta property="og:image" content="https://asticore.github.io/shine/docs/logo.svg">
 <meta name="twitter:card" content="summary">
@@ -63,13 +63,13 @@ pre{white-space:pre;tab-size:2}
   <div class="container mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
     <div class="lg:col-span-7 stack gap-6">
       <p class="cluster gap-2">
-        <span class="badge badge-solid">15.7 KB gzipped</span>
+        <span class="badge badge-solid">16 KB gzipped</span>
         <span class="badge tone-success">0 KB JavaScript</span>
         <span class="badge tone-neutral">MIT</span>
       </p>
       <h1 id="h-hero" class="text-5xl md:text-6xl font-extrabold tracking-tight m-0"><span class="text-gradient">Shine</span><span class="sr-only"> CSS framework</span></h1>
       <p class="lead m-0 max-w-xl">Ultra-light, pure-CSS framework: utility classes, ready-made components and master design knobs.</p>
-      <p class="text-muted m-0 max-w-xl">The whole framework is one stylesheet of <strong class="text-default">15.7 KB gzipped</strong> (measured with <code>node build.js</code>). Modals, drawers, dropdowns, tooltips and accordions run on native HTML, so there is nothing to compile and no script to load.</p>
+      <p class="text-muted m-0 max-w-xl">The whole framework is one stylesheet of <strong class="text-default">16 KB gzipped</strong> (measured with <code>node build.js</code>). Modals, drawers, dropdowns, tooltips and accordions run on native HTML, so there is nothing to compile and no script to load.</p>
       <div class="cluster gap-3">
         <a class="btn btn-lg" href="reference.html">Get started</a>
         <a class="btn btn-lg btn-outline" href="https://github.com/asticore/shine">GitHub</a>
@@ -598,17 +598,37 @@ pre{white-space:pre;tab-size:2}
 &lt;/div&gt;</code></pre></details>
 </article>
 <article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-table">
-<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-table">Table</h3><span class="text-xs text-muted cluster gap-1"><code>table</code> <code>table-striped</code> <code>table-hover</code> <code>table-wrap</code></span></div>
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-table">Table</h3><span class="text-xs text-muted cluster gap-1"><code>table</code> <code>table-striped</code> <code>table-hover</code> <code>table-bordered</code> <code>table-stack</code> <code>table-wrap</code></span></div>
 <div class="card-body cluster gap-3 flex-1 content-start">
-<div class="table-wrap w-full"><table class="table table-striped table-hover">
-  <thead><tr><th scope="col">Name</th><th scope="col">Role</th><th scope="col">Status</th></tr></thead>
-  <tbody><tr><td>Ada Lovelace</td><td>Engineer</td><td><span class="badge tone-success">Active</span></td></tr><tr><td>Grace Hopper</td><td>Admiral</td><td><span class="badge tone-warning">Away</span></td></tr><tr><td>Alan Turing</td><td>Researcher</td><td><span class="badge">Offline</span></td></tr></tbody>
+<div class="table-wrap w-full"><table class="table table-striped table-hover table-stack">
+  <caption>Sort arrows come from aria-sort (your JS sorts); rows stack into cards on phones.</caption>
+  <thead><tr><th scope="col" aria-sort="ascending">Name</th><th scope="col" aria-sort="none">Role</th><th scope="col">Status</th><th scope="col" class="text-right">Commits</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Name">Ada Lovelace</td><td data-label="Role">Engineer</td><td data-label="Status"><span class="badge tone-success">Active</span></td><td data-label="Commits" class="text-right">1,204</td></tr>
+    <tr class="tone-warning"><td data-label="Name">Grace Hopper</td><td data-label="Role">Admiral</td><td data-label="Status"><span class="badge tone-warning">Away</span></td><td data-label="Commits" class="text-right">982</td></tr>
+    <tr aria-selected="true"><td data-label="Name">Alan Turing</td><td data-label="Role">Researcher</td><td data-label="Status"><span class="badge tone-info">Selected</span></td><td data-label="Commits" class="text-right">640</td></tr>
+  </tbody>
+  <tfoot><tr><td>Total</td><td></td><td></td><td class="text-right">2,826</td></tr></tfoot>
 </table></div>
+<table class="table table-bordered table-compact w-full">
+  <thead><tr><th scope="col">Plan</th><th scope="col" class="text-right">Price</th></tr></thead>
+  <tbody><tr><td>Starter</td><td class="text-right">$0</td></tr><tr class="tone-danger"><td>Legacy</td><td class="text-right">Retiring</td></tr></tbody>
+</table>
 </div>
-<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="table-wrap w-full"&gt;&lt;table class="table table-striped table-hover"&gt;
-  &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;Name&lt;/th&gt;&lt;th scope="col"&gt;Role&lt;/th&gt;&lt;th scope="col"&gt;Status&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
-  &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Ada Lovelace&lt;/td&gt;&lt;td&gt;Engineer&lt;/td&gt;&lt;td&gt;&lt;span class="badge tone-success"&gt;Active&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Grace Hopper&lt;/td&gt;&lt;td&gt;Admiral&lt;/td&gt;&lt;td&gt;&lt;span class="badge tone-warning"&gt;Away&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Alan Turing&lt;/td&gt;&lt;td&gt;Researcher&lt;/td&gt;&lt;td&gt;&lt;span class="badge"&gt;Offline&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
-&lt;/table&gt;&lt;/div&gt;</code></pre></details>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="table-wrap w-full"&gt;&lt;table class="table table-striped table-hover table-stack"&gt;
+  &lt;caption&gt;Sort arrows come from aria-sort (your JS sorts); rows stack into cards on phones.&lt;/caption&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th scope="col" aria-sort="ascending"&gt;Name&lt;/th&gt;&lt;th scope="col" aria-sort="none"&gt;Role&lt;/th&gt;&lt;th scope="col"&gt;Status&lt;/th&gt;&lt;th scope="col" class="text-right"&gt;Commits&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td data-label="Name"&gt;Ada Lovelace&lt;/td&gt;&lt;td data-label="Role"&gt;Engineer&lt;/td&gt;&lt;td data-label="Status"&gt;&lt;span class="badge tone-success"&gt;Active&lt;/span&gt;&lt;/td&gt;&lt;td data-label="Commits" class="text-right"&gt;1,204&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr class="tone-warning"&gt;&lt;td data-label="Name"&gt;Grace Hopper&lt;/td&gt;&lt;td data-label="Role"&gt;Admiral&lt;/td&gt;&lt;td data-label="Status"&gt;&lt;span class="badge tone-warning"&gt;Away&lt;/span&gt;&lt;/td&gt;&lt;td data-label="Commits" class="text-right"&gt;982&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr aria-selected="true"&gt;&lt;td data-label="Name"&gt;Alan Turing&lt;/td&gt;&lt;td data-label="Role"&gt;Researcher&lt;/td&gt;&lt;td data-label="Status"&gt;&lt;span class="badge tone-info"&gt;Selected&lt;/span&gt;&lt;/td&gt;&lt;td data-label="Commits" class="text-right"&gt;640&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;&lt;tr&gt;&lt;td&gt;Total&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td class="text-right"&gt;2,826&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;
+&lt;/table&gt;&lt;/div&gt;
+&lt;table class="table table-bordered table-compact w-full"&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;Plan&lt;/th&gt;&lt;th scope="col" class="text-right"&gt;Price&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Starter&lt;/td&gt;&lt;td class="text-right"&gt;$0&lt;/td&gt;&lt;/tr&gt;&lt;tr class="tone-danger"&gt;&lt;td&gt;Legacy&lt;/td&gt;&lt;td class="text-right"&gt;Retiring&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+&lt;/table&gt;</code></pre></details>
 </article>
 <article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-progress-meter-stat">
 <div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-progress-meter-stat">Progress, meter, stat</h3><span class="text-xs text-muted cluster gap-1"><code>progress</code> <code>meter</code> <code>stat</code></span></div>
@@ -680,7 +700,7 @@ pre{white-space:pre;tab-size:2}
       <li class="card"><div class="card-body stack gap-2"><span class="avatar" aria-hidden="true">01</span><h3 class="card-title m-0">Master knobs</h3><p class="text-muted m-0">Brand color, theme, corner level, shadow depth and density set once on <code>&lt;html&gt;</code>. Everything follows.</p></div></li>
       <li class="card"><div class="card-body stack gap-2"><span class="avatar tone-accent" aria-hidden="true">02</span><h3 class="card-title m-0">Utilities without a compiler</h3><p class="text-muted m-0">Write <code>flex</code>, <code>p-4</code> and <code>md:grid-cols-3</code> straight in your HTML. Nothing to install.</p></div></li>
       <li class="card"><div class="card-body stack gap-2"><span class="avatar tone-success" aria-hidden="true">03</span><h3 class="card-title m-0">Components without JavaScript</h3><p class="text-muted m-0">Modals, drawers, dropdowns, tooltips, toasts, accordions: native <code>dialog</code>, <code>popover</code> and <code>details</code>.</p></div></li>
-      <li class="card"><div class="card-body stack gap-2"><span class="avatar tone-info" aria-hidden="true">04</span><h3 class="card-title m-0">15.7 KB gzipped</h3><p class="text-muted m-0">Smaller than most hero images. Trim it further with <code>node build.js --only=...</code>.</p></div></li>
+      <li class="card"><div class="card-body stack gap-2"><span class="avatar tone-info" aria-hidden="true">04</span><h3 class="card-title m-0">16 KB gzipped</h3><p class="text-muted m-0">Smaller than most hero images. Trim it further with <code>node build.js --only=...</code>.</p></div></li>
       <li class="card"><div class="card-body stack gap-2"><span class="avatar tone-warning" aria-hidden="true">05</span><h3 class="card-title m-0">Accessible by default</h3><p class="text-muted m-0">Semantic HTML targets, visible focus rings, a skip link, reduced-motion and print styles.</p></div></li>
       <li class="card"><div class="card-body stack gap-2"><span class="avatar tone-danger" aria-hidden="true">06</span><h3 class="card-title m-0">No specificity fights</h3><p class="text-muted m-0">Built on CSS cascade layers: your unlayered CSS beats Shine without <code>!important</code>.</p></div></li>
     </ul>
