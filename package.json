@@ -1,7 +1,7 @@
 {
   "name": "shine-css",
   "version": "0.2.0",
-  "description": "Ultra-light, pure-CSS utility framework with master design knobs.",
+  "description": "Ultra-light pure-CSS framework (~16 KB gzip): utility classes, ready-made components and master design knobs. No JavaScript, no build step.",
   "style": "dist/shine.min.css",
   "main": "dist/shine.min.css",
   "unpkg": "dist/shine.min.css",
@@ -30,14 +30,31 @@
   },
   "keywords": [
     "css",
+    "css-framework",
+    "utility-css",
     "utility-first",
-    "tailwind-alternative",
+    "lightweight",
+    "minimal",
+    "no-javascript",
     "design-tokens",
-    "no-javascript"
+    "theming",
+    "dark-mode",
+    "css-variables",
+    "cascade-layers",
+    "responsive",
+    "components",
+    "ui-kit",
+    "frontend",
+    "tailwind-alternative",
+    "bootstrap-alternative",
+    "accessibility"
   ],
   "license": "MIT",
   "devDependencies": {
     "playwright": "^1.56.0"
   },
-  "homepage": "https://asticore.github.io/shine/docs/"
+  "homepage": "https://asticore.github.io/shine/docs/",
+  "bugs": {
+    "url": "https://github.com/asticore/shine/issues"
+  }
 }
