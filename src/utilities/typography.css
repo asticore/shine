@@ -52,7 +52,7 @@
 .capitalize { text-transform: capitalize; }
 .normal-case { text-transform: none; }
 
-/* @variants hover */
+/* @variants hover group-hover */
 .underline { text-decoration-line: underline; }
 .no-underline { text-decoration-line: none; }
 /* @end */

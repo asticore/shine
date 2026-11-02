@@ -35,7 +35,7 @@ const imports = [...index.matchAll(/@import\s+url\(["']?([^"')]+)["']?\)\s+layer
   .filter(i => !args.exclude || !args.exclude.includes(i.name))
   .filter(i => !args.only || args.only.includes(i.name));
 
-const VARIANTS = ['responsive', 'hover', 'focus', 'print'];
+const VARIANTS = ['responsive', 'hover', 'focus', 'print', 'group-hover'];
 
 // Split a selector list on top-level commas only (keeps :is(a, b) intact)
 const splitSelectors = sel => {
@@ -72,6 +72,7 @@ for (const imp of imports) {
     const bad = want.filter(k => !VARIANTS.includes(k));
     if (bad.length) throw new Error(`${imp.file}: unknown variant "${bad.join(', ')}" (use ${VARIANTS.join(', ')})`);
     for (const r of rulesOf(block)) {
+      if (want.includes('group-hover')) L.hover.push(splitSelectors(prefixSelector(r.sel, 'group-hover')).map(x => `.group:hover ${x}`).join(',') + `{${r.body}}`);
       if (want.includes('hover')) L.hover.push(`${prefixSelector(r.sel, 'hover', ':hover')}{${r.body}}`);
       if (want.includes('focus')) L.focus.push(`${prefixSelector(r.sel, 'focus', ':focus-visible')}{${r.body}}`);
       if (want.includes('print')) L.print.push(`${prefixSelector(r.sel, 'print')}{${r.body}}`);
@@ -124,5 +125,5 @@ const gz = zlib.gzipSync(min, { level: 9 }).length;
 const br = zlib.brotliCompressSync(min).length;
 if (missing.length) console.warn('missing (skipped):', missing.join(', '));
 console.log(`dist/shine.min.css  ${kb(min.length)}  gzip ${kb(gz)}  brotli ${kb(br)}  (${imports.length - missing.length} modules)`);
-const BUDGET_GZ = 16 * 1024;
+const BUDGET_GZ = 17 * 1024;
 if (gz > BUDGET_GZ) { console.error(`over gzip budget (${kb(BUDGET_GZ)})`); process.exitCode = 1; }

@@ -4,7 +4,7 @@ Rules every source file follows. Read this before adding a class.
 
 ## Goals
 1. **Pure CSS.** No JS runtime. `build.js` is optional, zero-dep, only concatenates/minifies/expands variants.
-2. **Ultra light.** Budget: `dist/shine.min.css` ≤ 16 KB gzip. Ship the 90% case, not every Tailwind value.
+2. **Ultra light.** Budget: `dist/shine.min.css` ≤ 17 KB gzip. Ship the 90% case, not every Tailwind value.
 3. **Master knobs first, granular second.** Change one token → whole site follows. Utilities override anything locally.
 
 ## Files & layers

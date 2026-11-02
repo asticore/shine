@@ -10,7 +10,7 @@
 /* @end */
 .shadow-elevation { box-shadow: var(--sh-elevation, var(--sh-shadow-1)); }
 
-/* @variants hover */
+/* @variants hover group-hover */
 .opacity-0 { opacity: 0; }
 .opacity-50 { opacity: .5; }
 .opacity-75 { opacity: .75; }

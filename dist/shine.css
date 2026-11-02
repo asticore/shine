@@ -2641,8 +2641,60 @@ html:has(:modal) {
 .caption-top{caption-side:top}
 .caption-bottom{caption-side:bottom}
 
+/* Logical / RTL-aware spacing and edges */
+.ps-0{padding-inline-start:0}
+.ps-2{padding-inline-start:calc(var(--sh-space)*2)}
+.ps-4{padding-inline-start:calc(var(--sh-space)*4)}
+.pe-0{padding-inline-end:0}
+.pe-2{padding-inline-end:calc(var(--sh-space)*2)}
+.pe-4{padding-inline-end:calc(var(--sh-space)*4)}
+.ms-auto{margin-inline-start:auto}
+.ms-2{margin-inline-start:calc(var(--sh-space)*2)}
+.ms-4{margin-inline-start:calc(var(--sh-space)*4)}
+.me-auto{margin-inline-end:auto}
+.me-2{margin-inline-end:calc(var(--sh-space)*2)}
+.me-4{margin-inline-end:calc(var(--sh-space)*4)}
+.start-0{inset-inline-start:0}
+.end-0{inset-inline-end:0}
+.text-start{text-align:start}
+.text-end{text-align:end}
+.border-s{border-inline-start-width:var(--sh-border-width)}
+.border-e{border-inline-end-width:var(--sh-border-width)}
+.rounded-s{border-start-start-radius:var(--sh-radius);border-end-start-radius:var(--sh-radius)}
+.rounded-e{border-start-end-radius:var(--sh-radius);border-end-end-radius:var(--sh-radius)}
+
+/* Background images */
+.bg-cover{background-size:cover}
+.bg-contain{background-size:contain}
+.bg-center{background-position:center}
+.bg-top{background-position:top}
+.bg-bottom{background-position:bottom}
+.bg-no-repeat{background-repeat:no-repeat}
+.bg-fixed{background-attachment:fixed}
+
+/* Floats */
+.float-left{float:left}
+.float-right{float:right}
+.float-none{float:none}
+.clear-both{clear:both}
+
+/* Text and flow */
+.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.hyphens-auto{hyphens:auto}
+.text-ellipsis{text-overflow:ellipsis}
+.break-inside-avoid{break-inside:avoid}
+
+/* Grid tracks, sizing, forms */
+.auto-rows-fr{grid-auto-rows:minmax(0,1fr)}
+.auto-cols-fr{grid-auto-columns:minmax(0,1fr)}
+.min-w-max{min-width:max-content}
+.min-h-svh{min-height:100svh}
+.field-sizing-content{field-sizing:content}
+
 /* hover: */
+.group:hover .group-hover\:underline{text-decoration-line: underline;}
 .hover\:underline:hover{text-decoration-line: underline;}
+.group:hover .group-hover\:no-underline{text-decoration-line: none;}
 .hover\:no-underline:hover{text-decoration-line: none;}
 .hover\:bg-primary:hover{background-color: color-mix(in oklab, var(--sh-primary) var(--sh-bg-o, 100%), transparent);}
 .hover\:bg-secondary:hover{background-color: color-mix(in oklab, var(--sh-secondary) var(--sh-bg-o, 100%), transparent);}
@@ -2652,12 +2704,19 @@ html:has(:modal) {
 .hover\:bg-danger:hover{background-color: color-mix(in oklab, var(--sh-danger) var(--sh-bg-o, 100%), transparent);}
 .hover\:bg-info:hover{background-color: color-mix(in oklab, var(--sh-info) var(--sh-bg-o, 100%), transparent);}
 .hover\:bg-surface-2:hover{background-color: color-mix(in oklab, var(--sh-surface-2) var(--sh-bg-o, 100%), transparent);}
+.group:hover .group-hover\:text-primary{color: color-mix(in oklab, color-mix(in oklab, var(--sh-primary) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
 .hover\:text-primary:hover{color: color-mix(in oklab, color-mix(in oklab, var(--sh-primary) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
+.group:hover .group-hover\:text-secondary{color: color-mix(in oklab, color-mix(in oklab, var(--sh-secondary) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
 .hover\:text-secondary:hover{color: color-mix(in oklab, color-mix(in oklab, var(--sh-secondary) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
+.group:hover .group-hover\:text-accent{color: color-mix(in oklab, color-mix(in oklab, var(--sh-accent) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
 .hover\:text-accent:hover{color: color-mix(in oklab, color-mix(in oklab, var(--sh-accent) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
+.group:hover .group-hover\:text-success{color: color-mix(in oklab, color-mix(in oklab, var(--sh-success) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
 .hover\:text-success:hover{color: color-mix(in oklab, color-mix(in oklab, var(--sh-success) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
+.group:hover .group-hover\:text-warning{color: color-mix(in oklab, color-mix(in oklab, var(--sh-warning) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
 .hover\:text-warning:hover{color: color-mix(in oklab, color-mix(in oklab, var(--sh-warning) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
+.group:hover .group-hover\:text-danger{color: color-mix(in oklab, color-mix(in oklab, var(--sh-danger) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
 .hover\:text-danger:hover{color: color-mix(in oklab, color-mix(in oklab, var(--sh-danger) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
+.group:hover .group-hover\:text-info{color: color-mix(in oklab, color-mix(in oklab, var(--sh-info) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
 .hover\:text-info:hover{color: color-mix(in oklab, color-mix(in oklab, var(--sh-info) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent);}
 .hover\:shadow-none:hover{box-shadow: none;}
 .hover\:shadow-sm:hover{box-shadow: var(--sh-shadow-1);}
@@ -2665,9 +2724,13 @@ html:has(:modal) {
 .hover\:shadow-md:hover{box-shadow: var(--sh-shadow-3);}
 .hover\:shadow-lg:hover{box-shadow: var(--sh-shadow-4);}
 .hover\:shadow-xl:hover,.hover\:shadow-2xl:hover{box-shadow: var(--sh-shadow-5);}
+.group:hover .group-hover\:opacity-0{opacity: 0;}
 .hover\:opacity-0:hover{opacity: 0;}
+.group:hover .group-hover\:opacity-50{opacity: .5;}
 .hover\:opacity-50:hover{opacity: .5;}
+.group:hover .group-hover\:opacity-75{opacity: .75;}
 .hover\:opacity-75:hover{opacity: .75;}
+.group:hover .group-hover\:opacity-100{opacity: 1;}
 .hover\:opacity-100:hover{opacity: 1;}
 
 @media (min-width: 640px) {
