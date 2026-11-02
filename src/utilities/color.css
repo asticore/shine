@@ -38,7 +38,7 @@
 .bg-warning-soft { background-color: color-mix(in oklab, var(--sh-warning) 15%, transparent); }
 .bg-danger-soft { background-color: color-mix(in oklab, var(--sh-danger) 15%, transparent); }
 .bg-info-soft { background-color: color-mix(in oklab, var(--sh-info) 15%, transparent); }
-/* @variants hover */
+/* @variants hover group-hover */
 .text-primary { color: color-mix(in oklab, color-mix(in oklab, var(--sh-primary) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent); }
 .text-secondary { color: color-mix(in oklab, color-mix(in oklab, var(--sh-secondary) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent); }
 .text-accent { color: color-mix(in oklab, color-mix(in oklab, var(--sh-accent) var(--sh-brand-text, 100%), var(--sh-text)) var(--sh-text-o, 100%), transparent); }

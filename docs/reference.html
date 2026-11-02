@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shine CSS reference: classes, data attributes and tokens</title>
-<meta name="description" content="Reference for every Shine CSS class and data attribute: master knobs, tones, components with live examples, and 771 utility classes with their CSS.">
+<meta name="description" content="Reference for every Shine CSS class and data attribute: master knobs, tones, components with live examples, and 811 utility classes with their CSS.">
 <link rel="canonical" href="https://asticore.github.io/shine/docs/reference.html">
 <meta property="og:url" content="https://asticore.github.io/shine/docs/reference.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Shine CSS reference: classes, data attributes and tokens">
-<meta property="og:description" content="Reference for every Shine CSS class and data attribute: master knobs, tones, components with live examples, and 771 utility classes with their CSS.">
+<meta property="og:description" content="Reference for every Shine CSS class and data attribute: master knobs, tones, components with live examples, and 811 utility classes with their CSS.">
 <link rel="stylesheet" href="../dist/shine.min.css">
 </head>
 <body>
@@ -766,7 +766,7 @@
 </section>
 <section id="utilities" aria-labelledby="h-utilities" class="space-y-8">
 <h2 id="h-utilities" class="text-3xl font-bold tracking-tight">Utilities</h2>
-<p class="max-w-prose">771 utility rules, generated from <code>src/utilities/*.css</code> when this page is built. Class names follow familiar utility conventions (inspired by Tailwind CSS). The last column lists the prefixed versions that the build creates, such as <code>md:p-4</code> or <code>hover:bg-primary</code>.</p>
+<p class="max-w-prose">811 utility rules, generated from <code>src/utilities/*.css</code> when this page is built. Class names follow familiar utility conventions (inspired by Tailwind CSS). The last column lists the prefixed versions that the build creates, such as <code>md:p-4</code> or <code>hover:bg-primary</code>.</p>
 <div class="field max-w-md" id="util-search-box" hidden>
 <label class="label" for="util-search">Filter utilities by class name</label>
 <input class="input" id="util-search" type="search" placeholder="e.g. flex, p-4, bg-primary" autocomplete="off">
@@ -1576,7 +1576,7 @@
 </section>
 <section id="u-extras" aria-labelledby="h-u-extras" class="space-y-3">
 <h3 id="h-u-extras" class="text-2xl font-semibold">extras</h3>
-<p class="text-muted text-sm m-0">Extras: centering/position helpers, translate, object/overflow/overscroll, container queries (24 rules)</p>
+<p class="text-muted text-sm m-0">Extras: centering/position helpers, translate, object/overflow/overscroll, container queries (64 rules)</p>
 <div class="table-wrap"><table class="table table-compact table-hover util-table"><thead><tr><th scope="col">Class</th><th scope="col">CSS</th><th scope="col">Variants</th></tr></thead><tbody>
 <tr data-c=".top-1/2"><td class="font-mono text-sm"><code>.top-1/2</code></td><td class="text-sm font-mono break-all">top:50%</td><td class="text-sm">-</td></tr>
 <tr data-c=".left-1/2"><td class="font-mono text-sm"><code>.left-1/2</code></td><td class="text-sm font-mono break-all">left:50%</td><td class="text-sm">-</td></tr>
@@ -1603,6 +1603,51 @@
 <tr data-c=".border-separate"><td class="font-mono text-sm"><code>.border-separate</code></td><td class="text-sm font-mono break-all">border-collapse:separate</td><td class="text-sm">-</td></tr>
 <tr data-c=".caption-top"><td class="font-mono text-sm"><code>.caption-top</code></td><td class="text-sm font-mono break-all">caption-side:top</td><td class="text-sm">-</td></tr>
 <tr data-c=".caption-bottom"><td class="font-mono text-sm"><code>.caption-bottom</code></td><td class="text-sm font-mono break-all">caption-side:bottom</td><td class="text-sm">-</td></tr>
+<tr data-g><th colspan="3" scope="colgroup" class="text-left">Logical / RTL-aware spacing and edges</th></tr>
+<tr data-c=".ps-0"><td class="font-mono text-sm"><code>.ps-0</code></td><td class="text-sm font-mono break-all">padding-inline-start:0</td><td class="text-sm">-</td></tr>
+<tr data-c=".ps-2"><td class="font-mono text-sm"><code>.ps-2</code></td><td class="text-sm font-mono break-all">padding-inline-start:calc(var(--sh-space)*2)</td><td class="text-sm">-</td></tr>
+<tr data-c=".ps-4"><td class="font-mono text-sm"><code>.ps-4</code></td><td class="text-sm font-mono break-all">padding-inline-start:calc(var(--sh-space)*4)</td><td class="text-sm">-</td></tr>
+<tr data-c=".pe-0"><td class="font-mono text-sm"><code>.pe-0</code></td><td class="text-sm font-mono break-all">padding-inline-end:0</td><td class="text-sm">-</td></tr>
+<tr data-c=".pe-2"><td class="font-mono text-sm"><code>.pe-2</code></td><td class="text-sm font-mono break-all">padding-inline-end:calc(var(--sh-space)*2)</td><td class="text-sm">-</td></tr>
+<tr data-c=".pe-4"><td class="font-mono text-sm"><code>.pe-4</code></td><td class="text-sm font-mono break-all">padding-inline-end:calc(var(--sh-space)*4)</td><td class="text-sm">-</td></tr>
+<tr data-c=".ms-auto"><td class="font-mono text-sm"><code>.ms-auto</code></td><td class="text-sm font-mono break-all">margin-inline-start:auto</td><td class="text-sm">-</td></tr>
+<tr data-c=".ms-2"><td class="font-mono text-sm"><code>.ms-2</code></td><td class="text-sm font-mono break-all">margin-inline-start:calc(var(--sh-space)*2)</td><td class="text-sm">-</td></tr>
+<tr data-c=".ms-4"><td class="font-mono text-sm"><code>.ms-4</code></td><td class="text-sm font-mono break-all">margin-inline-start:calc(var(--sh-space)*4)</td><td class="text-sm">-</td></tr>
+<tr data-c=".me-auto"><td class="font-mono text-sm"><code>.me-auto</code></td><td class="text-sm font-mono break-all">margin-inline-end:auto</td><td class="text-sm">-</td></tr>
+<tr data-c=".me-2"><td class="font-mono text-sm"><code>.me-2</code></td><td class="text-sm font-mono break-all">margin-inline-end:calc(var(--sh-space)*2)</td><td class="text-sm">-</td></tr>
+<tr data-c=".me-4"><td class="font-mono text-sm"><code>.me-4</code></td><td class="text-sm font-mono break-all">margin-inline-end:calc(var(--sh-space)*4)</td><td class="text-sm">-</td></tr>
+<tr data-c=".start-0"><td class="font-mono text-sm"><code>.start-0</code></td><td class="text-sm font-mono break-all">inset-inline-start:0</td><td class="text-sm">-</td></tr>
+<tr data-c=".end-0"><td class="font-mono text-sm"><code>.end-0</code></td><td class="text-sm font-mono break-all">inset-inline-end:0</td><td class="text-sm">-</td></tr>
+<tr data-c=".text-start"><td class="font-mono text-sm"><code>.text-start</code></td><td class="text-sm font-mono break-all">text-align:start</td><td class="text-sm">-</td></tr>
+<tr data-c=".text-end"><td class="font-mono text-sm"><code>.text-end</code></td><td class="text-sm font-mono break-all">text-align:end</td><td class="text-sm">-</td></tr>
+<tr data-c=".border-s"><td class="font-mono text-sm"><code>.border-s</code></td><td class="text-sm font-mono break-all">border-inline-start-width:var(--sh-border-width)</td><td class="text-sm">-</td></tr>
+<tr data-c=".border-e"><td class="font-mono text-sm"><code>.border-e</code></td><td class="text-sm font-mono break-all">border-inline-end-width:var(--sh-border-width)</td><td class="text-sm">-</td></tr>
+<tr data-c=".rounded-s"><td class="font-mono text-sm"><code>.rounded-s</code></td><td class="text-sm font-mono break-all">border-start-start-radius:var(--sh-radius); border-end-start-radius:var(--sh-radius)</td><td class="text-sm">-</td></tr>
+<tr data-c=".rounded-e"><td class="font-mono text-sm"><code>.rounded-e</code></td><td class="text-sm font-mono break-all">border-start-end-radius:var(--sh-radius); border-end-end-radius:var(--sh-radius)</td><td class="text-sm">-</td></tr>
+<tr data-g><th colspan="3" scope="colgroup" class="text-left">Background images</th></tr>
+<tr data-c=".bg-cover"><td class="font-mono text-sm"><code>.bg-cover</code></td><td class="text-sm font-mono break-all">background-size:cover</td><td class="text-sm">-</td></tr>
+<tr data-c=".bg-contain"><td class="font-mono text-sm"><code>.bg-contain</code></td><td class="text-sm font-mono break-all">background-size:contain</td><td class="text-sm">-</td></tr>
+<tr data-c=".bg-center"><td class="font-mono text-sm"><code>.bg-center</code></td><td class="text-sm font-mono break-all">background-position:center</td><td class="text-sm">-</td></tr>
+<tr data-c=".bg-top"><td class="font-mono text-sm"><code>.bg-top</code></td><td class="text-sm font-mono break-all">background-position:top</td><td class="text-sm">-</td></tr>
+<tr data-c=".bg-bottom"><td class="font-mono text-sm"><code>.bg-bottom</code></td><td class="text-sm font-mono break-all">background-position:bottom</td><td class="text-sm">-</td></tr>
+<tr data-c=".bg-no-repeat"><td class="font-mono text-sm"><code>.bg-no-repeat</code></td><td class="text-sm font-mono break-all">background-repeat:no-repeat</td><td class="text-sm">-</td></tr>
+<tr data-c=".bg-fixed"><td class="font-mono text-sm"><code>.bg-fixed</code></td><td class="text-sm font-mono break-all">background-attachment:fixed</td><td class="text-sm">-</td></tr>
+<tr data-g><th colspan="3" scope="colgroup" class="text-left">Floats</th></tr>
+<tr data-c=".float-left"><td class="font-mono text-sm"><code>.float-left</code></td><td class="text-sm font-mono break-all">float:left</td><td class="text-sm">-</td></tr>
+<tr data-c=".float-right"><td class="font-mono text-sm"><code>.float-right</code></td><td class="text-sm font-mono break-all">float:right</td><td class="text-sm">-</td></tr>
+<tr data-c=".float-none"><td class="font-mono text-sm"><code>.float-none</code></td><td class="text-sm font-mono break-all">float:none</td><td class="text-sm">-</td></tr>
+<tr data-c=".clear-both"><td class="font-mono text-sm"><code>.clear-both</code></td><td class="text-sm font-mono break-all">clear:both</td><td class="text-sm">-</td></tr>
+<tr data-g><th colspan="3" scope="colgroup" class="text-left">Text and flow</th></tr>
+<tr data-c=".antialiased"><td class="font-mono text-sm"><code>.antialiased</code></td><td class="text-sm font-mono break-all">-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale</td><td class="text-sm">-</td></tr>
+<tr data-c=".hyphens-auto"><td class="font-mono text-sm"><code>.hyphens-auto</code></td><td class="text-sm font-mono break-all">hyphens:auto</td><td class="text-sm">-</td></tr>
+<tr data-c=".text-ellipsis"><td class="font-mono text-sm"><code>.text-ellipsis</code></td><td class="text-sm font-mono break-all">text-overflow:ellipsis</td><td class="text-sm">-</td></tr>
+<tr data-c=".break-inside-avoid"><td class="font-mono text-sm"><code>.break-inside-avoid</code></td><td class="text-sm font-mono break-all">break-inside:avoid</td><td class="text-sm">-</td></tr>
+<tr data-g><th colspan="3" scope="colgroup" class="text-left">Grid tracks, sizing, forms</th></tr>
+<tr data-c=".auto-rows-fr"><td class="font-mono text-sm"><code>.auto-rows-fr</code></td><td class="text-sm font-mono break-all">grid-auto-rows:minmax(0,1fr)</td><td class="text-sm">-</td></tr>
+<tr data-c=".auto-cols-fr"><td class="font-mono text-sm"><code>.auto-cols-fr</code></td><td class="text-sm font-mono break-all">grid-auto-columns:minmax(0,1fr)</td><td class="text-sm">-</td></tr>
+<tr data-c=".min-w-max"><td class="font-mono text-sm"><code>.min-w-max</code></td><td class="text-sm font-mono break-all">min-width:max-content</td><td class="text-sm">-</td></tr>
+<tr data-c=".min-h-svh"><td class="font-mono text-sm"><code>.min-h-svh</code></td><td class="text-sm font-mono break-all">min-height:100svh</td><td class="text-sm">-</td></tr>
+<tr data-c=".field-sizing-content"><td class="font-mono text-sm"><code>.field-sizing-content</code></td><td class="text-sm font-mono break-all">field-sizing:content</td><td class="text-sm">-</td></tr>
 </tbody></table></div>
 </section>
 </section>
