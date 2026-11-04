@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shine CSS – ultra-light, pure-CSS framework</title>
-<meta name="description" content="Shine is an ultra-light, pure-CSS framework: utility classes, ready-made components and master design knobs. About 16.5 KB gzipped, no JavaScript required. Try the live theme builder and class playground.">
+<meta name="description" content="Shine is an ultra-light, pure-CSS framework: utility classes, ready-made components and master design knobs. About 16.8 KB gzipped, no JavaScript required. Try the live theme builder and class playground.">
 <meta name="theme-color" content="#4f46e5">
 <link rel="canonical" href="https://asticore.github.io/shine/docs/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Shine CSS">
 <meta property="og:title" content="Shine CSS – ultra-light, pure-CSS framework">
-<meta property="og:description" content="Utility classes, ready-made components and master design knobs in about 16.5 KB gzipped. Build a theme live and export it.">
+<meta property="og:description" content="Utility classes, ready-made components and master design knobs in about 16.8 KB gzipped. Build a theme live and export it.">
 <meta property="og:url" content="https://asticore.github.io/shine/docs/">
 <meta property="og:image" content="https://asticore.github.io/shine/docs/logo.svg">
 <meta name="twitter:card" content="summary">
@@ -63,13 +63,13 @@ pre{white-space:pre;tab-size:2}
   <div class="container mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
     <div class="lg:col-span-7 stack gap-6">
       <p class="cluster gap-2">
-        <span class="badge badge-solid">16.5 KB gzipped</span>
+        <span class="badge badge-solid">16.8 KB gzipped</span>
         <span class="badge tone-success">0 KB JavaScript</span>
         <span class="badge tone-neutral">MIT</span>
       </p>
       <h1 id="h-hero" class="text-5xl md:text-6xl font-extrabold tracking-tight m-0"><span class="text-gradient">Shine</span><span class="sr-only"> CSS framework</span></h1>
       <p class="lead m-0 max-w-xl">Ultra-light, pure-CSS framework: utility classes, ready-made components and master design knobs.</p>
-      <p class="text-muted m-0 max-w-xl">The whole framework is one stylesheet of <strong class="text-default">16.5 KB gzipped</strong> (measured with <code>node build.js</code>). Modals, drawers, dropdowns, tooltips and accordions run on native HTML, so there is nothing to compile and no script to load.</p>
+      <p class="text-muted m-0 max-w-xl">The whole framework is one stylesheet of <strong class="text-default">16.8 KB gzipped</strong> (measured with <code>node build.js</code>). Modals, drawers, dropdowns, tooltips and accordions run on native HTML, so there is nothing to compile and no script to load.</p>
       <div class="cluster gap-3">
         <a class="btn btn-lg" href="reference.html">Get started</a>
         <a class="btn btn-lg btn-outline" href="https://github.com/asticore/shine">GitHub</a>
@@ -346,12 +346,16 @@ pre{white-space:pre;tab-size:2}
 &lt;/div&gt;</code></pre></details>
 </article>
 <article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-button-group">
-<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-button-group">Button group</h3><span class="text-xs text-muted cluster gap-1"><code>btn-group</code> <code>btn-group-vertical</code></span></div>
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-button-group">Button group &amp; split button</h3><span class="text-xs text-muted cluster gap-1"><code>btn-group</code> <code>btn-group-vertical</code> <code>btn-caret</code></span></div>
 <div class="card-body cluster gap-3 flex-1 content-start">
 <div class="btn-group" role="group" aria-label="Text alignment"><button class="btn btn-outline" type="button">Left</button><button class="btn btn-outline" type="button">Center</button><button class="btn btn-outline" type="button">Right</button></div>
+<div class="btn-group" role="group" aria-label="Save"><button class="btn" type="button">Save</button><button class="btn btn-caret" type="button" popovertarget="demo-split" aria-label="More save options"></button></div>
+<div id="demo-split" popover class="menu dropdown-menu dropdown-menu-end"><a href="#demo-button-group">Save as…</a><a href="#demo-button-group">Export PDF</a></div>
 <div class="btn-group-vertical" role="group" aria-label="Sort"><button class="btn" type="button">Newest</button><button class="btn" type="button">Popular</button><button class="btn" type="button">Rating</button></div>
 </div>
 <details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="btn-group" role="group" aria-label="Text alignment"&gt;&lt;button class="btn btn-outline" type="button"&gt;Left&lt;/button&gt;&lt;button class="btn btn-outline" type="button"&gt;Center&lt;/button&gt;&lt;button class="btn btn-outline" type="button"&gt;Right&lt;/button&gt;&lt;/div&gt;
+&lt;div class="btn-group" role="group" aria-label="Save"&gt;&lt;button class="btn" type="button"&gt;Save&lt;/button&gt;&lt;button class="btn btn-caret" type="button" popovertarget="demo-split" aria-label="More save options"&gt;&lt;/button&gt;&lt;/div&gt;
+&lt;div id="demo-split" popover class="menu dropdown-menu dropdown-menu-end"&gt;&lt;a href="#demo-button-group"&gt;Save as…&lt;/a&gt;&lt;a href="#demo-button-group"&gt;Export PDF&lt;/a&gt;&lt;/div&gt;
 &lt;div class="btn-group-vertical" role="group" aria-label="Sort"&gt;&lt;button class="btn" type="button"&gt;Newest&lt;/button&gt;&lt;button class="btn" type="button"&gt;Popular&lt;/button&gt;&lt;button class="btn" type="button"&gt;Rating&lt;/button&gt;&lt;/div&gt;</code></pre></details>
 </article>
 <article class="flex flex-col card card-flat min-w-0" aria-labelledby="demo-cards">
@@ -700,7 +704,7 @@ pre{white-space:pre;tab-size:2}
       <li class="card"><div class="card-body stack gap-2"><span class="avatar" aria-hidden="true">01</span><h3 class="card-title m-0">Master knobs</h3><p class="text-muted m-0">Brand color, theme, corner level, shadow depth and density set once on <code>&lt;html&gt;</code>. Everything follows.</p></div></li>
       <li class="card"><div class="card-body stack gap-2"><span class="avatar tone-accent" aria-hidden="true">02</span><h3 class="card-title m-0">Utilities without a compiler</h3><p class="text-muted m-0">Write <code>flex</code>, <code>p-4</code> and <code>md:grid-cols-3</code> straight in your HTML. Nothing to install.</p></div></li>
       <li class="card"><div class="card-body stack gap-2"><span class="avatar tone-success" aria-hidden="true">03</span><h3 class="card-title m-0">Components without JavaScript</h3><p class="text-muted m-0">Modals, drawers, dropdowns, tooltips, toasts, accordions: native <code>dialog</code>, <code>popover</code> and <code>details</code>.</p></div></li>
-      <li class="card"><div class="card-body stack gap-2"><span class="avatar tone-info" aria-hidden="true">04</span><h3 class="card-title m-0">16.5 KB gzipped</h3><p class="text-muted m-0">Smaller than most hero images. Trim it further with <code>node build.js --only=...</code>.</p></div></li>
+      <li class="card"><div class="card-body stack gap-2"><span class="avatar tone-info" aria-hidden="true">04</span><h3 class="card-title m-0">16.8 KB gzipped</h3><p class="text-muted m-0">Smaller than most hero images. Trim it further with <code>node build.js --only=...</code>.</p></div></li>
       <li class="card"><div class="card-body stack gap-2"><span class="avatar tone-warning" aria-hidden="true">05</span><h3 class="card-title m-0">Accessible by default</h3><p class="text-muted m-0">Semantic HTML targets, visible focus rings, a skip link, reduced-motion and print styles.</p></div></li>
       <li class="card"><div class="card-body stack gap-2"><span class="avatar tone-danger" aria-hidden="true">06</span><h3 class="card-title m-0">No specificity fights</h3><p class="text-muted m-0">Built on CSS cascade layers: your unlayered CSS beats Shine without <code>!important</code>.</p></div></li>
     </ul>

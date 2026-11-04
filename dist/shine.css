@@ -1727,6 +1727,35 @@ html:has(:modal) {
   background: color-mix(in oklab, var(--sh-warning) 25%, transparent);
   color: inherit;
 }
+
+/* Split button: <div class="btn-group"><button class="btn">Save</button>
+   <button class="btn btn-caret" popovertarget="m" aria-label="More"></button></div>
+   <div id="m" popover class="menu dropdown-menu dropdown-menu-end">…</div> */
+.btn-caret::after {
+  content: "";
+  width: .4em;
+  height: .4em;
+  border: solid currentColor;
+  border-width: 0 .14em .14em 0;
+  translate: 0 -25%;
+  rotate: 45deg;
+}
+.btn-caret:empty { padding-inline: calc(var(--sh-space) * 2.5 * var(--sh-density)); }
+
+/* Frosted glass (Android / iOS style blur). Tune with --sh-glass-blur and --sh-glass-opacity */
+.glass {
+  background: color-mix(in oklab, var(--sh-surface) var(--sh-glass-opacity, 70%), transparent);
+  -webkit-backdrop-filter: blur(var(--sh-glass-blur, 16px)) saturate(1.8);
+  backdrop-filter: blur(var(--sh-glass-blur, 16px)) saturate(1.8);
+  border-color: color-mix(in oklab, var(--sh-border) 60%, transparent);
+}
+.modal-blur::backdrop {
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass { background: var(--sh-surface); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
 }
 
 @layer shine.utilities {
@@ -2528,7 +2557,9 @@ html:has(:modal) {
 .shadow-md { box-shadow: var(--sh-shadow-3); }
 .shadow-lg { box-shadow: var(--sh-shadow-4); }
 .shadow-xl, .shadow-2xl { box-shadow: var(--sh-shadow-5); }
+.shadow-tone { box-shadow: 0 8px 24px -6px color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 50%, transparent); }
 
+.shadow-inner { box-shadow: inset 0 2px 4px rgb(0 0 0 / .08); }
 .shadow-elevation { box-shadow: var(--sh-elevation, var(--sh-shadow-1)); }
 
 
@@ -2545,8 +2576,19 @@ html:has(:modal) {
 .opacity-90 { opacity: .9; }
 .opacity-95 { opacity: .95; }
 
-.backdrop-blur-sm { -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
-.backdrop-blur-md { -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+
+/* Backdrop filters: blur and saturate combine (frosted glass) */
+:where(.backdrop-blur-none, .backdrop-blur-sm, .backdrop-blur, .backdrop-blur-md, .backdrop-blur-lg, .backdrop-blur-xl, .backdrop-saturate-150) {
+  -webkit-backdrop-filter: blur(var(--sh-bd-blur, 0)) saturate(var(--sh-bd-sat, 1));
+  backdrop-filter: blur(var(--sh-bd-blur, 0)) saturate(var(--sh-bd-sat, 1));
+}
+.backdrop-blur-none { --sh-bd-blur: 0; }
+.backdrop-blur-sm { --sh-bd-blur: 4px; }
+.backdrop-blur { --sh-bd-blur: 8px; }
+.backdrop-blur-md { --sh-bd-blur: 12px; }
+.backdrop-blur-lg { --sh-bd-blur: 16px; }
+.backdrop-blur-xl { --sh-bd-blur: 24px; }
+.backdrop-saturate-150 { --sh-bd-sat: 1.5; }
 
 /* ./utilities/interactivity.css */
 /* Shine — interactivity & transitions */
@@ -2724,6 +2766,7 @@ html:has(:modal) {
 .hover\:shadow-md:hover{box-shadow: var(--sh-shadow-3);}
 .hover\:shadow-lg:hover{box-shadow: var(--sh-shadow-4);}
 .hover\:shadow-xl:hover,.hover\:shadow-2xl:hover{box-shadow: var(--sh-shadow-5);}
+.hover\:shadow-tone:hover{box-shadow: 0 8px 24px -6px color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 50%, transparent);}
 .group:hover .group-hover\:opacity-0{opacity: 0;}
 .hover\:opacity-0:hover{opacity: 0;}
 .group:hover .group-hover\:opacity-50{opacity: .5;}

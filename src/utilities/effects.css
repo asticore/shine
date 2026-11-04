@@ -7,7 +7,9 @@
 .shadow-md { box-shadow: var(--sh-shadow-3); }
 .shadow-lg { box-shadow: var(--sh-shadow-4); }
 .shadow-xl, .shadow-2xl { box-shadow: var(--sh-shadow-5); }
+.shadow-tone { box-shadow: 0 8px 24px -6px color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 50%, transparent); }
 /* @end */
+.shadow-inner { box-shadow: inset 0 2px 4px rgb(0 0 0 / .08); }
 .shadow-elevation { box-shadow: var(--sh-elevation, var(--sh-shadow-1)); }
 
 /* @variants hover group-hover */
@@ -24,5 +26,16 @@
 .opacity-90 { opacity: .9; }
 .opacity-95 { opacity: .95; }
 
-.backdrop-blur-sm { -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
-.backdrop-blur-md { -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+
+/* Backdrop filters: blur and saturate combine (frosted glass) */
+:where(.backdrop-blur-none, .backdrop-blur-sm, .backdrop-blur, .backdrop-blur-md, .backdrop-blur-lg, .backdrop-blur-xl, .backdrop-saturate-150) {
+  -webkit-backdrop-filter: blur(var(--sh-bd-blur, 0)) saturate(var(--sh-bd-sat, 1));
+  backdrop-filter: blur(var(--sh-bd-blur, 0)) saturate(var(--sh-bd-sat, 1));
+}
+.backdrop-blur-none { --sh-bd-blur: 0; }
+.backdrop-blur-sm { --sh-bd-blur: 4px; }
+.backdrop-blur { --sh-bd-blur: 8px; }
+.backdrop-blur-md { --sh-bd-blur: 12px; }
+.backdrop-blur-lg { --sh-bd-blur: 16px; }
+.backdrop-blur-xl { --sh-bd-blur: 24px; }
+.backdrop-saturate-150 { --sh-bd-sat: 1.5; }

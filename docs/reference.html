@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shine CSS reference: classes, data attributes and tokens</title>
-<meta name="description" content="Reference for every Shine CSS class and data attribute: master knobs, tones, components with live examples, and 811 utility classes with their CSS.">
+<meta name="description" content="Reference for every Shine CSS class and data attribute: master knobs, tones, components with live examples, and 819 utility classes with their CSS.">
 <link rel="canonical" href="https://asticore.github.io/shine/docs/reference.html">
 <meta property="og:url" content="https://asticore.github.io/shine/docs/reference.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Shine CSS reference: classes, data attributes and tokens">
-<meta property="og:description" content="Reference for every Shine CSS class and data attribute: master knobs, tones, components with live examples, and 811 utility classes with their CSS.">
+<meta property="og:description" content="Reference for every Shine CSS class and data attribute: master knobs, tones, components with live examples, and 819 utility classes with their CSS.">
 <link rel="stylesheet" href="../dist/shine.min.css">
 </head>
 <body>
@@ -701,6 +701,16 @@
 <p class="max-w-prose">Small add-ons. The carousel is plain scroll-snap (link to item ids, no JS); the floating label needs <code>placeholder=" "</code> on the input.</p>
 <div class="card card-flat overflow-hidden">
 <div class="card-body grid gap-5">
+<div class="btn-group">
+  <button class="btn">Save</button>
+  <button class="btn btn-caret" popovertarget="split-menu" aria-label="More save options"></button>
+</div>
+<div id="split-menu" popover class="menu dropdown-menu dropdown-menu-end">
+  <a href="#extras">Save as…</a><a href="#extras">Export PDF</a>
+</div>
+
+<div class="card glass p-6">Frosted glass card</div>
+
 <ul class="list-group">
   <li>Plain item</li>
   <li><a href="#extras" aria-current="true">Current link</a></li>
@@ -721,7 +731,17 @@
 <div class="cluster"><span class="indicator"><span class="indicator-item badge badge-solid tone-danger">3</span><button class="btn">Inbox</button></span><span class="dot tone-success"></span> Online <span class="vr"></span> <mark>marked</mark></div>
 <p class="lead">A lead paragraph.</p>
 </div>
-<pre class="bg-surface-2 p-4 text-sm overflow-x-auto m-0"><code>&lt;ul class=&quot;list-group&quot;&gt;
+<pre class="bg-surface-2 p-4 text-sm overflow-x-auto m-0"><code>&lt;div class=&quot;btn-group&quot;&gt;
+  &lt;button class=&quot;btn&quot;&gt;Save&lt;/button&gt;
+  &lt;button class=&quot;btn btn-caret&quot; popovertarget=&quot;split-menu&quot; aria-label=&quot;More save options&quot;&gt;&lt;/button&gt;
+&lt;/div&gt;
+&lt;div id=&quot;split-menu&quot; popover class=&quot;menu dropdown-menu dropdown-menu-end&quot;&gt;
+  &lt;a href=&quot;#extras&quot;&gt;Save as…&lt;/a&gt;&lt;a href=&quot;#extras&quot;&gt;Export PDF&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;card glass p-6&quot;&gt;Frosted glass card&lt;/div&gt;
+
+&lt;ul class=&quot;list-group&quot;&gt;
   &lt;li&gt;Plain item&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#extras&quot; aria-current=&quot;true&quot;&gt;Current link&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#extras&quot;&gt;Link item&lt;/a&gt;&lt;/li&gt;
@@ -761,12 +781,15 @@
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.vr</code></td><td>Vertical rule for flex rows.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.lead</code></td><td>Larger intro paragraph.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.mark</code></td><td>Highlighted text (also styles the mark element).</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.btn-caret</code></td><td>Adds a down chevron; pair with popovertarget for a split button menu.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.glass</code></td><td>Frosted-glass surface (blurred, translucent). Tune with --sh-glass-blur and --sh-glass-opacity.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.modal-blur</code></td><td>Blurs the page behind an open modal.</td></tr>
 </tbody></table></div>
 </section>
 </section>
 <section id="utilities" aria-labelledby="h-utilities" class="space-y-8">
 <h2 id="h-utilities" class="text-3xl font-bold tracking-tight">Utilities</h2>
-<p class="max-w-prose">811 utility rules, generated from <code>src/utilities/*.css</code> when this page is built. Class names follow familiar utility conventions (inspired by Tailwind CSS). The last column lists the prefixed versions that the build creates, such as <code>md:p-4</code> or <code>hover:bg-primary</code>.</p>
+<p class="max-w-prose">819 utility rules, generated from <code>src/utilities/*.css</code> when this page is built. Class names follow familiar utility conventions (inspired by Tailwind CSS). The last column lists the prefixed versions that the build creates, such as <code>md:p-4</code> or <code>hover:bg-primary</code>.</p>
 <div class="field max-w-md" id="util-search-box" hidden>
 <label class="label" for="util-search">Filter utilities by class name</label>
 <input class="input" id="util-search" type="search" placeholder="e.g. flex, p-4, bg-primary" autocomplete="off">
@@ -1506,7 +1529,7 @@
 </section>
 <section id="u-effects" aria-labelledby="h-u-effects" class="space-y-3">
 <h3 id="h-u-effects" class="text-2xl font-semibold">effects</h3>
-<p class="text-muted text-sm m-0">Shine — minimal effects (shadows, opacity, backdrop blur) (20 rules)</p>
+<p class="text-muted text-sm m-0">Shine — minimal effects (shadows, opacity, backdrop blur) (28 rules)</p>
 <div class="table-wrap"><table class="table table-compact table-hover util-table"><thead><tr><th scope="col">Class</th><th scope="col">CSS</th><th scope="col">Variants</th></tr></thead><tbody>
 <tr data-c=".shadow-none"><td class="font-mono text-sm"><code>.shadow-none</code></td><td class="text-sm font-mono break-all">box-shadow: none</td><td class="text-sm">hover</td></tr>
 <tr data-c=".shadow-sm"><td class="font-mono text-sm"><code>.shadow-sm</code></td><td class="text-sm font-mono break-all">box-shadow: var(--sh-shadow-1)</td><td class="text-sm">hover</td></tr>
@@ -1514,6 +1537,8 @@
 <tr data-c=".shadow-md"><td class="font-mono text-sm"><code>.shadow-md</code></td><td class="text-sm font-mono break-all">box-shadow: var(--sh-shadow-3)</td><td class="text-sm">hover</td></tr>
 <tr data-c=".shadow-lg"><td class="font-mono text-sm"><code>.shadow-lg</code></td><td class="text-sm font-mono break-all">box-shadow: var(--sh-shadow-4)</td><td class="text-sm">hover</td></tr>
 <tr data-c=".shadow-xl .shadow-2xl"><td class="font-mono text-sm"><code>.shadow-xl, .shadow-2xl</code></td><td class="text-sm font-mono break-all">box-shadow: var(--sh-shadow-5)</td><td class="text-sm">hover</td></tr>
+<tr data-c=".shadow-tone"><td class="font-mono text-sm"><code>.shadow-tone</code></td><td class="text-sm font-mono break-all">box-shadow: 0 8px 24px -6px color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 50%, transparent)</td><td class="text-sm">hover</td></tr>
+<tr data-c=".shadow-inner"><td class="font-mono text-sm"><code>.shadow-inner</code></td><td class="text-sm font-mono break-all">box-shadow: inset 0 2px 4px rgb(0 0 0 / .08)</td><td class="text-sm">-</td></tr>
 <tr data-c=".shadow-elevation"><td class="font-mono text-sm"><code>.shadow-elevation</code></td><td class="text-sm font-mono break-all">box-shadow: var(--sh-elevation, var(--sh-shadow-1))</td><td class="text-sm">-</td></tr>
 <tr data-c=".opacity-0"><td class="font-mono text-sm"><code>.opacity-0</code></td><td class="text-sm font-mono break-all">opacity: 0</td><td class="text-sm">hover</td></tr>
 <tr data-c=".opacity-50"><td class="font-mono text-sm"><code>.opacity-50</code></td><td class="text-sm font-mono break-all">opacity: .5</td><td class="text-sm">hover</td></tr>
@@ -1526,8 +1551,15 @@
 <tr data-c=".opacity-80"><td class="font-mono text-sm"><code>.opacity-80</code></td><td class="text-sm font-mono break-all">opacity: .8</td><td class="text-sm">-</td></tr>
 <tr data-c=".opacity-90"><td class="font-mono text-sm"><code>.opacity-90</code></td><td class="text-sm font-mono break-all">opacity: .9</td><td class="text-sm">-</td></tr>
 <tr data-c=".opacity-95"><td class="font-mono text-sm"><code>.opacity-95</code></td><td class="text-sm font-mono break-all">opacity: .95</td><td class="text-sm">-</td></tr>
-<tr data-c=".backdrop-blur-sm"><td class="font-mono text-sm"><code>.backdrop-blur-sm</code></td><td class="text-sm font-mono break-all">-webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px)</td><td class="text-sm">-</td></tr>
-<tr data-c=".backdrop-blur-md"><td class="font-mono text-sm"><code>.backdrop-blur-md</code></td><td class="text-sm font-mono break-all">-webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px)</td><td class="text-sm">-</td></tr>
+<tr data-g><th colspan="3" scope="colgroup" class="text-left">Backdrop filters: blur and saturate combine (frosted glass)</th></tr>
+<tr data-c=":where(.backdrop-blur-none, .backdrop-blur-sm, .backdrop-blur, .backdrop-blur-md, .backdrop-blur-lg, .backdrop-blur-xl, .backdrop-saturate-150)"><td class="font-mono text-sm"><code>:where(.backdrop-blur-none, .backdrop-blur-sm, .backdrop-blur, .backdrop-blur-md, .backdrop-blur-lg, .backdrop-blur-xl, .backdrop-saturate-150)</code></td><td class="text-sm font-mono break-all">-webkit-backdrop-filter: blur(var(--sh-bd-blur, 0)) saturate(var(--sh-bd-sat, 1)); backdrop-filter: blur(var(--sh-bd-blur, 0)) saturate(var(--sh-bd-sat, 1))</td><td class="text-sm">-</td></tr>
+<tr data-c=".backdrop-blur-none"><td class="font-mono text-sm"><code>.backdrop-blur-none</code></td><td class="text-sm font-mono break-all">--sh-bd-blur: 0</td><td class="text-sm">-</td></tr>
+<tr data-c=".backdrop-blur-sm"><td class="font-mono text-sm"><code>.backdrop-blur-sm</code></td><td class="text-sm font-mono break-all">--sh-bd-blur: 4px</td><td class="text-sm">-</td></tr>
+<tr data-c=".backdrop-blur"><td class="font-mono text-sm"><code>.backdrop-blur</code></td><td class="text-sm font-mono break-all">--sh-bd-blur: 8px</td><td class="text-sm">-</td></tr>
+<tr data-c=".backdrop-blur-md"><td class="font-mono text-sm"><code>.backdrop-blur-md</code></td><td class="text-sm font-mono break-all">--sh-bd-blur: 12px</td><td class="text-sm">-</td></tr>
+<tr data-c=".backdrop-blur-lg"><td class="font-mono text-sm"><code>.backdrop-blur-lg</code></td><td class="text-sm font-mono break-all">--sh-bd-blur: 16px</td><td class="text-sm">-</td></tr>
+<tr data-c=".backdrop-blur-xl"><td class="font-mono text-sm"><code>.backdrop-blur-xl</code></td><td class="text-sm font-mono break-all">--sh-bd-blur: 24px</td><td class="text-sm">-</td></tr>
+<tr data-c=".backdrop-saturate-150"><td class="font-mono text-sm"><code>.backdrop-saturate-150</code></td><td class="text-sm font-mono break-all">--sh-bd-sat: 1.5</td><td class="text-sm">-</td></tr>
 </tbody></table></div>
 </section>
 <section id="u-interactivity" aria-labelledby="h-u-interactivity" class="space-y-3">

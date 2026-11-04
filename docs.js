@@ -342,7 +342,7 @@ const COMPONENTS = [
     intro: 'Small add-ons. The carousel is plain scroll-snap (link to item ids, no JS); the floating label needs <code>placeholder=" "</code> on the input.',
     desc: {
       'list-group': 'Bordered stacked list; a/button items get hover, [aria-current] or .active is solid.',
-      'btn-group': 'Joins adjacent .btn elements into one segmented control.', 'btn-group-vertical': 'Button group stacked vertically.',
+      'btn-group': 'Joins adjacent .btn elements into one segmented control.', 'btn-caret': 'Adds a down chevron; pair with popovertarget for a split button menu.', glass: 'Frosted-glass surface (blurred, translucent). Tune with --sh-glass-blur and --sh-glass-opacity.', 'modal-blur': 'Blurs the page behind an open modal.', 'btn-group-vertical': 'Button group stacked vertically.',
       floating: 'Wrapper whose label floats above the input when focused or filled.',
       carousel: 'Scroll-snap slider; each child fills the width.', 'carousel-peek': 'Items are 85% wide so the next one peeks in.',
       'carousel-hide-bar': 'Hides the carousel scrollbar.', 'stretched-link': 'Makes a link cover its whole positioned parent, such as a card.',
@@ -350,7 +350,17 @@ const COMPONENTS = [
       dot: 'Small status dot colored by tone.', vr: 'Vertical rule for flex rows.', lead: 'Larger intro paragraph.', mark: 'Highlighted text (also styles the mark element).',
       active: 'With .list-group items: marks the current item.', btn: 'Used inside .btn-group.', input: 'Used inside .floating.', textarea: 'Used inside .floating.', card: 'Cards containing a .stretched-link become positioned.',
     },
-    examples: [{ html: `<ul class="list-group">
+    examples: [{ html: `<div class="btn-group">
+  <button class="btn">Save</button>
+  <button class="btn btn-caret" popovertarget="split-menu" aria-label="More save options"></button>
+</div>
+<div id="split-menu" popover class="menu dropdown-menu dropdown-menu-end">
+  <a href="#extras">Save as…</a><a href="#extras">Export PDF</a>
+</div>
+
+<div class="card glass p-6">Frosted glass card</div>
+
+<ul class="list-group">
   <li>Plain item</li>
   <li><a href="#extras" aria-current="true">Current link</a></li>
   <li><a href="#extras">Link item</a></li>
