@@ -1,7 +1,7 @@
 {
   "name": "shine-css",
   "version": "0.2.0",
-  "description": "Ultra-light pure-CSS framework (~16.5 KB gzip): utility classes, ready-made components and master design knobs. No JavaScript, no build step.",
+  "description": "Ultra-light pure-CSS framework (~16.8 KB gzip): utility classes, ready-made components and master design knobs. No JavaScript, no build step.",
   "style": "dist/shine.min.css",
   "main": "dist/shine.min.css",
   "unpkg": "dist/shine.min.css",

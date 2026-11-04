@@ -97,3 +97,32 @@
   background: color-mix(in oklab, var(--sh-warning) 25%, transparent);
   color: inherit;
 }
+
+/* Split button: <div class="btn-group"><button class="btn">Save</button>
+   <button class="btn btn-caret" popovertarget="m" aria-label="More"></button></div>
+   <div id="m" popover class="menu dropdown-menu dropdown-menu-end">…</div> */
+.btn-caret::after {
+  content: "";
+  width: .4em;
+  height: .4em;
+  border: solid currentColor;
+  border-width: 0 .14em .14em 0;
+  translate: 0 -25%;
+  rotate: 45deg;
+}
+.btn-caret:empty { padding-inline: calc(var(--sh-space) * 2.5 * var(--sh-density)); }
+
+/* Frosted glass (Android / iOS style blur). Tune with --sh-glass-blur and --sh-glass-opacity */
+.glass {
+  background: color-mix(in oklab, var(--sh-surface) var(--sh-glass-opacity, 70%), transparent);
+  -webkit-backdrop-filter: blur(var(--sh-glass-blur, 16px)) saturate(1.8);
+  backdrop-filter: blur(var(--sh-glass-blur, 16px)) saturate(1.8);
+  border-color: color-mix(in oklab, var(--sh-border) 60%, transparent);
+}
+.modal-blur::backdrop {
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass { background: var(--sh-surface); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
