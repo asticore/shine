@@ -192,6 +192,8 @@ node build.js --exclude=alert,badge        # drop modules
 node build.js --only=tokens,reset,base,button,card   # just what you need
 ```
 
+Releasing: bump `version` in `package.json` and add a matching `## vX.Y.Z` section to `CHANGELOG.md`. When that merges to `main`, CI builds, tests, tags and publishes the GitHub Release with the CSS files attached.
+
 Tests: `npm install && npx playwright install && npm test` runs a smoke test in Chromium, Firefox and WebKit (also run by CI on every push and pull request).
 
 No dependencies. Or skip the build and `@import "shine/src/index.css"` (variant classes need the build).
