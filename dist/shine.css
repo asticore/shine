@@ -1,4 +1,4 @@
-/*! Shine CSS | MIT */
+/*! Shine CSS v1.0.0 | MIT | github.com/asticore/shine */
 @layer shine.tokens, shine.reset, shine.base, shine.components, shine.utilities;
 
 @layer shine.tokens {

@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium firefox webkit
+      - name: Build
+        run: npm run build
+      - name: Tag matches package.json version
+        run: test "v$(node -p "require('./package.json').version")" = "$GITHUB_REF_NAME"
+      - name: Test
+        run: npm test
+      - name: Release notes from CHANGELOG
+        run: |
+          awk -v tag="## $GITHUB_REF_NAME" '$0==tag{f=1;next} /^## /{f=0} f' CHANGELOG.md > notes.md
+          test -s notes.md
+      - name: Package
+        run: |
+          mkdir -p release
+          cp dist/shine.min.css dist/shine.css release/
+          zip -qr "release/shine-$GITHUB_REF_NAME.zip" dist src README.md LICENSE CHANGELOG.md
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" release/* --title "Shine $GITHUB_REF_NAME" --notes-file notes.md --verify-tag

@@ -487,7 +487,7 @@ sections.push(`<section id="getting-started" aria-labelledby="h-getting-started"
 <div class="prose max-w-none">
 <p>Shine is a pure-CSS utility framework. Add one stylesheet and use class names. There is no JavaScript to load and no build step to run.</p>
 </div>
-${pre('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asticore/shine@main/dist/shine.min.css">')}
+${pre('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asticore/shine@v1.0.0/dist/shine.min.css">')}
 <div class="prose max-w-none">
 <h3>How classes combine</h3>
 <p>A component class gives you the base look. Modifier classes change it. Tone classes recolor it. Utilities adjust it locally.</p>
