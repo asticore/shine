@@ -1,4 +1,5 @@
-/* Layout primitives — .stack, .cluster, .center, .section. Knobs: --sh-stack-gap, --sh-center-max. Utilities (gap-*, p-*) override. */
+/* Layout primitives — .stack .cluster .center .section .full-bleed .grid-hairline .eyebrow .display-1/2/3 .banner .segmented.
+   Knobs: --sh-stack-gap, --sh-center-max, --sh-section-gap. Utilities (gap-*, p-*) override. */
 
 .stack {
   display: flex;
@@ -20,5 +21,73 @@
 }
 
 .section {
-  padding-block: calc(var(--sh-space) * 16 * var(--sh-density));
+  padding-block: var(--sh-section-gap, calc(var(--sh-space) * 16 * var(--sh-density)));
 }
+
+/* Edge-to-edge band inside a centered page */
+.full-bleed { width: 100vw; margin-inline: calc(50% - 50vw); }
+:where(body):has(.full-bleed) { overflow-x: clip; }
+
+/* Items separated by 1px lines instead of gaps (use with grid/flex) */
+.grid-hairline { gap: var(--sh-border-width); background: var(--sh-border); border: var(--sh-border-width) solid var(--sh-border); }
+.grid-hairline > * { background: var(--sh-bg); }
+
+/* Small uppercase label above a heading */
+.eyebrow {
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 65%, var(--sh-text));
+}
+
+/* Fluid hero headings: scale smoothly with the viewport */
+:is(.display-1, .display-2, .display-3) {
+  font-family: var(--sh-font-heading, inherit);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+.display-1 { font-size: clamp(2.5rem, 1.5rem + 4vw, 4.5rem); }
+.display-2 { font-size: clamp(2rem, 1.25rem + 3vw, 3.5rem); }
+.display-3 { font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem); }
+
+/* Thin full-width announcement strip */
+.banner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: calc(var(--sh-space) * 2);
+  padding: calc(var(--sh-space) * 2) calc(var(--sh-space) * 4);
+  font-size: .875rem;
+  background: var(--sh-tone, var(--sh-primary));
+  color: var(--sh-on-tone, var(--sh-on-primary));
+}
+.banner a { color: inherit; text-decoration: underline; }
+
+/* Segmented switch: <div class="segmented"><label><input type="radio" name="x" checked> A</label>…</div>
+   (also works with buttons using aria-pressed / aria-selected / .active) */
+.segmented {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  background: var(--sh-surface-2);
+  border-radius: var(--sh-btn-radius, var(--sh-radius));
+}
+.segmented > * {
+  position: relative;
+  padding: calc(var(--sh-space) * 1.5 * var(--sh-density)) calc(var(--sh-space) * 3.5 * var(--sh-density));
+  border-radius: max(0px, calc(var(--sh-btn-radius, var(--sh-radius)) - 3px));
+  font-size: .875rem;
+  font-weight: 500;
+  color: var(--sh-text-muted);
+  cursor: pointer;
+}
+.segmented input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.segmented > :is(:has(:checked), [aria-pressed="true"], [aria-selected="true"], .active) {
+  background: var(--sh-bg);
+  color: var(--sh-text);
+  box-shadow: var(--sh-shadow-1);
+}
+.segmented > :has(:focus-visible) { outline: 2px solid var(--sh-ring, var(--sh-primary)); outline-offset: 2px; }

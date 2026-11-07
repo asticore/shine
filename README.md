@@ -152,7 +152,9 @@ Small set, all driven by the knobs above:
 - **Dropdown** `<details class="dropdown">` + `menu`, or `<div popover class="menu dropdown-menu">` (closes on outside click / Esc)
 - **Tooltip** `data-tooltip="text"` · `data-tooltip-pos="bottom|left|right"`
 - **Nav** `navbar navbar-brand navbar-nav navbar-end` · `breadcrumb` · `pagination` · `tabs tabs-pills`
-- **Content** `accordion` (on `<details name>`) · `table table-striped table-hover` · `progress` · `prose` · `skip-link`
+- **Content** `accordion` (on `<details name>`) · `table` (striped, hover, bordered, sticky header, sort arrows, phone stacking) · `progress` · `prose` · `skip-link`
+- **Layout & sections** `stack cluster center section` · `full-bleed` (edge-to-edge band) · `grid-hairline` (1px dividers) · `eyebrow` · `display-1/2/3` (fluid hero headings) · `banner` (announcement strip) · `segmented` (pure-CSS switch)
+- **Page rhythm knobs** `--sh-center-max` (page width) · `--sh-section-gap` (space between sections)
 
 All of it works with zero JavaScript: native `<dialog>`, `popover` and `<details>` give you open/close, Esc and focus handling.
 
