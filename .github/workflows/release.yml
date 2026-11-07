@@ -1,16 +1,23 @@
 name: Release
 
+# Releases happen automatically: when the "version" in package.json on main
+# changes to one that has no tag yet, this job builds, tests, tags vX.Y.Z and
+# publishes a GitHub Release with the CSS attached. Pushing a v* tag or
+# publishing a release from the GitHub UI also works and fills in the assets.
 on:
   push:
+    branches: [main]
+    paths: [package.json, .github/workflows/release.yml]
     tags: ["v*"]
   release:
     types: [published]
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: release-${{ github.ref_name }}
+  group: release
   cancel-in-progress: false
 
 jobs:
@@ -18,33 +25,62 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
         with:
-          node-version: 22
-      - run: npm install --no-audit --no-fund
-      - run: npx playwright install --with-deps chromium firefox webkit
-      - name: Build
-        run: npm run build
-      - name: Tag matches package.json version
-        run: test "v$(node -p "require('./package.json').version")" = "$GITHUB_REF_NAME"
-      - name: Test
-        run: npm test
-      - name: Release notes from CHANGELOG
-        run: |
-          awk -v tag="## $GITHUB_REF_NAME" '$0==tag{f=1;next} /^## /{f=0} f' CHANGELOG.md > notes.md
-          test -s notes.md
-      - name: Package
-        run: |
-          mkdir -p release
-          cp dist/shine.min.css dist/shine.css release/
-          zip -qr "release/shine-$GITHUB_REF_NAME.zip" dist src README.md LICENSE CHANGELOG.md
-      - name: Create or update GitHub release
+          fetch-depth: 0
+      - name: Work out the tag
+        id: tag
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
-            gh release upload "$GITHUB_REF_NAME" release/* --clobber
-            gh release edit "$GITHUB_REF_NAME" --title "Shine $GITHUB_REF_NAME" --notes-file notes.md
+          VERSION="v$(node -p "require('./package.json').version")"
+          echo "tag=$VERSION" >> "$GITHUB_OUTPUT"
+          if [ "$GITHUB_REF_TYPE" = "tag" ] || [ "$GITHUB_EVENT_NAME" = "release" ]; then
+            test "$VERSION" = "$GITHUB_REF_NAME" || { echo "Tag $GITHUB_REF_NAME does not match package.json ($VERSION)"; exit 1; }
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          elif gh release view "$VERSION" >/dev/null 2>&1; then
+            echo "$VERSION is already released; nothing to do."
+            echo "run=false" >> "$GITHUB_OUTPUT"
           else
-            gh release create "$GITHUB_REF_NAME" release/* --title "Shine $GITHUB_REF_NAME" --notes-file notes.md --verify-tag
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.tag.outputs.run == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - if: steps.tag.outputs.run == 'true'
+        run: npm install --no-audit --no-fund
+      - if: steps.tag.outputs.run == 'true'
+        run: npx playwright install --with-deps chromium firefox webkit
+      - if: steps.tag.outputs.run == 'true'
+        name: Build
+        run: npm run build
+      - if: steps.tag.outputs.run == 'true'
+        name: Test
+        run: npm test
+      - if: steps.tag.outputs.run == 'true'
+        name: Release notes from CHANGELOG
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          awk -v tag="## $TAG" '$0==tag{f=1;next} /^## /{f=0} f' CHANGELOG.md > notes.md
+          test -s notes.md || { echo "CHANGELOG.md has no '## $TAG' section"; exit 1; }
+      - if: steps.tag.outputs.run == 'true'
+        name: Package
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          mkdir -p release
+          cp dist/shine.min.css dist/shine.css release/
+          zip -qr "release/shine-$TAG.zip" dist src README.md LICENSE CHANGELOG.md
+      - if: steps.tag.outputs.run == 'true'
+        name: Create or update the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" release/* --clobber
+            gh release edit "$TAG" --title "Shine $TAG" --notes-file notes.md
+          else
+            gh release create "$TAG" release/* --target "$GITHUB_SHA" --title "Shine $TAG" --notes-file notes.md
           fi
