@@ -44,7 +44,7 @@
 Add one line to your `<head>`:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asticore/shine@main/dist/shine.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/asticore/shine@v1.0.0/dist/shine.min.css">
 ```
 
 Then build with classes:

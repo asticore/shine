@@ -83,7 +83,8 @@ for (const imp of imports) {
   L.css.push(`/* ${imp.file} */\n${css.trim()}`);
 }
 
-let out = `/*! Shine CSS | MIT */\n${layerDecl}\n`;
+const VERSION = require("./package.json").version;
+let out = `/*! Shine CSS v${VERSION} | MIT | github.com/asticore/shine */\n${layerDecl}\n`;
 for (const [name, L] of layers) {
   let body = L.css.join('\n\n');
   if (L.hover.length) body += `\n\n/* hover: */\n${L.hover.join('\n')}`;
@@ -113,7 +114,7 @@ const minify = css => tightMath(css
   .replace(/\s*([{};,>])\s*/g, '$1')
   .replace(/:\s+/g, ':')
   .replace(/;}/g, '}')
-  .replace(/\b0\./g, '.')
+  .replace(/(?<![\d.\w-])0\.(?=\d)/g, '.')
   .replace(/(\[[\w-]+[~|^$*]?=)"(-?[a-zA-Z_][\w-]*)"\]/g, '$1$2]')
   .replace(/(rgb\([^)]*?) \/ /g, '$1/')
   .replace(/(?<=[{}]|^)([^{}]*)\{/g, (m, sel) => sel.replace(/ ([+~]) /g, '$1') + '{')
