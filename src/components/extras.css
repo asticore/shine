@@ -115,14 +115,12 @@
 /* Frosted glass (Android / iOS style blur). Tune with --sh-glass-blur and --sh-glass-opacity */
 .glass {
   background: color-mix(in oklab, var(--sh-surface) var(--sh-glass-opacity, 70%), transparent);
-  -webkit-backdrop-filter: blur(var(--sh-glass-blur, 16px)) saturate(1.8);
   backdrop-filter: blur(var(--sh-glass-blur, 16px)) saturate(1.8);
   border-color: color-mix(in oklab, var(--sh-border) 60%, transparent);
 }
 .modal-blur::backdrop {
-  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
 @media (prefers-reduced-transparency: reduce) {
-  .glass { background: var(--sh-surface); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .glass { background: var(--sh-surface); backdrop-filter: none; }
 }

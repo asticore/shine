@@ -29,7 +29,6 @@
 
 /* Backdrop filters: blur and saturate combine (frosted glass) */
 :where(.backdrop-blur-none, .backdrop-blur-sm, .backdrop-blur, .backdrop-blur-md, .backdrop-blur-lg, .backdrop-blur-xl, .backdrop-saturate-150) {
-  -webkit-backdrop-filter: blur(var(--sh-bd-blur, 0)) saturate(var(--sh-bd-sat, 1));
   backdrop-filter: blur(var(--sh-bd-blur, 0)) saturate(var(--sh-bd-sat, 1));
 }
 .backdrop-blur-none { --sh-bd-blur: 0; }

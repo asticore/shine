@@ -113,7 +113,9 @@ const minify = css => tightMath(css
   .replace(/\s*([{};,>])\s*/g, '$1')
   .replace(/:\s+/g, ':')
   .replace(/;}/g, '}')
-  .replace(/\b0\./g, '.')).trim();
+  .replace(/\b0\./g, '.')
+  .replace(/(\[[\w-]+[~|^$*]?=)"(-?[a-zA-Z_][\w-]*)"\]/g, '$1$2]')
+  .replace(/(rgb\([^)]*?) \/ /g, '$1/')).trim();
 
 fs.mkdirSync(DIST, { recursive: true });
 const min = minify(out);
