@@ -64,10 +64,17 @@ const layerDecl = (read('src/index.css').match(/@layer[^;{]+;/) || ['@layer shin
 const COMPONENTS = [
   {
     id: 'layout', file: 'layout', title: 'Layout primitives',
-    intro: 'Easy-to-use building blocks for spacing and page width. Gap and padding follow <code>--sh-stack-gap</code> and <code>--sh-center-max</code>; utilities such as <code>gap-2</code> or <code>py-4</code> override them.',
+    intro: 'Easy-to-use building blocks for spacing and page width. Gap, width and section padding follow <code>--sh-stack-gap</code>, <code>--sh-center-max</code> and <code>--sh-section-gap</code>; utilities such as <code>gap-2</code> or <code>py-4</code> override them.',
     desc: {
       stack: 'Vertical flex column with a consistent gap.', cluster: 'Wrapping horizontal row, vertically centered, with a gap.',
-      center: 'Centered container with a max width and side padding.', section: 'Large vertical padding for a page section (scales with density).',
+      center: 'Centered container with a max width and side padding.', section: 'Large vertical padding for a page section (scales with density, or set --sh-section-gap).',
+      'full-bleed': 'Edge-to-edge band (100vw) inside a centered page. The body clips horizontal overflow.',
+      'grid-hairline': 'Items separated by 1px lines instead of gaps. Use with grid or flex; direct children get the page background.',
+      eyebrow: 'Small uppercase label above a heading, colored by the tone.',
+      'display-1': 'Largest fluid hero heading (2.5rem to 4.5rem).', 'display-2': 'Large fluid hero heading (2rem to 3.5rem).', 'display-3': 'Medium fluid hero heading (1.75rem to 2.75rem).',
+      banner: 'Thin announcement strip filled with the tone color; links inside are underlined.',
+      segmented: 'Segmented switch: radio labels, or buttons with aria-pressed, aria-selected or .active.',
+      active: 'Marks the selected button inside a .segmented switch (aria-pressed="true" does the same).',
     },
     examples: [{ html: `<div class="stack">
   <strong>Stack</strong>
@@ -75,7 +82,20 @@ const COMPONENTS = [
   <div class="cluster">
     <span class="badge">Cluster</span><span class="badge">of</span><span class="badge">items</span><button class="btn btn-sm">Action</button>
   </div>
-</div>`, wrap: 'block' }],
+</div>`, wrap: 'block' },
+    { title: 'Eyebrow, display, banner, segmented, hairline grid, full-bleed', wrap: 'stack gap-6', html: `<div class="banner tone-accent"><span>Shine 1.1 is out.</span><a href="#c-layout">See what is new</a></div>
+<div class="stack gap-2">
+  <p class="eyebrow m-0">Layout</p>
+  <h3 class="display-3 m-0">Fluid headings</h3>
+</div>
+<div class="segmented" role="radiogroup" aria-label="Billing period">
+  <label><input type="radio" name="ex-billing" checked> Monthly</label>
+  <label><input type="radio" name="ex-billing"> Yearly</label>
+</div>
+<ul class="grid grid-cols-1 sm:grid-cols-3 grid-hairline list-none p-0 m-0">
+  <li class="p-4">One</li><li class="p-4">Two</li><li class="p-4">Three</li>
+</ul>
+<div class="full-bleed bg-surface-2 py-6 text-center">Full-bleed band</div>` }],
   },
   {
     id: 'button', file: 'button', title: 'Button',
@@ -514,7 +534,7 @@ ${demo('data-density', `<div class="flex flex-wrap items-center gap-2">${['compa
 <h3 id="h-knob-tokens" class="text-xl font-semibold">CSS variables (tokens)</h3>
 <p class="max-w-prose">Every <code>--sh-*</code> variable defined on <code>:root</code>. Override any of them on any element: <code>style="--sh-primary:#e11d48"</code> re-brands that subtree.</p>
 ${table(['Variable', 'Default', 'Preview', 'Note'], tokenRows)}
-<p class="max-w-prose">Components also read optional variables that are not set by default. Set them to override one component: ${['--sh-tone', '--sh-on-tone', '--sh-btn-radius', '--sh-card-radius', '--sh-input-radius', '--sh-badge-radius', '--sh-card-shadow', '--sh-elevation', '--sh-ring'].map(code).join(' ')}.</p>
+<p class="max-w-prose">Components also read optional variables that are not set by default. Set them to override one component: ${['--sh-stack-gap', '--sh-center-max', '--sh-section-gap', '--sh-tone', '--sh-on-tone', '--sh-btn-radius', '--sh-card-radius', '--sh-input-radius', '--sh-badge-radius', '--sh-card-shadow', '--sh-elevation', '--sh-ring'].map(code).join(' ')}.</p>
 </section>
 </section>`);
 

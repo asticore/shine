@@ -286,6 +286,8 @@ pre{white-space:pre;tab-size:2}
           <option value="hero">Hero</option><option value="pricing">Pricing cards</option><option value="features">Feature grid</option>
           <option value="login">Login form</option><option value="stats">Dashboard stats</option><option value="blog">Blog post (prose)</option>
           <option value="navbar">Navbar + offcanvas</option><option value="faq">FAQ accordion</option><option value="modal">Modal demo</option><option value="footer">Footer</option>
+          <option value="mega">Mega menu</option><option value="pricing2">Pricing table</option><option value="footer4">Footer (4 columns)</option>
+          <option value="quote">Quote card</option><option value="announce">Announcement + hero</option><option value="hairline">Hairline feature grid</option>
         </select></div>
       <div class="field"><span class="label block" id="l-vw">Viewport</span>
         <div class="btn-group" role="group" aria-labelledby="l-vw" id="pg-vw">
@@ -688,6 +690,21 @@ pre{white-space:pre;tab-size:2}
   &lt;div class="p-4 bg-surface-2 rounded-lg"&gt;&lt;strong&gt;.grid grid-cols-1 md:grid-cols-3&lt;/strong&gt;&lt;div class="divider"&gt;or&lt;/div&gt;&lt;div class="flex items-center gap-3 h-8"&gt;&lt;span&gt;left&lt;/span&gt;&lt;span class="vr"&gt;&lt;/span&gt;&lt;span&gt;right&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre></details>
 </article>
+<article class="flex flex-col card card-flat lg:col-span-2 min-w-0" aria-labelledby="demo-layout-sections">
+<div class="card-header flex flex-wrap items-center justify-between gap-2"><h3 class="card-title m-0 text-base" id="demo-layout-sections">Layout &amp; sections</h3><span class="text-xs text-muted cluster gap-1"><code>banner</code> <code>eyebrow</code> <code>display-1</code> <code>segmented</code> <code>grid-hairline</code> <code>full-bleed</code></span></div>
+<div class="card-body cluster gap-4 flex-1 content-start">
+<div class="banner tone-accent w-full"><span>Shine 1.1 is out.</span><a href="#components">See what is new</a></div>
+<div class="stack gap-2 w-full"><p class="eyebrow m-0">Layout</p><h4 class="display-3 m-0">Fluid headings</h4></div>
+<div class="segmented" role="radiogroup" aria-label="Billing period"><label><input type="radio" name="g-billing" checked> Monthly</label><label><input type="radio" name="g-billing"> Yearly</label></div>
+<ul class="grid grid-cols-1 sm:grid-cols-3 grid-hairline list-none p-0 m-0 w-full"><li class="p-4">One</li><li class="p-4">Two</li><li class="p-4">Three</li></ul>
+<div class="bg-surface-2 py-6 text-center text-sm text-muted">.full-bleed band (stretches edge to edge on a real page)</div>
+</div>
+<details class="border-t"><summary class="px-4 py-2 text-sm cursor-pointer text-muted">Code</summary><pre class="m-0 p-4 bg-surface-2 overflow-x-auto text-sm" tabindex="0"><code>&lt;div class="banner tone-accent w-full"&gt;&lt;span&gt;Shine 1.1 is out.&lt;/span&gt;&lt;a href="#components"&gt;See what is new&lt;/a&gt;&lt;/div&gt;
+&lt;div class="stack gap-2 w-full"&gt;&lt;p class="eyebrow m-0"&gt;Layout&lt;/p&gt;&lt;h4 class="display-3 m-0"&gt;Fluid headings&lt;/h4&gt;&lt;/div&gt;
+&lt;div class="segmented" role="radiogroup" aria-label="Billing period"&gt;&lt;label&gt;&lt;input type="radio" name="g-billing" checked&gt; Monthly&lt;/label&gt;&lt;label&gt;&lt;input type="radio" name="g-billing"&gt; Yearly&lt;/label&gt;&lt;/div&gt;
+&lt;ul class="grid grid-cols-1 sm:grid-cols-3 grid-hairline list-none p-0 m-0 w-full"&gt;&lt;li class="p-4"&gt;One&lt;/li&gt;&lt;li class="p-4"&gt;Two&lt;/li&gt;&lt;li class="p-4"&gt;Three&lt;/li&gt;&lt;/ul&gt;
+&lt;div class="full-bleed bg-surface-2 py-6 text-center"&gt;Full-bleed band&lt;/div&gt;</code></pre></details>
+</article>
     </div>
   </div>
 </section>
@@ -815,6 +832,81 @@ pre{white-space:pre;tab-size:2}
     <nav aria-label="Company"><h2 class="label">Company</h2><ul class="list-none p-0 m-0 stack gap-2 text-sm"><li><a class="link" href="#">About</a></li><li><a class="link" href="#">Contact</a></li></ul></nav>
   </div>
 </footer></template>
+
+<template id="tpl-mega"><div>
+  <nav class="navbar border-b" aria-label="Site"><a class="navbar-brand" href="#">Acme</a>
+    <ul class="navbar-nav"><li><a href="#" aria-current="page">Home</a></li><li><a href="#">Pricing</a></li></ul>
+    <button class="navbar-end btn btn-outline btn-sm btn-caret" type="button" popovertarget="pg-mega" aria-haspopup="true">Products</button>
+    <div id="pg-mega" popover class="menu dropdown-menu dropdown-menu-end max-w-3xl" aria-label="Products">
+      <div class="grid grid-cols-3 gap-6 p-4">
+        <nav aria-label="Build"><h2 class="label">Build</h2><ul class="list-none p-0 m-0 stack gap-2 text-sm"><li><a class="link" href="#">Components</a></li><li><a class="link" href="#">Utilities</a></li><li><a class="link" href="#">Themes</a></li></ul></nav>
+        <nav aria-label="Ship"><h2 class="label">Ship</h2><ul class="list-none p-0 m-0 stack gap-2 text-sm"><li><a class="link" href="#">Hosting</a></li><li><a class="link" href="#">Analytics</a></li><li><a class="link" href="#">Monitoring</a></li></ul></nav>
+        <nav aria-label="Learn"><h2 class="label">Learn</h2><ul class="list-none p-0 m-0 stack gap-2 text-sm"><li><a class="link" href="#">Guides</a></li><li><a class="link" href="#">Reference</a></li><li><a class="link" href="#">Changelog</a></li></ul></nav>
+      </div>
+    </div>
+  </nav>
+  <div class="section center"><p class="text-muted">Page content goes here. Press Products to open the mega menu.</p></div>
+</div></template>
+<template id="tpl-pricing2"><section class="section center stack gap-8" aria-labelledby="pt-h">
+  <div class="text-center stack gap-4">
+    <p class="eyebrow m-0">Pricing</p>
+    <h2 class="display-3 m-0" id="pt-h">Plans that scale with you</h2>
+    <div class="segmented mx-auto" role="radiogroup" aria-label="Billing period">
+      <label><input type="radio" name="pt-billing" checked> Monthly</label>
+      <label><input type="radio" name="pt-billing"> Yearly <span class="badge tone-success">-20%</span></label>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+    <article class="card" aria-labelledby="pt-1"><div class="card-body stack gap-3"><h3 class="card-title m-0" id="pt-1">Hobby</h3><p class="text-4xl font-bold m-0">$0<span class="text-base font-normal text-muted">/mo</span></p><ul class="list-disc pl-4 text-sm text-muted m-0"><li>1 project</li><li>Community support</li><li>Basic analytics</li></ul><a class="btn btn-outline btn-block" href="#">Start free</a></div></article>
+    <article class="card tone-primary ring-2 ring-primary" aria-labelledby="pt-2"><div class="card-body stack gap-3"><div class="flex items-center justify-between"><h3 class="card-title m-0" id="pt-2">Pro</h3><span class="badge badge-solid">Popular</span></div><p class="text-4xl font-bold m-0">$19<span class="text-base font-normal text-muted">/mo</span></p><ul class="list-disc pl-4 text-sm text-muted m-0"><li>Unlimited projects</li><li>Priority support</li><li>Advanced analytics</li></ul><a class="btn btn-block" href="#">Go Pro</a></div></article>
+    <article class="card" aria-labelledby="pt-3"><div class="card-body stack gap-3"><h3 class="card-title m-0" id="pt-3">Team</h3><p class="text-4xl font-bold m-0">$49<span class="text-base font-normal text-muted">/mo</span></p><ul class="list-disc pl-4 text-sm text-muted m-0"><li>10 seats</li><li>SSO and audit log</li><li>Dedicated manager</li></ul><a class="btn btn-outline btn-block" href="#">Contact us</a></div></article>
+  </div>
+</section></template>
+<template id="tpl-footer4"><footer class="bg-surface border-t py-12">
+  <div class="center stack gap-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <nav aria-label="Product"><h2 class="label">Product</h2><ul class="list-none p-0 m-0 stack gap-2 text-sm"><li><a class="link" href="#">Features</a></li><li><a class="link" href="#">Pricing</a></li><li><a class="link" href="#">Changelog</a></li></ul></nav>
+      <nav aria-label="Company"><h2 class="label">Company</h2><ul class="list-none p-0 m-0 stack gap-2 text-sm"><li><a class="link" href="#">About</a></li><li><a class="link" href="#">Careers</a></li><li><a class="link" href="#">Contact</a></li></ul></nav>
+      <nav aria-label="Resources"><h2 class="label">Resources</h2><ul class="list-none p-0 m-0 stack gap-2 text-sm"><li><a class="link" href="#">Docs</a></li><li><a class="link" href="#">Guides</a></li><li><a class="link" href="#">Support</a></li></ul></nav>
+      <form class="col-span-2 md:col-span-1 stack gap-2" aria-labelledby="ft-news">
+        <h2 class="label" id="ft-news">Newsletter</h2>
+        <div class="input-group"><label class="sr-only" for="ft-mail">Email</label><input class="input" id="ft-mail" type="email" placeholder="you@example.com" autocomplete="email"><button class="btn" type="button">Join</button></div>
+        <p class="hint m-0">One email a month. Unsubscribe any time.</p>
+      </form>
+    </div>
+    <div class="border-t pt-6 flex flex-wrap items-center justify-between gap-2 text-sm text-muted">
+      <p class="m-0">&copy; 2026 Acme, Inc.</p>
+      <ul class="cluster list-none p-0 m-0 gap-4"><li><a class="link" href="#">Privacy</a></li><li><a class="link" href="#">Terms</a></li></ul>
+    </div>
+  </div>
+</footer></template>
+<template id="tpl-quote"><section class="section center">
+  <figure class="card max-w-xl mx-auto m-0"><div class="card-body stack gap-4">
+    <blockquote class="text-lg m-0">&ldquo;Shine let us ship a themed marketing site in an afternoon. We deleted four hundred lines of CSS.&rdquo;</blockquote>
+    <figcaption class="flex items-center gap-3"><span class="avatar" aria-hidden="true">AL</span><span class="stack gap-0"><strong>Ada Lovelace</strong><span class="text-sm text-muted">Engineering lead, Acme</span></span></figcaption>
+  </div></figure>
+</section></template>
+<template id="tpl-announce"><div>
+  <div class="banner tone-accent"><span>Shine 1.1 is here.</span><a href="#">Read the release notes</a></div>
+  <section class="section center stack gap-6 text-center" aria-labelledby="an-h">
+    <p class="eyebrow m-0">Pure CSS</p>
+    <h1 class="display-1 m-0" id="an-h">Ship beautiful pages with almost no CSS</h1>
+    <p class="text-lg text-muted max-w-xl mx-auto m-0">Utilities, components and design knobs in one tiny stylesheet.</p>
+    <div class="cluster justify-center gap-3"><a class="btn btn-lg" href="#">Get started</a><a class="btn btn-lg btn-outline" href="#">View on GitHub</a></div>
+  </section>
+  <div class="full-bleed bg-surface-2 h-48 flex items-center justify-center text-muted" role="img" aria-label="Product screenshot placeholder">Full-bleed image placeholder</div>
+</div></template>
+<template id="tpl-hairline"><section class="section center stack gap-8" aria-labelledby="hl-h">
+  <div class="stack gap-2 max-w-xl"><p class="eyebrow m-0">Features</p><h2 class="display-3 m-0" id="hl-h">Everything in its place</h2></div>
+  <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-hairline list-none p-0 m-0">
+    <li class="p-6 stack gap-2"><h3 class="text-lg font-semibold m-0">Fast</h3><p class="text-muted m-0">Tiny CSS, instant paint.</p></li>
+    <li class="p-6 stack gap-2"><h3 class="text-lg font-semibold m-0">Flexible</h3><p class="text-muted m-0">Utilities for fine control.</p></li>
+    <li class="p-6 stack gap-2"><h3 class="text-lg font-semibold m-0">Themeable</h3><p class="text-muted m-0">Change one token, restyle all.</p></li>
+    <li class="p-6 stack gap-2"><h3 class="text-lg font-semibold m-0">Accessible</h3><p class="text-muted m-0">Focus rings and semantics.</p></li>
+    <li class="p-6 stack gap-2"><h3 class="text-lg font-semibold m-0">Native</h3><p class="text-muted m-0">Dialog, popover, details.</p></li>
+    <li class="p-6 stack gap-2"><h3 class="text-lg font-semibold m-0">Layered</h3><p class="text-muted m-0">Your CSS always wins.</p></li>
+  </ul>
+</section></template>
 
 <script src="builder.js"></script>
 </body>
