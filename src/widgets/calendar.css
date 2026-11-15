@@ -1,0 +1,76 @@
+/* Calendar — month grid. <div class="calendar"><div class="calendar-head">…</div><div class="calendar-grid">
+   <span class="calendar-dow">Mo</span>…<button class="calendar-day">1</button>…</div></div>
+   Day states: .today / aria-current="date", aria-selected="true", .outside (other month), disabled,
+   .in-range, .range-start, .range-end, .has-event (+ .calendar-dots with .dot children, or ::after dot).
+   Week start is markup order (put the weekday header and offset in the order you want).
+   Knobs: --sh-tone, --sh-calendar-cell. */
+
+.calendar {
+  --_cell: var(--sh-calendar-cell, 2.5rem);
+  display: inline-block;
+  max-width: 100%;
+  padding: calc(var(--sh-space) * 3 * var(--sh-density));
+  border: var(--sh-border-width) solid var(--sh-border);
+  border-radius: var(--sh-card-radius, var(--sh-radius));
+  background: var(--sh-bg);
+  color: var(--sh-text);
+}
+.calendar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--sh-space) * 2);
+  margin-bottom: calc(var(--sh-space) * 2);
+  font-weight: 600;
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, var(--_cell));
+  row-gap: calc(var(--sh-space) * .5);
+  justify-items: center;
+}
+.calendar-dow {
+  color: var(--sh-text-muted);
+  font-size: .75rem;
+  font-weight: 600;
+  line-height: 2rem;
+  text-transform: uppercase;
+}
+.calendar-day {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+  height: var(--_cell);
+  padding: 0;
+  border: 0;
+  border-radius: var(--sh-btn-radius, var(--sh-radius));
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  cursor: pointer;
+}
+.calendar-day:hover { background: var(--sh-surface-2); }
+.calendar-day:focus-visible { outline: 2px solid var(--sh-tone, var(--sh-primary)); outline-offset: -2px; }
+.calendar-day.outside { color: var(--sh-text-muted); opacity: .55; }
+.calendar-day:disabled { opacity: .35; cursor: not-allowed; pointer-events: none; }
+.calendar-day:is(.today, [aria-current="date"]) { box-shadow: inset 0 0 0 var(--sh-border-width) var(--sh-tone, var(--sh-primary)); font-weight: 700; }
+.calendar-day.in-range { border-radius: 0; background: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 15%, transparent); }
+.calendar-day.range-start { border-start-end-radius: 0; border-end-end-radius: 0; }
+.calendar-day.range-end { border-start-start-radius: 0; border-end-start-radius: 0; }
+.calendar-day:is([aria-selected="true"], .range-start, .range-end, .selected),
+.calendar-day:is([aria-selected="true"], .range-start, .range-end, .selected):hover {
+  background: var(--sh-tone, var(--sh-primary));
+  color: var(--sh-on-tone, var(--sh-on-primary));
+  box-shadow: none;
+}
+/* Event dots: a single dot via .has-event, or several via <span class="calendar-dots"><i class="dot"></i></span> */
+.calendar-day.has-event::after { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--sh-tone, var(--sh-primary)); }
+.calendar-day:is([aria-selected="true"], .range-start, .range-end, .selected).has-event::after { background: currentColor; }
+.calendar-dots { display: flex; gap: 2px; }
+.calendar-dots > * { width: 5px; height: 5px; border-radius: 50%; background: var(--sh-tone, var(--sh-primary)); }

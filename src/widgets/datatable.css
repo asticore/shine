@@ -1,0 +1,82 @@
+/* Data table — extends .table: .table-comfortable, .table-sticky-head, .table-selectable, .dt (wrapper),
+   .dt-toolbar (.dt-search .dt-filters .dt-spacer), .dt-resize, .dt-empty, .dt-pagebar (.dt-info).
+   Sort arrows and selected rows come from the core .table (aria-sort, aria-selected).
+   Knobs: --sh-tone, --sh-density, --sh-radius, --sh-table-head-bg. */
+
+.dt {
+  border: var(--sh-border-width) solid var(--sh-border);
+  border-radius: var(--sh-card-radius, var(--sh-radius));
+  background: var(--sh-bg);
+  color: var(--sh-text);
+  overflow: hidden;
+}
+.dt > .table-wrap { border-block: var(--sh-border-width) solid var(--sh-border); }
+.dt > .table-wrap:first-child { border-top: 0; }
+.dt > .table-wrap:last-child { border-bottom: 0; }
+
+.dt-toolbar,
+.dt-pagebar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--sh-space) * 2);
+  padding: calc(var(--sh-space) * 2.5 * var(--sh-density)) calc(var(--sh-space) * 4 * var(--sh-density));
+  font-size: .875rem;
+}
+.dt-search { flex: 1 1 12rem; max-width: 20rem; }
+.dt-filters { display: flex; flex-wrap: wrap; align-items: center; gap: calc(var(--sh-space) * 2); }
+.dt-spacer { flex: 1; }
+.dt-pagebar { justify-content: space-between; color: var(--sh-text-muted); }
+.dt-pagebar .pagination { margin: 0; }
+
+.table-comfortable :is(th, td) { padding: calc(var(--sh-space) * 4.5 * var(--sh-density)) calc(var(--sh-space) * 5 * var(--sh-density)); }
+
+/* Sticky header without .table-wrap: the table itself must sit in a scrolling box */
+.table-sticky-head thead th { position: sticky; top: 0; z-index: 1; background: var(--sh-table-head-bg, var(--sh-bg)); box-shadow: 0 var(--sh-border-width) 0 var(--sh-border); }
+
+.table th[aria-sort] > button {
+  all: unset;
+  display: inline;
+  cursor: pointer;
+}
+.table th[aria-sort] > button:focus-visible,
+.table th[aria-sort]:focus-visible { outline: 2px solid var(--sh-tone, var(--sh-primary)); outline-offset: -2px; }
+.table th[aria-sort="ascending"],
+.table th[aria-sort="descending"] { color: var(--sh-text); }
+
+/* Selectable rows: pointer + visible focus; tint comes from aria-selected="true" */
+.table-selectable tbody tr { cursor: pointer; }
+.table-selectable tbody tr:focus-visible { outline: 2px solid var(--sh-tone, var(--sh-primary)); outline-offset: -2px; }
+.table-selectable tbody tr[aria-selected="true"] > :first-child { box-shadow: inset 3px 0 0 var(--sh-tone, var(--sh-primary)); }
+.table :is(input[type="checkbox"], .checkbox) { vertical-align: middle; }
+
+/* Column resize handle: <th><span class="dt-resize"></span></th>; JS (Effix) sets the width */
+.table th:has(> .dt-resize) { position: relative; }
+.dt-resize {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: 0;
+  width: .5rem;
+  cursor: col-resize;
+  touch-action: none;
+  user-select: none;
+}
+.dt-resize::after {
+  content: "";
+  position: absolute;
+  inset-block: 25%;
+  inset-inline-end: 0;
+  width: var(--sh-border-width);
+  background: var(--sh-border);
+}
+.dt-resize:is(:hover, :active, :focus-visible)::after { width: 2px; background: var(--sh-tone, var(--sh-primary)); }
+
+/* Empty state: <tr><td colspan="n"><div class="dt-empty">...</div></td></tr> or standalone */
+.dt-empty {
+  display: grid;
+  justify-items: center;
+  gap: calc(var(--sh-space) * 2);
+  padding: calc(var(--sh-space) * 10 * var(--sh-density)) calc(var(--sh-space) * 4);
+  color: var(--sh-text-muted);
+  text-align: center;
+}

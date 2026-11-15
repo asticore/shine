@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+### Widgets add-on (`dist/shine-widgets.min.css`, ~3 KB gzip, load after `shine.css`)
+Kept out of the core so `shine.min.css` stays within its 17.5 KB gzip budget.
+- Data table (#14): toolbar, search/filter slots, page bar, empty state, selectable rows, resize handle, comfortable density, sticky header
+- Timeline (#15): vertical, horizontal, alternating, icon/image/dot markers
+- Stepper (#16): horizontal/vertical, done/current/error, small/large
+- Star rating (#17): display (`--sh-rating`) and radio input, half stars, sizes
+- Skeleton (#18): text, title, avatar, card placeholders
+- Calendar (#19): month grid, today, selected, outside days, event dots, ranges
+
 ## v1.0.0
 
 First stable release. One stylesheet, no JavaScript, no build step: about 17 KB gzipped.
