@@ -400,11 +400,91 @@ const COMPONENTS = [
 <div class="cluster"><span class="indicator"><span class="indicator-item badge badge-solid tone-danger">3</span><button class="btn">Inbox</button></span><span class="dot tone-success"></span> Online <span class="vr"></span> <mark>marked</mark></div>
 <p class="lead">A lead paragraph.</p>`, wrap: 'grid gap-5' }],
   },
+  {
+    id: 'datatable', file: 'datatable', title: 'Data table (widgets add-on)',
+    intro: 'Extends <code>.table</code> for interactive grids. Load <code>dist/shine-widgets.min.css</code> after the core. Sort arrows come from <code>aria-sort</code>, selected rows from <code>aria-selected="true"</code>; Shine only styles, your script (or Effix <code>efx-table</code>) sets the attributes.',
+    desc: {
+      dt: 'Bordered, rounded wrapper for toolbar + table + pagination bar.', 'dt-toolbar': 'Row above the table for search, filters and the column menu.',
+      'dt-pagebar': 'Row below the table: row count on one side, .pagination on the other.', 'dt-search': 'Flexible search field slot in the toolbar.',
+      'dt-filters': 'Wrapping group of filter controls.', 'dt-spacer': 'Pushes the following toolbar items to the end.',
+      'table-comfortable': 'Roomier cell padding (counterpart of table-compact).', 'table-sticky-head': 'Sticky header row when the table sits in a scrolling box.',
+      'table-selectable': 'Pointer cursor, focus ring and a left accent on aria-selected rows.', 'dt-resize': 'Drag handle at the end of a th; JS sets the column width.',
+      table: 'Core table, extended here with sort, selection and resize hooks.', 'table-wrap': 'Core scroll container; inside .dt it sits between toolbar and page bar.', pagination: 'Core pagination, tidied when placed in .dt-pagebar.', checkbox: 'Core checkbox, vertically centered in table cells.',
+      'dt-empty': 'Centered empty state (icon, text, button) for a table with no rows.',
+    },
+    examples: [{ html: `<div class="dt">
+  <div class="dt-toolbar"><input class="input dt-search" type="search" placeholder="Search"><div class="dt-filters"><button class="btn btn-sm btn-outline">Filters</button></div><span class="dt-spacer"></span><button class="btn btn-sm btn-outline">Columns</button></div>
+  <div class="table-wrap">
+    <table class="table table-hover table-selectable">
+      <thead><tr><th aria-sort="ascending">Name<span class="dt-resize"></span></th><th aria-sort="none">Plan</th></tr></thead>
+      <tbody><tr><td>Ada</td><td>Pro</td></tr><tr aria-selected="true"><td>Lin</td><td>Free</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dt-pagebar"><span>1-2 of 2</span><ul class="pagination"><li><span aria-current="page">1</span></li></ul></div>
+</div>`, wrap: 'grid gap-5' }],
+  },
+  {
+    id: 'timeline', file: 'timeline', title: 'Timeline (widgets add-on)',
+    intro: 'A list of events on a line. Default is vertical; add <code>timeline-alt</code> for alternating sides (from 640px) or <code>timeline-horizontal</code>. Markers hold text, an icon or an image; an empty marker is a dot.',
+    desc: {
+      timeline: 'Vertical list of events joined by a line.', 'timeline-item': 'One event.', 'timeline-marker': 'Round marker: icon, number, image or empty dot. Colored by the tone.',
+      'timeline-date': 'Date or time label.', 'timeline-body': 'Event content.', 'timeline-alt': 'Alternate items left and right of a center line (640px and up).',
+      'timeline-horizontal': 'Lay the events out in a row; scrolls sideways when tight.', pending: 'Future item: grey marker.',
+    },
+    examples: [{ html: `<ol class="timeline">
+  <li class="timeline-item"><span class="timeline-marker tone-success">1</span><span class="timeline-date">Jan 2025</span><div class="timeline-body"><strong>Kickoff</strong><p>Project started.</p></div></li>
+  <li class="timeline-item" aria-current="step"><span class="timeline-marker"></span><span class="timeline-date">Mar 2025</span><div class="timeline-body"><strong>Beta</strong></div></li>
+  <li class="timeline-item pending"><span class="timeline-marker"></span><span class="timeline-date">Jun 2025</span><div class="timeline-body"><strong>Launch</strong></div></li>
+</ol>`, wrap: 'grid gap-5' }],
+  },
+  {
+    id: 'stepper', file: 'stepper', title: 'Stepper (widgets add-on)',
+    intro: 'Progress through steps. Horizontal by default; <code>stepper-vertical</code> stacks them. Mark states with <code>done</code>, <code>aria-current="step"</code> and <code>error</code>; an empty <code>step-marker</code> shows the step number, a tick (done) or "!" (error).',
+    desc: {
+      stepper: 'Row of steps with connectors.', step: 'One step. Add done, error or aria-current="step".', 'step-marker': 'Numbered circle; leave empty for auto number/tick/!.',
+      'step-label': 'Step title.', 'step-desc': 'Optional small description.', 'stepper-vertical': 'Vertical steps with a connector down the side.',
+      'stepper-sm': 'Small stepper.', 'stepper-lg': 'Large stepper.', done: 'Completed step.', error: 'Step with a problem (danger color).',
+    },
+    examples: [{ html: `<ol class="stepper">
+  <li class="step done"><span class="step-marker"></span><span class="step-label">Account</span></li>
+  <li class="step" aria-current="step"><span class="step-marker"></span><span class="step-label">Details</span></li>
+  <li class="step error"><span class="step-marker"></span><span class="step-label">Payment</span></li>
+  <li class="step"><span class="step-marker"></span><span class="step-label">Done</span></li>
+</ol>`, wrap: 'grid gap-5' }],
+  },
+  {
+    id: 'rating', file: 'rating', title: 'Star rating (widgets add-on)',
+    intro: 'Display: set <code>--sh-rating</code> (0-5, halves allowed) on a <code>.rating</code> span. Input: radio + label pairs inside <code>.rating-input</code>; every star up to the checked one lights. Color follows <code>--sh-rating-color</code> or the tone.',
+    desc: { rating: 'Read-only stars; value from --sh-rating.', 'rating-input': 'Clickable stars from radio inputs and labels.', 'rating-half': 'Half-star steps (use 10 radio/label pairs).', 'rating-sm': 'Smaller stars.', 'rating-lg': 'Larger stars.' },
+    examples: [{ html: `<span class="rating" role="img" aria-label="3.5 out of 5" style="--sh-rating:3.5"></span>
+<div class="rating-input rating-lg" role="radiogroup" aria-label="Rate">
+  <input type="radio" name="demo-r" id="dr1"><label for="dr1">1</label><input type="radio" name="demo-r" id="dr2"><label for="dr2">2</label><input type="radio" name="demo-r" id="dr3" checked><label for="dr3">3</label><input type="radio" name="demo-r" id="dr4"><label for="dr4">4</label><input type="radio" name="demo-r" id="dr5"><label for="dr5">5</label>
+</div>` }],
+  },
+  {
+    id: 'skeleton', file: 'skeleton', title: 'Skeleton (widgets add-on)',
+    intro: 'Static grey placeholder shapes shown while content loads. They do not animate; a script (Effix shimmer) can animate the background.',
+    desc: { skeleton: 'Grey placeholder block; hides its children.', 'skeleton-text': 'One line of text (last line of a group is shorter).', 'skeleton-title': 'Heading-sized bar.', 'skeleton-avatar': 'Round avatar placeholder.', 'skeleton-card': 'Card-sized block.', 'skeleton-line': 'Thin 1px rule.' },
+    examples: [{ html: `<div class="flex gap-3 items-start" aria-busy="true"><span class="skeleton skeleton-avatar"></span><div class="flex-1"><span class="skeleton skeleton-title"></span><span class="skeleton skeleton-text"></span><span class="skeleton skeleton-text"></span></div></div>`, wrap: 'grid gap-5' }],
+  },
+  {
+    id: 'calendar', file: 'calendar', title: 'Calendar (widgets add-on)',
+    intro: 'Month grid of 7 columns. Week start is just the order of the weekday headers and the leading blank/outside days in your markup. Days are buttons with <code>aria-selected</code>, <code>today</code>, <code>outside</code>, <code>has-event</code> or range classes.',
+    desc: { calendar: 'Bordered month box.', 'calendar-head': 'Title row (month name, prev/next buttons).', 'calendar-grid': '7-column grid for weekday names and days.', 'calendar-dow': 'Weekday column heading.', 'calendar-day': 'A day cell (button).', today: 'Outlines today (or aria-current="date").', outside: 'Day from the neighbouring month.', 'in-range': 'Day inside a selected range.', 'range-start': 'First day of a range.', 'range-end': 'Last day of a range.', selected: 'Selected day (aria-selected="true" also works).', 'has-event': 'Adds an event dot under the number.', 'calendar-dots': 'Several event dots in a row.' },
+    examples: [{ html: `<div class="calendar">
+  <div class="calendar-head"><button class="btn btn-sm btn-ghost" aria-label="Previous month">&lsaquo;</button><span>March 2025</span><button class="btn btn-sm btn-ghost" aria-label="Next month">&rsaquo;</button></div>
+  <div class="calendar-grid">
+    <span class="calendar-dow">Mo</span><span class="calendar-dow">Tu</span><span class="calendar-dow">We</span><span class="calendar-dow">Th</span><span class="calendar-dow">Fr</span><span class="calendar-dow">Sa</span><span class="calendar-dow">Su</span>
+    <button class="calendar-day outside">24</button><button class="calendar-day outside">25</button><button class="calendar-day outside">26</button><button class="calendar-day outside">27</button><button class="calendar-day outside">28</button><button class="calendar-day">1</button><button class="calendar-day">2</button>
+    <button class="calendar-day today has-event">3</button><button class="calendar-day range-start">4</button><button class="calendar-day in-range">5</button><button class="calendar-day range-end">6</button><button class="calendar-day" disabled>7</button><button class="calendar-day" aria-selected="true">8</button><button class="calendar-day">9</button>
+  </div>
+</div>`, wrap: 'grid gap-5' }],
+  },
 ];
 
 /* ------------------------------------------------------------------ helpers */
 function classesOf(file) {
-  const css = stripComments(read(`src/components/${file}.css`)).replace(/@media print\s*\{[\s\S]*?\}\s*\}/g, '');
+  const css = stripComments(read(fs.existsSync(path.join(ROOT, `src/components/${file}.css`)) ? `src/components/${file}.css` : `src/widgets/${file}.css`)).replace(/@media print\s*\{[\s\S]*?\}\s*\}/g, '');
   const found = [];
   for (const m of css.matchAll(/([^{}]+)\{[^{}]*\}/g)) {
     if (m[1].trim().startsWith('@')) continue;
@@ -655,6 +735,7 @@ const html = `<!doctype html>
 <meta property="og:title" content="Shine CSS reference: classes, data attributes and tokens">
 <meta property="og:description" content="${esc(DESC)}">
 <link rel="stylesheet" href="../dist/shine.min.css">
+<link rel="stylesheet" href="../dist/shine-widgets.min.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>

@@ -132,3 +132,18 @@ if (missing.length) console.warn('missing (skipped):', missing.join(', '));
 console.log(`dist/shine.min.css  ${kb(min.length)}  gzip ${kb(gz)}  brotli ${kb(br)}  (${imports.length - missing.length} modules)`);
 const BUDGET_GZ = 17.5 * 1024;
 if (gz > BUDGET_GZ) { console.error(`over gzip budget (${kb(BUDGET_GZ)})`); process.exitCode = 1; }
+
+// Optional add-on: src/widgets.css -> dist/shine-widgets(.min).css (own budget, load after shine.css)
+{
+  const wIndex = fs.readFileSync(path.join(SRC, 'widgets.css'), 'utf8');
+  const files = [...wIndex.matchAll(/@import\s+url\(["']?([^"')]+)["']?\)/g)].map(m => m[1]);
+  const body = files.map(f => `/* ${f} */\n${fs.readFileSync(path.join(SRC, f), 'utf8').trim()}`).join('\n\n');
+  const wOut = `/*! Shine widgets v${VERSION} | MIT | github.com/asticore/shine */\n${layerDecl}\n\n@layer shine.components {\n${body}\n}\n`;
+  const wMin = minify(wOut);
+  fs.writeFileSync(path.join(DIST, 'shine-widgets.css'), wOut);
+  fs.writeFileSync(path.join(DIST, 'shine-widgets.min.css'), wMin);
+  const wgz = zlib.gzipSync(wMin, { level: 9 }).length;
+  console.log(`dist/shine-widgets.min.css  ${kb(wMin.length)}  gzip ${kb(wgz)}  (${files.length} modules)`);
+  const W_BUDGET = 6 * 1024;
+  if (wgz > W_BUDGET) { console.error(`widgets over gzip budget (${kb(W_BUDGET)})`); process.exitCode = 1; }
+}

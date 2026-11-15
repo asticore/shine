@@ -11,6 +11,7 @@
 <meta property="og:title" content="Shine CSS reference: classes, data attributes and tokens">
 <meta property="og:description" content="Reference for every Shine CSS class and data attribute: master knobs, tones, components with live examples, and 819 utility classes with their CSS.">
 <link rel="stylesheet" href="../dist/shine.min.css">
+<link rel="stylesheet" href="../dist/shine-widgets.min.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -33,12 +34,12 @@
 <button class="btn lg:hidden fixed bottom-0 right-0 m-4 z-40 shadow-lg" type="button" popovertarget="toc">Contents</button>
 <nav id="toc" popover class="offcanvas" aria-label="Table of contents">
 <div class="offcanvas-header"><strong>Contents</strong><button class="btn-close" type="button" popovertarget="toc" popovertargetaction="hide" aria-label="Close contents"></button></div>
-<div class="offcanvas-body"><ul class="list-none p-0 m-0 space-y-2"><li><a href="#getting-started" class="link font-medium">Getting started</a></li><li><a href="#knobs" class="link font-medium">Master knobs</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#knob-attrs" class="link text-muted">Data attributes</a></li><li><a href="#knob-tokens" class="link text-muted">CSS variables</a></li></ul></li><li><a href="#tones" class="link font-medium">Tones</a></li><li><a href="#components" class="link font-medium">Components</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#c-layout" class="link text-muted">Layout primitives</a></li><li><a href="#c-button" class="link text-muted">Button</a></li><li><a href="#c-card" class="link text-muted">Card</a></li><li><a href="#c-form" class="link text-muted">Form</a></li><li><a href="#c-badge" class="link text-muted">Badge, avatar, divider</a></li><li><a href="#c-alert" class="link text-muted">Alert and kbd</a></li><li><a href="#c-overlay" class="link text-muted">Overlays</a></li><li><a href="#c-nav" class="link text-muted">Navigation</a></li><li><a href="#c-content" class="link text-muted">Content</a></li><li><a href="#c-extras" class="link text-muted">Extras</a></li></ul></li><li><a href="#utilities" class="link font-medium">Utilities</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#u-layout" class="link text-muted">layout</a></li><li><a href="#u-flex-grid" class="link text-muted">flex-grid</a></li><li><a href="#u-spacing" class="link text-muted">spacing</a></li><li><a href="#u-sizing" class="link text-muted">sizing</a></li><li><a href="#u-typography" class="link text-muted">typography</a></li><li><a href="#u-color" class="link text-muted">color</a></li><li><a href="#u-borders" class="link text-muted">borders</a></li><li><a href="#u-effects" class="link text-muted">effects</a></li><li><a href="#u-interactivity" class="link text-muted">interactivity</a></li><li><a href="#u-extras" class="link text-muted">extras</a></li></ul></li><li><a href="#variants" class="link font-medium">Variants and cascade</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#v-responsive" class="link text-muted">Responsive</a></li><li><a href="#v-state" class="link text-muted">Hover and focus</a></li><li><a href="#v-layers" class="link text-muted">Cascade layers</a></li><li><a href="#v-opacity" class="link text-muted">Opacity modifiers</a></li><li><a href="#v-tailwind" class="link text-muted">Differences from Tailwind</a></li></ul></li></ul></div>
+<div class="offcanvas-body"><ul class="list-none p-0 m-0 space-y-2"><li><a href="#getting-started" class="link font-medium">Getting started</a></li><li><a href="#knobs" class="link font-medium">Master knobs</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#knob-attrs" class="link text-muted">Data attributes</a></li><li><a href="#knob-tokens" class="link text-muted">CSS variables</a></li></ul></li><li><a href="#tones" class="link font-medium">Tones</a></li><li><a href="#components" class="link font-medium">Components</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#c-layout" class="link text-muted">Layout primitives</a></li><li><a href="#c-button" class="link text-muted">Button</a></li><li><a href="#c-card" class="link text-muted">Card</a></li><li><a href="#c-form" class="link text-muted">Form</a></li><li><a href="#c-badge" class="link text-muted">Badge, avatar, divider</a></li><li><a href="#c-alert" class="link text-muted">Alert and kbd</a></li><li><a href="#c-overlay" class="link text-muted">Overlays</a></li><li><a href="#c-nav" class="link text-muted">Navigation</a></li><li><a href="#c-content" class="link text-muted">Content</a></li><li><a href="#c-extras" class="link text-muted">Extras</a></li><li><a href="#c-datatable" class="link text-muted">Data table (widgets add-on)</a></li><li><a href="#c-timeline" class="link text-muted">Timeline (widgets add-on)</a></li><li><a href="#c-stepper" class="link text-muted">Stepper (widgets add-on)</a></li><li><a href="#c-rating" class="link text-muted">Star rating (widgets add-on)</a></li><li><a href="#c-skeleton" class="link text-muted">Skeleton (widgets add-on)</a></li><li><a href="#c-calendar" class="link text-muted">Calendar (widgets add-on)</a></li></ul></li><li><a href="#utilities" class="link font-medium">Utilities</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#u-layout" class="link text-muted">layout</a></li><li><a href="#u-flex-grid" class="link text-muted">flex-grid</a></li><li><a href="#u-spacing" class="link text-muted">spacing</a></li><li><a href="#u-sizing" class="link text-muted">sizing</a></li><li><a href="#u-typography" class="link text-muted">typography</a></li><li><a href="#u-color" class="link text-muted">color</a></li><li><a href="#u-borders" class="link text-muted">borders</a></li><li><a href="#u-effects" class="link text-muted">effects</a></li><li><a href="#u-interactivity" class="link text-muted">interactivity</a></li><li><a href="#u-extras" class="link text-muted">extras</a></li></ul></li><li><a href="#variants" class="link font-medium">Variants and cascade</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#v-responsive" class="link text-muted">Responsive</a></li><li><a href="#v-state" class="link text-muted">Hover and focus</a></li><li><a href="#v-layers" class="link text-muted">Cascade layers</a></li><li><a href="#v-opacity" class="link text-muted">Opacity modifiers</a></li><li><a href="#v-tailwind" class="link text-muted">Differences from Tailwind</a></li></ul></li></ul></div>
 </nav>
 <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-4 gap-8">
 <aside class="hidden lg:block lg:col-span-1 border-r pr-4">
 <nav class="sticky top-0 max-h-screen overflow-y-auto py-8" aria-label="Table of contents">
-<ul class="list-none p-0 m-0 space-y-2"><li><a href="#getting-started" class="link font-medium">Getting started</a></li><li><a href="#knobs" class="link font-medium">Master knobs</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#knob-attrs" class="link text-muted">Data attributes</a></li><li><a href="#knob-tokens" class="link text-muted">CSS variables</a></li></ul></li><li><a href="#tones" class="link font-medium">Tones</a></li><li><a href="#components" class="link font-medium">Components</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#c-layout" class="link text-muted">Layout primitives</a></li><li><a href="#c-button" class="link text-muted">Button</a></li><li><a href="#c-card" class="link text-muted">Card</a></li><li><a href="#c-form" class="link text-muted">Form</a></li><li><a href="#c-badge" class="link text-muted">Badge, avatar, divider</a></li><li><a href="#c-alert" class="link text-muted">Alert and kbd</a></li><li><a href="#c-overlay" class="link text-muted">Overlays</a></li><li><a href="#c-nav" class="link text-muted">Navigation</a></li><li><a href="#c-content" class="link text-muted">Content</a></li><li><a href="#c-extras" class="link text-muted">Extras</a></li></ul></li><li><a href="#utilities" class="link font-medium">Utilities</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#u-layout" class="link text-muted">layout</a></li><li><a href="#u-flex-grid" class="link text-muted">flex-grid</a></li><li><a href="#u-spacing" class="link text-muted">spacing</a></li><li><a href="#u-sizing" class="link text-muted">sizing</a></li><li><a href="#u-typography" class="link text-muted">typography</a></li><li><a href="#u-color" class="link text-muted">color</a></li><li><a href="#u-borders" class="link text-muted">borders</a></li><li><a href="#u-effects" class="link text-muted">effects</a></li><li><a href="#u-interactivity" class="link text-muted">interactivity</a></li><li><a href="#u-extras" class="link text-muted">extras</a></li></ul></li><li><a href="#variants" class="link font-medium">Variants and cascade</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#v-responsive" class="link text-muted">Responsive</a></li><li><a href="#v-state" class="link text-muted">Hover and focus</a></li><li><a href="#v-layers" class="link text-muted">Cascade layers</a></li><li><a href="#v-opacity" class="link text-muted">Opacity modifiers</a></li><li><a href="#v-tailwind" class="link text-muted">Differences from Tailwind</a></li></ul></li></ul>
+<ul class="list-none p-0 m-0 space-y-2"><li><a href="#getting-started" class="link font-medium">Getting started</a></li><li><a href="#knobs" class="link font-medium">Master knobs</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#knob-attrs" class="link text-muted">Data attributes</a></li><li><a href="#knob-tokens" class="link text-muted">CSS variables</a></li></ul></li><li><a href="#tones" class="link font-medium">Tones</a></li><li><a href="#components" class="link font-medium">Components</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#c-layout" class="link text-muted">Layout primitives</a></li><li><a href="#c-button" class="link text-muted">Button</a></li><li><a href="#c-card" class="link text-muted">Card</a></li><li><a href="#c-form" class="link text-muted">Form</a></li><li><a href="#c-badge" class="link text-muted">Badge, avatar, divider</a></li><li><a href="#c-alert" class="link text-muted">Alert and kbd</a></li><li><a href="#c-overlay" class="link text-muted">Overlays</a></li><li><a href="#c-nav" class="link text-muted">Navigation</a></li><li><a href="#c-content" class="link text-muted">Content</a></li><li><a href="#c-extras" class="link text-muted">Extras</a></li><li><a href="#c-datatable" class="link text-muted">Data table (widgets add-on)</a></li><li><a href="#c-timeline" class="link text-muted">Timeline (widgets add-on)</a></li><li><a href="#c-stepper" class="link text-muted">Stepper (widgets add-on)</a></li><li><a href="#c-rating" class="link text-muted">Star rating (widgets add-on)</a></li><li><a href="#c-skeleton" class="link text-muted">Skeleton (widgets add-on)</a></li><li><a href="#c-calendar" class="link text-muted">Calendar (widgets add-on)</a></li></ul></li><li><a href="#utilities" class="link font-medium">Utilities</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#u-layout" class="link text-muted">layout</a></li><li><a href="#u-flex-grid" class="link text-muted">flex-grid</a></li><li><a href="#u-spacing" class="link text-muted">spacing</a></li><li><a href="#u-sizing" class="link text-muted">sizing</a></li><li><a href="#u-typography" class="link text-muted">typography</a></li><li><a href="#u-color" class="link text-muted">color</a></li><li><a href="#u-borders" class="link text-muted">borders</a></li><li><a href="#u-effects" class="link text-muted">effects</a></li><li><a href="#u-interactivity" class="link text-muted">interactivity</a></li><li><a href="#u-extras" class="link text-muted">extras</a></li></ul></li><li><a href="#variants" class="link font-medium">Variants and cascade</a><ul class="list-none text-sm space-y-1 mt-1 mb-2 pl-4"><li><a href="#v-responsive" class="link text-muted">Responsive</a></li><li><a href="#v-state" class="link text-muted">Hover and focus</a></li><li><a href="#v-layers" class="link text-muted">Cascade layers</a></li><li><a href="#v-opacity" class="link text-muted">Opacity modifiers</a></li><li><a href="#v-tailwind" class="link text-muted">Differences from Tailwind</a></li></ul></li></ul>
 </nav>
 </aside>
 <main id="main" class="lg:col-span-3 min-w-0 py-8 space-y-8">
@@ -823,6 +824,191 @@
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.btn-caret</code></td><td>Adds a down chevron; pair with popovertarget for a split button menu.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.glass</code></td><td>Frosted-glass surface (blurred, translucent). Tune with --sh-glass-blur and --sh-glass-opacity.</td></tr>
 <tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.modal-blur</code></td><td>Blurs the page behind an open modal.</td></tr>
+</tbody></table></div>
+</section>
+<section id="c-datatable" aria-labelledby="h-c-datatable" class="space-y-4">
+<h3 id="h-c-datatable" class="text-2xl font-semibold">Data table (widgets add-on)</h3>
+<p class="max-w-prose">Extends <code>.table</code> for interactive grids. Load <code>dist/shine-widgets.min.css</code> after the core. Sort arrows come from <code>aria-sort</code>, selected rows from <code>aria-selected="true"</code>; Shine only styles, your script (or Effix <code>efx-table</code>) sets the attributes.</p>
+<div class="card card-flat overflow-hidden">
+<div class="card-body grid gap-5">
+<div class="dt">
+  <div class="dt-toolbar"><input class="input dt-search" type="search" placeholder="Search"><div class="dt-filters"><button class="btn btn-sm btn-outline">Filters</button></div><span class="dt-spacer"></span><button class="btn btn-sm btn-outline">Columns</button></div>
+  <div class="table-wrap">
+    <table class="table table-hover table-selectable">
+      <thead><tr><th aria-sort="ascending">Name<span class="dt-resize"></span></th><th aria-sort="none">Plan</th></tr></thead>
+      <tbody><tr><td>Ada</td><td>Pro</td></tr><tr aria-selected="true"><td>Lin</td><td>Free</td></tr></tbody>
+    </table>
+  </div>
+  <div class="dt-pagebar"><span>1-2 of 2</span><ul class="pagination"><li><span aria-current="page">1</span></li></ul></div>
+</div>
+</div>
+<pre class="bg-surface-2 p-4 text-sm overflow-x-auto m-0"><code>&lt;div class=&quot;dt&quot;&gt;
+  &lt;div class=&quot;dt-toolbar&quot;&gt;&lt;input class=&quot;input dt-search&quot; type=&quot;search&quot; placeholder=&quot;Search&quot;&gt;&lt;div class=&quot;dt-filters&quot;&gt;&lt;button class=&quot;btn btn-sm btn-outline&quot;&gt;Filters&lt;/button&gt;&lt;/div&gt;&lt;span class=&quot;dt-spacer&quot;&gt;&lt;/span&gt;&lt;button class=&quot;btn btn-sm btn-outline&quot;&gt;Columns&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;table-wrap&quot;&gt;
+    &lt;table class=&quot;table table-hover table-selectable&quot;&gt;
+      &lt;thead&gt;&lt;tr&gt;&lt;th aria-sort=&quot;ascending&quot;&gt;Name&lt;span class=&quot;dt-resize&quot;&gt;&lt;/span&gt;&lt;/th&gt;&lt;th aria-sort=&quot;none&quot;&gt;Plan&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+      &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Ada&lt;/td&gt;&lt;td&gt;Pro&lt;/td&gt;&lt;/tr&gt;&lt;tr aria-selected=&quot;true&quot;&gt;&lt;td&gt;Lin&lt;/td&gt;&lt;td&gt;Free&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;dt-pagebar&quot;&gt;&lt;span&gt;1-2 of 2&lt;/span&gt;&lt;ul class=&quot;pagination&quot;&gt;&lt;li&gt;&lt;span aria-current=&quot;page&quot;&gt;1&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<div class="table-wrap"><table class="table table-compact table-striped"><thead><tr><th scope="col">Class</th><th scope="col">What it does</th></tr></thead><tbody>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.dt</code></td><td>Bordered, rounded wrapper for toolbar + table + pagination bar.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.table-wrap</code></td><td>Core scroll container; inside .dt it sits between toolbar and page bar.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.dt-toolbar</code></td><td>Row above the table for search, filters and the column menu.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.dt-pagebar</code></td><td>Row below the table: row count on one side, .pagination on the other.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.dt-search</code></td><td>Flexible search field slot in the toolbar.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.dt-filters</code></td><td>Wrapping group of filter controls.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.dt-spacer</code></td><td>Pushes the following toolbar items to the end.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.pagination</code></td><td>Core pagination, tidied when placed in .dt-pagebar.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.table-comfortable</code></td><td>Roomier cell padding (counterpart of table-compact).</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.table-sticky-head</code></td><td>Sticky header row when the table sits in a scrolling box.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.table</code></td><td>Core table, extended here with sort, selection and resize hooks.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.table-selectable</code></td><td>Pointer cursor, focus ring and a left accent on aria-selected rows.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.checkbox</code></td><td>Core checkbox, vertically centered in table cells.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.dt-resize</code></td><td>Drag handle at the end of a th; JS sets the column width.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.dt-empty</code></td><td>Centered empty state (icon, text, button) for a table with no rows.</td></tr>
+</tbody></table></div>
+</section>
+<section id="c-timeline" aria-labelledby="h-c-timeline" class="space-y-4">
+<h3 id="h-c-timeline" class="text-2xl font-semibold">Timeline (widgets add-on)</h3>
+<p class="max-w-prose">A list of events on a line. Default is vertical; add <code>timeline-alt</code> for alternating sides (from 640px) or <code>timeline-horizontal</code>. Markers hold text, an icon or an image; an empty marker is a dot.</p>
+<div class="card card-flat overflow-hidden">
+<div class="card-body grid gap-5">
+<ol class="timeline">
+  <li class="timeline-item"><span class="timeline-marker tone-success">1</span><span class="timeline-date">Jan 2025</span><div class="timeline-body"><strong>Kickoff</strong><p>Project started.</p></div></li>
+  <li class="timeline-item" aria-current="step"><span class="timeline-marker"></span><span class="timeline-date">Mar 2025</span><div class="timeline-body"><strong>Beta</strong></div></li>
+  <li class="timeline-item pending"><span class="timeline-marker"></span><span class="timeline-date">Jun 2025</span><div class="timeline-body"><strong>Launch</strong></div></li>
+</ol>
+</div>
+<pre class="bg-surface-2 p-4 text-sm overflow-x-auto m-0"><code>&lt;ol class=&quot;timeline&quot;&gt;
+  &lt;li class=&quot;timeline-item&quot;&gt;&lt;span class=&quot;timeline-marker tone-success&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;timeline-date&quot;&gt;Jan 2025&lt;/span&gt;&lt;div class=&quot;timeline-body&quot;&gt;&lt;strong&gt;Kickoff&lt;/strong&gt;&lt;p&gt;Project started.&lt;/p&gt;&lt;/div&gt;&lt;/li&gt;
+  &lt;li class=&quot;timeline-item&quot; aria-current=&quot;step&quot;&gt;&lt;span class=&quot;timeline-marker&quot;&gt;&lt;/span&gt;&lt;span class=&quot;timeline-date&quot;&gt;Mar 2025&lt;/span&gt;&lt;div class=&quot;timeline-body&quot;&gt;&lt;strong&gt;Beta&lt;/strong&gt;&lt;/div&gt;&lt;/li&gt;
+  &lt;li class=&quot;timeline-item pending&quot;&gt;&lt;span class=&quot;timeline-marker&quot;&gt;&lt;/span&gt;&lt;span class=&quot;timeline-date&quot;&gt;Jun 2025&lt;/span&gt;&lt;div class=&quot;timeline-body&quot;&gt;&lt;strong&gt;Launch&lt;/strong&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+</div>
+<div class="table-wrap"><table class="table table-compact table-striped"><thead><tr><th scope="col">Class</th><th scope="col">What it does</th></tr></thead><tbody>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.timeline</code></td><td>Vertical list of events joined by a line.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.timeline-item</code></td><td>One event.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.timeline-marker</code></td><td>Round marker: icon, number, image or empty dot. Colored by the tone.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.timeline-date</code></td><td>Date or time label.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.timeline-body</code></td><td>Event content.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.pending</code></td><td>Future item: grey marker.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.timeline-alt</code></td><td>Alternate items left and right of a center line (640px and up).</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.timeline-horizontal</code></td><td>Lay the events out in a row; scrolls sideways when tight.</td></tr>
+</tbody></table></div>
+</section>
+<section id="c-stepper" aria-labelledby="h-c-stepper" class="space-y-4">
+<h3 id="h-c-stepper" class="text-2xl font-semibold">Stepper (widgets add-on)</h3>
+<p class="max-w-prose">Progress through steps. Horizontal by default; <code>stepper-vertical</code> stacks them. Mark states with <code>done</code>, <code>aria-current="step"</code> and <code>error</code>; an empty <code>step-marker</code> shows the step number, a tick (done) or "!" (error).</p>
+<div class="card card-flat overflow-hidden">
+<div class="card-body grid gap-5">
+<ol class="stepper">
+  <li class="step done"><span class="step-marker"></span><span class="step-label">Account</span></li>
+  <li class="step" aria-current="step"><span class="step-marker"></span><span class="step-label">Details</span></li>
+  <li class="step error"><span class="step-marker"></span><span class="step-label">Payment</span></li>
+  <li class="step"><span class="step-marker"></span><span class="step-label">Done</span></li>
+</ol>
+</div>
+<pre class="bg-surface-2 p-4 text-sm overflow-x-auto m-0"><code>&lt;ol class=&quot;stepper&quot;&gt;
+  &lt;li class=&quot;step done&quot;&gt;&lt;span class=&quot;step-marker&quot;&gt;&lt;/span&gt;&lt;span class=&quot;step-label&quot;&gt;Account&lt;/span&gt;&lt;/li&gt;
+  &lt;li class=&quot;step&quot; aria-current=&quot;step&quot;&gt;&lt;span class=&quot;step-marker&quot;&gt;&lt;/span&gt;&lt;span class=&quot;step-label&quot;&gt;Details&lt;/span&gt;&lt;/li&gt;
+  &lt;li class=&quot;step error&quot;&gt;&lt;span class=&quot;step-marker&quot;&gt;&lt;/span&gt;&lt;span class=&quot;step-label&quot;&gt;Payment&lt;/span&gt;&lt;/li&gt;
+  &lt;li class=&quot;step&quot;&gt;&lt;span class=&quot;step-marker&quot;&gt;&lt;/span&gt;&lt;span class=&quot;step-label&quot;&gt;Done&lt;/span&gt;&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+</div>
+<div class="table-wrap"><table class="table table-compact table-striped"><thead><tr><th scope="col">Class</th><th scope="col">What it does</th></tr></thead><tbody>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.stepper</code></td><td>Row of steps with connectors.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.stepper-sm</code></td><td>Small stepper.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.stepper-lg</code></td><td>Large stepper.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.step</code></td><td>One step. Add done, error or aria-current="step".</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.step-marker</code></td><td>Numbered circle; leave empty for auto number/tick/!.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.step-label</code></td><td>Step title.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.step-desc</code></td><td>Optional small description.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.done</code></td><td>Completed step.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.error</code></td><td>Step with a problem (danger color).</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.stepper-vertical</code></td><td>Vertical steps with a connector down the side.</td></tr>
+</tbody></table></div>
+</section>
+<section id="c-rating" aria-labelledby="h-c-rating" class="space-y-4">
+<h3 id="h-c-rating" class="text-2xl font-semibold">Star rating (widgets add-on)</h3>
+<p class="max-w-prose">Display: set <code>--sh-rating</code> (0-5, halves allowed) on a <code>.rating</code> span. Input: radio + label pairs inside <code>.rating-input</code>; every star up to the checked one lights. Color follows <code>--sh-rating-color</code> or the tone.</p>
+<div class="card card-flat overflow-hidden">
+<div class="card-body flex flex-wrap items-center gap-3">
+<span class="rating" role="img" aria-label="3.5 out of 5" style="--sh-rating:3.5"></span>
+<div class="rating-input rating-lg" role="radiogroup" aria-label="Rate">
+  <input type="radio" name="demo-r" id="dr1"><label for="dr1">1</label><input type="radio" name="demo-r" id="dr2"><label for="dr2">2</label><input type="radio" name="demo-r" id="dr3" checked><label for="dr3">3</label><input type="radio" name="demo-r" id="dr4"><label for="dr4">4</label><input type="radio" name="demo-r" id="dr5"><label for="dr5">5</label>
+</div>
+</div>
+<pre class="bg-surface-2 p-4 text-sm overflow-x-auto m-0"><code>&lt;span class=&quot;rating&quot; role=&quot;img&quot; aria-label=&quot;3.5 out of 5&quot; style=&quot;--sh-rating:3.5&quot;&gt;&lt;/span&gt;
+&lt;div class=&quot;rating-input rating-lg&quot; role=&quot;radiogroup&quot; aria-label=&quot;Rate&quot;&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;demo-r&quot; id=&quot;dr1&quot;&gt;&lt;label for=&quot;dr1&quot;&gt;1&lt;/label&gt;&lt;input type=&quot;radio&quot; name=&quot;demo-r&quot; id=&quot;dr2&quot;&gt;&lt;label for=&quot;dr2&quot;&gt;2&lt;/label&gt;&lt;input type=&quot;radio&quot; name=&quot;demo-r&quot; id=&quot;dr3&quot; checked&gt;&lt;label for=&quot;dr3&quot;&gt;3&lt;/label&gt;&lt;input type=&quot;radio&quot; name=&quot;demo-r&quot; id=&quot;dr4&quot;&gt;&lt;label for=&quot;dr4&quot;&gt;4&lt;/label&gt;&lt;input type=&quot;radio&quot; name=&quot;demo-r&quot; id=&quot;dr5&quot;&gt;&lt;label for=&quot;dr5&quot;&gt;5&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<div class="table-wrap"><table class="table table-compact table-striped"><thead><tr><th scope="col">Class</th><th scope="col">What it does</th></tr></thead><tbody>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.rating</code></td><td>Read-only stars; value from --sh-rating.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.rating-sm</code></td><td>Smaller stars.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.rating-lg</code></td><td>Larger stars.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.rating-input</code></td><td>Clickable stars from radio inputs and labels.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.rating-half</code></td><td>Half-star steps (use 10 radio/label pairs).</td></tr>
+</tbody></table></div>
+</section>
+<section id="c-skeleton" aria-labelledby="h-c-skeleton" class="space-y-4">
+<h3 id="h-c-skeleton" class="text-2xl font-semibold">Skeleton (widgets add-on)</h3>
+<p class="max-w-prose">Static grey placeholder shapes shown while content loads. They do not animate; a script (Effix shimmer) can animate the background.</p>
+<div class="card card-flat overflow-hidden">
+<div class="card-body grid gap-5">
+<div class="flex gap-3 items-start" aria-busy="true"><span class="skeleton skeleton-avatar"></span><div class="flex-1"><span class="skeleton skeleton-title"></span><span class="skeleton skeleton-text"></span><span class="skeleton skeleton-text"></span></div></div>
+</div>
+<pre class="bg-surface-2 p-4 text-sm overflow-x-auto m-0"><code>&lt;div class=&quot;flex gap-3 items-start&quot; aria-busy=&quot;true&quot;&gt;&lt;span class=&quot;skeleton skeleton-avatar&quot;&gt;&lt;/span&gt;&lt;div class=&quot;flex-1&quot;&gt;&lt;span class=&quot;skeleton skeleton-title&quot;&gt;&lt;/span&gt;&lt;span class=&quot;skeleton skeleton-text&quot;&gt;&lt;/span&gt;&lt;span class=&quot;skeleton skeleton-text&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;</code></pre>
+</div>
+<div class="table-wrap"><table class="table table-compact table-striped"><thead><tr><th scope="col">Class</th><th scope="col">What it does</th></tr></thead><tbody>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.skeleton</code></td><td>Grey placeholder block; hides its children.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.skeleton-text</code></td><td>One line of text (last line of a group is shorter).</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.skeleton-title</code></td><td>Heading-sized bar.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.skeleton-avatar</code></td><td>Round avatar placeholder.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.skeleton-card</code></td><td>Card-sized block.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.skeleton-line</code></td><td>Thin 1px rule.</td></tr>
+</tbody></table></div>
+</section>
+<section id="c-calendar" aria-labelledby="h-c-calendar" class="space-y-4">
+<h3 id="h-c-calendar" class="text-2xl font-semibold">Calendar (widgets add-on)</h3>
+<p class="max-w-prose">Month grid of 7 columns. Week start is just the order of the weekday headers and the leading blank/outside days in your markup. Days are buttons with <code>aria-selected</code>, <code>today</code>, <code>outside</code>, <code>has-event</code> or range classes.</p>
+<div class="card card-flat overflow-hidden">
+<div class="card-body grid gap-5">
+<div class="calendar">
+  <div class="calendar-head"><button class="btn btn-sm btn-ghost" aria-label="Previous month">&lsaquo;</button><span>March 2025</span><button class="btn btn-sm btn-ghost" aria-label="Next month">&rsaquo;</button></div>
+  <div class="calendar-grid">
+    <span class="calendar-dow">Mo</span><span class="calendar-dow">Tu</span><span class="calendar-dow">We</span><span class="calendar-dow">Th</span><span class="calendar-dow">Fr</span><span class="calendar-dow">Sa</span><span class="calendar-dow">Su</span>
+    <button class="calendar-day outside">24</button><button class="calendar-day outside">25</button><button class="calendar-day outside">26</button><button class="calendar-day outside">27</button><button class="calendar-day outside">28</button><button class="calendar-day">1</button><button class="calendar-day">2</button>
+    <button class="calendar-day today has-event">3</button><button class="calendar-day range-start">4</button><button class="calendar-day in-range">5</button><button class="calendar-day range-end">6</button><button class="calendar-day" disabled>7</button><button class="calendar-day" aria-selected="true">8</button><button class="calendar-day">9</button>
+  </div>
+</div>
+</div>
+<pre class="bg-surface-2 p-4 text-sm overflow-x-auto m-0"><code>&lt;div class=&quot;calendar&quot;&gt;
+  &lt;div class=&quot;calendar-head&quot;&gt;&lt;button class=&quot;btn btn-sm btn-ghost&quot; aria-label=&quot;Previous month&quot;&gt;&amp;lsaquo;&lt;/button&gt;&lt;span&gt;March 2025&lt;/span&gt;&lt;button class=&quot;btn btn-sm btn-ghost&quot; aria-label=&quot;Next month&quot;&gt;&amp;rsaquo;&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;calendar-grid&quot;&gt;
+    &lt;span class=&quot;calendar-dow&quot;&gt;Mo&lt;/span&gt;&lt;span class=&quot;calendar-dow&quot;&gt;Tu&lt;/span&gt;&lt;span class=&quot;calendar-dow&quot;&gt;We&lt;/span&gt;&lt;span class=&quot;calendar-dow&quot;&gt;Th&lt;/span&gt;&lt;span class=&quot;calendar-dow&quot;&gt;Fr&lt;/span&gt;&lt;span class=&quot;calendar-dow&quot;&gt;Sa&lt;/span&gt;&lt;span class=&quot;calendar-dow&quot;&gt;Su&lt;/span&gt;
+    &lt;button class=&quot;calendar-day outside&quot;&gt;24&lt;/button&gt;&lt;button class=&quot;calendar-day outside&quot;&gt;25&lt;/button&gt;&lt;button class=&quot;calendar-day outside&quot;&gt;26&lt;/button&gt;&lt;button class=&quot;calendar-day outside&quot;&gt;27&lt;/button&gt;&lt;button class=&quot;calendar-day outside&quot;&gt;28&lt;/button&gt;&lt;button class=&quot;calendar-day&quot;&gt;1&lt;/button&gt;&lt;button class=&quot;calendar-day&quot;&gt;2&lt;/button&gt;
+    &lt;button class=&quot;calendar-day today has-event&quot;&gt;3&lt;/button&gt;&lt;button class=&quot;calendar-day range-start&quot;&gt;4&lt;/button&gt;&lt;button class=&quot;calendar-day in-range&quot;&gt;5&lt;/button&gt;&lt;button class=&quot;calendar-day range-end&quot;&gt;6&lt;/button&gt;&lt;button class=&quot;calendar-day&quot; disabled&gt;7&lt;/button&gt;&lt;button class=&quot;calendar-day&quot; aria-selected=&quot;true&quot;&gt;8&lt;/button&gt;&lt;button class=&quot;calendar-day&quot;&gt;9&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<div class="table-wrap"><table class="table table-compact table-striped"><thead><tr><th scope="col">Class</th><th scope="col">What it does</th></tr></thead><tbody>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.calendar</code></td><td>Bordered month box.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.calendar-head</code></td><td>Title row (month name, prev/next buttons).</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.calendar-grid</code></td><td>7-column grid for weekday names and days.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.calendar-dow</code></td><td>Weekday column heading.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.calendar-day</code></td><td>A day cell (button).</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.outside</code></td><td>Day from the neighbouring month.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.today</code></td><td>Outlines today (or aria-current="date").</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.in-range</code></td><td>Day inside a selected range.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.range-start</code></td><td>First day of a range.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.range-end</code></td><td>Last day of a range.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.selected</code></td><td>Selected day (aria-selected="true" also works).</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.has-event</code></td><td>Adds an event dot under the number.</td></tr>
+<tr><td><code class="font-mono text-sm bg-surface-2 px-1 rounded">.calendar-dots</code></td><td>Several event dots in a row.</td></tr>
 </tbody></table></div>
 </section>
 </section>

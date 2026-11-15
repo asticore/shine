@@ -1,0 +1,101 @@
+/* Stepper — .stepper (horizontal; .stepper-vertical, .stepper-sm, .stepper-lg), children .step with
+   .step-marker and .step-label (.step-desc). State: .done, aria-current="step", .error.
+   Knobs: --sh-tone, --sh-step-size. Connectors are drawn by the next step's ::before. */
+
+.stepper {
+  --_s: var(--sh-step-size, 2rem);
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+.stepper-sm { --_s: 1.5rem; font-size: .875rem; }
+.stepper-lg { --_s: 2.75rem; font-size: 1.125rem; }
+.step {
+  position: relative;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--sh-space) * 2);
+  min-width: 0;
+  color: var(--sh-text-muted);
+  text-align: center;
+}
+.step + .step::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--_s) / 2 - var(--sh-border-width) / 2);
+  inset-inline: calc(-50% + var(--_s) / 2 + var(--sh-space) * 2) calc(50% + var(--_s) / 2 + var(--sh-space) * 2);
+  height: calc(var(--sh-border-width) * 2);
+  background: var(--sh-border);
+}
+.step-marker {
+  counter-increment: step;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--_s);
+  height: var(--_s);
+  border: calc(var(--sh-border-width) * 2) solid var(--sh-border);
+  border-radius: 50%;
+  background: var(--sh-bg);
+  color: var(--sh-text-muted);
+  font-size: .875em;
+  font-weight: 600;
+  line-height: 1;
+}
+.step-marker:empty::before { content: counter(step); }
+.step-label { display: block; font-weight: 600; line-height: 1.25; }
+.step-desc { display: block; font-size: .875em; font-weight: 400; }
+
+.step.done,
+.step[aria-current="step"],
+.step.error { color: var(--sh-text); }
+.step.done .step-marker,
+.step[aria-current="step"] .step-marker {
+  border-color: var(--sh-tone, var(--sh-primary));
+  background: var(--sh-tone, var(--sh-primary));
+  color: var(--sh-on-tone, var(--sh-on-primary));
+}
+.step[aria-current="step"] .step-marker {
+  background: var(--sh-bg);
+  color: color-mix(in oklab, var(--sh-tone, var(--sh-primary)) var(--sh-brand-text, 100%), var(--sh-text));
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--sh-tone, var(--sh-primary)) 25%, transparent);
+}
+.step.done:not(:has(.step-marker:not(:empty))) .step-marker::before { content: "\2713"; }
+.step.done + .step::before,
+.step[aria-current="step"] + .step.error::before { background: var(--sh-tone, var(--sh-primary)); }
+.step.error .step-marker { border-color: var(--sh-danger); background: var(--sh-danger); color: var(--sh-on-danger); }
+.step.error:not(:has(.step-marker:not(:empty))) .step-marker::before { content: "!"; }
+.step.error .step-label { color: color-mix(in oklab, var(--sh-danger) var(--sh-brand-text, 100%), var(--sh-text)); }
+
+/* Vertical */
+.stepper-vertical { flex-direction: column; }
+.stepper-vertical .step {
+  display: grid;
+  grid-template-columns: var(--_s) 1fr;
+  grid-template-rows: auto 1fr;
+  column-gap: calc(var(--sh-space) * 3);
+  row-gap: 0;
+  align-items: start;
+  padding-bottom: calc(var(--sh-space) * 6);
+  text-align: start;
+}
+.stepper-vertical .step:last-child { padding-bottom: 0; }
+.stepper-vertical .step-marker { grid-row: 1 / span 2; }
+.stepper-vertical .step-label { align-self: center; min-height: var(--_s); display: flex; align-items: center; }
+.stepper-vertical .step + .step::before { inset: auto; }
+.stepper-vertical .step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--_s) + var(--sh-space));
+  bottom: var(--sh-space);
+  inset-inline-start: calc(var(--_s) / 2 - var(--sh-border-width));
+  width: calc(var(--sh-border-width) * 2);
+  background: var(--sh-border);
+}
+.stepper-vertical .step.done:not(:last-child)::after { background: var(--sh-tone, var(--sh-primary)); }
+.stepper-vertical .step::before { display: none; }

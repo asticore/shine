@@ -1,0 +1,22 @@
+/* Skeleton — static placeholder shapes: .skeleton plus .skeleton-text, .skeleton-title, .skeleton-avatar,
+   .skeleton-card, .skeleton-line (last line shorter via :last-child in .skeleton-text group).
+   Static by design; Effix adds the shimmer by animating the --sh-skeleton-shine custom property / background.
+   Knobs: --sh-skeleton-bg, --sh-skeleton-radius. */
+
+.skeleton {
+  display: block;
+  min-height: 1em;
+  border-radius: var(--sh-skeleton-radius, calc(var(--sh-radius) * .5));
+  background: var(--sh-skeleton-bg, var(--sh-surface-2));
+  color: transparent;
+  pointer-events: none;
+  user-select: none;
+}
+.skeleton > * { visibility: hidden; }
+.skeleton-text { height: .875em; margin-block: .5em; }
+.skeleton-text:last-child:not(:only-child) { width: 60%; }
+.skeleton-title { width: 40%; height: 1.5em; margin-block: .25em .75em; }
+.skeleton-avatar { width: 2.5rem; height: 2.5rem; border-radius: 50%; flex-shrink: 0; }
+.skeleton-card { height: 10rem; border-radius: var(--sh-card-radius, var(--sh-radius)); }
+.skeleton-line { height: 1px; }
+@media (prefers-reduced-motion: reduce) { .skeleton { animation: none; } }

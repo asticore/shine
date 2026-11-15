@@ -1,0 +1,62 @@
+/* Star rating — display: <span class="rating" role="img" aria-label="3.5 of 5" style="--sh-rating:3.5"></span>
+   Input: <div class="rating-input" role="radiogroup"> then repeated <input type="radio" name="r" id="r1"><label for="r1">1</label>;
+   every star up to the checked one is lit (via :has), hover previews. Add .rating-half and use 10 input/label pairs for half stars.
+   Sizes .rating-sm .rating-lg (both variants). Value 3.5 = --sh-rating:3.5 on the display variant.
+   Knobs: --sh-rating-color (default warning tone), --sh-tone, --sh-rating-size, --sh-rating (display value). */
+
+.rating {
+  --_c: var(--sh-rating-color, var(--sh-tone, var(--sh-warning)));
+  --_sz: var(--sh-rating-size, 1.25rem);
+  --_star: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2 2 9.3l6.9-1z'/%3E%3C/svg%3E");
+  display: inline-flex;
+  position: relative;
+  vertical-align: middle;
+  width: calc(var(--_sz) * 5);
+  height: var(--_sz);
+  background:
+    linear-gradient(90deg, var(--_c) calc(var(--sh-rating, 0) / 5 * 100%), var(--sh-surface-2) 0);
+  -webkit-mask: var(--_star) 0 0 / var(--_sz) var(--_sz) repeat-x;
+  mask: var(--_star) 0 0 / var(--_sz) var(--_sz) repeat-x;
+}
+.rating-sm { --sh-rating-size: .875rem; }
+.rating-lg { --sh-rating-size: 1.75rem; }
+
+/* Input variant: stars are real labels so keyboard focus and hover work */
+.rating-input {
+  --_c: var(--sh-rating-color, var(--sh-tone, var(--sh-warning)));
+  --_sz: var(--sh-rating-size, 1.5rem);
+  --_star: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L7 14.2 2 9.3l6.9-1z'/%3E%3C/svg%3E");
+  display: inline-flex;
+  position: relative;
+}
+.rating-input.rating-sm { --sh-rating-size: 1.125rem; }
+.rating-input.rating-lg { --sh-rating-size: 2rem; }
+.rating-input > input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+.rating-input > label {
+  display: block;
+  width: var(--_sz);
+  height: var(--_sz);
+  overflow: hidden;
+  cursor: pointer;
+  font-size: 0;
+  background: var(--sh-surface-2);
+  -webkit-mask: var(--_star) center / 100% 100% no-repeat;
+  mask: var(--_star) center / 100% 100% no-repeat;
+}
+/* Lit: the checked star and every star before it */
+.rating-input > label:has(~ input:checked),
+.rating-input > input:checked + label { background: var(--_c); }
+/* Hover preview: stars up to the hovered one light, later checked stars dim */
+.rating-input:has(> label:hover) > label { background: var(--sh-surface-2); }
+.rating-input:has(> label:hover) > label:is(:hover, :has(~ label:hover)) { background: var(--_c); }
+.rating-input > input:focus-visible + label { background: color-mix(in oklab, var(--_c) 70%, var(--sh-text)); }
+/* Half stars: each label is half a star; even labels show the right half */
+.rating-half > label { width: calc(var(--_sz) / 2); -webkit-mask-size: var(--_sz) 100%; mask-size: var(--_sz) 100%; -webkit-mask-position: left; mask-position: left; }
+.rating-half > label:nth-of-type(even) { -webkit-mask-position: right; mask-position: right; }
+.rating-input[aria-disabled="true"] { opacity: .5; pointer-events: none; }

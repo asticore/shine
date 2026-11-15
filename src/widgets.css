@@ -1,0 +1,10 @@
+/* Shine widgets — optional add-on (dist/shine-widgets.css). Load AFTER shine.css.
+   Kept out of the core so shine.min.css stays under its 17.5 KB gzip budget. */
+@layer shine.tokens, shine.reset, shine.base, shine.components, shine.utilities;
+
+@import url("./widgets/datatable.css") layer(shine.components);
+@import url("./widgets/timeline.css") layer(shine.components);
+@import url("./widgets/stepper.css") layer(shine.components);
+@import url("./widgets/rating.css") layer(shine.components);
+@import url("./widgets/skeleton.css") layer(shine.components);
+@import url("./widgets/calendar.css") layer(shine.components);
